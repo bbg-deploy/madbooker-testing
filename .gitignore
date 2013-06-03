@@ -14,3 +14,5 @@ public/javascripts/all.js
 public/stylesheets/all.css
 public/stylesheets/application.css
 tmp/**/*
+.ruby-gemset
+.ruby-version
