@@ -1,0 +1,22 @@
+<style type="text/css" media="screen">
+body {background: #ddd; font: normal 12px/1.5em Arial, sans-serif;}
+a 				                  {text-decoration: underline; color: #3561aa; }
+a:hover 		                {text-decoration: none; }
+</style>
+
+<div style="margin: 20px; padding: 20px; background: white; border: 2px solid #ccc;">
+  <strong>Hi <%= @person.f %></strong>
+  <br />
+  <br />
+  <strong><%= @inviter.f %></strong> has invited you to join Less Projects
+  <br />
+  <br />
+  All you have to do is go to http://lessprojects.com/signup 
+  <br />
+  and sign up with this email address (<strong><%= @person.email %></strong>).
+  <br />
+  <br />
+  Thanks,
+  <br />
+  The Guys at Less Projects (and our wives :)
+</div>

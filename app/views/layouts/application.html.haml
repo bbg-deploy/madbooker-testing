@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title= yield(:title)
+    = stylesheet_link_tag 'simple_form', 'application'
+    = javascript_include_tag 'jquery','jquery-ui','jrails', 'jquery.nyroModal-1.6.2.min', 'jquery.inplace.pack', 'rails', 'application'
+    = csrf_meta_tag
+    = yield(:head)
+  %body
+    #container
+      #header
+        #nav
+          = render :partial => '/shared/nav'
+      #content
+        %h1= yield(:title)
+        - unless notice.blank?
+          %p.notice= notice
+        - unless alert.blank?
+          %p.alert= alert
+        = yield
+    = render :partial => '/shared/footer'

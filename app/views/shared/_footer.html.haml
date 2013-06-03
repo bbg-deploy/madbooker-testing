@@ -1,0 +1,18 @@
+
+
+
+.footer
+  %div
+    .right.tr.footer_data
+      .tr
+        = link_to "Privacy Policy", "#{privacy_url}", :class=>"nyroModal", :rel=>"nofollow"
+        = link_to "Terms of Service", "#{terms_url}", :class=>"nyroModal", :rel=>"nofollow"
+  .clear
+
+#message
+#waiter.hidden
+  #server_talking
+    #spinner
+      %img{ :src => "/images/loader2.gif", :onclick => "$('#waiter').hide();" }
+      Processing Data
+

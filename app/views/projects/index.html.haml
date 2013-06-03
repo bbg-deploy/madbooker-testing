@@ -1,0 +1,15 @@
+
+
+Create a new project
+- simple_form_for :project do |f|
+  = f.input :name
+  = f.submit "Create"
+
+
+#projects
+  %ul
+    - projects.each do |project|
+      %li= link_to project.name, project
+    
+    
+    

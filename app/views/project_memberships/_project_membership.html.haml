@@ -1,0 +1,9 @@
+
+
+%tr{:id => project_membership.dom_id('row')}
+  %td= project_membership.person.name
+  %td= project_membership.person.email
+  - if project_membership.owner
+    %td Owner
+  - else
+    %td= link_to "remove", [project, project_membership], :format => 'js', :method => "delete", :confirm => DELETE_CONFIRM, :remote => true

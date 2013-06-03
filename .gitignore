@@ -1,0 +1,16 @@
+.DS_Store
+*swp
+log/*.log
+log/*.pid
+config/database.yml
+config/development.sphinx.conf
+db/sphinx/*
+db/development_structure.sql
+db/schema.rb
+index/*
+public/system
+public/javascripts/less_routes.js
+public/javascripts/all.js
+public/stylesheets/all.css
+public/stylesheets/application.css
+tmp/**/*
