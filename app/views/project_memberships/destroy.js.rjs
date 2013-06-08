@@ -1,7 +1,0 @@
-
-
-unless @project_membership
-  page.alert 'You can not remove the owner.'
-else
-  page.remove @project_membership.dom_id('row')
-end

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Madbooker::Application.config.secret_key_base = '8770b6fd51d4a0ba7c6e8e7008a722b99dbebafb97b90d8e6cec24e0d1481ec341a057c703c3fc9f4be252fb6b0b42ea10a4dd2178728d0a97b781bed7d41cf3'
+Madbooker::Application.config.secret_key_base = 'bcd7a09ced9e5cd33180d0ddfd76c5c0f1b5499f70e6d998e2d382feec2b596e41b6ed0f89b466ff05b063f4ba1509426689c486c66c650979953cbfb5a6b8c6'

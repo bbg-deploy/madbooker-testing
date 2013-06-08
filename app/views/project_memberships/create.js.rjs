@@ -1,7 +1,0 @@
-
-if @project_membership.new_record?
-  page.alert @project_membership.errors.to_s
-else
-  page.insert_html :bottom, project.dom_id('project_memberships_rows'), :partial => @project_membership
-  page << "$('#project_membership_email').val('');"
-end
