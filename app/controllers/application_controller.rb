@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pagination
   include Rendering
+  include DeviseStuff
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -11,16 +12,8 @@ class ApplicationController < ActionController::Base
   def current_hotel
     @current_hotel ||= hotel_for_user
   end
+  helper_method :current_hotel
 
-  def after_sign_in_path_for(resource)
-    return hotel_path(current_hotel) unless current_hotel.blank?
-    new_hotel_path
-  end
-  
-  def after_sign_out_path_for(resource)
-    root_path
-  end
-  
   
   def title t = nil
     return @title if t.nil?

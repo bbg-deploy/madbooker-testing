@@ -11,3 +11,8 @@
   = f.input :fine_print
   = f.input :room_rates_display
   = f.input :logo
+  - if f.object.logo?
+    #logo
+      = image_tag f.object.logo.url(:thumb)
+      = link_to 'delete logo', delete_logo_hotel_path(hotel), method: :delete, remote: true
+  = f.button :submit, "Save"

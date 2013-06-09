@@ -1,0 +1,10 @@
+defaults:
+
+development:
+  domain: madbooker.dev
+
+test:
+  domain: example.test
+  
+production:
+  domain: madbooker.com

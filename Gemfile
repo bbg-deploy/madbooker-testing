@@ -67,8 +67,7 @@ gem 'memoist'
 gem 'thin'
 gem 'sass'
 gem 'draper'
-gem 'hpricot'
-gem 'ruby_parser'
+gem "settingslogic"
 gem 'less_interactions', '0.0.6', :git => 'git://github.com/LessEverything/less_interactions.git'
 
 
