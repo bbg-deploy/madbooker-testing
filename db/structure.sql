@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `hotels`
+--
+
+DROP TABLE IF EXISTS `hotels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hotels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `room_rates_display` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subdomain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `google_analytics_code` text COLLATE utf8_unicode_ci,
+  `fine_print` text COLLATE utf8_unicode_ci,
+  `logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo_file_size` int(11) DEFAULT NULL,
+  `logo_updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `schema_migrations`
 --
 
@@ -49,10 +78,11 @@ CREATE TABLE `users` (
   `last_sign_in_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `time_zone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -64,5 +94,9 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-08 18:16:33
+-- Dump completed on 2013-06-09 11:26:05
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
+
+INSERT INTO schema_migrations (version) VALUES ('20130609135803');
+
+INSERT INTO schema_migrations (version) VALUES ('20130609152456');

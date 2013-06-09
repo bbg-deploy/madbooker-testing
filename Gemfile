@@ -92,7 +92,7 @@ group :development do
   gem 'awesome_print'
   gem 'quiet_assets'
   gem 'rails-footnotes'
-  #gem 'annotator', '0.0.8.1'
+  gem 'annotate'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'

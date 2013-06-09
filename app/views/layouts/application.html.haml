@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= yield(:title)
+    %title= title
     = stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true 
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tag
@@ -10,7 +10,7 @@
     #container
       #header
         #nav
-          /= render :partial => '/shared/nav'
+          = render :partial => '/layouts/nav'
       #content
         %h1= yield(:title)
         - unless notice.blank?
@@ -18,4 +18,4 @@
         - unless alert.blank?
           %p.alert= alert
         = yield
-    /= render :partial => '/shared/footer'
+    = render :partial => '/layouts/footer'
