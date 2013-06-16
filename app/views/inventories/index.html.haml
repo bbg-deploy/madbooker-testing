@@ -1,0 +1,15 @@
+
+= cal.previous_month_link
+= cal.next_month_link
+
+
+/ style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
+= calendar(:year => cal.date.year, :month => cal.date.month, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
+  - render "inventories/calendar/day", date: d
+  
+
+#inventories_form
+
+  
+#dialog-message.hidden
+  XXXX

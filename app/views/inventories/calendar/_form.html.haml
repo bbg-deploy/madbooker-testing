@@ -1,0 +1,16 @@
+
+
+
+
+= simple_nested_form_for inventory_form.hotel, url: hotel_inventories_path, remote: true, method: :post do |f|
+  = hidden_field_tag "hotel[start]", inventory_form.range.first
+  = hidden_field_tag "hotel[end]", inventory_form.range.last
+  = f.simple_fields_for :inventories, inventory_form.hotel.inventories  do |ff|
+    = ff.input :room_type_id
+    = ff.input :available_rooms
+    = ff.input :rate
+    = ff.input :discounted_rate
+    
+  = f.button :submit, "Save"
+    
+    

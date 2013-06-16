@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :title
   
+  def context
+    @context ||= Context.new hotel: current_hotel, user: current_user, params: params
+  end
+  
   
   private
   def hotel_for_user

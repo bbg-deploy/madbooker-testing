@@ -1,6 +1,6 @@
 
 
-= simple_form_for hotel do |f|
+= simple_nested_form_for hotel do |f|
   = f.input :name
   = f.input :address
   = f.input :phone
@@ -9,10 +9,20 @@
   = f.input :subdomain
   = f.input :google_analytics_code
   = f.input :fine_print
-  = f.input :room_rates_display
+  = f.input :room_rates_display, collection: Hotel::ROOM_RATE_DISPLAY, include_blank: false
   = f.input :logo
   - if f.object.logo?
     #logo
       = image_tag f.object.logo.url(:thumb)
       = link_to 'delete logo', delete_logo_hotel_path(hotel), method: :delete, remote: true
+  %h3 Room Types
+  = f.fields_for :room_types do |ff|
+    = ff.input :name
+    = ff.input :description
+    = ff.input :number_of_rooms
+    = ff.input :default_rate
+    = ff.input :discounted_rate
+    = ff.link_to_remove "Remove"
+  = f.link_to_add "Add a Room Type", :room_types
+    
   = f.button :submit, "Save"

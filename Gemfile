@@ -68,6 +68,8 @@ gem 'thin'
 gem 'sass'
 gem 'draper'
 gem "settingslogic"
+gem "calendar_helper", git: "git://github.com/topfunky/calendar_helper.git"
+gem "jquery-turbolinks"
 gem 'less_interactions', '0.0.6', :git => 'git://github.com/LessEverything/less_interactions.git'
 
 
@@ -102,16 +104,18 @@ end
 
 group :development, :test do
   #gem 'qunit-rails'
+  gem "faker"
 end
 
 group :test do
-  gem 'shoulda'
-  gem 'shoulda-context', :git => 'git://github.com/asanghi/shoulda-context.git'
+  # gem 'shoulda'
+  # gem 'shoulda-context', :git => 'git://github.com/asanghi/shoulda-context.git'
   gem 'mocha'
   gem 'timecop'
   gem 'minitest'
+  gem "minitest_should"
   gem 'fabrication'
-  gem 'raindrops'
+  # gem 'raindrops'
 end
 
 group :debug do

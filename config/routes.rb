@@ -1,8 +1,15 @@
 Madbooker::Application.routes.draw do
 
+
   resources :hotels do
     member do
       delete :delete_logo
+    end
+    resources :inventories do
+      collection do
+        get ":year/:month", action: :index, as: "for_date"
+        get :form
+      end
     end
   end
 

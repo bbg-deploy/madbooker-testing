@@ -11,6 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui-1.10.3.custom.min
+//= require jquery_nested_form
+//= require sugar-1.3.min
 //= require turbolinks
+//= require module
 //= require_tree .

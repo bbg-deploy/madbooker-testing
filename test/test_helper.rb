@@ -2,6 +2,18 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+require "minitest/autorun"
+require "minitest/should"
+require 'timecop'
+require 'less_interactions'
+
+class MiniTest::Should::TestCase
+  include Mocha::API
+  ActiveRecord::Migration.check_pending!
+  fixtures :all
+end
+
+
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 

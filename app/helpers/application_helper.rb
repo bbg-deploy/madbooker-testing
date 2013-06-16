@@ -4,4 +4,12 @@ module ApplicationHelper
     return link_to( "Create your hotel", new_hotel_path) if current_hotel.blank?
     link_to current_hotel.name, [:edit, current_hotel]
   end
+  
+  def replace_with_partial(dom_el, partial)
+    "$('#{dom_el}').replaceWith('#{escape_javascript(render(partial))}')".html_safe
+  end
+  
+  def replace_content_with_partial(dom_el, partial)
+    "$('#{dom_el}').html('#{escape_javascript(render(partial))}')".html_safe
+  end
 end

@@ -41,7 +41,50 @@ CREATE TABLE `hotels` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `inventories`
+--
+
+DROP TABLE IF EXISTS `inventories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) DEFAULT NULL,
+  `room_type_id` int(11) DEFAULT NULL,
+  `available_rooms` int(11) DEFAULT NULL,
+  `bookings_count` int(11) DEFAULT NULL,
+  `rate` decimal(15,4) DEFAULT '0.0000',
+  `discounted_rate` decimal(15,4) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `room_types`
+--
+
+DROP TABLE IF EXISTS `room_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `room_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) DEFAULT NULL,
+  `number_of_rooms` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `default_rate` decimal(15,4) DEFAULT '0.0000',
+  `discounted_rate` decimal(15,4) DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,9 +137,15 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-09 15:17:48
+-- Dump completed on 2013-06-16 11:47:48
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609152456');
+
+INSERT INTO schema_migrations (version) VALUES ('20130609195058');
+
+INSERT INTO schema_migrations (version) VALUES ('20130610201041');
+
+INSERT INTO schema_migrations (version) VALUES ('20130616153625');

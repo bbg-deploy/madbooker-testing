@@ -24,9 +24,14 @@
 class Hotel < ActiveRecord::Base
   
   belongs_to :user
+  has_many :room_types
+  has_many :inventories
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
+  ROOM_RATE_DISPLAY = ["Short", "Long"]
+  
+  accepts_nested_attributes_for :room_types, :allow_destroy => true
 
   validates_presence_of :name
   validates_presence_of :url

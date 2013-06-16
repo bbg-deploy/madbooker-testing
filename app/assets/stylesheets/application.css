@@ -9,5 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *#= require 'calendar_styles/blue'
+ *#= require 'calendar_styles/red'
+ *#= require 'calendar_styles/grey'
+ *= require 'ui-lightness/jquery-ui-1.10.3.custom.min'
  *= require_tree .
  */
+
+.hidden {display: none}
+
+/*calendar*/
+.day_selectable.selected {
+  background: brown;
+}
