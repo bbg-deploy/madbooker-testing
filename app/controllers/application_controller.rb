@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   private
   def hotel_for_user
     @current_hotel = Hotel.where("subdomain = ?", account_subdomain).first
-    @current_hotel ||= Hotel.where("user_id = ?", current_user.id).first
+    @current_hotel ||= Hotel.where("user_id = ?", current_user.try( :id)).first
   end
   
     
