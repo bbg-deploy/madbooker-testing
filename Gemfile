@@ -68,6 +68,7 @@ gem 'thin'
 gem 'sass'
 gem 'draper'
 gem "settingslogic"
+gem "chronic"
 gem "calendar_helper", git: "git://github.com/topfunky/calendar_helper.git"
 gem "jquery-turbolinks"
 gem 'less_interactions', '0.0.6', :git => 'git://github.com/LessEverything/less_interactions.git'

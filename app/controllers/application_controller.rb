@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def account_subdomain
     sub = request.subdomains(1).first || ''
     return sub if sub.blank?
-    return x unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == sub}
+    return sub unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == sub}
     ''
   end
 

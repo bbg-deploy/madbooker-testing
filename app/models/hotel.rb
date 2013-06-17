@@ -26,6 +26,7 @@ class Hotel < ActiveRecord::Base
   belongs_to :user
   has_many :room_types
   has_many :inventories
+  has_many :bookings
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
@@ -39,7 +40,7 @@ class Hotel < ActiveRecord::Base
   
   
   def url
-    "http://#{subdomain}.#{App.domain}"
+    "#{App.protocol}://#{subdomain}.#{App.domain}/book"
   end
   
 

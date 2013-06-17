@@ -1,6 +1,8 @@
 Madbooker::Application.routes.draw do
 
 
+  resources :bookings
+
   resources :hotels do
     member do
       delete :delete_logo
@@ -12,6 +14,13 @@ Madbooker::Application.routes.draw do
       end
     end
   end
+  
+  resource :book do
+    post "select_dates"
+    post "select_room"
+    post "checkout"
+  end
+  
 
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' } #do
   

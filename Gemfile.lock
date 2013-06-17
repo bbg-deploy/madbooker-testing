@@ -66,6 +66,7 @@ GEM
     builder (3.1.4)
     callsite (0.0.11)
     cancan (1.6.10)
+    chronic (0.9.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -249,6 +250,7 @@ DEPENDENCIES
   binding_of_caller
   calendar_helper!
   cancan
+  chronic
   coffee-filter
   coffee-rails (~> 4.0.0)
   colored

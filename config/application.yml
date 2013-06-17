@@ -2,9 +2,17 @@ defaults:
 
 development:
   domain: madbooker.dev
+  protocol: http
 
 test:
   domain: example.test
+  protocol: http
+
+staging:
+  domain: mb.lesseverything.com
+  protocol: http
   
 production:
   domain: madbooker.com
+  protocol: http
+  

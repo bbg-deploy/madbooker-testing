@@ -17,6 +17,7 @@
 class Inventory < ActiveRecord::Base
   belongs_to :hotel
   belongs_to :room_type
+  has_many :bookings
   
   scope :for_month, ->(date){where date: date.change(day:1)..date.to_time.end_of_month}
   scope :for_range, ->(range) { where date: range }

@@ -16,6 +16,7 @@
 class RoomType < ActiveRecord::Base
   belongs_to :hotel
   has_many :inventories
+  has_many :bookings
   
   
   validates_presence_of :name, :number_of_rooms, :default_rate
