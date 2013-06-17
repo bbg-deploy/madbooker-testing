@@ -123,3 +123,7 @@ group :debug do
   gem 'debugger'
 end
 
+group :production, :staging do
+  gem "passenger"
+end
+
