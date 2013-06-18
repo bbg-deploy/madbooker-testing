@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
   
   def select_dates
-    Booking::SelectDates.new(context: context).run
+    Booking::RoomFinder.new(context: context).run
     
   end
   

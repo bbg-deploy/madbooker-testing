@@ -8,25 +8,44 @@ class Inventory::CalendarTest < MiniTest::Should::TestCase
   
   context "running a calendar" do
     
-    context "with no inventories" do
-      setup do
+    context "converts params to date" do
+      setup do        
         params = {year: "2013", month: "3"}
-        hotel = mock(inventories: mock(for_month: []))
-        @context = Context.new params:  params, hotel: hotel
-        @month = calendar.run
+        @context = Context.new params:  params, hotel: nil
       end
 
-      should "have no inventories" do
-        assert_equal [], @month.inventories
+      should "return proper date" do
+        d = calendar.send :date
+        assert_equal Date.new(2013,3,1), d
       end
-      
-      should "have previous month set to feb" do
-        assert_equal Date.new(2013, 02,01), @month.previous_month
+
+    end
+    
+    context "converts invalid params to date" do
+      setup do        
+        params = {year: "0", month: "0"}
+        @context = Context.new params:  params, hotel: nil
       end
-      
-      should "have next month set to apr" do
-        assert_equal Date.new(2013, 04,01), @month.next_month
+
+      should "return raise arg err" do
+        assert_raises ArgumentError do
+          d = calendar.send :date
+        end
       end
+
+    end
+    
+    context "converts empty params to date" do
+      setup do        
+        params = {}
+        @context = Context.new params:  params, hotel: nil
+      end
+
+      should "return today date" do
+        d = calendar.send :date
+        assert_equal Date.today, d
+      end
+
     end
     
   end

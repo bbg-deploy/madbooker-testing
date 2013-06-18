@@ -16,3 +16,4 @@ public/stylesheets/application.css
 tmp/**/*
 .ruby-gemset
 .ruby-version
+coverage

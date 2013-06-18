@@ -115,7 +115,8 @@ group :test do
   gem 'timecop'
   gem 'minitest'
   gem "minitest_should"
-  gem 'fabrication'
+  gem 'simplecov'
+  #gem 'factory_girl_rails'
   # gem 'raindrops'
 end
 
