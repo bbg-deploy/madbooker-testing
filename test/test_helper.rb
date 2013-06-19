@@ -1,6 +1,10 @@
 ENV["RAILS_ENV"] ||= "test"
+
+if ENV["TM_RUBY"].nil?
 require 'simplecov'
 SimpleCov.start
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
@@ -13,6 +17,7 @@ require "gen"
 
 class MiniTest::Should::TestCase
   include Mocha::API
+  include ActiveSupport::Testing::Assertions
   ActiveRecord::Migration.check_pending!
   def moc name, args = {}
     a = mock name
