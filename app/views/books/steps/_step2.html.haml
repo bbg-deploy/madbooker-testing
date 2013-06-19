@@ -1,0 +1,12 @@
+
+#step2.steps
+  .step 2
+  .step_title Choose your room:
+  
+  - if @available_rooms
+    - @available_rooms.each do |room|
+      .room
+        .name= room.room_type.name
+        .description= room.room_type.description
+        = render "/books/steps/price", room: room
+

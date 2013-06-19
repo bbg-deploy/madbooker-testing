@@ -24,31 +24,15 @@ class Booking::RoomFinder < Less::Interaction
   
   def available_rooms
     return @available_rooms if @available_rooms
-    
-    if available_ids.blank?
-      @available_rooms = [] 
-    else
-      @available_rooms = room_types available_ids
-    end
-  end
-  
-  def room_types ids
-    context.hotel.room_types.all ids  
-  end
-  
-  def available_ids
-    return @available_ids if @available_ids
-    room_type_ids = []
-    rooms = inventories
-    grouped = rooms.group_by {|r| r.room_type_id }
-    grouped.each do |room_type_id, inventories|
+    rooms = []
+    inventories.group_by {|r| r.room_type_id }.each do |room_type_id, inv|
       has = []
       range.each do |date|
-        has << !inventories.select{|i| i.date == date}.blank?
+        has << !inv.select{|i| i.date == date}.blank?
       end
-      room_type_ids <<(room_type_id) if has.uniq.size == 1 && has.uniq.first 
+      rooms <<(inv.first) if has.uniq.size == 1 && has.uniq.first 
     end
-    @available_ids = room_type_ids
+    @available_rooms = rooms
   end
-  
+    
 end

@@ -1,0 +1,12 @@
+
+#step1.steps
+  .step 1
+  .step_title Choose your dates
+  = simple_form_for booking, url: select_dates_book_path, remote: true do |f|
+    = f.input :arrive, as: "string", required: true
+    = f.input :depart, as: "string", required: true
+    
+    = f.submit "Next"
+
+  .message
+

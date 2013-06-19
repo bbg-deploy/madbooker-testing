@@ -6,7 +6,7 @@
 #  hotel_id        :integer
 #  room_type_id    :integer
 #  available_rooms :integer
-#  bookings_count  :integer
+#  bookings_count  :integer          default(0)
 #  rate            :decimal(15, 4)   default(0.0)
 #  discounted_rate :decimal(15, 4)
 #  date            :date

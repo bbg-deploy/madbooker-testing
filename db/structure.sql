@@ -79,14 +79,14 @@ CREATE TABLE `inventories` (
   `hotel_id` int(11) DEFAULT NULL,
   `room_type_id` int(11) DEFAULT NULL,
   `available_rooms` int(11) DEFAULT NULL,
-  `bookings_count` int(11) DEFAULT NULL,
+  `bookings_count` int(11) DEFAULT '0',
   `rate` decimal(15,4) DEFAULT '0.0000',
   `discounted_rate` decimal(15,4) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 17:46:52
+-- Dump completed on 2013-06-19 16:19:31
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -174,3 +174,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130610201041');
 INSERT INTO schema_migrations (version) VALUES ('20130616153625');
 
 INSERT INTO schema_migrations (version) VALUES ('20130616212107');
+
+INSERT INTO schema_migrations (version) VALUES ('20130619201801');
