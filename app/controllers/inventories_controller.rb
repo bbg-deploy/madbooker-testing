@@ -12,6 +12,13 @@ class InventoriesController < ApplicationController
     create_resource_helper_methods_for i, :resp
   end
   
+  def year
+    
+    i = Inventory::Calendar.new(context: context).run
+    cal = CalendarDecorator.new i
+    res cal, :cal
+  end
+  
   
   def form
     res Inventory::Form.new(context: context).run, :inventory_form, layout: false

@@ -19,9 +19,9 @@ GIT
 
 GIT
   remote: git://github.com/topfunky/calendar_helper.git
-  revision: ab3a3956dd0417c3b088d09cb11861f606628d5d
+  revision: b7b91b49e0c586e96fa2022e88756c632b65a8a6
   specs:
-    calendar_helper (0.2.5)
+    calendar_helper (0.2.6)
       open4
 
 GEM

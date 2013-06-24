@@ -9,8 +9,9 @@ Madbooker::Application.routes.draw do
     end
     resources :inventories do
       collection do
-        get ":year/:month", action: :index, as: "for_date"
         get :form
+        get ":year/:month", action: :index, as: "for_month"
+        get ":year", action: :year, as: "for_year"
       end
     end
   end

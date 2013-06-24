@@ -16,7 +16,13 @@
       
       $(document).on "mouseup", '.day_selectable', (e)->
         selection.push $(e.currentTarget)
-        $("#inventories_form").load form_hotel_inventories_path(MB.current_hotel_id, "html", {start: selection[0].data().date, end: selection[1].data().date})
+        #p selection
+        try
+          $("#inventories_form").load form_hotel_inventories_path(MB.current_hotel_id, "html", {start: selection[0].data().date, end: selection[1].data().date})
+        catch er
+          p er
+          p e
+          p selection
         selection = []
         
       $(document).on "mouseenter", '.day_selectable', (e)->
