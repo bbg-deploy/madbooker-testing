@@ -3,7 +3,7 @@ class Inventory::Calendar < Less::Interaction
   expects :context
   
   def run
-    Month.new date, context.hotel
+    Inventory::Month.new date, context.hotel
   end
   
   

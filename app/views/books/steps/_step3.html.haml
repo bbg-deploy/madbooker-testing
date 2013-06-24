@@ -2,3 +2,44 @@
 #step3.steps
   .step 3
   .step_title Checkout
+  
+  - if @booking.step == 3
+    #checkout
+      = simple_form_for @booking, url: checkout_book_path, html: {id: "checkout_form"} do |f|
+        = f.input :arrive, as: "hidden"
+        = f.input :depart, as: "hidden"
+        = f.input :inventory_id, as: "hidden"
+    
+        #tabs
+          %ul
+            %li
+              %a{href: "#for_me"}For Me
+            %li
+              %a{href: "#for_other"}For Someone Else
+          #for_me
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :email
+          #for_other
+            .booker
+              = f.input :made_by_first_name, label: "Your First name"
+              = f.input :made_by_last_name, label: "Your Last name"
+            .guest
+              = f.input :first_name, label: "Guest's First name"
+              = f.input :last_name, label: "Guest's Last name"
+              = f.input :email, label: "Guest's Email"
+        #summary
+          = @booking.summary
+        #credit_card_form
+          = f.input :cc_number, label: "Credit Card number"
+          = f.input :cc_month, collection: 1..12, label: "Month"
+          = f.input :cc_year, collection: Date.today.year..(Date.today + 10.years).year, label: "Year"
+          = f.input :cc_zipcode, label: "Zip code"
+        #confirmation_info
+          = f.input :email_confirmation
+          = f.input :sms_confirmation
+          
+        = f.submit "Book It!"
+          
+          
+          

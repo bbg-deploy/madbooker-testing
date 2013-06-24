@@ -17,5 +17,6 @@
 //= require jquery_nested_form
 //= require sugar-1.3.min
 //= require turbolinks
+//= require jquery.creditCardValidator
 //= require module
 //= require_tree .

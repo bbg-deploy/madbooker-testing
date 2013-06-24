@@ -9,6 +9,7 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
   
   context "checking for rooms" do
     setup do
+      #booking only for 1 night
       params = {:booking => {:arrive => "2013-03-14", :depart => "2013-03-15"}}
       @context = Context.new params: params, hotel: Gen.hotel
     end

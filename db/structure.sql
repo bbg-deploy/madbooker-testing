@@ -34,6 +34,18 @@ CREATE TABLE `bookings` (
   `discounted_rate` decimal(15,4) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `made_by_first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `made_by_last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email_confirmation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sms_confirmation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cc_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cc_month` int(11) DEFAULT NULL,
+  `cc_year` int(11) DEFAULT NULL,
+  `cc_cvv` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cc_zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,7 +172,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-19 16:19:31
+-- Dump completed on 2013-06-20 11:17:42
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -176,3 +188,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130616153625');
 INSERT INTO schema_migrations (version) VALUES ('20130616212107');
 
 INSERT INTO schema_migrations (version) VALUES ('20130619201801');
+
+INSERT INTO schema_migrations (version) VALUES ('20130620150846');

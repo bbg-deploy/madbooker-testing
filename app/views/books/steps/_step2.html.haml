@@ -3,10 +3,16 @@
   .step 2
   .step_title Choose your room:
   
-  - if @available_rooms
+  - if @booking.step == 2
     - @available_rooms.each do |room|
       .room
         .name= room.room_type.name
         .description= room.room_type.description
         = render "/books/steps/price", room: room
-
+      %div
+        = simple_form_for @booking, url: select_room_book_path, remote: true do |f|
+          = f.input :arrive, as: "hidden"
+          = f.input :depart, as: "hidden"
+          = f.input :inventory_id, as: "hidden", input_html: {value: room.id}
+    
+          = f.submit "Yes!"
