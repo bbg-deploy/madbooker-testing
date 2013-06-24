@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
   
     
   def account_subdomain
-    sub = request.subdomains(1).first || ''
+    tld_length = App.domain.split(".").size - 1
+    sub = request.subdomain(tld_length) || ''
     return sub if sub.blank?
     return sub unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == sub}
     ''
