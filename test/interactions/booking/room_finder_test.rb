@@ -12,22 +12,19 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
       params = {:booking => {:arrive => "2013-03-13", :depart => "2013-03-17"}}
       @context = Context.new params: params, hotel: Gen.hotel
       @i = [
-          Gen.inventory(date: Date.parse("2013-03-12"), discounted_rate: 0, rate: 5, room_type_id: 1),
-          Gen.inventory(date: Date.parse("2013-03-13"), discounted_rate: 5, rate: 10, room_type_id: 1),
+          Gen.inventory(date: Date.parse("2013-03-13"), discounted_rate: nil, rate: 10, room_type_id: 1),
           Gen.inventory(date: Date.parse("2013-03-14"), discounted_rate: 10, rate: 15, room_type_id: 1),
           Gen.inventory(date: Date.parse("2013-03-15"), discounted_rate: 15, rate: 20, room_type_id: 1), 
-          Gen.inventory(date: Date.parse("2013-03-16"), discounted_rate: 20, rate: 25, room_type_id: 1), 
-          Gen.inventory(date: Date.parse("2013-03-17"), discounted_rate: 25, rate: 30, room_type_id: 1)
+          Gen.inventory(date: Date.parse("2013-03-16"), discounted_rate: 20, rate: 25, room_type_id: 1)
         ]
       room_finder.stubs(:inventories).returns @i
     end
 
     should "return the average" do
       res = room_finder.run
-      assert_equal 1,     res.object.size
-      assert_equal 17.5, res.object.first.rate
-      assert_equal 12.5,    res.object.first.discounted_rate
-      assert res.success?        
+      assert_equal 1,     res.available_rooms.size
+      assert_equal 17.5,  res.available_rooms.first.rate
+      assert_equal 13.75, res.available_rooms.first.discounted_rate
     end
   end
   
@@ -42,8 +39,8 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
     context "with no inventories or room_types" do
       should "return an empty array" do
         res = room_finder.run
-        assert_equal [], res.object
-        assert res.error?        
+        assert_equal [], res.available_rooms
+        assert_equal( {}, res.all_rooms)
       end
     end
     
@@ -54,8 +51,8 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return an empty array" do
         res = room_finder.run
-        assert_equal [], res.object
-        assert res.error?        
+        assert_equal [], res.available_rooms
+        assert_equal( {}, res.all_rooms)
       end
     end
     
@@ -68,8 +65,8 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return an empty array" do
         res = room_finder.run
-        assert_equal [], res.object
-        assert res.error?        
+        assert_equal [], res.available_rooms
+        assert_equal( {}, res.all_rooms)
       end
     end
     
@@ -83,8 +80,8 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return an empty array" do
         res = room_finder.run
-        assert_equal [], res.object
-        assert res.error?        
+        assert_equal [], res.available_rooms
+        assert_equal( {}, res.all_rooms)
       end
     end
     
@@ -101,8 +98,8 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return a room" do
         res = room_finder.run
-        assert_equal [@i[0]], res.object
-        assert res.success?        
+        assert_equal [@i[0]], res.available_rooms
+        assert_equal( {1 => [@i[0], @i[1]]}, res.all_rooms)
       end
     end
     
@@ -137,8 +134,7 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return an empty array" do
         res = room_finder.run
-        assert_equal [@i[0]], res.object
-        assert res.success?        
+        assert_equal [@i[0]], res.available_rooms
       end
     end
     
@@ -154,8 +150,7 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return the arrival date" do
         res = room_finder.run
-        assert_equal [@i[0]], res.object
-        assert res.success?        
+        assert_equal [@i[0]], res.available_rooms
       end
     end
     
@@ -173,8 +168,7 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
 
       should "return inventories" do
         res = room_finder.run
-        assert_equal [@i[0], @i[2]], res.object
-        assert res.success?        
+        assert_equal [@i[0], @i[2]], res.available_rooms
       end
     end
     

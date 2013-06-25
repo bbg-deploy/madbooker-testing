@@ -13,6 +13,6 @@
         = simple_form_for @booking, url: select_room_book_path, remote: true do |f|
           = f.input :arrive, as: "hidden"
           = f.input :depart, as: "hidden"
-          = f.input :inventory_id, as: "hidden", input_html: {value: room.id}
+          = f.input :room_type_id, as: "hidden", input_html: {value: room.room_type_id}
     
           = f.submit "Yes!"

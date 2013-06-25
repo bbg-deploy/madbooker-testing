@@ -2,9 +2,11 @@ class HomeController < ApplicationController
   skip_filter :authenticate_user!
   
   def index
-    redirect_to current_hotel.url and return if current_hotel
-    
-    render
+    if !account_subdomain.blank?
+      redirect_to current_hotel.url
+    else    
+      render
+    end
   end
   
   

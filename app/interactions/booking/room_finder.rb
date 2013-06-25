@@ -3,13 +3,28 @@ class Booking::RoomFinder < Less::Interaction
   expects :context
   
   def run
-    res = Less::Response.new 400, available_rooms
-    if res.object.blank?
-      res.status = 400
-    else
-      res.status = 200
+    self
+  end
+  
+  def all_rooms
+    available_rooms unless @available_rooms
+    @all_rooms
+  end
+  
+  def available_rooms
+    return @available_rooms if @available_rooms
+    @available_rooms = []
+    @all_rooms = {}
+    inventories.group_by {|r| r.room_type_id }.each do |room_type_id, inv|
+      catch :missing_date do
+        range.each do |date|
+          throw :missing_date unless inv.any? {|i| i.date == date}
+        end
+        @available_rooms << first_or_average_inventory(inv)
+        @all_rooms[room_type_id] = inv
+      end
     end
-    res
+    @available_rooms
   end
   
   private
@@ -25,32 +40,35 @@ class Booking::RoomFinder < Less::Interaction
     @inventories ||= context.hotel.inventories.for_range(range).with_availablity
   end
   
-  def available_rooms
-    return @available_rooms if @available_rooms
-    rooms = []
-    inventories.group_by {|r| r.room_type_id }.each do |room_type_id, inv|
-      catch :missing_date do
-        range.each do |date|
-          throw :missing_date unless inv.any? {|i| i.date == date}
-        end
-        rooms << first_or_average_inventory(inv)
-      end
-    end
-    @available_rooms = rooms
-  end
-  
   def first_or_average_inventory inventories
-    if inventories.map(&:rate).average == inventories.first.rate && inventories.map(&:discounted_rate).average == inventories.first.discounted_rate
+    if all_the_same?(inventories.map(&:rate)) && all_the_same?(inventories.map(&:discounted_rate))
       #match so just return the first one
       inventories.first
     else
       Inventory.new( rate: inventories.map(&:rate).average,
-        discounted_rate: inventories.map(&:discounted_rate).average,
+        discounted_rate: discounted_average( inventories),
         room_type_id: inventories.first.room_type_id,
         date: inventories.first.date,
         hotel_id: inventories.first.hotel_id
       )
     end
+  end
+  
+  def all_the_same? arr
+    tester = arr.first
+    arr.all? {|i| i == tester}
+  end
+  
+  def discounted_average inventories
+    arr = []
+    inventories.each do |inventory|
+      if inventory.discounted_rate
+        arr << inventory.discounted_rate
+      else
+        arr << inventory.rate
+      end
+    end
+    arr.average
   end
     
 end

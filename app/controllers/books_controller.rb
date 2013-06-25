@@ -23,7 +23,14 @@ class BooksController < ApplicationController
   end
   
   def checkout
-    
+    result = Booking::Reserve.new(context: context).run
+    if result.success?
+      flash[:last_booking] = result.object.booking_id
+      redirect_to action: :confirmation
+    else
+      @booking = result.object.booking
+      render
+    end
   end
   
   

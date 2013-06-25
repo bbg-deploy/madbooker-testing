@@ -3,6 +3,9 @@
     
     selection = []
     
+    hightlight_form = ->
+      $("#inventories_form").effect( "highlight")
+      
     clear_selection = ->
       $(".day_selectable.selected").removeClass("selected")
     
@@ -18,7 +21,7 @@
         selection.push $(e.currentTarget)
         #p selection
         try
-          $("#inventories_form").load form_hotel_inventories_path(MB.current_hotel_id, "html", {start: selection[0].data().date, end: selection[1].data().date})
+          $("#inventories_form").load form_hotel_inventories_path(MB.current_hotel_id, "html", {start: selection[0].data().date, end: selection[1].data().date}), "", hightlight_form
         catch er
           p er
           p e

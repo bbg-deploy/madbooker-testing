@@ -5,10 +5,10 @@
   
   - if @booking.step == 3
     #checkout
-      = simple_form_for @booking, url: checkout_book_path, html: {id: "checkout_form"} do |f|
+      = simple_form_for @booking, url: checkout_book_path, remote: true, html: {id: "checkout_form"} do |f|
         = f.input :arrive, as: "hidden"
         = f.input :depart, as: "hidden"
-        = f.input :inventory_id, as: "hidden"
+        = f.input :room_type_id, as: "hidden"
     
         #tabs
           %ul
