@@ -11,8 +11,8 @@
         numberOfMonths: 2
         minDate: new Date()
         showAnim: "slideDown"
-        onClose: ( selectedDate ) ->
-          $( "#booking_depart" ).datepicker "option", "minDate", selectedDate 
+        onClose: ( selectedDate, o) ->
+          $( "#booking_depart" ).datepicker "option", "minDate", new Date(o.selectedYear, o.selectedMonth, parseInt(o.selectedDay)+1)
         }
       $( "#booking_depart" ).datepicker {
         defaultDate: "+5d"
