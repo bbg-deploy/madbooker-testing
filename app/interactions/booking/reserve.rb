@@ -73,7 +73,12 @@ class Booking::Reserve < Less::Interaction
   end
   
   def send_email_confirmation
-    BookingMailer.confirmation(booking).deliver
+    BookingMailer.confirmation(booking.decorate).deliver
+  end
+  
+  def send_sms_confirmation
+    b = booking.decorate
+    Sms.deliver booking.sms_confirmation, "Reservation complete! #{b.days} night(s) starting on #{b.arrive}. Details: #{b.url}"
   end
   
     

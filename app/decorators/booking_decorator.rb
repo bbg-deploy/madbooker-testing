@@ -4,8 +4,11 @@ class BookingDecorator < ApplicationDecorator
   attr_accessor :step
   
   
+  def days
+    range.to_a.size
+  end
+  
   def summary
-    days = range.to_a.size
     room = room_type.name
     
     "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{arrive} and departing on #{depart}."
@@ -17,6 +20,10 @@ class BookingDecorator < ApplicationDecorator
     else
       arrive..depart
     end
+  end
+  
+  def url
+    booking_url(guid, host: hotel.host, protocol: App.protocol)
   end
 
 end
