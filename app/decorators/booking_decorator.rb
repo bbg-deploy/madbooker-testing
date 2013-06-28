@@ -6,7 +6,7 @@ class BookingDecorator < ApplicationDecorator
   
   def summary
     days = range.to_a.size
-    room = inventory.room_type.name
+    room = room_type.name
     
     "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{arrive} and departing on #{depart}."
   end

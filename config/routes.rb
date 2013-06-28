@@ -17,9 +17,9 @@ Madbooker::Application.routes.draw do
   end
   
   resource :book do
-    post "select_dates"
-    post "select_room"
-    post "checkout"
+    post :select_dates
+    post :select_room
+    post :checkout
   end
   
 

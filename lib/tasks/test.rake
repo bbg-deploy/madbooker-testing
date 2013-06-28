@@ -10,14 +10,13 @@ Rake::Task["test"].try(:clear)
 task :test => [] do 
   test_tasks = %w(
     minitest:interactions  
-    minitest:interactions2  
-    minitest:mailers 
-    minitest:lib 
-    minitest:unit
-    minitest:functional
-    minitest:integration 
-    test:jasmine
+    minitest:models
+    minitest:controllers
   )
+    # minitest:integration 
+    # minitest:mailers 
+    # minitest:lib 
+    # test:jasmine
   errors = test_tasks.collect do |task|
     begin
       puts "\n***** #{task}\n"

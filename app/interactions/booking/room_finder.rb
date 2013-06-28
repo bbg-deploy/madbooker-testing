@@ -6,11 +6,14 @@ class Booking::RoomFinder < Less::Interaction
     self
   end
   
+  # returns all the available rooms for each room type
   def all_rooms
     available_rooms unless @available_rooms
     @all_rooms
   end
   
+  # available_rooms will return a prototype of an inventory with the rate and discounted rate properly set.
+  # It takes into account, differences in prices betweed days, differences in discount_rates, and availablity
   def available_rooms
     return @available_rooms if @available_rooms
     @available_rooms = []

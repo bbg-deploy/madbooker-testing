@@ -40,6 +40,11 @@ class ApplicationController < ActionController::Base
     return sub unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == sub}
     ''
   end
+  
+  def ensure_hotel
+    return if current_hotel
+    raise "do something here when there's no subdomain" 
+  end
 
   
 end

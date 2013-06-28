@@ -27,7 +27,6 @@ CREATE TABLE `bookings` (
   `hotel_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `room_type_id` int(11) DEFAULT NULL,
-  `inventory_id` int(11) DEFAULT NULL,
   `arrive` date DEFAULT NULL,
   `depart` date DEFAULT NULL,
   `rate` decimal(15,4) DEFAULT NULL,
@@ -46,6 +45,7 @@ CREATE TABLE `bookings` (
   `cc_year` int(11) DEFAULT NULL,
   `cc_cvv` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cc_zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `guid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -91,14 +91,14 @@ CREATE TABLE `inventories` (
   `hotel_id` int(11) DEFAULT NULL,
   `room_type_id` int(11) DEFAULT NULL,
   `available_rooms` int(11) DEFAULT NULL,
-  `bookings_count` int(11) DEFAULT '0',
   `rate` decimal(15,4) DEFAULT '0.0000',
   `discounted_rate` decimal(15,4) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `sales_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=364 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,6 +120,27 @@ CREATE TABLE `room_types` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inventory_id` int(11) DEFAULT NULL,
+  `booking_id` int(11) DEFAULT NULL,
+  `hotel_id` int(11) DEFAULT NULL,
+  `rate` decimal(15,4) DEFAULT '0.0000',
+  `discounted_rate` decimal(15,4) DEFAULT '0.0000',
+  `date` date DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +193,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-20 11:17:42
+-- Dump completed on 2013-06-27 19:30:28
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -190,3 +211,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130616212107');
 INSERT INTO schema_migrations (version) VALUES ('20130619201801');
 
 INSERT INTO schema_migrations (version) VALUES ('20130620150846');
+
+INSERT INTO schema_migrations (version) VALUES ('20130626142043');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627232217');

@@ -10,7 +10,9 @@
         = f.input :depart, as: "hidden"
         = f.input :room_type_id, as: "hidden"
     
-        #tabs
+        #summary
+          = @booking.summary
+        #checkout_tabs
           %ul
             %li
               %a{href: "#for_me"}For Me
@@ -25,16 +27,12 @@
               = f.input :made_by_first_name, label: "Your First name"
               = f.input :made_by_last_name, label: "Your Last name"
             .guest
-              = f.input :first_name, label: "Guest's First name"
-              = f.input :last_name, label: "Guest's Last name"
-              = f.input :email, label: "Guest's Email"
-        #summary
-          = @booking.summary
         #credit_card_form
           = f.input :cc_number, label: "Credit Card number"
           = f.input :cc_month, collection: 1..12, label: "Month"
           = f.input :cc_year, collection: Date.today.year..(Date.today + 10.years).year, label: "Year"
           = f.input :cc_zipcode, label: "Zip code"
+          = f.input :cc_cvv
         #confirmation_info
           = f.input :email_confirmation
           = f.input :sms_confirmation

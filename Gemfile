@@ -83,7 +83,8 @@ group :test do
   # gem 'shoulda-context', :git => 'git://github.com/asanghi/shoulda-context.git'
   gem 'mocha'
   gem 'timecop'
-  gem 'minitest'
+  gem 'minitest-rails'
+  #gem 'minitest'
   gem "minitest_should"
   gem 'simplecov'
   #gem 'factory_girl_rails'

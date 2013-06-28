@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   def select_dates
     @booking = current_hotel.bookings.new(booking_params).decorate
     @booking.step = 2
-    @available_rooms = Booking::RoomFinder.new(context: context).run.object
+    @available_rooms = Booking::RoomFinder.new(context: context).run.available_rooms
     render
   end
   
@@ -23,26 +23,18 @@ class BooksController < ApplicationController
   end
   
   def checkout
-    result = Booking::Reserve.new(context: context).run
-    if result.success?
-      flash[:last_booking] = result.object.booking_id
-      redirect_to action: :confirmation
-    else
-      @booking = result.object.booking
-      render
-    end
+    @result = Booking::Reserve.new(context: context).run
+    @booking = @result.object.booking.decorate
+    @booking.step = 3
+    render
   end
-  
   
   private
-  def ensure_hotel
-    return if current_hotel
-    raise "do something here when there's no subdomain" 
-  end
-  
   
   def booking_params
-    par = params[:booking].permit :arrive, :depart, :inventory_id
+    par = params[:booking].permit :arrive, :depart, :room_type_id, :first_name, :last_name, :made_by_first_name,
+      :made_by_last_name, :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 
+      :cc_month, :cc_number
     par[:arrive] = Chronic.parse( params[:booking][:arrive]).to_date unless params[:booking][:arrive].blank?
     par[:depart] = Chronic.parse( params[:booking][:depart]).to_date unless params[:booking][:depart].blank?
     par
