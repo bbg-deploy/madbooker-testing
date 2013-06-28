@@ -2,7 +2,10 @@ require 'test_helper'
 
 class Booking::ReserveTest < MiniTest::Should::TestCase
   
-  
+  def remove_non_permitted_attrs hash
+    hash[:booking].delete_if {|k,v| k.to_s.in? %w(id hotel_id customer_id rate discounted_rate created_at updated_at guid) }
+    hash
+  end
 
   def reserve
     @reserve ||= Booking::Reserve.new context: @context
@@ -10,7 +13,7 @@ class Booking::ReserveTest < MiniTest::Should::TestCase
   
   context "if inventory no longer available" do
     setup do
-      params = ActiveSupport::HashWithIndifferentAccess.new({:booking => Gen.booking( :arrive => "2013-03-13", :depart => "2013-03-17").attributes})
+      params = ActionController::Parameters.new(remove_non_permitted_attrs( {:booking => Gen.booking( :arrive => "2013-03-13", :depart => "2013-03-17").attributes}))
       @context = Context.new params: params, hotel: Gen.hotel
     end
 
@@ -25,7 +28,7 @@ class Booking::ReserveTest < MiniTest::Should::TestCase
   context "if booking is not valid" do
     setup do
       @hotel = Gen.hotel
-      params = ActiveSupport::HashWithIndifferentAccess.new({:booking => Gen.booking(:cc_number => "", :arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes})
+      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:cc_number => "", :arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes}))
       @context = Context.new params: params, hotel: @hotel
       
       i = [Gen.inventory(date: Date.new(2013, 3, 13), room_type_id: 1)]
@@ -46,7 +49,7 @@ class Booking::ReserveTest < MiniTest::Should::TestCase
   context "if booking is  valid" do
     setup do
       @hotel = Gen.hotel!
-      params = ActiveSupport::HashWithIndifferentAccess.new({:booking => Gen.booking(:arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes})
+      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes}))
       @context = Context.new params: params, hotel: @hotel
       
       i = [Gen.inventory!(date: Date.new(2013, 3, 13), room_type_id: 1, hotel_id: @hotel.id)]
