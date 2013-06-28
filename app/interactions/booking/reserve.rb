@@ -10,7 +10,7 @@ class Booking::Reserve < Less::Interaction
     inventories
     if @error.blank?
       setup_booking_and_save
-      #need to send confirmations
+      send_confirmations
     end
     response
   end
@@ -65,6 +65,15 @@ class Booking::Reserve < Less::Interaction
       end
     end
     response.status = 200
+  end
+  
+  def send_confirmations
+    send_email_confirmation unless booking.email_confirmation.blank?
+    send_sms_confirmation unless booking.sms_confirmation.blank?
+  end
+  
+  def send_email_confirmation
+    BookingMailer.confirmation(booking).deliver
   end
   
     

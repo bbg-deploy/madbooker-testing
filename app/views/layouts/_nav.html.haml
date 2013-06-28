@@ -6,7 +6,7 @@
   - if current_hotel
     = link_to "Inventory", [current_hotel, :inventories]
     |
-    = link_to "Public page", current_hotel.url, target: :_blank
+    = link_to "Public page", book_url(host: current_hotel.host, protocol: App.protocol), target: :_blank
     |
   = link_to "My Account", edit_user_registration_path
   |

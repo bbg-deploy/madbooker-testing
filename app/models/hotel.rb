@@ -42,6 +42,9 @@ class Hotel < ActiveRecord::Base
   def url
     "#{App.protocol}://#{subdomain}.#{App.domain}/book"
   end
-  
+
+  def host
+    "#{subdomain}.#{App.domain}"
+  end
 
 end
