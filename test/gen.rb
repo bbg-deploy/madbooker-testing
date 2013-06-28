@@ -71,6 +71,7 @@ class << self
       :cc_year            => Date.today.year+1,
       :cc_cvv             => "123",
       :cc_zipcode         => Faker::Address.zip,
+      :guid               => UUIDTools::UUID.random_create.to_s.gsub("-", "")
     }
     make Booking, defaults, args 
   end
