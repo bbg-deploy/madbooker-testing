@@ -31,6 +31,10 @@ class BooksController < ApplicationController
   
   private
   
+  def current_hotel
+    hotel_from_subdomain
+  end
+  
   def booking_params
     par = params[:booking].permit :arrive, :depart, :room_type_id, :first_name, :last_name, :made_by_first_name,
       :made_by_last_name, :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 

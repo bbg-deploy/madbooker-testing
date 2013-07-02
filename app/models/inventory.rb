@@ -24,6 +24,7 @@ class Inventory < ActiveRecord::Base
   
   scope :for_month, ->(date){where date: date.change(day:1)..date.to_time.end_of_month}
   scope :for_range, ->(range) { where date: range }
+  scope :for_date, ->(date) { where date: date }
   scope :with_availablity, ->{where("available_rooms - sales_count > 0")}
   
   

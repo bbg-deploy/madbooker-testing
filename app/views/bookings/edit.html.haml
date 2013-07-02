@@ -1,0 +1,28 @@
+
+= simple_form_for [current_hotel, booking] do |f|
+
+  #summary
+  #room_info
+    = f.input :arrive, as: "string"
+    = f.input :depart, as: "string"
+    = f.association :room_type
+  #registration_info
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email
+    = f.input :made_by_first_name, label: "Your First name"
+    = f.input :made_by_last_name, label: "Your Last name"
+  #credit_card_form
+    = f.input :cc_number, label: "Credit Card number"
+    = f.input :cc_month, collection: 1..12, label: "Month"
+    = f.input :cc_year, collection: Date.today.year..(Date.today + 10.years).year, label: "Year"
+    = f.input :cc_zipcode, label: "Zip code"
+    = f.input :cc_cvv
+  #confirmation_info
+    = f.input :email_confirmation
+    = f.input :sms_confirmation
+    
+  = f.submit "Save"
+    
+    
+    

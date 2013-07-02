@@ -1,0 +1,44 @@
+
+
+
+%h2 Guest
+#guest
+  = @booking.name
+  = @booking.email
+  
+%h2 Room
+#room
+  = @booking.room_name
+  = @booking.rate
+  = @booking.discounted_rate
+  = @booking.arrive
+  = @booking.depart
+  
+%h2 Reservation
+#reservation
+  Made on:
+  = @booking.created_at
+  Made by:
+  = @booking.made_by
+  
+  
+%h2 Actions
+#actions
+  Current State is #{@booking.state.titleize}
+  = link_to "Edit", [:edit, current_hotel, @booking]
+  - unless @booking.checked_in?
+    = link_to "Check in", check_in_hotel_booking_path(current_hotel, @booking), method: :put
+  - unless @booking.canceled?
+    = link_to "Cancel", cancel_hotel_booking_path(current_hotel, @booking), method: :put
+  - unless @booking.no_show?
+    = link_to "No show", no_show_hotel_booking_path(current_hotel, @booking), method: :put
+  - unless @booking.paid?
+    = link_to "Pay", pay_hotel_booking_path(current_hotel, @booking), method: :put
+  - unless @booking.open?
+    = link_to "Open", open_hotel_booking_path(current_hotel, @booking), method: :put
+  - unless @booking.checked_out?
+    = link_to "Check out", check_out_hotel_booking_path(current_hotel, @booking), method: :put
+
+
+
+

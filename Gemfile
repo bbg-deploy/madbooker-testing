@@ -43,7 +43,8 @@ gem "calendar_helper", git: "git://github.com/topfunky/calendar_helper.git"
 gem "jquery-turbolinks"
 gem 'less_interactions', '0.0.6', :git => 'git://github.com/LessEverything/less_interactions.git'
 gem "twilio-ruby"
-
+gem "attr_encrypted"
+gem "simple_states"
 
 # Gems used only for assets and not required
 # in production environments by default.

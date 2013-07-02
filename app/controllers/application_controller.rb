@@ -28,8 +28,13 @@ class ApplicationController < ActionController::Base
   
   private
   def hotel_for_user
-    @current_hotel = Hotel.where("subdomain = ?", account_subdomain).first
-    @current_hotel ||= Hotel.where("user_id = ?", current_user.try( :id)).first
+    Hotel.where("user_id = ?", current_user.try( :id)).first
+  end
+  
+  
+  def hotel_from_subdomain
+    #don't use @current_hotel cuz that is for authenticated users
+    @hotel ||= Hotel.where("subdomain = ?", account_subdomain).first
   end
   
     
@@ -43,6 +48,7 @@ class ApplicationController < ActionController::Base
   
   def ensure_hotel
     return if current_hotel
+    return unless account_subdomain.blank?
     raise "do something here when there's no subdomain" 
   end
 

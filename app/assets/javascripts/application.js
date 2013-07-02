@@ -18,5 +18,6 @@
 //= require sugar-1.3.min
 //= require turbolinks
 //= require jquery.creditCardValidator
+//= require uri
 //= require module
 //= require_tree .

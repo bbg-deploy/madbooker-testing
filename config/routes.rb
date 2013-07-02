@@ -1,12 +1,23 @@
 Madbooker::Application.routes.draw do
 
 
-  resources :bookings
+  resources :bookings, :only => [:show]
 
   resources :hotels do
     member do
       delete :delete_logo
     end
+    resources :bookings do
+      member do
+        put :check_in
+        put :check_out
+        put :cancel
+        put :open
+        put :no_show
+        put :pay
+      end
+    end
+    resources :check_ins
     resources :inventories do
       collection do
         get :form

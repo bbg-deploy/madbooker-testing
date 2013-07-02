@@ -56,6 +56,8 @@ GEM
       rake
     arel (4.0.0)
     atomic (1.1.9)
+    attr_encrypted (1.2.1)
+      encryptor (>= 1.1.1)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
@@ -116,6 +118,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    hashr (0.0.22)
     hike (1.2.3)
     i18n (0.6.4)
     intercom (0.1.10)
@@ -207,6 +210,9 @@ GEM
     sass (3.2.9)
     settingslogic (2.0.9)
     simple_form (1.4.1)
+    simple_states (1.0.0)
+      activesupport
+      hashr (~> 0.0.10)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -256,6 +262,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  attr_encrypted
   awesome_print
   bcrypt-ruby (~> 3.0.0)
   better_errors
@@ -299,6 +306,7 @@ DEPENDENCIES
   sass
   settingslogic
   simple_form
+  simple_states
   simplecov
   spectator-attr_encrypted
   thin
