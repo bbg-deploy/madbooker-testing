@@ -16,6 +16,10 @@ Madbooker::Application.routes.draw do
         put :no_show
         put :pay
       end
+      collection do
+        get :search
+        get :no_shows
+      end
     end
     resources :check_ins
     resources :inventories do

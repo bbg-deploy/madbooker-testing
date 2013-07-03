@@ -89,6 +89,18 @@ class << self
     make Sale, defaults, args 
   end
   
+  def booking_list args = {}
+    avail = (18..54).to_a.sample
+    booked = (18..avail).to_a.sample
+    methods = {
+      room_type: Gen.room_type,
+      available: avail,
+      booked: booked,
+      percent_booked: booked.to_d/avail * 100,
+      rooms: [Gen.booking, Gen.booking]
+    }.merge args
+    OpenStruct.new methods
+  end
   
   
   private

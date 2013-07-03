@@ -1,0 +1,21 @@
+
+
+= render "/bookings/index/nav"
+
+
+
+- if @bookings.blank?
+  We couldn't find anything for "#{params[:q]}." Try something else.
+
+
+- @bookings.each do |booking|  
+  .booking
+    .state= booking.state.titleize
+    .dates= "#{booking.arrive} - #{booking.depart}"
+    .name= booking.name
+    = link_to "Details", [current_hotel, booking]
+    
+    
+= will_paginate @bookings
+
+

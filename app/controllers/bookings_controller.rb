@@ -19,6 +19,14 @@ class BookingsController < ApplicationController
     end
   end
   
+  def search
+    @bookings = Booking::Search.new(context: context).run.paginate(pagination_params).decorate
+  end
+  
+  def no_shows
+    @bookings = current_hotel.bookings.no_shows.for_date(params[:date]).paginate(pagination_params).decorate
+  end
+  
   def edit
     res current_hotel.bookings.find(params[:id]).decorate
   end

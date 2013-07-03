@@ -49,6 +49,7 @@ class Booking < ActiveRecord::Base
     where(arrive: date)
   }
   scope :open, ->{where state: :open}
+  scope :no_shows, ->{where state: :no_show}
   
   
   validates_presence_of :hotel_id, :room_type_id, :arrive, :depart, 
