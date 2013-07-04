@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
   
   private
   def hotel_for_user
-    Hotel.where("user_id = ?", current_user.try( :id)).first
+    return nil unless current_user
+    current_user.hotels.first
   end
   
   

@@ -3,7 +3,7 @@
 # Table name: hotels
 #
 #  id                    :integer          not null, primary key
-#  user_id               :integer
+#  owner_id              :integer
 #  name                  :string(255)
 #  url                   :string(255)
 #  phone                 :string(255)
@@ -23,10 +23,12 @@
 
 class Hotel < ActiveRecord::Base
   
-  belongs_to :user
+  belongs_to :owner, :class_name => "User"
   has_many :room_types
   has_many :inventories
   has_many :bookings
+  has_many :memberships
+  has_many :users, :through => :memberships
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 

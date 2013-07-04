@@ -1,5 +1,8 @@
 class HotelDecorator < ApplicationDecorator
-  delegate_all
+  
+  decorates_association :memberships
+  decorates_association :bookings
+  decorates_association :inventories
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:

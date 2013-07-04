@@ -1,5 +1,5 @@
 class BookingMailer < ActionMailer::Base
-  default from: "booking@madbooker.com"
+  default from: App.from_address
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

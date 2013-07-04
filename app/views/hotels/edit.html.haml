@@ -1,4 +1,10 @@
 
 %h1= current_hotel.name
 
+%h2 People
+  
+= render "/hotels/form/members"
+
+%h2 Info
+
 = render partial: "/hotels/form/form"
