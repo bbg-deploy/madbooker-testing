@@ -42,7 +42,7 @@ class Booking < ActiveRecord::Base
   scope :by_last_name, ->{reorder(:last_name)}
   scope :for_date, ->(date){
     if date.nil?
-      date = Date.today
+      date = Date.current
     else date.is_a? String
       date = Chronic.parse( date).to_date
     end

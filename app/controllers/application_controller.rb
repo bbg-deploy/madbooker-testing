@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
+  around_filter :set_time_zone
 
 
   def current_hotel
@@ -27,6 +28,28 @@ class ApplicationController < ActionController::Base
   
   
   private
+    #Remember:
+    # DO
+    # 2.hours.ago # => Fri, 02 Mar 2012 20:04:47 JST +09:00
+    # 1.day.from_now # => Fri, 03 Mar 2012 22:04:47 JST +09:00
+    # Date.today.to_time_in_current_zone # => Fri, 02 Mar 2012 22:04:47 JST +09:00
+    # Date.current # => Fri, 02 Mar
+    # Time.zone.parse("2012-03-02 16:05:37") # => Fri, 02 Mar 2012 16:05:37 JST +09:00
+    # Time.zone.now # => Fri, 02 Mar 2012 22:04:47 JST +09:00
+    # Time.current # Same thing but shorter. (Thank you Lukas Sarnacki pointing this out.)
+    # Time.zone.today # If you really can't have a Time or DateTime for some reason
+    # Time.zone.now.utc.iso8601 # When supliyng an API (you can actually skip .zone here, but I find it better to always use it, than miss it when it's needed)
+    # Time.strptime(time_string, '%Y-%m-%dT%H:%M:%S%z').in_time_zone(Time.zone) # If you can't use Time#parse
+    # DON’Ts
+    # Time.now # => Returns system time and ignores your configured time zone.
+    # Time.parse("2012-03-02 16:05:37") # => Will assume time string given is in the system's time zone.
+    # Time.strptime(time_string, '%Y-%m-%dT%H:%M:%S%z') # Same problem as with Time#parse.
+    # Date.today # This could be yesterday or tomorrow depending on the machine's time zone.
+    # Date.today.to_time # => # Still not the configured time zone.
+    def set_time_zone &block
+    return "UTC" unless current_hotel
+    Time.use_zone current_hotel.time_zone, &block
+  end
   def hotel_for_user
     return nil unless current_user
     current_user.hotels.first

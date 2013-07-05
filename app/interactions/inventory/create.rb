@@ -38,7 +38,7 @@ class Inventory::Create < Less::Interaction
         rate: values[:rate], 
         discounted_rate: values[:discounted_rate],
         hotel_id: context.hotel.id,
-        date: Date.today #replaced in save_new_inventories, but need some value for validation
+        date: Date.current #replaced in save_new_inventories, but need some value for validation
       )
     end
     @inventories = inv

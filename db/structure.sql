@@ -76,6 +76,7 @@ CREATE TABLE `hotels` (
   `logo_updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `time_zone` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Eastern Time (US & Canada)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -117,7 +118,7 @@ CREATE TABLE `memberships` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +213,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-03 20:14:08
+-- Dump completed on 2013-07-05  9:25:08
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -240,3 +241,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130701190234');
 INSERT INTO schema_migrations (version) VALUES ('20130702051013');
 
 INSERT INTO schema_migrations (version) VALUES ('20130703183215');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705131931');

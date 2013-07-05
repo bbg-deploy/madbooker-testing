@@ -7,7 +7,7 @@ class BookingMailer < ActionMailer::Base
   #   en.booking_mailer.confirmation.subject
   #
   def confirmation booking
-    @booking = booking
+    @booking = booking.decorate
     mail to: booking.email_confirmation, subject: "Your Hotel Booking"
   end
 end

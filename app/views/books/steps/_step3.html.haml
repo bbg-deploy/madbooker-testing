@@ -30,7 +30,7 @@
         #credit_card_form
           = f.input :cc_number, label: "Credit Card number"
           = f.input :cc_month, collection: 1..12, label: "Month"
-          = f.input :cc_year, collection: Date.today.year..(Date.today + 10.years).year, label: "Year"
+          = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"
           = f.input :cc_zipcode, label: "Zip code"
           = f.input :cc_cvv
         #confirmation_info

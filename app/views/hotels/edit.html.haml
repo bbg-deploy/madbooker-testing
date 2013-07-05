@@ -1,10 +1,16 @@
 
 %h1= current_hotel.name
 
-%h2 People
-  
-= render "/hotels/form/members"
 
-%h2 Info
+#tabs
+  %ul
+    %li
+      %a{href:"#info"}Info
+    %li
+      %a{href:"#people"}People
 
-= render partial: "/hotels/form/form"
+  #info
+    = render partial: "/hotels/form/form"
+  #people
+    = render "/hotels/form/members"
+

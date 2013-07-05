@@ -19,6 +19,7 @@
 #  logo_updated_at       :datetime
 #  created_at            :datetime
 #  updated_at            :datetime
+#  time_zone             :string(255)      default("Eastern Time (US & Canada)")
 #
 
 class Hotel < ActiveRecord::Base
