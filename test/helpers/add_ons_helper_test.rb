@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AmenitiesHelperTest < ActionView::TestCase
+class AddOnsHelperTest < ActionView::TestCase
 
   def test_sanity
     assert true

@@ -1,0 +1,10 @@
+
+- add_on ||= @add_on
+
+%tr{id: dom_id( add_on)}
+  %td= add_on.name
+  %td= add_on.description.truncate 30
+  %td= add_on.price
+  %td
+    = link_to "Edit", [:edit, current_hotel, add_on]
+    = add_on.activate_link

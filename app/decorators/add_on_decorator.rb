@@ -1,4 +1,4 @@
-class AmenityDecorator < ApplicationDecorator
+class AddOnDecorator < ApplicationDecorator
   delegate_all
 
   def activate_link

@@ -1,0 +1,18 @@
+
+= link_to "Add a new Add On", [:new, current_hotel, :add_on]
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Price
+      %th
+  %tbody
+    - @add_ons.each do |add_on|
+      = render "/add_ons/index/row", add_on: add_on
+  %tfoot
+    %tr
+      %td{colspan: 4}
+        = will_paginate @add_ons
+      

@@ -1,0 +1,9 @@
+
+- add_on ||= @add_on || current_hotel.add_ons.build
+
+= simple_form_for [current_hotel, add_on] do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :price
+  = f.input :active
+  = f.submit "Save"

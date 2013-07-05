@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `amenities`
+-- Table structure for table `add_ons`
 --
 
-DROP TABLE IF EXISTS `amenities`;
+DROP TABLE IF EXISTS `add_ons`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `amenities` (
+CREATE TABLE `add_ons` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hotel_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-05 15:05:14
+-- Dump completed on 2013-07-05 16:44:36
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -291,3 +291,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130705140244');
 INSERT INTO schema_migrations (version) VALUES ('20130705142901');
 
 INSERT INTO schema_migrations (version) VALUES ('20130705190217');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705204359');

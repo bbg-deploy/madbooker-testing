@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: amenities
+# Table name: add_ons
 #
 #  id          :integer          not null, primary key
 #  hotel_id    :integer
@@ -12,7 +12,7 @@
 #  active      :boolean          default(TRUE)
 #
 
-class Amenity < ActiveRecord::Base
+class AddOn < ActiveRecord::Base
   
   belongs_to :hotel
   

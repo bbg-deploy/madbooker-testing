@@ -23,7 +23,7 @@ Madbooker::Application.routes.draw do
         get :no_shows
       end
     end
-    resources :amenities
+    resources :add_ons
     resources :check_ins
     resources :memberships
     resources :inventories do

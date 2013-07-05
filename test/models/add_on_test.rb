@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AmenityTest < ActiveSupport::TestCase
+class AddOnTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
