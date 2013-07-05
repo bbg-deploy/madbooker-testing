@@ -39,11 +39,13 @@ class HotelsController < ApplicationController
   
   private
   def hotel_params
-    params[:hotel].permit :user_id, :name, :address, :url, :phone, :fax, 
+    pa = params[:hotel].permit :user_id, :name, :address, :url, :phone, :fax, 
       :url, :room_rates_display, :subdomain, :google_analytics_code, :time_zone,
       :fine_print, :logo, :room_rates_display, 
       :room_types_attributes => [:name, :description, :number_of_rooms, 
         :default_rate, :discounted_rate, :_destroy, :id]
+    pa.delete(:logo) if pa[:logo].nil?
+    pa
   end
   
 end

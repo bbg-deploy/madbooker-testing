@@ -1,0 +1,10 @@
+
+- amenity ||= @amenity
+
+%tr{id: dom_id( amenity)}
+  %td= amenity.name
+  %td= amenity.description.truncate 30
+  %td= amenity.price
+  %td
+    = link_to "Edit", [:edit, current_hotel, amenity]
+    = amenity.activate_link

@@ -1,0 +1,9 @@
+
+- amenity ||= @amenity || current_hotel.amenities.build
+
+= simple_form_for [current_hotel, amenity] do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :price
+  = f.input :active
+  = f.submit "Save"

@@ -2,6 +2,7 @@ Madbooker::Application.routes.draw do
 
 
 
+
   resources :bookings, :only => [:show]
 
   resources :hotels do
@@ -22,6 +23,7 @@ Madbooker::Application.routes.draw do
         get :no_shows
       end
     end
+    resources :amenities
     resources :check_ins
     resources :memberships
     resources :inventories do

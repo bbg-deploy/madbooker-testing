@@ -2,24 +2,26 @@
 #
 # Table name: hotels
 #
-#  id                    :integer          not null, primary key
-#  owner_id              :integer
-#  name                  :string(255)
-#  url                   :string(255)
-#  phone                 :string(255)
-#  fax                   :string(255)
-#  room_rates_display    :string(255)
-#  subdomain             :string(255)
-#  address               :text
-#  google_analytics_code :text
-#  fine_print            :text
-#  logo_file_name        :string(255)
-#  logo_content_type     :string(255)
-#  logo_file_size        :integer
-#  logo_updated_at       :datetime
-#  created_at            :datetime
-#  updated_at            :datetime
-#  time_zone             :string(255)      default("Eastern Time (US & Canada)")
+#  id                                       :integer          not null, primary key
+#  owner_id                                 :integer
+#  name                                     :string(255)
+#  url                                      :string(255)
+#  phone                                    :string(255)
+#  fax                                      :string(255)
+#  room_rates_display                       :string(255)
+#  subdomain                                :string(255)
+#  address                                  :text
+#  google_analytics_code                    :text
+#  fine_print                               :text
+#  logo_file_name                           :string(255)
+#  logo_content_type                        :string(255)
+#  logo_file_size                           :integer
+#  logo_updated_at                          :datetime
+#  created_at                               :datetime
+#  updated_at                               :datetime
+#  time_zone                                :string(255)      default("Eastern Time (US & Canada)")
+#  minimal_invenotry_notification_threshold :integer          default(0)
+#  currency_id                              :integer          default(840)
 #
 
 class Hotel < ActiveRecord::Base
@@ -30,6 +32,8 @@ class Hotel < ActiveRecord::Base
   has_many :bookings
   has_many :memberships
   has_many :users, :through => :memberships
+  belongs_to :currency
+  has_many :amenities
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
