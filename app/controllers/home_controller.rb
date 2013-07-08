@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   
   def index
     if !account_subdomain.blank?
-      redirect_to current_hotel.url
+      redirect_to hotel_from_subdomain.url
     else    
       render
     end
