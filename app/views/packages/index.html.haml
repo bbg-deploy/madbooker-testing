@@ -1,0 +1,24 @@
+
+
+%h1 Packages
+
+
+= link_to "Add a new Package", [:new, current_hotel, :package]
+
+%table
+  %thead
+    %tr
+      %th Room
+      %th Description
+      %th Price
+      %th
+  %tbody
+    - @packages.each do |package|
+      = render "/packages/index/row", package: package
+  %tfoot
+    %tr
+      %td{colspan: 4}
+        = will_paginate @packages
+      
+
+

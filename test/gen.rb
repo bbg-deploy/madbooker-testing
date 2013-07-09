@@ -85,7 +85,6 @@ class << self
       :discounted_rate => 0,
       :date            => Date.today,
     }
-
     make Sale, defaults, args 
   end
   
@@ -100,6 +99,27 @@ class << self
       rooms: [Gen.booking, Gen.booking]
     }.merge args
     OpenStruct.new methods
+  end
+  
+  def package args = {}
+    defaults = {
+      :hotel_id        => 1,
+      :room_type_id    => 1,
+      :rate            => (50..120).to_a.sample,
+      :discounted_rate => nil,
+      :active          => true
+    }
+    make Package, defaults, args     
+  end
+  
+  def add_on args = {}
+    defaults = {
+      :hotel_id     => 1,
+      :name         => Faker::Internet.domain_word,
+      :description  => Faker::Lorem.sentences.join,
+      :price        => (50..120).to_a.sample
+    }
+    make AddOn, defaults, args
   end
   
   

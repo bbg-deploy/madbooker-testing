@@ -13,9 +13,9 @@ GIT
 
 GIT
   remote: git://github.com/stevenbristol/less-js-routes.git
-  revision: 14ac2541574fbff96f848d42d04f1d7a291efd73
+  revision: 3840931c2ea21929b6c0415caf1e92f66d63f8e2
   specs:
-    less-js-routes (0.14)
+    less-js-routes (0.15)
 
 GIT
   remote: git://github.com/topfunky/calendar_helper.git
@@ -151,7 +151,7 @@ GEM
       minitest (~> 4.7)
       rails (>= 3.0)
     minitest_should (0.3.1)
-    mocha (0.10.5)
+    mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.6)
     mysql2 (0.3.11)

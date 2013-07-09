@@ -83,7 +83,7 @@ end
 group :test do
   # gem 'shoulda'
   # gem 'shoulda-context', :git => 'git://github.com/asanghi/shoulda-context.git'
-  gem 'mocha'
+  gem 'mocha', require: false
   gem 'timecop'
   gem 'minitest-rails'
   #gem 'minitest'
@@ -93,7 +93,7 @@ group :test do
   # gem 'raindrops'
 end
 
-group :debug do
+group :debug, :development do
   gem 'debugger'
 end
 

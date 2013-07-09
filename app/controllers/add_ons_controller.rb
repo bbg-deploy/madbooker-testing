@@ -14,13 +14,13 @@ class AddOnsController < ApplicationController
 
   def create
     @add_on = current_hotel.add_ons.create add_on_params
-    respond_with [current_hotel, @add_on]
+    respond_with current_hotel, @add_on
   end
   
   def update
     @add_on = current_hotel.add_ons.find params[:id]
     @add_on.update_attributes add_on_params
-    respond_with [current_hotel, @add_on]
+    respond_with current_hotel, @add_on
   end
   
   def destroy

@@ -1,0 +1,11 @@
+
+
+= @package.description
+= @package.room_name
+= @package.rate
+= @package.discounted_rate
+- @package.add_ons.each do |add_on|
+  = add_on.name
+  
+= link_to "Edit", [:edit, current_hotel, @package]
+

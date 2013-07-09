@@ -8,10 +8,9 @@ class Booking::Reserve < Less::Interaction
     @error = ""
     inventory
     inventories
-    if @error.blank?
-      setup_booking_and_save
-      send_confirmations
-    end
+    return response unless @error.blank?
+    return response unless setup_booking_and_save
+    send_confirmations
     response
   end
   
@@ -58,13 +57,14 @@ class Booking::Reserve < Less::Interaction
         @inventories.each do |i|
           booking.sales.create!( inventory_id: i.id, hotel_id: context.hotel.id, rate: i.rate, discounted_rate: i.discounted_rate, date: i.date)
         end
-      rescue =>e
+      rescue ActiveRecord::RecordInvalid=>e
         response.status = 500
         @error = e.to_s
-        return
+        return false
       end
     end
     response.status = 200
+    true
   end
   
   def send_confirmations

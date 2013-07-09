@@ -53,7 +53,7 @@ class Booking < ActiveRecord::Base
   
   
   validates_presence_of :hotel_id, :room_type_id, :arrive, :depart, 
-    :rate, :cc_zipcode, :cc_cvv, :cc_year, :cc_month, :cc_number,
+    :rate, :cc_zipcode, :encrypted_cc_cvv, :cc_year, :cc_month, :encrypted_cc_number,
     :first_name, :last_name, :email
     
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/

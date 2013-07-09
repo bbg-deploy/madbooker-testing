@@ -1,0 +1,12 @@
+
+- package ||= @package || current_hotel.packages.build
+
+= simple_nested_form_for [current_hotel, package] do |f|
+  = f.association :room_type
+  = f.input :rate
+  = f.input :discounted_rate
+  = f.association :add_ons, required: true
+  = f.submit "Save"
+
+
+

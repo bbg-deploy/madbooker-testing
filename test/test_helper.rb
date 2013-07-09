@@ -13,12 +13,13 @@ require 'rails/test_help'
 require 'minitest/rails'
 require "minitest/should"
 #require "minitest/mock"
+require "mocha/setup"
 require 'timecop'
 require 'less_interactions'
 require "gen"
 
 class MiniTest::Should::TestCase
-  include Mocha::API
+  #include Mocha::API
   include ActiveSupport::Testing::Assertions
   ActiveRecord::Migration.check_pending!
   def moc name, args = {}
@@ -42,4 +43,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+end
+
+class Sms
+  def self.deliver to, msg
+    true
+  end
 end

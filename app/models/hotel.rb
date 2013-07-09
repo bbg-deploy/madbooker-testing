@@ -34,6 +34,7 @@ class Hotel < ActiveRecord::Base
   has_many :users, :through => :memberships
   belongs_to :currency
   has_many :add_ons
+  has_many :packages
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 

@@ -15,6 +15,8 @@
 class AddOn < ActiveRecord::Base
   
   belongs_to :hotel
+  has_many :bundles
+  has_many :packages, :through => :bundles
   
   validates_presence_of :name, :price, :hotel_id
 end

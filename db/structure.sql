@@ -72,6 +72,23 @@ CREATE TABLE `bookings` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `bundles`
+--
+
+DROP TABLE IF EXISTS `bundles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bundles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `package_id` int(11) DEFAULT NULL,
+  `add_on_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `currencies`
 --
 
@@ -162,6 +179,26 @@ CREATE TABLE `memberships` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `packages`
+--
+
+DROP TABLE IF EXISTS `packages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `packages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) DEFAULT NULL,
+  `room_type_id` int(11) DEFAULT NULL,
+  `rate` decimal(15,4) DEFAULT '0.0000',
+  `discounted_rate` decimal(15,4) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `room_types`
 --
 
@@ -195,7 +232,7 @@ CREATE TABLE `sales` (
   `booking_id` int(11) DEFAULT NULL,
   `hotel_id` int(11) DEFAULT NULL,
   `rate` decimal(15,4) DEFAULT '0.0000',
-  `discounted_rate` decimal(15,4) DEFAULT '0.0000',
+  `discounted_rate` decimal(15,4) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -253,7 +290,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-05 16:44:36
+-- Dump completed on 2013-07-08 16:12:22
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -293,3 +330,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130705142901');
 INSERT INTO schema_migrations (version) VALUES ('20130705190217');
 
 INSERT INTO schema_migrations (version) VALUES ('20130705204359');
+
+INSERT INTO schema_migrations (version) VALUES ('20130708142835');
+
+INSERT INTO schema_migrations (version) VALUES ('20130708153109');
+
+INSERT INTO schema_migrations (version) VALUES ('20130708201024');
