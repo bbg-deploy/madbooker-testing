@@ -9,6 +9,7 @@
     = calendar(:show_other_months => false, :year => cal.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
       - render "inventories/calendar/day_for_year", date: d
   
+= render "/inventories/calendar/date_pickers"
 
 #inventories_form
 

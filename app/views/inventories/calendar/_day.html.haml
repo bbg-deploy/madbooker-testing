@@ -1,9 +1,9 @@
 
 %div= date.day
 - i = cal.inventory_on( date)
-- if i.blank?
-  %span
-    No inventory
-- else
-  - i.each do |inventory|
-    %div== #{inventory.room_type.name}: #{inventory.available_rooms} Available, #{inventory.sales_count} Booked
+/- if i.blank?
+/  %span
+/    No inventory
+/- else
+/  - i.each do |inventory|
+/    %div== #{inventory.room_type.name}: #{inventory.available_rooms} Available, #{inventory.sales_count} Booked
