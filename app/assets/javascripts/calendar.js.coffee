@@ -74,8 +74,7 @@
       $("#inventories_form").html("")
       
     load_form = ->
-      unless is_valid()
-        return
+      return unless is_valid()
       try
         #err selection
         $("#inventories_form").load form_hotel_inventories_path(MB.current_hotel_id, "html", {start: to_s(selection.s), end: to_s(selection.e)}), "", hightlight_form
@@ -92,15 +91,15 @@
       new DateRange st, en
     
     set_mouse_events = ->
-      $(document).on "mousedown", '.day_selectable', (e)->
+      $(document).off_and_on "mousedown", '.day_selectable', (e)->
         e.preventDefault()
         set_start_date($(e.currentTarget).data().date, true)
       
-      $(document).on "mouseup", '.day_selectable', (e)->
+      $(document).off_and_on "mouseup", '.day_selectable', (e)->
         e.preventDefault()
         set_end_date($(e.currentTarget).data().date)
         
-      $(document).on "mouseenter", '.day_selectable', (e)->
+      $(document).off_and_on "mouseenter", '.day_selectable', (e)->
         #return if selection.isEmpty() or selection.length is 2
         return unless selection.tracking
         e.preventDefault()
