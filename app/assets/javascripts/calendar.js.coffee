@@ -115,26 +115,37 @@
     
       
     setup_date_pickers = ->
+      if $("#date_start").data().for_month
+        changeMonth = changeYear = false
+        numberOfMonths = 1
+        maxDate = Date.create().endOfMonth()
+        minDate = Date.create().beginningOfMonth()
+      else
+        changeMonth = changeYear = true
+        numberOfMonths = 1
+        maxDate = minDate = null
       $( "#date_start" ).datepicker {
         defaultDate: "+3d"
-        changeMonth: true
-        changeYear: true
-        numberOfMonths: 2
+        changeMonth: changeMonth
+        changeYear: changeYear
+        numberOfMonths: numberOfMonths
+        maxDate: maxDate
+        minDate: minDate
         showAnim: "slideDown"
         dateFormat: "yy-mm-dd"
-        onClose: ( selectedDate, o) ->
-          return if selectedDate is $("#date_start").val()
+        onSelect: ( selectedDate, o) ->
           set_start_date selectedDate, false
         }
       $( "#date_end" ).datepicker {
         defaultDate: "+1d"
-        changeMonth: true
-        changeYear: true
-        numberOfMonths: 2
+        changeMonth: changeMonth
+        changeYear: changeYear
+        numberOfMonths: numberOfMonths
+        maxDate: maxDate
+        minDate: minDate
         showAnim: "slideDown"
         dateFormat: "yy-mm-dd"
-        onClose: ( selectedDate, o) ->
-          return if selectedDate is $("#date_end").val()
+        onSelect: ( selectedDate, o) ->
           set_end_date selectedDate
         }
       
