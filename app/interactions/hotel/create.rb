@@ -36,11 +36,11 @@ class Hotel::Create < Less::Interaction
   end
   
   def inventory_create
-    @inventory_create ||= Inventory::SyncWithRoomTypes.new( inv_context, range: range, inventory_params: inventory_params, raises: true)
+    @inventory_create ||= Inventory::SyncWithRoomTypes.new( inv_context, range: range, raises: true)
   end
   
   def inv_context
-    @inv_context ||= Context.new user: context.user, hotel: hotel, params: {}
+    @inv_context ||= Context.new user: context.user, hotel: hotel, params: inventory_params
   end
   
   def range

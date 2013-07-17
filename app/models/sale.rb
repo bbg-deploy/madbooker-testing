@@ -18,5 +18,5 @@ class Sale < ActiveRecord::Base
   belongs_to :hotel
   belongs_to :booking
   
-  validates_presence_of :inventory_id, :booking_id, :hotel_id, :rate, :discounted_rate, :date
+  validates_presence_of :inventory_id, :booking_id, :hotel_id, :rate, :date
 end

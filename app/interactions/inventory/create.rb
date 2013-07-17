@@ -1,10 +1,9 @@
 class Inventory::Create < Less::Interaction
 
-  expects :context
   
   
   def run
-    sync = Inventory::SyncWithRoomTypes.new inv_context, range: range, inventory_params: inventory_params, raises: false
+    sync = Inventory::SyncWithRoomTypes.new inv_context, range: range, raises: false
     res = sync.run
   end
   
@@ -18,7 +17,7 @@ class Inventory::Create < Less::Interaction
   
   
   def inv_context
-    Context.new hotel: hotel, user: context.user, params: {}
+    Context.new hotel: hotel, user: context.user, params: inventory_params
   end
   
   def range

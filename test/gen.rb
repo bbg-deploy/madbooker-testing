@@ -43,7 +43,7 @@ class << self
       :available_rooms => (18..54).to_a.sample,
       :sales_count  => 0,
       :rate            => (50..120).to_a.sample,
-      :discounted_rate => 0,
+      :discounted_rate => nil,
       :date            => Date.today,
       :room_type_id    => 1
     }

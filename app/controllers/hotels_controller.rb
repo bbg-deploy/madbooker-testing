@@ -7,7 +7,7 @@ class HotelsController < ApplicationController
   end
 
   def new
-    #redirect_to [:edit, current_hotel] and return if current_hotel
+    redirect_to [:edit, current_hotel] and return if current_hotel
     hotel = Hotel.new
     hotel.room_types.build
     res hotel.decorate
@@ -28,7 +28,8 @@ class HotelsController < ApplicationController
   end
   
   def update
-    if current_hotel.update_attributes hotel_params
+    res = Hotel::update.new(context).run
+    if res.success?
       redirect_to [:edit, current_hotel], notice: "Saved"
     else
       res current_hotel.decorate
