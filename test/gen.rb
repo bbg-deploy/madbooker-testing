@@ -27,15 +27,15 @@ class << self
     make Hotel, defaults, overrides
   end
 
-  def room_type overrides = {}
+  def room_type args = {}
     defaults = {
       number_of_rooms: (18..125).to_a.sample,
       name:            Faker::Internet.domain_word,
       default_rate:    (50..120).to_a.sample,
-      discounted_rate: 0,
+      discounted_rate: nil,
       description:     Faker::Lorem.sentences.join
     }
-    make RoomType, defaults, overrides
+    make RoomType, defaults, args
   end
   
   def inventory args = {}
@@ -120,6 +120,14 @@ class << self
       :price        => (50..120).to_a.sample
     }
     make AddOn, defaults, args
+  end
+  
+  def user args = {}
+    defaults = {
+      :email     => Faker::Internet.email,
+      :time_zone => "UTC"
+    }
+    make User, defaults, args
   end
   
   

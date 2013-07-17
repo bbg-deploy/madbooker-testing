@@ -7,7 +7,7 @@ class Inventory::CreateTest < MiniTest::Should::TestCase
     @create ||= Inventory::Create.new context: @context
   end
   
-  context "with valid parameters" do
+  context "with valid parameters from controller" do
     setup do
       params = ActiveSupport::HashWithIndifferentAccess.new( {"hotel"=>{"start"=>"2013-06-26", "end"=>"2013-06-26", "inventories_attributes"=>{"0"=>{"room_type_id"=>"1", "available_rooms"=>"24", "rate"=>"50.0", "discounted_rate"=>"45.0"}, "1"=>{"room_type_id"=>"2", "available_rooms"=>"18", "rate"=>"65.0", "discounted_rate"=>"62.0"}, "2"=>{"room_type_id"=>"3", "available_rooms"=>"5", "rate"=>"75.0", "discounted_rate"=>""}}}})
       @hotel = Gen.hotel!
@@ -42,6 +42,7 @@ class Inventory::CreateTest < MiniTest::Should::TestCase
     end
     
   end
+  
   
   context "with invalid parameters" do
     setup do

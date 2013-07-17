@@ -1,6 +1,13 @@
 class HotelsController < ApplicationController
-  
+    include Hotel::Params
+
+  def index
+    redirect_to [:edit, current_hotel] and return if current_hotel
+    redirect_to root_url
+  end
+
   def new
+    #redirect_to [:edit, current_hotel] and return if current_hotel
     hotel = Hotel.new
     hotel.room_types.build
     res hotel.decorate
@@ -12,7 +19,7 @@ class HotelsController < ApplicationController
   end  
   
   def create
-    hotel = Hotel.create hotel_params.merge(user_id: current_user.id)
+    hotel = Hotel::Create.new(context).run
     if hotel.persisted?
       redirect_to [:edit, hotel], notice: "Saved"
     else
@@ -38,14 +45,5 @@ class HotelsController < ApplicationController
   end
   
   private
-  def hotel_params
-    pa = params[:hotel].permit :user_id, :name, :address, :url, :phone, :fax, 
-      :url, :room_rates_display, :subdomain, :google_analytics_code, :time_zone,
-      :fine_print, :logo, :room_rates_display, 
-      :room_types_attributes => [:name, :description, :number_of_rooms, 
-        :default_rate, :discounted_rate, :_destroy, :id]
-    pa.delete(:logo) if pa[:logo].nil?
-    pa
-  end
   
 end

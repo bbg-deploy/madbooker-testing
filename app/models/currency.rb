@@ -12,29 +12,16 @@
 
 class Currency < ActiveRecord::Base
   
-  def self.short_list
-    [usd, cad, eur, gbp]
-  end
+  scope :short_list, ->{where "code in ('USD', 'CAD', 'GBP', 'EUR')"}
+  scope :all_but_short_list, ->{where "code not in ('USD', 'CAD', 'GBP', 'EUR')"}
+  scope :all_currencies, ->{order "code ASC"}
   
-  def self.all_but_short_list
-    all_currencies - short_list
-  end
-
-  
-  def self.usd
-    @usd ||= find_by_code('USD') || raise("USD currency not found.")
-  end
+  scope :usd, ->{where "code = 'USD'"}
+  scope :cad, ->{where "code = 'CAD'"}
+  scope :gbp, ->{where "code = 'GBP'"}
+  scope :eur, ->{where "code = 'EUR'"}
   
   
-  def self.cad
-    @cad ||= find_by_code('CAD') || raise("CAD currency not found.")
-  end
-  def self.gbp
-    @gbp ||= find_by_code('GBP') || raise("GBP currency not found.")
-  end
-  def self.eur
-    @eur ||= find_by_code('EUR') || raise("EUR currency not found.")
-  end
 
   def self.options_for_select selected_id = -1
     (short_list + all_but_short_list).map {|c| c.to_option}#2(c.id == selected_id)}
@@ -50,10 +37,6 @@ class Currency < ActiveRecord::Base
 
   def to_option
     [ label, id]
-  end
-  
-  def self.all_currencies
-    @all_currencies ||= find(:all, :order => 'code ASC') # Cache these since they almost never change.
   end
   
   

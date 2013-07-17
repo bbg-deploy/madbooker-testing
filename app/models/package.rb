@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  hotel_id        :integer
 #  room_type_id    :integer
-#  rate            :decimal(15, 4)   default(0.0)
+#  rate            :decimal(15, 4)
 #  discounted_rate :decimal(15, 4)
 #  created_at      :datetime
 #  updated_at      :datetime

@@ -150,6 +150,7 @@
       
         
     init: ->
+      return unless $("#date_start").data()
       set_mouse_events()
       setup_date_pickers()
   )()

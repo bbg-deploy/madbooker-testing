@@ -77,8 +77,8 @@ class Inventory::FormTest < MiniTest::Should::TestCase
     context "with unmatching inventories in the range with the same room_type_id" do
       setup do
         @i = []
-        @i << Gen.inventory(date: Date.new(2013,3,14), room_type_id: 1, available_rooms: @r[0].number_of_rooms+1, rate: @r[0].default_rate+1, discounted_rate: @r[0].discounted_rate+1)
-        @i << Gen.inventory(date: Date.new(2013,3,15), room_type_id: 2, available_rooms: @r[1].number_of_rooms+1, rate: @r[1].default_rate+1, discounted_rate: @r[1].discounted_rate+1)
+        @i << Gen.inventory(date: Date.new(2013,3,14), room_type_id: 1, available_rooms: @r[0].number_of_rooms+1, rate: @r[0].default_rate+1, discounted_rate: @r[0].discounted_rate)
+        @i << Gen.inventory(date: Date.new(2013,3,15), room_type_id: 2, available_rooms: @r[1].number_of_rooms+1, rate: @r[1].default_rate+1, discounted_rate: @r[1].discounted_rate)
         form.stubs(:inventories).returns @i
         @form = form.run
       end
@@ -97,8 +97,8 @@ class Inventory::FormTest < MiniTest::Should::TestCase
     context "with mixed values inventories in the range with the same room_type" do
       setup do
         @i = []
-        @i << Gen.inventory(date: Date.new(2013,3,14), room_type_id: 1, available_rooms: @r[0].number_of_rooms+1, rate: @r[0].default_rate+1, discounted_rate: @r[0].discounted_rate+1)
-        @i << Gen.inventory(date: Date.new(2013,3,15), room_type_id: 1, available_rooms: @r[0].number_of_rooms+2, rate: @r[0].default_rate+2, discounted_rate: @r[0].discounted_rate+2)
+        @i << Gen.inventory(date: Date.new(2013,3,14), room_type_id: 1, available_rooms: @r[0].number_of_rooms+1, rate: @r[0].default_rate+1, discounted_rate: @r[0].discounted_rate)
+        @i << Gen.inventory(date: Date.new(2013,3,15), room_type_id: 1, available_rooms: @r[0].number_of_rooms+2, rate: @r[0].default_rate+2, discounted_rate: @r[0].discounted_rate)
         form.stubs(:inventories).returns @i
         @form = form.run
       end

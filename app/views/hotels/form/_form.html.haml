@@ -1,5 +1,6 @@
 
 = simple_nested_form_for hotel do |f|
+  = f.error :base, :error_method => :to_sentence
   = f.input :name
   = f.input :address
   = f.input :phone

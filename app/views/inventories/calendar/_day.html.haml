@@ -6,4 +6,4 @@
     No inventory
 - else
   - i.each do |inventory|
-    %div== #{inventory.room_type.name}: #{inventory.available_rooms} Available, #{inventory.sales_count} Booked
+    %div== #{inventory.room_type.name}: Available #{inventory.available_rooms}, Booked #{inventory.sales_count}

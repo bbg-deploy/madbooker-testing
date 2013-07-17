@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/LessEverything/less_interactions.git
-  revision: af56038b12427fe8a977f5c97b22c6583769f3e6
+  revision: f3c3de9850ab3646c1d2bfdee0da74c98357d4c4
   specs:
-    less_interactions (0.0.6)
+    less_interactions (0.0.8)
 
 GIT
   remote: git://github.com/ryanb/letter_opener.git
@@ -284,7 +284,7 @@ DEPENDENCIES
   jquery-turbolinks
   json
   less-js-routes!
-  less_interactions (= 0.0.6)!
+  less_interactions (= 0.0.8)!
   letter_opener!
   memoist
   meta_request

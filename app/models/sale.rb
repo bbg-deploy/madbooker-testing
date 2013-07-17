@@ -6,7 +6,7 @@
 #  inventory_id    :integer
 #  booking_id      :integer
 #  hotel_id        :integer
-#  rate            :decimal(15, 4)   default(0.0)
+#  rate            :decimal(15, 4)
 #  discounted_rate :decimal(15, 4)
 #  date            :date
 #  created_at      :datetime

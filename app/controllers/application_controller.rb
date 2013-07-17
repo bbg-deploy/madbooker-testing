@@ -56,7 +56,8 @@ class ApplicationController < ActionController::Base
   
   def hotel_for_user
     return nil unless current_user
-    current_user.hotels.first
+    hotel = current_user.hotels.find_by_id(params[:hotel_id] || params[:id])
+    hotel ||= current_user.hotels.first
   end
   
   def private_or_public_hotel
