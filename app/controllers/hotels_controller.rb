@@ -37,7 +37,7 @@ class HotelsController < ApplicationController
   end
   
   def show
-    res current_hotel.decorate, nil, layout: "public"
+    res current_hotel.decorate
   end
   
   def delete_logo
