@@ -46,7 +46,7 @@ CREATE TABLE `bookings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hotel_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `room_type_id` int(11) DEFAULT NULL,
+  `bookable_id` int(11) DEFAULT NULL,
   `arrive` date DEFAULT NULL,
   `depart` date DEFAULT NULL,
   `rate` decimal(15,4) DEFAULT NULL,
@@ -67,6 +67,7 @@ CREATE TABLE `bookings` (
   `cc_zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `guid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bookable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -85,7 +86,7 @@ CREATE TABLE `bundles` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +195,7 @@ CREATE TABLE `packages` (
   `updated_at` datetime DEFAULT NULL,
   `active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -289,7 +290,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-18 10:57:36
+-- Dump completed on 2013-07-18 13:13:45
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -339,3 +340,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130708201024');
 INSERT INTO schema_migrations (version) VALUES ('20130716205035');
 
 INSERT INTO schema_migrations (version) VALUES ('20130718145554');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718171147');

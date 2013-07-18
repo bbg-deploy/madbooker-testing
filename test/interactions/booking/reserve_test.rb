@@ -28,7 +28,7 @@ class Booking::ReserveTest < MiniTest::Should::TestCase
   context "if booking is not valid" do
     setup do
       @hotel = Gen.hotel
-      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:cc_number => "", :arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes}))
+      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:cc_number => "", :arrive => "2013-03-13", :depart => "2013-03-14", bookable_id: 1).attributes}))
       @context = Context.new params: params, hotel: @hotel
       
       i = [Gen.inventory(date: Date.new(2013, 3, 13), room_type_id: 1)]
@@ -49,7 +49,7 @@ class Booking::ReserveTest < MiniTest::Should::TestCase
   context "if booking is  valid" do
     setup do
       @hotel = Gen.hotel!
-      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:arrive => "2013-03-13", :depart => "2013-03-14", room_type_id: 1).attributes.merge(:cc_number => "2341", :cc_cvv => "234")}))
+      params = ActionController::Parameters.new(remove_non_permitted_attrs({:booking => Gen.booking(:arrive => "2013-03-13", :depart => "2013-03-14", bookable_id: 1).attributes.merge(:cc_number => "2341", :cc_cvv => "234")}))
       @context = Context.new params: params, hotel: @hotel
       
       i = [Gen.inventory!(date: Date.new(2013, 3, 13), room_type_id: 1, hotel_id: @hotel.id)]

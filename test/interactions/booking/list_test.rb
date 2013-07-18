@@ -75,7 +75,7 @@ class Booking::ListTest < MiniTest::Should::TestCase
       @inventory = [Gen.inventory(room_type_id: @room_types[0].id), Gen.inventory(room_type_id: @room_types[1].id)]
       @hotel.stubs(:inventories).returns @inventory
       
-      @bookings = [Gen.booking(room_type_id: @room_types[0].id), Gen.booking(room_type_id: @room_types[1].id)]
+      @bookings = [Gen.booking(bookable_id: @room_types[0].id), Gen.booking(bookable_id: @room_types[1].id)]
       @hotel.stubs(:bookings).returns @bookings
       params = {date: "2013-03-13"}
       @context = Context.new params: params, hotel: @hotel

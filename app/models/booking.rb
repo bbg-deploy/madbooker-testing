@@ -5,7 +5,7 @@
 #  id                  :integer          not null, primary key
 #  hotel_id            :integer
 #  customer_id         :integer
-#  room_type_id        :integer
+#  bookable_id         :integer
 #  arrive              :date
 #  depart              :date
 #  rate                :decimal(15, 4)
@@ -26,13 +26,14 @@
 #  cc_zipcode          :string(255)
 #  guid                :string(255)
 #  state               :string(255)
+#  bookable_type       :string(255)
 #
 
 
 class Booking < ActiveRecord::Base
   
   belongs_to :hotel
-  belongs_to :room_type
+  belongs_to :bookable, polymorphic: true
   has_many :sales, :dependent => :destroy
   has_many :inventories, :through => :sales
   
@@ -62,6 +63,14 @@ class Booking < ActiveRecord::Base
   before_create :create_guid
   
   
+  
+  def room_type_id
+    if bookable.is_a? RoomType
+      bookable.id
+    else
+      bookable.room_type.id
+    end
+  end
   
   ## 
   # state stuff

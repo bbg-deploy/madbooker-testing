@@ -8,8 +8,10 @@
     = f.input :arrive, as: "hidden"
     = f.input :depart, as: "hidden"
     - if room.is_a? PackageDecorator
-      = f.input :package_id, as: "hidden", input_html: {value: room.id}
+      = f.input :bookable_id, as: "hidden", input_html: {value: room.id}
+      = f.input :bookable_type, as: "hidden", input_html: {value: "Package"}
     - else  
-      = f.input :room_type_id, as: "hidden", input_html: {value: room.room_type_id}
+      = f.input :bookable_id, as: "hidden", input_html: {value: room.room_type_id}
+      = f.input :bookable_type, as: "hidden", input_html: {value: "RoomType"}
 
     = f.submit "Yes!"

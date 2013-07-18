@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  include Booking::Params
+
   before_filter :ensure_hotel
   skip_filter :authenticate_user!
   layout "hotel"
@@ -35,12 +37,4 @@ class BooksController < ApplicationController
     hotel_from_subdomain
   end
   
-  def booking_params
-    par = params[:booking].permit :arrive, :depart, :room_type_id, :first_name, :last_name, :made_by_first_name,
-      :made_by_last_name, :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 
-      :cc_month, :cc_number
-    par[:arrive] = Chronic.parse( params[:booking][:arrive]).to_date unless params[:booking][:arrive].blank?
-    par[:depart] = Chronic.parse( params[:booking][:depart]).to_date unless params[:booking][:depart].blank?
-    par
-  end
 end

@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+  include Packages::Params
   before_filter :ensure_add_ons
   
   def index
@@ -32,9 +33,5 @@ class PackagesController < ApplicationController
     redirect_to [:new, current_hotel, :add_on], notice: "You must have Add ons before you can make packages" if current_hotel.add_ons.blank?
   end
   
-  def package_params
-    return @package_params if @package_params
-    @package_params ||= context.params[:package].permit :room_type_id, :rate, :discounted_rate, add_on_ids: []
-  end
   
 end

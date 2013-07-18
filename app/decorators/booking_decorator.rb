@@ -1,5 +1,7 @@
 class BookingDecorator < ApplicationDecorator
   delegate_all
+  
+  decorates_association :bookable
 
   attr_accessor :step
   
@@ -17,7 +19,7 @@ class BookingDecorator < ApplicationDecorator
   end
   
   def room_name
-    room_type.name
+    bookable.name
   end
   
   def made_by
@@ -33,7 +35,7 @@ class BookingDecorator < ApplicationDecorator
   end
   
   def summary
-    room = room_type.name
+    room = bookable.name
     
     "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{arrive} and departing on #{depart}."
   end

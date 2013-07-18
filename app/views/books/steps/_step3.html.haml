@@ -8,7 +8,8 @@
       = simple_form_for @booking, url: checkout_book_path, remote: true, html: {id: "checkout_form"} do |f|
         = f.input :arrive, as: "hidden"
         = f.input :depart, as: "hidden"
-        = f.input :room_type_id, as: "hidden"
+        = f.input :bookable_id, as: "hidden"
+        = f.input :bookable_type, as: "hidden"
     
         #summary
           = @booking.summary

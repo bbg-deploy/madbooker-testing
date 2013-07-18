@@ -15,7 +15,12 @@ module Packages::Params
   
     def package_params
       return @package_params if @package_params
-      @package_params ||= context.params[:package].permit :room_type_id, :rate, :discounted_rate, add_on_ids: []
+      if respond_to? :context
+        para = context.params
+      else
+        para = params
+      end
+      @package_params ||= para[:package].permit :room_type_id, :additional_price, add_on_ids: []
     end
   end
   

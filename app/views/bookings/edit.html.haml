@@ -5,7 +5,8 @@
   #room_info
     = f.input :arrive, as: "string"
     = f.input :depart, as: "string"
-    = f.association :room_type
+    = booking.bookable.name
+    /= f.association :room_type
   #registration_info
     = f.input :first_name
     = f.input :last_name

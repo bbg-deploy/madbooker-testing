@@ -17,8 +17,9 @@ class Package < ActiveRecord::Base
   belongs_to :room_type
   has_many :bundles
   has_many :add_ons, :through => :bundles
-  
-  validates_presence_of :hotel_id, :room_type_id, :rate
+  has_many :bookings, as: :bookable
+
+  validates_presence_of :hotel_id, :room_type_id, :additional_price
   
   scope :active, ->{where active: true}
   scope :inactive, ->{where active: false}

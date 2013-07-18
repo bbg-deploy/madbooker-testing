@@ -54,7 +54,8 @@ class << self
   def booking args = {}
     defaults = {
       :hotel_id           => 1,
-      :room_type_id       => 1,
+      :bookable_id        => 1,
+      :bookable_type      => "RoomType",
       :arrive             => Date.today,
       :depart             => Date.today,
       :rate               => (50..120).to_a.sample,

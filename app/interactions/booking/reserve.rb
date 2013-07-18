@@ -1,4 +1,5 @@
 class Booking::Reserve < Less::Interaction
+  include Booking::Params
   
   attr_accessor :error
   
@@ -16,10 +17,7 @@ class Booking::Reserve < Less::Interaction
   
   
   def booking
-    par = context.params[:booking].permit :arrive, :depart, :room_type_id, :first_name, :last_name, :made_by_first_name,
-      :made_by_last_name, :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 
-      :cc_month, :cc_number
-    @booking ||= context.hotel.bookings.new par
+    @booking ||= context.hotel.bookings.new booking_params
   end
   
   private
