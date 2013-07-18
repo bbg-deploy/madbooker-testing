@@ -19,5 +19,6 @@
 //= require turbolinks
 //= require jquery.creditCardValidator
 //= require uri
+//= require bootstrap
 //= require module
 //= require_tree .

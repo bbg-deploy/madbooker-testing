@@ -104,23 +104,23 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
     end
     
     
-    # This test requires activerecord and the database
-    # context "with an inventory matching arrival and departure dates but no availability on one date" do
-    #   setup do
-    #     @i = [
-    #         Gen.inventory(date: Date.parse("2013-03-14"), room_type_id: 1, available_rooms: 5, bookings_count: 5),
-    #         Gen.inventory(date: Date.parse("2013-03-15"), room_type_id: 1), 
-    #         Gen.inventory(date: Date.parse("2013-03-15"), room_type_id: 2)
-    #       ]
-    #     room_finder.stubs(:inventories).returns @i
-    #   end
-    # 
-    #   should "return an empty array" do
-    #     res = room_finder.run
-    #     assert_equal [], res.object
-    #     assert res.error?        
-    #   end
-    # end
+    context "with an inventory matching arrival and departure dates but no availability on one date" do
+      setup do
+        hotel = Gen.hotel!
+        @i = [
+            Gen.inventory!(hotel_id: hotel.id, date: Date.parse("2013-03-14"), room_type_id: 1, available_rooms: 5, sales_count: 5),
+            Gen.inventory!(hotel_id: hotel.id, date: Date.parse("2013-03-15"), room_type_id: 1, available_rooms: 0), 
+            Gen.inventory!(hotel_id: hotel.id, date: Date.parse("2013-03-15"), room_type_id: 2)
+          ]
+        params = {:booking => {:arrive => "2013-03-14", :depart => "2013-03-16"}}
+        @context = Context.new params: params, hotel: hotel
+      end
+    
+      should "return an empty array" do
+        res = room_finder.run
+        assert_equal [], res.available_rooms
+      end
+    end
     
     
     context "with an inventory matching only the arrival date dates" do
@@ -132,7 +132,7 @@ class Booking::RoomFinderTest < MiniTest::Should::TestCase
         room_finder.stubs(:inventories).returns @i
       end
 
-      should "return an empty array" do
+      should "return an room" do
         res = room_finder.run
         assert_equal [@i[0]], res.available_rooms
       end

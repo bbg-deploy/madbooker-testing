@@ -2,10 +2,9 @@
 - package ||= @package || current_hotel.packages.build
 
 = simple_nested_form_for [current_hotel, package] do |f|
-  = f.association :room_type
-  = f.input :rate
-  = f.input :discounted_rate
-  = f.association :add_ons, required: true
+  = f.association :room_type, collection: current_hotel.room_types.map{|a| ["#{a.name} (#{a.default_rate})", a.id]}
+  = f.input :additional_price
+  = f.association :add_ons, required: true, collection: current_hotel.add_ons.active.map{|a| ["#{a.name} (#{a.price})", a.id]}
   = f.submit "Save"
 
 

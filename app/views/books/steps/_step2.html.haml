@@ -5,14 +5,7 @@
   
   - if @booking.step == 2
     - @available_rooms.each do |room|
-      .room
-        .name= room.room_type.name
-        .description= room.room_type.description
-        = render "/books/steps/price", room: room
-      %div
-        = simple_form_for @booking, url: select_room_book_path, remote: true do |f|
-          = f.input :arrive, as: "hidden"
-          = f.input :depart, as: "hidden"
-          = f.input :room_type_id, as: "hidden", input_html: {value: room.room_type_id}
-    
-          = f.submit "Yes!"
+      = render "/books/steps/step2_form", room: room.decorate
+      - room.room_type.packages.active.each do |package|
+        - pack = package.decorate.with_inventory room
+        = render "/books/steps/step2_form", room: pack

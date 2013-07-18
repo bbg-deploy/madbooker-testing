@@ -2,14 +2,13 @@
 #
 # Table name: packages
 #
-#  id              :integer          not null, primary key
-#  hotel_id        :integer
-#  room_type_id    :integer
-#  rate            :decimal(15, 4)
-#  discounted_rate :decimal(15, 4)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  active          :boolean          default(TRUE)
+#  id               :integer          not null, primary key
+#  hotel_id         :integer
+#  room_type_id     :integer
+#  additional_price :decimal(15, 4)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  active           :boolean          default(TRUE)
 #
 
 class Package < ActiveRecord::Base
@@ -19,6 +18,8 @@ class Package < ActiveRecord::Base
   has_many :bundles
   has_many :add_ons, :through => :bundles
   
-  
   validates_presence_of :hotel_id, :room_type_id, :rate
+  
+  scope :active, ->{where active: true}
+  scope :inactive, ->{where active: false}
 end

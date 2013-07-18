@@ -105,8 +105,7 @@ class << self
     defaults = {
       :hotel_id        => 1,
       :room_type_id    => 1,
-      :rate            => (50..120).to_a.sample,
-      :discounted_rate => nil,
+      :additional_price=> (50..120).to_a.sample,
       :active          => true
     }
     make Package, defaults, args     

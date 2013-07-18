@@ -17,11 +17,8 @@ class RoomType < ActiveRecord::Base
   belongs_to :hotel
   has_many :inventories
   has_many :bookings
+  has_many :packages
   
-  
-  def before_save
-    p attributes
-  end
   
   validates_presence_of :name, :number_of_rooms, :default_rate
 end

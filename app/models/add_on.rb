@@ -19,4 +19,8 @@ class AddOn < ActiveRecord::Base
   has_many :packages, :through => :bundles
   
   validates_presence_of :name, :price, :hotel_id
+  
+  
+  scope :active, ->{where active: true}
+  scope :inactive, ->{where active: false}
 end
