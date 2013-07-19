@@ -22,10 +22,13 @@
     = @hotel.revenue_daily_average
 
 .revenue_by_room_type
-  Revenue by room type this
-  .week
-  .month
-  .daily_average
+  Revenue by room type 
+  - @hotel.revenue_by_room_type.each do |room_type|
+    .room_type
+      = room_type.name
+      .week= room_type.week
+      .month= room_type.month
+      .daily_average= room_type.average
 
 .revenue_per_add_on
   Revenue per add on this
