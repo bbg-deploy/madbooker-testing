@@ -37,7 +37,7 @@ class HotelsController < ApplicationController
   end
   
   def show
-    res current_hotel.decorate
+    @hotel = DashboardDecorator.decorate current_hotel
   end
   
   def delete_logo

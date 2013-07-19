@@ -78,12 +78,14 @@ class << self
   end
 
   def sale args = {}
+    price = (50..120).to_a.sample
     defaults = {
       :inventory_id    => 1,
       :booking_id      => 1,
       :hotel_id        => 1,
-      :rate            => (50..120).to_a.sample,
+      :rate            => price,
       :discounted_rate => 0,
+      :price           => price,
       :date            => Date.today,
     }
     make Sale, defaults, args 

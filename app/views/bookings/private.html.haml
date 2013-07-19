@@ -32,7 +32,9 @@
     = link_to "Cancel", cancel_hotel_booking_path(current_hotel, @booking), method: :put
   - unless @booking.no_show?
     = link_to "No show", no_show_hotel_booking_path(current_hotel, @booking), method: :put
-  - unless @booking.paid?
+  - if @booking.paid
+    = link_to "Unpay", pay_hotel_booking_path(current_hotel, @booking), method: :put
+  - else
     = link_to "Pay", pay_hotel_booking_path(current_hotel, @booking), method: :put
   - unless @booking.open?
     = link_to "Open", open_hotel_booking_path(current_hotel, @booking), method: :put

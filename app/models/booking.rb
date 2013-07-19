@@ -27,6 +27,7 @@
 #  guid                :string(255)
 #  state               :string(255)
 #  bookable_type       :string(255)
+#  paid                :datetime
 #
 
 
@@ -77,12 +78,11 @@ class Booking < ActiveRecord::Base
   ##
   include SimpleStates
   self.initial_state = :open
-  states :open, :checked_in, :canceled, :no_show, :paid, :checked_out
+  states :open, :checked_in, :canceled, :no_show, :checked_out
   event :open, :to => :open
   event :check_out, :to => :checked_out
   event :check_in, :to => :checked_in
   event :cancel, :to => :canceled
-  event :pay, :to => :paid
   event :no_show, :to => :no_show
   
   

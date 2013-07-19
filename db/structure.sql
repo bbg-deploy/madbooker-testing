@@ -68,8 +68,9 @@ CREATE TABLE `bookings` (
   `guid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `bookable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,8 +237,9 @@ CREATE TABLE `sales` (
   `date` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `price` decimal(15,4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +292,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-18 13:13:45
+-- Dump completed on 2013-07-18 16:15:19
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -342,3 +344,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130716205035');
 INSERT INTO schema_migrations (version) VALUES ('20130718145554');
 
 INSERT INTO schema_migrations (version) VALUES ('20130718171147');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718190102');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718201419');

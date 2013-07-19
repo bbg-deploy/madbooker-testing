@@ -3,7 +3,7 @@ require 'test_helper'
 class Booking::ReserveTest < MiniTest::Should::TestCase
   
   def remove_non_permitted_attrs hash
-    hash[:booking].delete_if {|k,v| k.to_s.in? %w(id hotel_id encrypted_cc_number encrypted_cc_cvv state customer_id rate discounted_rate created_at updated_at guid) }
+    hash[:booking].delete_if {|k,v| k.to_s.in? %w(id hotel_id encrypted_cc_number encrypted_cc_cvv state customer_id rate discounted_rate created_at updated_at guid paid) }
     hash
   end
 

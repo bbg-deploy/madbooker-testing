@@ -27,14 +27,15 @@
 class Hotel < ActiveRecord::Base
   
   belongs_to :owner, :class_name => "User"
-  has_many :room_types
-  has_many :inventories
-  has_many :bookings
-  has_many :memberships
+  has_many :room_types, :dependent => :destroy
+  has_many :inventories, :dependent => :destroy
+  has_many :bookings, :dependent => :destroy
+  has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
-  belongs_to :currency
-  has_many :add_ons
-  has_many :packages
+  belongs_to :currency, :dependent => :destroy
+  has_many :add_ons, :dependent => :destroy
+  has_many :packages, :dependent => :destroy
+  has_many :sales, :dependent => :destroy
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 

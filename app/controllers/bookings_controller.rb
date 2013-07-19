@@ -41,32 +41,38 @@ class BookingsController < ApplicationController
     
   def check_in
     current_hotel.bookings.find(params[:id]).check_in!
-    redirect_to action: :show, notice: "Checked in."
+    redirect_to( {action: :show}, notice: "Checked in.")
   end
   
   def check_out
     current_hotel.bookings.find(params[:id]).check_out!
-    redirect_to action: :show, notice: "Checked out."
+    redirect_to( {action: :show}, notice: "Checked out.")
   end
   
   def cancel
     current_hotel.bookings.find(params[:id]).cancel!
-    redirect_to action: :show, notice: "Cancel."
+    redirect_to( {action: :show}, notice: "Cancel.")
   end
   
   def open
     current_hotel.bookings.find(params[:id]).open!
-    redirect_to action: :show, notice: "Open."
+    redirect_to( {action: :show}, notice: "Open.")
   end
   
   def no_show
     current_hotel.bookings.find(params[:id]).no_show!
-    redirect_to action: :show, notice: "No show."
+    redirect_to( {action: :show}, notice: "No show.")
   end
   
   def pay
-    current_hotel.bookings.find(params[:id]).pay!
-    redirect_to action: :show, notice: "paid."
+    booking = current_hotel.bookings.find(params[:id])
+    if booking.paid
+      booking.update_attribute :paid, nil
+      redirect_to( {action: :show}, notice: "unpaid.")
+    else
+      booking.update_attribute :paid, Time.zone.now
+      redirect_to( {action: :show}, notice: "paid.")
+    end
   end
   
 

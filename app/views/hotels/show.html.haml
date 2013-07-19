@@ -15,8 +15,11 @@
 .total_revenue
   Total revenue this
   .week
+    = @hotel.revenue_this_week
   .month
+    = @hotel.revenue_this_month
   .daily_average
+    = @hotel.revenue_daily_average
 
 .revenue_by_room_type
   Revenue by room type this

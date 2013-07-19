@@ -11,6 +11,7 @@
 #  date            :date
 #  created_at      :datetime
 #  updated_at      :datetime
+#  price           :decimal(15, 4)
 #
 
 class Sale < ActiveRecord::Base
@@ -18,5 +19,10 @@ class Sale < ActiveRecord::Base
   belongs_to :hotel
   belongs_to :booking
   
-  validates_presence_of :inventory_id, :booking_id, :hotel_id, :rate, :date
+  validates_presence_of :inventory_id, :booking_id, :hotel_id, :rate, :date, :price
+  
+  scope :range, ->(range){ where date: range }
+  scope :paid, ->{ joins(:booking).where("paid is not null") }
+  
+  
 end
