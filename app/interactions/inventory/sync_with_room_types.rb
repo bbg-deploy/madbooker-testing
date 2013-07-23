@@ -52,14 +52,10 @@ class Inventory::SyncWithRoomTypes < Less::Interaction
     @hotel = context.hotel if context.hotel.is_a? Hotel
     @hotel ||= Hotel.find(context.hotel.id)
   end
-  
-  def clear_exisitng_inventories!
-    hotel.inventories.where( date: range).delete_all
-  end
-  
+    
   def create_new_inventories!
-    missing_dates.each do |date|
-      inventory_prototypes.each do |inventory_proto|
+    inventory_prototypes.each do |inventory_proto|
+        missing_dates(inventory_proto.room_type_id).each do |date|
         hotel.inventories.create! inventory_proto.attributes.merge(date: date)
       end
     end
@@ -73,10 +69,9 @@ class Inventory::SyncWithRoomTypes < Less::Interaction
     end
   end
   
-  def missing_dates
-    return @missing_dates if @missing_dates
-    has_dates = hotel.inventories.select("date").where(date: range).order("date asc").pluck("date")
-    @missing_dates = range.to_a - has_dates
+  def missing_dates room_type_id
+    has_dates = hotel.inventories.select("date").where(room_type_id: room_type_id).where(date: range).order("date asc").pluck("date")
+    range.to_a - has_dates
   end
   
   

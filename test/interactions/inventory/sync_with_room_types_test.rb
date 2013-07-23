@@ -16,7 +16,8 @@ class Inventory::SyncWithRoomTypesTest < MiniTest::Should::TestCase
         %w(created_at updated_at hotel_id).each {|s| rt.delete s}
         @params << rt
       end
-
+      Inventory.delete_all
+      RoomType.delete_all
       @context = Context.new(user: Gen.user(id: 7), params: @params, hotel: @hotel)
       @raises = true
       @range = Date.current..(Date.current.advance( years: 2) - 1)
@@ -27,7 +28,7 @@ class Inventory::SyncWithRoomTypesTest < MiniTest::Should::TestCase
       setup do
       end
 
-      should "create a hotel, two room types, and a shit ton of inventories and set the hotel owner" do
+      should "create 2 years of inventories" do
         assert_difference "Inventory.count", 1460 do #365 * 2 (years) * 2 (room types)
           sync.run
         end

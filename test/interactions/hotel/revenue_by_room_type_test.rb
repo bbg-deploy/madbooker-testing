@@ -14,6 +14,8 @@ class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
     @hotel = Gen.hotel
     @hotel.stubs(:room_types).returns @room_types
     @hotel.stubs(:packages).returns(stub active: @packages)
+    @hotel.stubs(:sales).returns([])
+    @hotel
   end
   
   def assert_values row, week, month, average
@@ -22,12 +24,13 @@ class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
     assert_equal average, row.average
   end
   
-  context "a hotel with no data" do
+  context "a hotel with no packages or sales" do
     setup do
       @packages = []
-      @room_types = [Gen.room_type]
+      @room_types = [Gen.room_type(id: 2)]
+      @get_data = []
       @context = Context.new hotel: hotel
-      #stub_data
+      rev.stubs(:get_data).returns @get_data
     end
     should "return an empty set" do
       res = rev.run
@@ -38,11 +41,35 @@ class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
   
   context "a hotel with no sales" do
     setup do
-      
+      @packages = [Gen.package(id: 1)]
+      @room_types = [Gen.room_type(id: 2)]
+      @get_data = []
+      @context = Context.new hotel: hotel
+      rev.stubs(:get_data).returns @get_data
     end
-
-    should "description" do
-      
+    should "return an empty set" do
+      res = rev.run
+      assert_equal 2, res.size
+      assert_values res[0], 0, 0, 0
+      assert_values res[1], 0, 0, 0
+    end
+  end
+  
+  context "a hotel with sales" do
+    setup do
+      @packages = [Gen.package(id: 1)]
+      @room_types = [Gen.room_type(id: 2)]
+      @get_data = []
+      @context = Context.new hotel: hotel
+      rev.stubs(:get_data).with(Time.week, :sum).returns( {[2, "RoomType"]=>180.0, [1, "Package"]=>75.0})
+      rev.stubs(:get_data).with(Time.month, :sum).returns( {[2, "RoomType"]=>181.0, [1, "Package"]=>76.0})
+      rev.stubs(:get_data).with(Time.month, :average).returns( {[2, "RoomType"]=>182.0, [1, "Package"]=>77.0})
+    end
+    should "return good data" do
+      res = rev.run
+      assert_equal 2, res.size
+      assert_values res[0], 180, 181, 182
+      assert_values res[1], 75, 76, 77
     end
   end
   

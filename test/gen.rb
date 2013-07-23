@@ -45,7 +45,7 @@ class << self
       :rate            => (50..120).to_a.sample,
       :discounted_rate => nil,
       :date            => Date.today,
-      :room_type_id    => 1
+      :room_type_id    => rand(1000)
     }
     make Inventory, defaults, args 
   end

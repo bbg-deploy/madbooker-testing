@@ -9,11 +9,13 @@
 
 
   - current_hotel.memberships.includes(:user).decorate.each do |membership|
-    - next if membership.user_id == current_hotel.owner_id
     .member{id: dom_id(membership)}
       .name
         = membership.name
         - if membership.user.blank?
           (invited)
-      .link= link_to "Remove", hotel_membership_path(current_hotel, membership), method: :delete, remote: true
+        - if membership.user_id == current_hotel.owner_id
+          Owner
+        - else
+          .link= link_to "Remove", hotel_membership_path(current_hotel, membership), method: :delete, remote: true
 

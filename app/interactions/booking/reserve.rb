@@ -3,6 +3,8 @@ class Booking::Reserve < Less::Interaction
   
   attr_accessor :error
   
+  DATES_NOT_AVAILABLE = 499
+  
   expects :context
   
   def run
@@ -34,7 +36,7 @@ class Booking::Reserve < Less::Interaction
     return @inventory if @inventory
     i = room_finder.available_rooms.select{|i| i.room_type_id == booking.room_type_id} 
     if i.blank?
-      response.status = 400
+      response.status = DATES_NOT_AVAILABLE
       @error = "Date's not available"
       return
     end
@@ -59,6 +61,7 @@ class Booking::Reserve < Less::Interaction
       rescue ActiveRecord::RecordInvalid=>e
         response.status = 500
         @error = e.to_s
+        booking.errors.add :base, e.to_s
         return false
       end
     end

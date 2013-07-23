@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
   around_filter :set_time_zone
+  before_filter :set_reservation_cookie
+  after_filter :store_page_stat
 
   
   def current_hotel
@@ -85,5 +87,20 @@ class ApplicationController < ActionController::Base
     raise "do something here when there's no subdomain" 
   end
 
+  def set_reservation_cookie
+    return if account_subdomain.blank?
+    guid = UUIDTools::UUID.random_create.to_s.gsub("-", "")
+    session[:reservation] ||= guid
+    cookies[:reservation] ||= {
+      value: guid,
+      expires: 10.years.from_now,
+      domain: "#{account_subdomain}.#{App.domain}"
+    }
+  end
+  
+  def store_page_stat
+    return if account_subdomain.blank?
+    Stat.page hotel: hotel_from_subdomain, url: request.url, user_bug: session[:reservation], params: params
+  end
   
 end

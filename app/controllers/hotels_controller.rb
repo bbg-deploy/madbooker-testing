@@ -28,7 +28,7 @@ class HotelsController < ApplicationController
   end
   
   def update
-    res = Hotel::update.new(context).run
+    res = Hotel::Update.new(context).run
     if res.success?
       redirect_to [:edit, current_hotel], notice: "Saved"
     else

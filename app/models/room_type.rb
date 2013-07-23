@@ -15,7 +15,7 @@
 
 class RoomType < ActiveRecord::Base
   belongs_to :hotel
-  has_many :inventories
+  has_many :inventories, :dependent => :destroy
   has_many :bookings, as: :bookable
   has_many :packages
   

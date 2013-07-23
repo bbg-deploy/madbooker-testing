@@ -30,6 +30,7 @@ class Hotel::RevenueByRoomType < Less::Interaction
   end
   
   def get_data range, method
+    #{[1, "RoomType"]=>180.0, [8, "Package"]=>75.0}
     context.hotel.sales.range(range).paid.group([:bookable_id, :bookable_type]).send method, :price
   end
   
