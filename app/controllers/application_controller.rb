@@ -98,9 +98,13 @@ class ApplicationController < ActionController::Base
     }
   end
   
+  def user_bug
+    session[:reservation]
+  end
+  
   def store_page_stat
     return if account_subdomain.blank?
-    Stat.page hotel: hotel_from_subdomain, url: request.url, user_bug: session[:reservation], params: params
+    Stat.page hotel: hotel_from_subdomain, url: request.url, user_bug: user_bug, params: params
   end
   
 end

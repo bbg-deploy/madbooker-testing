@@ -18,6 +18,18 @@ class DashboardDecorator < HotelDecorator
     Hotel::RevenueByRoomType.new(Context.new hotel: current_hotel, user: current_user).run
   end
   
+  def searches_this_week
+    model.stats.searches.range(Time.week).count
+  end
+  
+  def searches_this_month
+    model.stats.searches.range(Time.month).count
+  end
+  
+  def searches_daily_average
+    searches_this_month / Date.current.day
+  end
+  
   
   private
   

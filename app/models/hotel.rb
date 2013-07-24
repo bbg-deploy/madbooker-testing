@@ -36,6 +36,7 @@ class Hotel < ActiveRecord::Base
   has_many :add_ons, :dependent => :destroy
   has_many :packages, :dependent => :destroy
   has_many :sales, :dependent => :destroy
+  has_many :stats, :dependent => :destroy
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 

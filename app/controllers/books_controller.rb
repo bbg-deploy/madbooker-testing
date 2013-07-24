@@ -15,6 +15,7 @@ class BooksController < ApplicationController
     @booking = current_hotel.bookings.new(booking_params).decorate
     @booking.step = 2
     @available_rooms = Booking::RoomFinder.new(context: context).run.available_rooms
+    Stats::Search.new( context: context, available_rooms: @available_rooms, user_bug: user_bug).run
     render
   end
   
