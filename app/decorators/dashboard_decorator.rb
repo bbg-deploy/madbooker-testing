@@ -19,18 +19,24 @@ class DashboardDecorator < HotelDecorator
   end
   
   def searches_this_week
-    model.stats.searches.range(Time.week).count
+    x = model.stats.searches.range(Time.week).group(:mobile).count
+    "Mobile: #{x[true]}, Other: #{x[false]}"
   end
   
   def searches_this_month
-    model.stats.searches.range(Time.month).count
+    x = searches_this_month_raw
+    "Mobile: #{x[true]}, Other: #{x[false]}"
   end
   
   def searches_daily_average
-    searches_this_month / Date.current.day
+    x = searches_this_month_raw
+    "Mobile: #{x[true]/ Date.current.day}, Other: #{x[false]/ Date.current.day}"
   end
   
   
   private
+  def searches_this_month_raw
+    model.stats.searches.range(Time.month).group(:mobile).count
+  end
   
 end

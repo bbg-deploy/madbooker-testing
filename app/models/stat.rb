@@ -13,6 +13,7 @@
 #  data       :text
 #  created_at :datetime
 #  updated_at :datetime
+#  mobile     :boolean          default(FALSE)
 #
 
 class Stat < ActiveRecord::Base
@@ -28,16 +29,16 @@ class Stat < ActiveRecord::Base
   
   
   
-  def self.page url: "", hotel: nil, user_bug: "", params: nil
-    s = setup hotel: hotel, user_bug: user_bug, type: PAGE
+  def self.page url: "", hotel: nil, user_bug: "", params: nil, mobile: mobile
+    s = setup hotel: hotel, user_bug: user_bug, type: PAGE, mobile: mobile
     s.url = url
     s.data = filter_cc_(params).to_json
     s.save
     s
   end
   
-  def self.search hotel: hotel, user_bug: user_bug, available_rooms: available_rooms, dates: range
-    s = setup hotel: hotel, user_bug: user_bug, type: SEARCH
+  def self.search hotel: hotel, user_bug: user_bug, available_rooms: available_rooms, dates: range, mobile: mobile
+    s = setup hotel: hotel, user_bug: user_bug, type: SEARCH, mobile: mobile
     s.data = {available_rooms: available_rooms}.to_json
     s.start = dates.first
     s.end = dates.last
@@ -48,11 +49,12 @@ class Stat < ActiveRecord::Base
   
   private
   
-  def self.setup user_bug: user_bug, hotel: nil, type: type
+  def self.setup user_bug: user_bug, hotel: nil, type: type, mobile: mobile
     s = Stat.new
     s.hotel_id = hotel.id
     s.user_bug = user_bug
     s.type = type
+    s.mobile = mobile
     s.subdomain = hotel.subdomain
     s
   end

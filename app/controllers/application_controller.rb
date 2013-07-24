@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Pagination
   include Rendering
   include DeviseStuff
+  include StatsStuff
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -87,24 +88,4 @@ class ApplicationController < ActionController::Base
     raise "do something here when there's no subdomain" 
   end
 
-  def set_reservation_cookie
-    return if account_subdomain.blank?
-    guid = UUIDTools::UUID.random_create.to_s.gsub("-", "")
-    session[:reservation] ||= guid
-    cookies[:reservation] ||= {
-      value: guid,
-      expires: 10.years.from_now,
-      domain: "#{account_subdomain}.#{App.domain}"
-    }
-  end
-  
-  def user_bug
-    session[:reservation]
-  end
-  
-  def store_page_stat
-    return if account_subdomain.blank?
-    Stat.page hotel: hotel_from_subdomain, url: request.url, user_bug: user_bug, params: params
-  end
-  
 end
