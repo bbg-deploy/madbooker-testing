@@ -35,8 +35,8 @@ class Hotel::RevenueByRoomType < Less::Interaction
   end
   
   def fill_from_group group, method
-    output.each do |out|
-      group.each do |k, v|
+    group.each do |k, v|
+      output.each do |out|
         next unless out.id == k[0] && out.type == k[1]
         out.send "#{method}=", v
       end

@@ -39,7 +39,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_no_difference "RoomType.count" do
         assert_no_difference "Inventory.count" do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end
@@ -63,7 +63,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_no_difference "RoomType.count" do
         assert_no_difference "Inventory.count" do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end
@@ -88,7 +88,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_difference "RoomType.count", -1 do
         assert_difference "Inventory.count", -(inv_count / 2) do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end
@@ -113,7 +113,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_no_difference "RoomType.count" do
         assert_no_difference "Inventory.count" do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end
@@ -143,7 +143,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_difference "RoomType.count", 1 do
         assert_difference "Inventory.count", (inv_count /2) do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end
@@ -176,7 +176,7 @@ class Hotel::UpdateTest < MiniTest::Should::TestCase
         assert_no_difference "Hotel.count" do
         assert_difference "RoomType.count" do
         assert_difference "Inventory.count", new_inv_count do
-          hotel = update.run
+          hotel = update.run.object
         end
         end
         end

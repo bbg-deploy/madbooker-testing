@@ -43,6 +43,7 @@ class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
     setup do
       @packages = [Gen.package(id: 1)]
       @room_types = [Gen.room_type(id: 2)]
+      @packages[0].stubs(:room_type).returns(@room_types[0])
       @get_data = []
       @context = Context.new hotel: hotel
       rev.stubs(:get_data).returns @get_data
@@ -59,6 +60,7 @@ class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
     setup do
       @packages = [Gen.package(id: 1)]
       @room_types = [Gen.room_type(id: 2)]
+      @packages[0].stubs(:room_type).returns(@room_types[0])
       @get_data = []
       @context = Context.new hotel: hotel
       rev.stubs(:get_data).with(Time.week, :sum).returns( {[2, "RoomType"]=>180.0, [1, "Package"]=>75.0})
