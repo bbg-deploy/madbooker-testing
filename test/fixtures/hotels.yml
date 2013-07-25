@@ -20,7 +20,7 @@
 #  created_at                               :datetime
 #  updated_at                               :datetime
 #  time_zone                                :string(255)      default("Eastern Time (US & Canada)")
-#  minimal_invenotry_notification_threshold :integer          default(0)
+#  minimal_inventory_notification_threshold :integer          default(0)
 #  currency_id                              :integer          default(840)
 #
 

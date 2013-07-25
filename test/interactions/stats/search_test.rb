@@ -3,7 +3,7 @@ require 'test_helper'
 class Stats::SearchTest < MiniTest::Should::TestCase
 
   def search
-    @search ||= Stats::Search.new context: @context, available_rooms: @available_rooms, user_bug: "user", mobile: true
+    @search ||= Stats::Search.new context: @context, available_rooms: @available_rooms, user_bug: "user"
   end
   
   context "recording a search" do
@@ -14,7 +14,7 @@ class Stats::SearchTest < MiniTest::Should::TestCase
         Gen.inventory(room_type_id: 3)
         ]
       params = {:booking => {:arrive => "2013-03-13", :depart => "2013-03-17"}}
-      @context = Context.new hotel: Gen.hotel, params: params
+      @context = Context.new hotel: Gen.hotel, params: params, mobile: true
       Stat.any_instance.stubs(:save)
     end
 

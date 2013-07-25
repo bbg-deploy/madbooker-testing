@@ -72,7 +72,8 @@ class << self
       :cc_year            => Date.today.year+1,
       :cc_cvv             => "123",
       :cc_zipcode         => Faker::Address.zip,
-      :guid               => UUIDTools::UUID.random_create.to_s.gsub("-", "")
+      :guid               => UUIDTools::UUID.random_create.to_s.gsub("-", ""),
+      :state              => "open"
     }
     make Booking, defaults, args 
   end
@@ -87,6 +88,8 @@ class << self
       :discounted_rate => 0,
       :price           => price,
       :date            => Date.today,
+      :mobile          => false,
+      :state           => nil
     }
     make Sale, defaults, args 
   end

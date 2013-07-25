@@ -24,7 +24,19 @@ module StatsStuff
   
     def store_page_stat
       return if account_subdomain.blank?
-      Stat.page hotel: hotel_from_subdomain, url: request.url, user_bug: user_bug, params: params, mobile: mobile?
+      Stat.page url: request.url, context: context
+    end
+    
+    def look_to_book!
+      if session[:last_look].blank? || session[:last_look] < Time.current.advance(minutes: -20)
+        Stat.look context: context
+      end
+      session[:last_look] = Time.current 
+    end
+    
+    def look_to_booked!
+      session[:last_look] = nil
+      Stat.book context: context
     end
     
     def mobile?

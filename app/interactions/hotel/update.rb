@@ -13,14 +13,16 @@ class Hotel::Update < Less::Interaction
   end
   
   def update
-    save
-    hotel
+    res = Less::Response.new 200, hotel
+    res.status = 500 unless save
+    res.object = hotel
+    res
   end
   
   def save
     begin
       Hotel.transaction do
-        hotel.update_attributes! context.params[:hotel]
+        hotel.update_attributes! hotel_params
         if hotel.room_types.reload.count == 0
           hotel.errors.add :base, "You must have at least one room type."
           raise ActiveRecord::RecordInvalid.new hotel

@@ -134,7 +134,7 @@ CREATE TABLE `hotels` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `time_zone` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Eastern Time (US & Canada)',
-  `minimal_invenotry_notification_threshold` int(11) DEFAULT '0',
+  `minimal_inventory_notification_threshold` int(11) DEFAULT '0',
   `currency_id` int(11) DEFAULT '840',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -159,7 +159,7 @@ CREATE TABLE `inventories` (
   `updated_at` datetime DEFAULT NULL,
   `sales_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1133 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `room_types` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,13 @@ CREATE TABLE `sales` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `price` decimal(15,4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `mobile` tinyint(1) DEFAULT '0',
+  `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_sales_on_inventory_id` (`inventory_id`),
+  KEY `index_sales_on_booking_id` (`booking_id`),
+  KEY `index_sales_on_hotel_id` (`hotel_id`),
+  KEY `index_sales_on_state` (`state`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -274,7 +280,7 @@ CREATE TABLE `stats` (
   `data` text COLLATE utf8_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `mobile` tinyint(1) DEFAULT '0',
+  `mobile` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_stats_on_hotel_id` (`hotel_id`),
   KEY `index_stats_on_subdomain` (`subdomain`),
@@ -285,7 +291,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_start` (`start`),
   KEY `index_stats_on_end` (`end`),
   KEY `index_stats_on_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +331,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-24 11:37:26
+-- Dump completed on 2013-07-25 10:31:52
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -385,3 +391,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130718201419');
 INSERT INTO schema_migrations (version) VALUES ('20130722223428');
 
 INSERT INTO schema_migrations (version) VALUES ('20130724153638');
+
+INSERT INTO schema_migrations (version) VALUES ('20130724181819');
+
+INSERT INTO schema_migrations (version) VALUES ('20130725123319');
+
+INSERT INTO schema_migrations (version) VALUES ('20130725143101');

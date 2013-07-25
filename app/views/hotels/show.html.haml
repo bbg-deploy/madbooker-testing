@@ -39,17 +39,15 @@
 /  .month
 /  .daily_average
 
-.revenue_from_mobile
-  Revenue from mobile devices this
-  .week
-  .month
-  .daily_average
 
 .look_to_book
   Look to book this
   .week
+    = @hotel.look_to_book_week
   .month
+    = @hotel.look_to_book_month
   .daily_average
+    = @hotel.look_to_book_daily_average
 
 
 

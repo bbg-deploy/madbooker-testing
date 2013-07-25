@@ -32,6 +32,7 @@
 
 
 class Booking < ActiveRecord::Base
+  include StateScopes
   
   belongs_to :hotel
   belongs_to :bookable, polymorphic: true
@@ -50,11 +51,9 @@ class Booking < ActiveRecord::Base
     end
     where(arrive: date)
   }
-  scope :open, ->{where state: :open}
-  scope :no_shows, ->{where state: :no_show}
   
   
-  validates_presence_of :hotel_id, :room_type_id, :arrive, :depart, 
+  validates_presence_of :hotel_id, :bookable_id, :bookable_type, :arrive, :depart, 
     :rate, :cc_zipcode, :encrypted_cc_cvv, :cc_year, :cc_month, :encrypted_cc_number,
     :first_name, :last_name, :email
     
@@ -62,6 +61,7 @@ class Booking < ActiveRecord::Base
   validates_format_of :email_confirmation, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, allow_blank: true
   
   before_create :create_guid
+  after_save :persist_state_to_sales
   
   
   
@@ -90,6 +90,12 @@ class Booking < ActiveRecord::Base
   
   def create_guid
     self.guid = UUIDTools::UUID.random_create.to_s.gsub("-", "")
+  end
+  
+  def persist_state_to_sales
+    return true unless state_changed?
+    return true unless sales.count > 0
+    sales.update_all state: state
   end
   
 end

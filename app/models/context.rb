@@ -1,10 +1,12 @@
 class Context
-  attr_accessor :hotel, :user, :params
+  attr_accessor :hotel, :user, :params, :mobile, :user_bug
   
-  def initialize(args)
-    self.hotel  = args[:hotel]
-    self.user   = args[:user]
-    self.params = args[:params]
+  def initialize(hotel: nil, user: nil, params: params, mobile: nil, user_bug: "")
+    self.hotel    = hotel
+    self.user     = user
+    self.params   = params
+    self.mobile   = mobile
+    self.user_bug = user_bug
   end 
   
   def replace_params h, key = nil

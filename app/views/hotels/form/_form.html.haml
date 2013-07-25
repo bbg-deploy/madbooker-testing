@@ -10,7 +10,7 @@
   = f.input :google_analytics_code
   = f.input :fine_print
   /= f.input :room_rates_display, collection: Hotel::ROOM_RATE_DISPLAY, include_blank: false
-  = f.input :minimal_invenotry_notification_threshold
+  = f.input :minimal_inventory_notification_threshold
   = f.association :currency, collection: Currency.options_for_select
   = f.input :time_zone
   = f.input :logo

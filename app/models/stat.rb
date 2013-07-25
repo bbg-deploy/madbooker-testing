@@ -13,7 +13,7 @@
 #  data       :text
 #  created_at :datetime
 #  updated_at :datetime
-#  mobile     :boolean          default(FALSE)
+#  mobile     :boolean          default(FALSE), not null
 #
 
 class Stat < ActiveRecord::Base
@@ -21,24 +21,28 @@ class Stat < ActiveRecord::Base
   belongs_to :hotel
   
   #page types
-  PAGE = "page"
+  PAGE   = "page"
   SEARCH = "search"
+  LOOK   = "look"
+  BOOK   = "book"
+
   
-  scope :searches, ->{where type: SEARCH}
-  scope :range, ->(range){ where created_at: range }
+  scope :searches,      ->{where type: SEARCH}
+  scope :look_to_book,  ->{where type: [LOOK, BOOK]}
+  scope :range,         ->(range){ where created_at: range }
   
   
   
-  def self.page url: "", hotel: nil, user_bug: "", params: nil, mobile: mobile
-    s = setup hotel: hotel, user_bug: user_bug, type: PAGE, mobile: mobile
+  def self.page url: "", context: context
+    s = setup context: context, type: PAGE
     s.url = url
-    s.data = filter_cc_(params).to_json
+    s.data = filter_cc_(context.params).to_json
     s.save
     s
   end
   
-  def self.search hotel: hotel, user_bug: user_bug, available_rooms: available_rooms, dates: range, mobile: mobile
-    s = setup hotel: hotel, user_bug: user_bug, type: SEARCH, mobile: mobile
+  def self.search context: context, available_rooms: available_rooms, dates: range
+    s = setup context: context, type: SEARCH
     s.data = {available_rooms: available_rooms}.to_json
     s.start = dates.first
     s.end = dates.last
@@ -46,16 +50,28 @@ class Stat < ActiveRecord::Base
     s
   end
   
+  def self.look context: context
+    s = setup context: context, type: LOOK
+    s.save
+    s
+  end
+  
+  def self.book context: context
+    s = setup context: context, type: BOOK
+    s.save
+    s
+  end
+  
   
   private
   
-  def self.setup user_bug: user_bug, hotel: nil, type: type, mobile: mobile
+  def self.setup context: context, type: type
     s = Stat.new
-    s.hotel_id = hotel.id
-    s.user_bug = user_bug
+    s.hotel_id = context.hotel.id
+    s.user_bug = context.user_bug
     s.type = type
-    s.mobile = mobile
-    s.subdomain = hotel.subdomain
+    s.mobile = context.mobile || false
+    s.subdomain = context.hotel.subdomain
     s
   end
   
