@@ -3,7 +3,8 @@ class DashboardDecorator < HotelDecorator
   
   
   def revenue_this_week
-    mobile_other_total_from_group model.sales.range(Time.week).group(:mobile).paid.sum( :price)
+    o = mobile_other_total_from_group model.sales.range(Time.week).group(:mobile).paid.sum( :price)
+    #link_to o, [:searches, current_hotel, :reports]
   end
   
   def revenue_this_month
@@ -19,7 +20,8 @@ class DashboardDecorator < HotelDecorator
   end
   
   def searches_this_week
-    mobile_other_total_from_group model.stats.searches.range(Time.week).group(:mobile).count
+    o = mobile_other_total_from_group model.stats.searches.range(Time.week).group(:mobile).count
+    link_to o, searches_hotel_reports_path(current_hotel, range: :week)
   end
   
   def searches_this_month

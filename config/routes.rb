@@ -24,6 +24,11 @@ Madbooker::Application.routes.draw do
     resources :add_ons
     resources :check_ins
     resources :memberships
+    resource :reports do
+      collection do
+        get :searches
+      end
+    end
     resources :inventories do
       collection do
         get :form

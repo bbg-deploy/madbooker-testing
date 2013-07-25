@@ -94,10 +94,6 @@ group :test do
   # gem 'raindrops'
 end
 
-group :debug, :development do
-  gem 'debugger'
-end
-
 group :production, :staging do
   gem "passenger"
 end
