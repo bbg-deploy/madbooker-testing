@@ -60,11 +60,11 @@ gem "simple_states"
 group :development, :staging do
   gem 'meta_request'
   gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 
 group :development do
-  gem 'binding_of_caller'
   gem 'awesome_print'
   gem 'quiet_assets'
   gem 'rails-footnotes'
