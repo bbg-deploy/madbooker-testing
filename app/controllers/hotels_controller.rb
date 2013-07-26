@@ -7,7 +7,7 @@ class HotelsController < ApplicationController
   end
 
   def new
-    redirect_to [:edit, current_hotel] and return if current_hotel
+    redirect_to [:edit, current_hotel] and return if current_hotel && !Rails.env.development?
     hotel = Hotel.new
     hotel.room_types.build
     res hotel.decorate

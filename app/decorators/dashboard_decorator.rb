@@ -30,7 +30,7 @@ class DashboardDecorator < HotelDecorator
   
   def searches_daily_average
     x = searches_this_month_raw
-    mobile_other_total x[true]/ Date.current.day, x[false]/ Date.current.day
+    mobile_other_total x[true].to_d/ Date.current.day, x[false].to_d/ Date.current.day
   end
   
   def look_to_book_week
