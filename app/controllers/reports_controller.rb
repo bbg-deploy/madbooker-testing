@@ -13,6 +13,10 @@ class ReportsController < ApplicationController
     @revenue = Reports::Revenue.new(context:context).run
   end
   
+  def revenue_by_room_type
+    
+  end
+  
   private
   def date_range
     @date_range ||= DateRange.from_params params

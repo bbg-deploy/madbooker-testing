@@ -6,5 +6,14 @@
 
 #revenue_graph
   :coffeescript
-    data = #{@revenue.data}
+    data = #{@revenue.revenue}
     MB.Graphs.Line.render "#revenue_graph", "Total Revenue", data
+
+#booking_graph
+  :coffeescript
+    data = #{@revenue.booking}
+    MB.Graphs.Line.render "#booking_graph", "Booking Totals", data
+    
+    
+    
+    

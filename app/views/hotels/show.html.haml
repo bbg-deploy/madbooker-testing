@@ -25,7 +25,7 @@
     = @hotel.revenue_daily_average
 
 .revenue_by_room_type
-  Revenue by room type 
+  = link_to "Revenue by room type ", revenue_by_room_type_hotel_reports_path(current_hotel)
   - @hotel.revenue_by_room_type.each do |room_type|
     .room_type
       = room_type.name
