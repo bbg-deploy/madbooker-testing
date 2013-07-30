@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
-
 gem 'mysql2'
 gem 'colored'
 gem 'uuidtools'
@@ -48,13 +47,13 @@ gem "simple_states"
 
 # Gems used only for assets and not required
 # in production environments by default.
-# group :assets do
+group :assets do
 #   gem 'jquery-rails'
-#   gem 'compass-rails'
-#   gem 'compass-colors'
+   gem 'compass-rails'
+   gem 'compass-colors'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
-# end
+end
 
 
 group :development, :staging do
