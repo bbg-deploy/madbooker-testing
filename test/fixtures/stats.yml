@@ -7,7 +7,7 @@
 #  start      :date
 #  end        :date
 #  user_bug   :string(255)
-#  type       :string(255)
+#  kind       :string(255)
 #  url        :string(255)
 #  subdomain  :string(255)
 #  data       :text

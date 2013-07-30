@@ -27,6 +27,7 @@ Madbooker::Application.routes.draw do
     resource :reports do
       collection do
         get :searches
+        get :revenue
       end
     end
     resources :inventories do

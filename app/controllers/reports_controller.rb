@@ -5,8 +5,12 @@ class ReportsController < ApplicationController
   end
   
   def searches
-    #@searches = 
+    @searches = current_hotel.stats.searches.range(date_range.to_r)
     render action: :show
+  end
+  
+  def revenue
+    @revenue = Reports::Revenue.new(context:context).run
   end
   
   private

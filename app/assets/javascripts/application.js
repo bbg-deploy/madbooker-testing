@@ -20,5 +20,7 @@
 //= require jquery.creditCardValidator
 //= require uri
 //= require bootstrap
+// require d3.v3.min
+//= require highcharts
 //= require module
 //= require_tree .

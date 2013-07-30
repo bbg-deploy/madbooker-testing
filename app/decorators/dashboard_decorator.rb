@@ -21,7 +21,7 @@ class DashboardDecorator < HotelDecorator
   
   def searches_this_week
     o = mobile_other_total_from_group model.stats.searches.range(Time.week).group(:mobile).count
-    link_to o, searches_hotel_reports_path(current_hotel, range: :week)
+    link_to o, searches_hotel_reports_path(current_hotel, date_range: :month)
   end
   
   def searches_this_month
@@ -34,15 +34,15 @@ class DashboardDecorator < HotelDecorator
   end
   
   def look_to_book_week
-    mobile_other_average *look_to_book_ratio( model.stats.range(Time.week).group(:type, :mobile).look_to_book.count)
+    mobile_other_average *look_to_book_ratio( model.stats.range(Time.week).group(:kind, :mobile).look_to_book.count)
   end
   
   def look_to_book_month
-    mobile_other_average *look_to_book_ratio( model.stats.range(Time.month).group(:type, :mobile).look_to_book.count)    
+    mobile_other_average *look_to_book_ratio( model.stats.range(Time.month).group(:kind, :mobile).look_to_book.count)    
   end
   
   def look_to_book_daily_average
-    m, o  = look_to_book_ratio( model.stats.range(Time.month).group(:type, :mobile).look_to_book.count)    
+    m, o  = look_to_book_ratio( model.stats.range(Time.month).group(:kind, :mobile).look_to_book.count)    
     mobile_other_average m/Date.current.day, o/Date.current.day    
   end
   

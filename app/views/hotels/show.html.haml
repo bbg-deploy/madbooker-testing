@@ -16,7 +16,7 @@
     = @hotel.searches_daily_average
 
 .total_revenue
-  Total revenue this
+  = link_to "Total revenue this", revenue_hotel_reports_path(current_hotel)
   .week
     = @hotel.revenue_this_week
   .month

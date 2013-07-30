@@ -7,7 +7,7 @@
 #  start      :date
 #  end        :date
 #  user_bug   :string(255)
-#  type       :string(255)
+#  kind       :string(255)
 #  url        :string(255)
 #  subdomain  :string(255)
 #  data       :text
@@ -27,8 +27,8 @@ class Stat < ActiveRecord::Base
   BOOK   = "book"
 
   
-  scope :searches,      ->{where type: SEARCH}
-  scope :look_to_book,  ->{where type: [LOOK, BOOK]}
+  scope :searches,      ->{where kind: SEARCH}
+  scope :look_to_book,  ->{where kind: [LOOK, BOOK]}
   scope :range,         ->(range){ where created_at: range }
   
   
@@ -69,7 +69,7 @@ class Stat < ActiveRecord::Base
     s = Stat.new
     s.hotel_id = context.hotel.id
     s.user_bug = context.user_bug
-    s.type = type
+    s.kind = type
     s.mobile = context.mobile || false
     s.subdomain = context.hotel.subdomain
     s

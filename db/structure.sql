@@ -137,7 +137,7 @@ CREATE TABLE `hotels` (
   `minimal_inventory_notification_threshold` int(11) DEFAULT '0',
   `currency_id` int(11) DEFAULT '840',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `inventories` (
   `updated_at` datetime DEFAULT NULL,
   `sales_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1931 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `memberships` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `room_types` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `stats` (
   `start` date DEFAULT NULL,
   `end` date DEFAULT NULL,
   `user_bug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kind` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `subdomain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `data` text COLLATE utf8_unicode_ci,
@@ -285,12 +285,12 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_hotel_id` (`hotel_id`),
   KEY `index_stats_on_subdomain` (`subdomain`),
   KEY `index_stats_on_user_bug` (`user_bug`),
-  KEY `index_stats_on_type` (`type`),
   KEY `index_stats_on_url` (`url`),
   KEY `index_stats_on_start_and_end` (`start`,`end`),
   KEY `index_stats_on_start` (`start`),
   KEY `index_stats_on_end` (`end`),
-  KEY `index_stats_on_created_at` (`created_at`)
+  KEY `index_stats_on_created_at` (`created_at`),
+  KEY `index_stats_on_kind` (`kind`)
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -331,7 +331,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-25 10:31:52
+-- Dump completed on 2013-07-26 12:03:58
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -397,3 +397,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130724181819');
 INSERT INTO schema_migrations (version) VALUES ('20130725123319');
 
 INSERT INTO schema_migrations (version) VALUES ('20130725143101');
+
+INSERT INTO schema_migrations (version) VALUES ('20130726160142');

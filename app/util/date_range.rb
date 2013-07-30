@@ -2,10 +2,10 @@ class DateRange
   
   attr_accessor :range, :format, :custom_start_date, :custom_end_date
   
-  def initialize(range: range, start_date: start_date, end_date: end_date)
+  def initialize(range: "", start_date: nil, end_date: nil)
     @range             = range
-    @custom_start_date = Chronic.parse(start_date) if options[:start_date]
-    @custom_end_date   = Chronic.parse(end_date) if options[:end_date]
+    @custom_start_date = Chronic.parse(start_date) if start_date
+    @custom_end_date   = Chronic.parse(end_date) if end_date
   end
   
   def to_a
@@ -21,7 +21,7 @@ class DateRange
   end
   
   def self.from_params params
-    new params[:date_range], 
+    new range: params[:date_range], 
       start_date: params[:start_date], 
       end_date: params[:end_date]
   end
@@ -54,9 +54,9 @@ class DateRange
 
   def start_date
     case @range
-    when week:
+    when :week
       Date.week.start
-    when month:
+    when :month
       Date.month.start
     else
       Date.current.beginning_of_month
@@ -69,9 +69,9 @@ class DateRange
 
   def end_date
     case @range
-    when week:
+    when :week
       Date.week.end + 1.day
-    when month:
+    when :month
       Date.month.end + 1.day
     else
       Date.current + 1.day

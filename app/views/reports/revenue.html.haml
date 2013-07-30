@@ -1,0 +1,10 @@
+
+
+= render "/reports/show/nav"
+
+    
+
+#revenue_graph
+  :coffeescript
+    data = #{@revenue.data}
+    MB.Graphs.Line.render "#revenue_graph", "Total Revenue", data
