@@ -1,0 +1,223 @@
+$solid: 1px solid
+$border: $solid #999
+$border2: $solid #ccc
+$gutter_width: 10px
+$pad: 20px
+
+$page_width: 960px
+$small_col_width: 300px
+$big_col_width: $page_width - $small_col_width - $gutter_width * 2
+
+$small_col_width2: 325px
+$big_col_width2: $page_width - $small_col_width2 - $gutter_width * 2 - $pad * 4
+
+$border_width: 1px
+
+$bg_color: #eee
+$border_color: darken($bg_color, 50)
+
+$default_border_radius: 4px
+
+
+=header($font-weight: 300, $font-style: normal)
+  font:
+    family: "omnes-pro-1"
+    weight: $font-weight
+    style: $font-style  
+
+=museo($weight :300, $variant :normal)
+  font-family: "museo-sans-1", "museo-sans-2"
+  font-weight: $weight   
+  font-variant: $variant   
+ 
+=guarantee
+  padding: 25px 30px
+  background: rgba(255, 255, 255, 0.45) url('/images/badge_bg.png') no-repeat 220px 35px
+  border: 1px solid #ccc
+  border-left: none
+  margin: 30px 0
+  h3
+    font-size: 20px
+    +header(500)
+    color: #333
+    text-transform: uppercase
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+  h4
+    font-size: 38px
+    +header(100)
+    color: #ea1c74
+    text-transform: uppercase
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+  h5
+    font-size: 15px
+    +header(500)
+    color: #333
+    margin: 1px 0 0 0
+    padding: 0 0 0 0
+
+////////
+
+=green_gradient
+  +background-image(linear-gradient(#66d198, #50a477))
+
+=inner-shadow($x: 0, $y: 1px, $blur: 1px, $color: rgba(0, 0, 0, 0.5), $style: inset)
+  -moz-box-shadow: $style $x $y $blur $color
+  box-shadow: $style $x $y $blur $color
+
+=clear-me
+//+pie-clearfix
+
+
+///////
+
+
+=ls
+  letter-spacing: -0.02em
+
+=bordered
+  border-left: 1px solid #ccc
+  border-bottom: 1px solid #bbb
+
+=white_bg_rounded
+  padding: $pad
+  background-color: rgba(255,255,255,.3)
+  @include border-radius(5px)
+
+=border_top
+  border-top: 1px solid #40b0e1
+
+=border_bottom
+  border-bottom: 1px solid #0075a0
+
+=fr
+  float: right
+
+=fl
+  float: left
+
+=abs
+  position: absolute
+  
+.left
+  +fl
+
+.right
+  +fr
+  
+.rel
+  position: relative
+
+=clear
+  clear: both
+
+=tdnone
+  text-decoration: none
+
+=tc
+  text-align: center
+
+=tr
+  text-align: right
+
+.tr
+  +tr
+
+=tl
+  text-align: left  
+
+strong
+  font-weight: bold
+  
+
+div
+  //+pie-clearfix
+.c  
+  clear: both  
+  
+
+  
+  
+  
+=bb
+  border: 1px solid #333333
+
+=tdnone
+  text-decoration: none
+
+=georgia
+  font-family: georgia
+
+=arial
+  font-family: arial  
+
+=italic
+  font-style: italic
+
+=center
+  text-align: center
+
+=tc
+  text-align: center
+
+=font_sans
+  font-family: "Lucida Grande", arial, helvetica, sans-serif
+
+=arial
+  font-family: arial, helvetica, sans-serif
+
+=bold
+  font-weight: bold
+
+=normal
+  font-weight: normal  
+
+=uppercase
+  text-transform: uppercase
+
+=italic
+  font-style: italic
+
+=block
+  display: block
+
+=relative
+  position: relative
+
+=p0
+  padding: 0 0 0 0
+
+=m0
+  margin: 0 0 0 0
+
+=helvetica
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+=rel
+  position: relative
+
+=abs
+  position: absolute
+  
+
+.abs
+  +abs
+  
+.rel
+  +rel
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
