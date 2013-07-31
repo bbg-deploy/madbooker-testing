@@ -13,7 +13,6 @@
  *#= require 'calendar_styles/red'
  *#= require 'calendar_styles/grey'
  *= require 'ui-lightness/jquery-ui-1.10.3.custom.min'
- *= require "bootstrap"
  *= require_tree .
  */
 
