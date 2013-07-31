@@ -4,6 +4,7 @@
 //@import animate
 
 $pad: 30px
+$yellow: #fff5bd
 
 body
   font-family: "arial"
@@ -36,7 +37,7 @@ h1
   font-weight: normal
   line-height: 100%
   color: #222
-  margin: 15px 0 5px 0
+  margin: 0 0 5px 0
 
 h2
   font-size: 21px
@@ -91,7 +92,7 @@ div.input
     //+box-shadow(#bbb 0 3px 5px inset)
   textarea
     width: 100%
-    height: 200px
+    height: 100px
   &.boolean
     +rel
     padding: 0 0 0 0
@@ -122,15 +123,41 @@ div.input
       background: #333
 
 =form
-  padding: $pad
   border: 1px solid #ccc
   background: white
 
 #form_simple, #form
   +form
 
+#form  
+  h1
+    padding: $pad
+    margin: 0 0 0 0
+    background: $yellow
+  .section
+    padding: $pad $pad 0 $pad
+    border-top: 1px solid #ccc
+    h3
+      padding-top: 0px
+      margin-top: 0px
+      font-size: 20px
+  .form_action
+    padding: ($pad / 2) $pad
+    border-top: 1px solid #ccc
+    background: #ccc
+    input[type=submit]
+      padding: 10px 20px
+      +tc
+      background: #333
+      color: white
+      font-size: 14px
+      +bold
+      border: 1px solid #ccc
+      +arial
+
 #form_simple
   width: 400px
+  padding: $pad
 
 
 
