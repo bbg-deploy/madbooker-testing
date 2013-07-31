@@ -50,8 +50,8 @@ gem "simple_states"
 # in production environments by default.
 group :assets do
 #   gem 'jquery-rails'
-   gem 'compass-rails'
-   gem 'compass-colors'
+  gem 'compass-rails', git: "git://github.com/Compass/compass-rails.git", branch: 'rails4-hack'
+  gem 'compass-colors'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
 end

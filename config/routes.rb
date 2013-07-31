@@ -29,6 +29,7 @@ Madbooker::Application.routes.draw do
         get :searches
         get :revenue
         get :revenue_by_room_type
+        get :daily
       end
     end
     resources :inventories do

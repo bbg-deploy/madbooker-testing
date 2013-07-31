@@ -32,7 +32,7 @@ class Inventory::Form < Less::Interaction
   
   
   def inventories
-    @inventories ||= context.hotel.inventories.for_range range
+    @inventories ||= context.hotel.inventories.range range
   end
   
   def usables

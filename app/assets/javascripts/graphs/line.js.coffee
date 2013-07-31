@@ -485,6 +485,19 @@
       # 
       # init: ->
       #   @render "#revenue_graph", @convert( @data())
+      
+      series = (data)->
+        out = []
+        Object.keys(data[0]).each (name)->
+          unless name is "date"
+            out.add {name: name, data: data.map (o)-> o[name]}
+        out.map (o)->
+          {
+            name: o.name.titleize()
+            data: o.data.map (x)->+x
+            marker: { symbol: 'circle'}
+          }
+          
 
       render: (selector, title, data)->
         $(selector).highcharts {
@@ -499,19 +512,7 @@
             plotLines: [{ value: 0, width: 1, color: '#808080' }]
           }
           legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0 }
-          series: [{
-            name: 'Mobile'
-            data: data.map (o)-> +o.mobile
-          }
-          {
-             name: 'Other'
-             data: data.map (o)-> +o.other
-          }
-          {
-            name: 'Total'
-            data: data.map (o)-> +o.total
-          }
-          ]
+          series: series data
         }
         
       init: ->

@@ -40,7 +40,7 @@ class Booking::RoomFinder < Less::Interaction
   end
   
   def inventories
-    @inventories ||= context.hotel.inventories.for_range(range).with_availablity
+    @inventories ||= context.hotel.inventories.range(range).with_availablity
   end
   
   def first_or_average_inventory inventories

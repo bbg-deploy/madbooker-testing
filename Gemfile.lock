@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/Compass/compass-rails.git
+  revision: 32c16cb90f78053310b35199a970c53355bcd300
+  branch: rails4-hack
+  specs:
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+
+GIT
   remote: git://github.com/LessEverything/less_interactions.git
   revision: f3c3de9850ab3646c1d2bfdee0da74c98357d4c4
   specs:
@@ -93,8 +101,6 @@ GEM
       sass (~> 3.1)
     compass-colors (0.9.0)
       compass (>= 0.8.7)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     daemon_controller (1.1.4)
     daemons (1.1.9)
     debug_inspector (0.0.2)
@@ -285,7 +291,7 @@ DEPENDENCIES
   colored
   compass
   compass-colors
-  compass-rails
+  compass-rails!
   devise (= 3.0.0.rc)
   draper
   faker

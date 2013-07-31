@@ -18,3 +18,4 @@ tmp/**/*
 .ruby-version
 coverage
 erd.pdf
+.rvmrc

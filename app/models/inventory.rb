@@ -23,7 +23,7 @@ class Inventory < ActiveRecord::Base
   validates_presence_of :hotel_id, :room_type_id, :available_rooms, :date, :rate
   
   scope :for_month, ->(date){where date: date.change(day:1)..date.to_time.end_of_month}
-  scope :for_range, ->(range) { where date: range }
+  scope :range, ->(range) { where date: range }
   scope :for_date, ->(date) { where date: date }
   scope :with_availablity, ->{where("available_rooms - sales_count > 0")}
   
