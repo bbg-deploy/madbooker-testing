@@ -13,6 +13,10 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'mysql2'
 gem 'colored'
 gem 'compass'
+
+#below is for easy grid creation - http://susy.oddbird.net
+gem 'susy'
+
 gem 'uuidtools'
 gem 'haml-rails'
 #gem 'riddle', '1.5.1', git: 'git://github.com/stevenbristol/riddle.git', :branch => '1.5.1'

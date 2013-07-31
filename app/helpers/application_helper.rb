@@ -12,4 +12,5 @@ module ApplicationHelper
   def replace_content_with_partial(dom_el, partial)
     "$('#{dom_el}').html('#{escape_javascript(render(partial))}')".html_safe
   end
+
 end

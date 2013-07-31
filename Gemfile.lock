@@ -246,6 +246,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    susy (1.0.9)
+      compass (>= 0.12.2)
+      sass (>= 3.2.0)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -328,6 +331,7 @@ DEPENDENCIES
   simple_states
   simplecov
   spectator-attr_encrypted
+  susy
   thin
   timecop
   turbolinks
