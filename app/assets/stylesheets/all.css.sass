@@ -72,9 +72,8 @@ div.input
   padding: 0 0 15px 0
   label
     +block
-    padding: 0 0 5px 0
+    padding: 0 0 3px 0
     font-size: 14px
-
   input[type=email], input[type=password]
     background: white !important
     padding: 10px
@@ -84,6 +83,22 @@ div.input
     border-bottom: 1px solid #777
     margin: 0 0 0 0
     //+box-shadow(#bbb 0 3px 5px inset)
+  &.boolean
+    +rel
+    padding: 0 0 0 0
+    input[type=checkbox]
+      +abs
+    label
+      padding-left: 22px
+      font-size: 12px
+
+#link a 
+  +block
+  font-size: 12px
+  +tdnone
+  padding: 10px 0 0 0
+  color: #666
+
 
 .form-actions
   input[type=submit]
