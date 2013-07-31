@@ -6,39 +6,38 @@
       %h3 General Information
       = f.error :base, :error_method => :to_sentence
       = f.input :name, :label => 'Hotel Name'
-      = f.input :address, :label => 'Hotel Address'
-      = f.input :phone
-      = f.input :fax
+      = f.input :address, :label => 'Hotel Address', :hint => 'Please include your full mailing address.'
+      = f.input :phone, :placeholder => '555-555-5555'
+      = f.input :fax, :placeholder => '555-555-5555'
       = f.input :minimal_inventory_notification_threshold
       = f.association :currency, collection: Currency.options_for_select
       = f.input :time_zone
-      = f.input :logo
+      = f.input :logo, :hint => "XXXX"
       - if f.object.logo?
         #logo
           = image_tag f.object.logo.url(:thumb)
           = link_to 'delete logo', delete_logo_hotel_path(hotel), method: :delete, remote: true
     .section
       %h3 Website Information
-      = f.input :url
+      = f.input :url, :label => "Hotel Website URL", :hint => "http://yourwebsite.com"
       = f.input :subdomain
       http://yoursubdomain.madbooker.com
 
-      = f.input :google_analytics_code
-      Instructions needed
+      = f.input :google_analytics_code, :hint => "XXXXX"
 
-      = f.input :fine_print
+
+      = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This is the agreement the guest will agree to before submitting their booking", :placeholder => 'test'
       /= f.input :room_rates_display, collection: Hotel::ROOM_RATE_DISPLAY, include_blank: false
-      on the booking
 
 
     .section
       %h3 Room Types
       = f.fields_for :room_types do |ff|
-        = ff.input :name
-        = ff.input :description
-        = ff.input :number_of_rooms
-        = ff.input :default_rate
-        = ff.input :discounted_rate
+        = ff.input :name, :placeholder => 'Honeymoon Suite'
+        = ff.input :description, :placeholder => 'This beautiful 500sq ft room...'
+        = ff.input :number_of_rooms, :placeholder => '1'
+        = ff.input :default_rate, :placeholder => '1'
+        = ff.input :discounted_rate, :placeholder => '1'
         = ff.link_to_remove "Remove"
       = f.link_to_add "Add a Room Type", :room_types
     
