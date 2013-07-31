@@ -74,7 +74,13 @@ div.input
     +block
     padding: 0 0 3px 0
     font-size: 14px
-  input[type=email], input[type=password]
+  input[type=email], 
+  input[type=password], 
+  input[type=text], 
+  input[type=number], 
+  textarea,
+  input[type="url"],
+  input[type=tel]
     background: white !important
     padding: 10px
     font-size: 14px
@@ -83,6 +89,9 @@ div.input
     border-bottom: 1px solid #777
     margin: 0 0 0 0
     //+box-shadow(#bbb 0 3px 5px inset)
+  textarea
+    width: 100%
+    height: 200px
   &.boolean
     +rel
     padding: 0 0 0 0
@@ -112,12 +121,16 @@ div.input
     &:hover
       background: #333
 
-
-#form_simple
+=form
   padding: $pad
   border: 1px solid #ccc
-  width: 400px
   background: white
+
+#form_simple, #form
+  +form
+
+#form_simple
+  width: 400px
 
 
 
