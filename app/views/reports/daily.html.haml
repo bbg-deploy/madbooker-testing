@@ -1,0 +1,16 @@
+
+
+= render "/reports/show/nav"
+
+    
+
+#adr_graph
+  :coffeescript
+    data = #{@adr.adr_data}
+    MB.Graphs.Line.render "#adr_graph", "Average Daily Rate", data
+
+Revenue Per Available Room
+
+    
+    
+    
