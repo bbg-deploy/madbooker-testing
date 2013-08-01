@@ -34,25 +34,21 @@ class Reports::Funnel < Less::Interaction
   end
   
   def fix_url url
-    url.log
-    "http://xx.madbooker.dev/book"
-    "http://xx.madbooker.dev/book?a=1"
-    "http://xx.madbooker.dev/book?error=499"
-    "http://xx.madbooker.dev/book/checkout"
-    "http://xx.madbooker.dev/book/select_dates"
-    "http://xx.madbooker.dev/book/select_room"
-    "http://xx.madbooker.dev/bookings/0d7b0b80703b42debbdca0a24edc56a9"
-    "http://xx.madbooker.dev/bookings/a3966bd7ccfe4980adb33d4a9f0397ef"
-
     case true
     when url.blank?
       "none"
-    when "bookings" =~ /#{url}/
+    when url["bookings"] != nil
       "Booked"
+    when url.ends_with?( "checkout")
+      "Step 4"
     when url.ends_with?( "select_room")
-      "Step2"
+      "Step 3"
+    when url.ends_with?( "select_dates")
+      "Step 2"
+    when url.ends_with?( "book") || url["error=499"] != nil
+      "Step 1"
     else
-      "ASdf"
+      "Other"
     end
   end
     
@@ -99,15 +95,14 @@ class Reports::Funnel < Less::Interaction
   def normalize_urls urls_and_counts
     out = []
     urls_and_counts.each do |url_and_count|
-      url = fix_url url_and_count.url
-      new_url_and_count = out.select{|x| x.url == url}.first
+      new_url_and_count = out.select{|x| x.url == url_and_count.url}.first
       if new_url_and_count.nil?
-        new_url_and_count = uninited_data url
+        new_url_and_count = uninited_data url_and_count.url
         out << new_url_and_count
       end
       new_url_and_count.count += url_and_count.count
     end
-    out
+    out.sort {|a,b| a.count <=> b.count}
   end
   
 end
