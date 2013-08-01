@@ -28,6 +28,7 @@ class Stat < ActiveRecord::Base
 
   
   scope :searches,      ->{where kind: SEARCH}
+  scope :pages,          ->{where kind: PAGE}
   scope :look_to_book,  ->{where kind: [LOOK, BOOK]}
   scope :range,         ->(range){ where created_at: range }
   

@@ -6,25 +6,11 @@ class Reports::Revenue < Less::Interaction
   end
   
   def revenue
-    @revenue ||= fill_data(get_revenue_data).map do |os|
-      {
-        date: os.month,
-        mobile: os.mobile,
-        other: os.other,
-        total: os.total
-      }
-    end.to_json
+    @revenue ||= fill_data(get_revenue_data).to_json
   end
   
   def booking
-    @booking ||= fill_data(get_booking_data).map do |os|
-      {
-        date: os.month,
-        mobile: os.mobile,
-        other: os.other,
-        total: os.total
-      }
-    end.to_json
+    @booking ||= fill_data(get_booking_data).to_json
   end
   
   private 
@@ -42,7 +28,7 @@ class Reports::Revenue < Less::Interaction
       mobile = datum[0][0]
       month = date_for_month datum[0][1]
       amount = datum[1]
-      row = out.select{|x| x.month == month}.first
+      row = out.select{|x| x.date == month}.first
       next if row.nil?
       if mobile
         row.mobile = amount
@@ -66,7 +52,7 @@ class Reports::Revenue < Less::Interaction
   end
   
   def uninited_row( month: nil)
-    OpenStruct.new month: month, mobile: 0.0, other: 0.0, total: 0.0
+    OpenStruct.new date: month, mobile: 0.0, other: 0.0, total: 0.0
   end
   
   def date_for_month month
