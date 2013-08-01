@@ -3,7 +3,7 @@
   %head
     %title= title
     //= stylesheet_link_tag 'all', media: "all", "data-turbolinks-track" => true 
-    = stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true 
+    = stylesheet_link_tag 'all', media: "all"
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tag
     = yield(:head)
@@ -11,10 +11,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   %body
-    .container
-      #header
-        #nav
-          = render :partial => '/layouts/nav'
+    .container_simple
       #content
         %h1= yield(:title)
         - unless notice.blank?

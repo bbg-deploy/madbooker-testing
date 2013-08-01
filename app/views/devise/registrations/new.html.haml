@@ -1,10 +1,14 @@
-%h2 Sign up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, :autofocus => true
-    = f.input :password
-    = f.input :password_confirmation
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
+#form_simple
+	%h2 Let's Setup Your New Booking System!
+	%h3 Takes just 5 minutes to get setup!
+
+
+	= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+		= f.error_notification
+		.form-inputs
+			= f.input :email, :autofocus => true
+			= f.input :password
+			= f.input :password_confirmation
+		.form-actions
+			= f.button :submit, "Sign up"
+	= render "devise/shared/links"
