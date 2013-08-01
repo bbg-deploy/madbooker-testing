@@ -14,7 +14,7 @@ class Reports::Funnel < Less::Interaction
   
   private 
   def get_data
-    @get_data ||= normalize_urls context.hotel.stats.pages.group(:url, "month(created_at)").count
+    @get_data ||= context.hotel.stats.pages.group(:url, "month(created_at)").count
   end
   
   def fill_data
@@ -30,10 +30,11 @@ class Reports::Funnel < Less::Interaction
       struct = a.select{|x| x.date.month == month}.first
       struct.urls << uninited_data(fix_url(url), count)
     end
-    normalize_values a
+    normalize_data( ensure_each_has_same_urls a)
   end
   
   def fix_url url
+    url.log
     "http://xx.madbooker.dev/book"
     "http://xx.madbooker.dev/book?a=1"
     "http://xx.madbooker.dev/book?error=499"
@@ -53,8 +54,6 @@ class Reports::Funnel < Less::Interaction
     else
       "ASdf"
     end
-    "As#{ rand > 0.5 ? 1 :2}"
-    url
   end
     
   def uninited_row( month: nil)
@@ -75,7 +74,7 @@ class Reports::Funnel < Less::Interaction
     Date.current.change( month: month, day: 1)
   end
   
-  def normalize_values arr
+  def ensure_each_has_same_urls arr
     urls = arr.map(&:urls).flatten.map{|a| a.url}.flatten.uniq
     arr.each do |struct|
       urls.each do |url|
@@ -86,9 +85,29 @@ class Reports::Funnel < Less::Interaction
     arr
   end
   
-  def normalize_urls arr
+  def normalize_data arr
     out = []
-    
+    arr.each do |month|
+      struct = uninited_row month: month.date
+      struct.urls = normalize_urls month.urls
+      out << struct      
+    end
+    out
+  end
+  
+  # removes simliar urls while retaining their counts
+  def normalize_urls urls_and_counts
+    out = []
+    urls_and_counts.each do |url_and_count|
+      url = fix_url url_and_count.url
+      new_url_and_count = out.select{|x| x.url == url}.first
+      if new_url_and_count.nil?
+        new_url_and_count = uninited_data url
+        out << new_url_and_count
+      end
+      new_url_and_count.count += url_and_count.count
+    end
+    out
   end
   
 end
