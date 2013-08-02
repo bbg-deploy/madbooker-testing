@@ -53,13 +53,7 @@ gem "simple_states"
     gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
 group :assets do
 #   gem 'jquery-rails'
-<<<<<<< HEAD
-  gem "sass-rails"
-  gem 'compass-rails', git: "git://github.com/Compass/compass-rails.git", branch: 'rails4-hack'
-  gem 'compass-colors'
-=======
-  #gem 'compass-colors'
->>>>>>> d1ecd7276cee75e92fb2a9dc45a139fc153da151
+#  gem 'compass-colors'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
 end
