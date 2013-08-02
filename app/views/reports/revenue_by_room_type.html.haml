@@ -1,0 +1,19 @@
+
+
+= render "/reports/show/nav"
+
+    
+
+#revenue_by_room_type_graph
+  :coffeescript
+    data = #{@revenue_by_room.revenue}
+    MB.Graphs.Line.render "#revenue_by_room_type_graph", "Total Revenue", data
+
+#booking_by_room_type_graph
+  :coffeescript
+    data = #{@revenue_by_room.booking}
+    MB.Graphs.Line.render "#booking_by_room_type_graph", "Booking Totals", data
+    
+    
+    
+    

@@ -24,6 +24,7 @@ module StatsStuff
   
     def store_page_stat
       return if account_subdomain.blank?
+      context.hotel ||= hotel_from_subdomain
       Stat.page url: request.url, context: context
     end
     

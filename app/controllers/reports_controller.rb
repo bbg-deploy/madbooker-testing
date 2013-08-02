@@ -13,8 +13,8 @@ class ReportsController < ApplicationController
     @revenue = Reports::Revenue.new(context:context).run
   end
   
-  def revenue_by_room_type
-    
+  def revenue_by_room_type    
+    @revenue_by_room = Reports::RevenueByRoomType.new(context:context).run
   end
   
   def daily
