@@ -35,8 +35,6 @@ class Reports::Funnel < Less::Interaction
   
   def fix_url url
     case true
-    when url.blank?
-      "none"
     when url["bookings"] != nil
       "Booked"
     when url.ends_with?( "checkout")
@@ -51,13 +49,17 @@ class Reports::Funnel < Less::Interaction
       "Other"
     end
   end
+  
+  def order_steps step
+    (rand * 10).to_i
+  end
     
   def uninited_row( month: nil)
     OpenStruct.new date: month, urls: []
   end
   
   def uninited_data url = "", count = 0
-    OpenStruct.new url: url, count: count
+    OpenStruct.new url: url, count: count, order: 0
   end
   
   def init_months
@@ -98,11 +100,17 @@ class Reports::Funnel < Less::Interaction
       new_url_and_count = out.select{|x| x.url == url_and_count.url}.first
       if new_url_and_count.nil?
         new_url_and_count = uninited_data url_and_count.url
+        new_url_and_count.order = order_steps url_and_count.url
         out << new_url_and_count
       end
       new_url_and_count.count += url_and_count.count
     end
-    out.sort {|a,b| a.count <=> b.count}
+    sort_steps out
+  end
+  
+  def sort_steps arr
+    order = ["Step 1", "Step 2", "Step 3", "Step 4", "Booked", "Other"]
+    arr.sort {|a,b| order.index(a.url) <=> order.index(b.url)}
   end
   
 end

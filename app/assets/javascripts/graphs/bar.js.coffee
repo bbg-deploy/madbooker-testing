@@ -20,7 +20,6 @@
           
 
       render: (selector, title, data)->
-        p data
         $(selector).highcharts {
           chart: { type: 'column', margin: [ 50, 50, 100, 80] }
           title: { text: title, x: -20 }
