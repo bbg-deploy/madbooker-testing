@@ -9,10 +9,10 @@
       = f.input :address, :label => 'Hotel Address', :hint => 'Please include your full mailing address.'
       = f.input :phone, :placeholder => '555-555-5555'
       = f.input :fax, :placeholder => '555-555-5555'
-      = f.input :minimal_inventory_notification_threshold
+      = f.input :minimal_inventory_notification_threshold, :hint => "I don't know what this does."
       = f.association :currency, collection: Currency.options_for_select
       = f.input :time_zone
-      = f.input :logo, :hint => "XXXX"
+      = f.input :logo, :hint => "Size recommendations needed"
       - if f.object.logo?
         #logo
           = image_tag f.object.logo.url(:thumb)
@@ -23,7 +23,7 @@
       = f.input :subdomain
       http://yoursubdomain.madbooker.com
 
-      = f.input :google_analytics_code, :hint => "XXXXX"
+      = f.input :google_analytics_code, :hint => "I don't know how to set this up."
 
 
       = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This is the agreement the guest will agree to before submitting their booking", :placeholder => 'test'
@@ -31,13 +31,13 @@
 
 
     .section
-      %h3 Room Types
+      %h3 Creating Room Types
       = f.fields_for :room_types do |ff|
         = ff.input :name, :placeholder => 'Honeymoon Suite'
         = ff.input :description, :placeholder => 'This beautiful 500sq ft room...'
         = ff.input :number_of_rooms, :placeholder => '1'
         = ff.input :default_rate, :placeholder => '1'
-        = ff.input :discounted_rate, :placeholder => '1'
+        = ff.input :discounted_rate, :placeholder => '1', :hint=>'is this suppose to be a dollar amount or %, what does this do?'
         = ff.link_to_remove "Remove"
       = f.link_to_add "Add a Room Type", :room_types
     

@@ -38,7 +38,6 @@ gem 'coffee-filter'
 gem 'ruby-haml-js'
 gem 'memoist'
 gem 'thin'
-gem 'sass'
 gem 'draper'
 gem "settingslogic"
 gem "chronic"
@@ -54,6 +53,7 @@ gem "simple_states"
 # in production environments by default.
 group :assets do
 #   gem 'jquery-rails'
+  gem "sass-rails"
   gem 'compass-rails', git: "git://github.com/Compass/compass-rails.git", branch: 'rails4-hack'
   gem 'compass-colors'
 #   gem 'sassy-buttons'
