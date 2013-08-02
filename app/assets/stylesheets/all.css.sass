@@ -292,5 +292,30 @@ body#public
 
 
 
+///// calendar stuff
+
+th.monthName
+  font-size: 22px
+  padding: 10px 0
+td.day
+  font-size: 12px
+  .room_type
+    padding: 5px 0
+    width: 102px
+    .name
+      +bold
+      font-size: 13px
+    .available, .booked 
+      span
+        &:first-child
+          color: #ddd
+          width: 30px
+          +fl
+        &:last-child
+          color: white
+          width: 50px
+          +fr
+          +tr
+
 
 
