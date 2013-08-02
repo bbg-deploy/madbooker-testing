@@ -28,7 +28,8 @@ p
 *
   +box-sizing(border-box)
 
-      
+#content
+  min-height: 500px      
 /////////////////////////////////
 ////////// Text Styles //////////
 
@@ -227,13 +228,41 @@ body#public
       .description
         margin: 3px 0 0 0
 
+//$navwidth: $width / 7
 
-
+#nav
+  +horizontal-list
+  ul
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+    li 
+      padding: 0 0 0 0
+      border: 1px solid #666
+      border-left: none
+      a
+        +block
+        padding: 10px
+        +tc
+        color: white
+        //width: $navwidth
+        font-size: 13px
+        +background-image(linear-gradient(rgba(1, 1, 1, .35), rgba(1, 1, 1, .5)))
+        &:hover
+          +tdnone
+          +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
+      &:first-child
+        border-left: 1px solid #666
 
 //@import public
 
 
 
+#footer
+  font-size: 12px
+  div
+    +tc
+  a
+    padding: 10px
 
 
 
