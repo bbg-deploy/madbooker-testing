@@ -21,6 +21,7 @@ module Madbooker
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    
 
     config.generators do |g|
       g.test_framework      :mini_test
