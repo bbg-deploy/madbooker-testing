@@ -1,24 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', "4.0.0"
 
 
 
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'#, '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'mysql2'
 gem 'colored'
-gem 'compass'
 
 #below is for easy grid creation - http://susy.oddbird.net
 gem 'susy'
 
 gem 'uuidtools'
-gem 'haml-rails'
 #gem 'riddle', '1.5.1', git: 'git://github.com/stevenbristol/riddle.git', :branch => '1.5.1'
 #gem 'thinking-sphinx', '2.0.11', require: 'thinking_sphinx'
 #gem 'ts-delayed-delta', '1.1.3', require: 'thinking_sphinx/deltas/delayed_delta'
@@ -34,8 +32,7 @@ gem 'devise', "3.0.0.rc"
 gem 'simple_form'
 gem 'intercom'
 gem 'cancan'
-gem 'coffee-filter'
-gem 'ruby-haml-js'
+#gem 'coffee-filter'
 gem 'memoist'
 gem 'thin'
 gem 'draper'
@@ -51,11 +48,18 @@ gem "simple_states"
 
 # Gems used only for assets and not required
 # in production environments by default.
+    gem "haml-rails"
+    gem 'sass-rails'
+    gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
 group :assets do
 #   gem 'jquery-rails'
+<<<<<<< HEAD
   gem "sass-rails"
   gem 'compass-rails', git: "git://github.com/Compass/compass-rails.git", branch: 'rails4-hack'
   gem 'compass-colors'
+=======
+  #gem 'compass-colors'
+>>>>>>> d1ecd7276cee75e92fb2a9dc45a139fc153da151
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
 end
@@ -101,4 +105,7 @@ end
 group :production, :staging do
   gem "passenger"
 end
+
+
+
 

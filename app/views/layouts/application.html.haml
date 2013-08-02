@@ -3,13 +3,11 @@
   %head
     %title= title
     //= stylesheet_link_tag 'all', media: "all", "data-turbolinks-track" => true 
-    = stylesheet_link_tag 'all', media: "all"
+    = stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tag
     = yield(:head)
-    // below is font awesome stuff - http://fortawesome.github.io/Font-Awesome
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   %body
     .container
       #header

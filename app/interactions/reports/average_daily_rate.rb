@@ -6,14 +6,7 @@ class Reports::AverageDailyRate < Less::Interaction
   end
   
   def adr_data
-    return @adr if @adr
-    fill_data.map do |os|
-      {
-        date: os.month,
-        revpar: os.revpar,
-        adr: os.adr
-      }
-    end.to_json
+    @adr ||= fill_data.to_json
   end
   
   
@@ -60,7 +53,7 @@ class Reports::AverageDailyRate < Less::Interaction
   
   
   def uninited_row( month: nil)
-    OpenStruct.new month: month, revpar: 0.0, adr: 0.0
+    OpenStruct.new date: month, revpar: 0.0, adr: 0.0
   end
   
   def init_months

@@ -21,6 +21,10 @@ class ReportsController < ApplicationController
     @adr = Reports::AverageDailyRate.new(context).run
   end
   
+  def funnel
+    @funnel = Reports::Funnel.new(context).run
+  end
+  
   private
   def date_range
     @date_range ||= DateRange.from_params params

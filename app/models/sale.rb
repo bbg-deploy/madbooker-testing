@@ -17,6 +17,7 @@
 #
 
 class Sale < ActiveRecord::Base
+  #Concerns:: cuz we had to move to rails 3. remove them once compass supports r4 and we can move back.
   include StateScopes
 
 
