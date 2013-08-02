@@ -29,7 +29,12 @@ p
   +box-sizing(border-box)
 
 #content
-  min-height: 500px      
+  min-height: 500px   
+  padding: $pad
+  background: white
+  border: 1px solid #ccc
+  border-bottom: none
+
 /////////////////////////////////
 ////////// Text Styles //////////
 
@@ -224,9 +229,22 @@ body#public
       margin: 20px 0 0 0
       .name
         +bold
-        font-size: 14px
+        font-size: 15px
       .description
         margin: 3px 0 0 0
+
+
+.pricing_holder
+  padding: 10px 0 0 0
+  .row
+    div
+      +fl
+      &:first-child
+        width: 220px
+        +bold
+      &:last-child
+        width: 90px
+        +tr
 
 //$navwidth: $width / 7
 
@@ -241,7 +259,7 @@ body#public
       border-left: none
       a
         +block
-        padding: 10px
+        padding: 10px 15px
         +tc
         color: white
         //width: $navwidth
@@ -252,6 +270,14 @@ body#public
           +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
       &:first-child
         border-left: 1px solid #666
+        a
+          font-size: 17px
+          padding: 12px 10px 11px 10px
+          color: #eee
+      &:last-child a
+        font-size: 16px
+        padding: 13px 12px 11px 12px
+        color: #eee
 
 //@import public
 
@@ -263,6 +289,66 @@ body#public
     +tc
   a
     padding: 10px
+
+
+#filters a
+  padding: 7px 10px
+  background: #eee
+  +block
+  +fl
+  margin-right: 5px
+  &:hover
+    background: #333
+    color: white
+    +tdnone
+
+///// calendar stuff
+
+th.monthName
+  font-size: 22px
+  padding: 10px 0
+td.day
+  font-size: 12px
+  .room_type, .no_inventory
+    width: 102px
+  .room_type
+    padding: 5px 0
+    width: 102px
+    .row
+      line-height: 120%
+    .name
+      +bold
+      font-size: 13px
+    .available, .booked 
+      span
+        &:first-child
+          color: #ddd
+          width: 30px
+          +fl
+        &:last-child
+          color: white
+          width: 50px
+          +fr
+          +tr
+
+
+#calendar_year
+  .calendar_month
+    +fl
+    padding: 40px 0 0 0
+    &:nth-child(3n+2)
+      padding-left: 35px
+      padding-right: 35px
+abbr[title]
+  border-bottom: none !important
+
+
+
+
+
+
+
+
 
 
 
