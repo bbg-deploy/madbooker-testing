@@ -2,7 +2,6 @@
 @charset "utf-8"
 @import compass
 @import utils
-//@import animate
 
 $pad: 30px
 $yellow: #fff5bd
@@ -27,15 +26,16 @@ p
   line-height: 1.5em 
   
 *
-//+box-sizing(border-box)
+  +box-sizing(border-box)
 
-      
+#content
+  min-height: 500px      
 /////////////////////////////////
 ////////// Text Styles //////////
 
 h1
-  font-size: 28px
-  font-weight: normal
+  font-size: 24px
+  +bold
   line-height: 100%
   color: #222
   margin: 0 0 5px 0
@@ -134,6 +134,17 @@ div.input
 #form_simple, #form
   +form
 
+=button
+  input[type=submit]
+    padding: 10px 20px
+    +tc
+    background: #333
+    color: white
+    font-size: 14px
+    +bold
+    border: 1px solid #ccc
+    +arial
+
 #form  
   h1
     padding: $pad
@@ -150,15 +161,7 @@ div.input
     padding: ($pad / 2) $pad
     border-top: 1px solid #ccc
     background: #ccc
-    input[type=submit]
-      padding: 10px 20px
-      +tc
-      background: #333
-      color: white
-      font-size: 14px
-      +bold
-      border: 1px solid #ccc
-      +arial
+    +button
 
 #form_simple
   width: 400px
@@ -168,6 +171,98 @@ div.input
 
 
 
+
+
+
+
+
+body#public
+  background: white
+  #page
+    background: white
+    border: 1px solid #ccc
+    width: 600px
+    margin: 0 auto
+    h1
+      background: $yellow
+      padding: $pad
+      margin: 0 0 0 0
+    .steps
+      border-top: 1px solid #ccc
+      padding: $pad
+      &:first-child
+        padding-top: 0px
+      +button
+    .step_header
+      font-size: 16px
+      +clear
+      .step
+        +fl
+        padding: 0 15px 0 0
+        color: #666
+      .step_title
+        +fl
+        +bold
+      i
+        +fl
+        font-size: 18px
+        margin: 0 15px 0 0
+    #step1 
+      div.input
+        +fl
+        margin: 0 20px 0 0
+        width: 150px
+      .form_action
+        +clear
+    #step2 i
+      font-size: 21px
+    form
+      margin: 15px 0 0 0
+    .room
+      border: 1px solid #ccc
+      padding: $pad
+      margin: 20px 0 0 0
+      .name
+        +bold
+        font-size: 14px
+      .description
+        margin: 3px 0 0 0
+
+//$navwidth: $width / 7
+
+#nav
+  +horizontal-list
+  ul
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+    li 
+      padding: 0 0 0 0
+      border: 1px solid #666
+      border-left: none
+      a
+        +block
+        padding: 10px
+        +tc
+        color: white
+        //width: $navwidth
+        font-size: 13px
+        +background-image(linear-gradient(rgba(1, 1, 1, .35), rgba(1, 1, 1, .5)))
+        &:hover
+          +tdnone
+          +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
+      &:first-child
+        border-left: 1px solid #666
+
+//@import public
+
+
+
+#footer
+  font-size: 12px
+  div
+    +tc
+  a
+    padding: 10px
 
 
 

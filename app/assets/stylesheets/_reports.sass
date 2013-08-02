@@ -1,6 +1,5 @@
 
-@import compass/utilities/general/clearfix
-@import compass/utilities/general/float
+
 
 =header($font-weight: 300, $font-style: normal)
   font:
@@ -11,7 +10,8 @@
 
 ////////
 
-
+=clear-me
+//+pie-clearfix
 
 
 ///////
@@ -36,15 +36,19 @@
   border-bottom: 1px solid #0075a0
 
 =fr
-  +float-right
+  float: right
 
 =fl
-  +float-left
+  float: left
 
 =abs
   position: absolute
   
+.left
+  +fl
 
+.right
+  +fr
   
 .rel
   position: relative
@@ -72,8 +76,7 @@ strong
   
 
 div
-  +clearfix
-
+  //+pie-clearfix
 .c  
   clear: both  
   

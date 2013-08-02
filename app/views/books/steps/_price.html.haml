@@ -1,7 +1,16 @@
 
-
-- if room.discounted_rate.nil?
-  .price= room.rate
-- else
-  .old_pice= room.rate
-  .price= room.discounted_rate
+.pricing_holder
+	- if room.discounted_rate.nil?
+		.row
+			.label
+				Room Rate:
+		  .price= room.rate
+	- else
+	  .row
+	  	.label
+	  		Original Room Rate:
+	  	.old_pice= room.rate
+	  .row
+	  	.label
+	  		Discounted Room Rate
+	  	.price= room.discounted_rate
