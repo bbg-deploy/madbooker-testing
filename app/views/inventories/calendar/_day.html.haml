@@ -2,7 +2,7 @@
 %div= date.day
 - i = cal.inventory_on( date)
 - if i.blank?
-  %span
+  .no_inventory
     No inventory
 - else
   - i.each do |inventory|
