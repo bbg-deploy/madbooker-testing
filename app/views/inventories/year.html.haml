@@ -1,14 +1,18 @@
+%h1
+  Inventory Full Year
 
-= cal.this_month_link
-= cal.previous_year_link
-= cal.next_year_link
+#filters
+  = cal.this_month_link
+  = cal.previous_year_link
+  = cal.next_year_link
 
-- 1.upto(12) do |i|
-  / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
-  %span{style: "width: 100px"}
-    = calendar(:show_other_months => false, :year => cal.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
-      - render "inventories/calendar/day_for_year", date: d
-  
+#calendar_year
+  - 1.upto(12) do |i|
+    / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
+    .calendar_month
+      = calendar(:show_other_months => false, :year => cal.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
+        - render "inventories/calendar/day_for_year", date: d
+    
 = render "/inventories/calendar/date_pickers", for_month: false
 
 #inventories_form

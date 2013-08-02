@@ -312,6 +312,8 @@ td.day
   .room_type
     padding: 5px 0
     width: 102px
+    .row
+      line-height: 120%
     .name
       +bold
       font-size: 13px
@@ -326,6 +328,30 @@ td.day
           width: 50px
           +fr
           +tr
+
+
+#calendar_year
+  .calendar_month
+    +fl
+    padding: 40px 0 0 0
+    &:nth-child(3n+2)
+      padding-left: 35px
+      padding-right: 35px
+abbr[title]
+  border-bottom: none !important
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
