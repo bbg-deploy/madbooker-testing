@@ -6,7 +6,7 @@ class Reports::RevenueByRoomType < Less::Interaction
   end
   
   def revenue
-    @revenue ||= fill_data(get_revenue_data).log.to_json
+    @revenue ||= fill_data(get_revenue_data).to_json
   end
   
   def booking
@@ -15,29 +15,69 @@ class Reports::RevenueByRoomType < Less::Interaction
   
   private 
   def get_revenue_data
-    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id, bookings.bookable_type", "month(date)").paid.sum( :price)
+    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id", "bookings.bookable_type", "month(date)").paid.sum( :price)
   end
   
   def get_booking_data
-    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id, bookings.bookable_type", "month(date)").paid.count
+    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id","bookings.bookable_type", "month(date)").paid.count
   end
   
   def fill_data input
-    input.log
     out = init_rows
     input.each do |datum|
-      room_type_id = datum[0][0]
-      month = date_for_month datum[0][1]
+      bookable_id = datum[0][0]
+      bookable_type = datum[0][1]
+      month = date_for_month datum[0][2]
       amount = datum[1]
       row = out.select{|x| x.date == month}.first
-      fill_room_data row.rooms, room_type_id: room_type_id, amount: amount
+      fill_room_data row.rooms, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
     end
     #assign_totals out
-    out
+    normalize_data out
   end
   
-  def fill_room_data arr, room_type_id: room_type_id, amount: amount
-    arr << inited_room( room_type_id, amount)
+  def normalize_data arr
+    out = []
+    names = []
+    arr.each do |month|
+      total = 0.0
+      o = OpenStruct.new
+      o.date = month.date
+      month.rooms.each do |room|
+        o[room.name] = room.amount
+        total += room.amount
+        names << room.name
+      end
+      o.total = total
+      out << o
+    end
+    ensure_each_row_has_all_columns out, names.uniq
+  end
+  
+  def ensure_each_row_has_all_columns arr, names
+    arr.each do |row|
+      names.each do |name|
+        row[name] = 0.0 if row[name].nil?
+      end
+    end
+  end
+  
+  def fill_room_data arr, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
+    room_type = get_room_type bookable_id, bookable_type
+    room = arr.select{|x| x.room_type_id = room_type.id}.first
+    if room
+      room.amount += amount
+    else
+      arr << inited_room( room_type.id, amount, room_type.name)
+    end
+  end
+  
+  def get_room_type bookable_id, bookable_type
+    if bookable_type == "RoomType"
+      context.hotel.room_types.find bookable_id
+    else
+      context.hotel.packages.find(bookable_id).room_type
+    end
   end
   
   def assign_totals arr
@@ -56,8 +96,8 @@ class Reports::RevenueByRoomType < Less::Interaction
     OpenStruct.new date: month, rooms: []
   end
   
-  def inited_room room_type_id, amount = 0.0
-    OpenStruct.new room_type_id: room_type_id, amount: amount#, name: context.hotel.room_types.find(room_type_id).name
+  def inited_room room_type_id, amount = 0.0, name = ""
+    OpenStruct.new room_type_id: room_type_id, amount: amount, name: name
   end
   
   def date_for_month month

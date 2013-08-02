@@ -500,6 +500,7 @@
           
 
       render: (selector, title, data)->
+        p data
         $(selector).highcharts {
           title: { text: title, x: -20 }
           #subtitle: { text: 'subtitle', x: -20}
