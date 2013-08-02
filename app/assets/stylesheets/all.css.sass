@@ -29,7 +29,12 @@ p
   +box-sizing(border-box)
 
 #content
-  min-height: 500px      
+  min-height: 500px   
+  padding: $pad
+  background: white
+  border: 1px solid #ccc
+  border-bottom: none
+
 /////////////////////////////////
 ////////// Text Styles //////////
 
@@ -254,7 +259,7 @@ body#public
       border-left: none
       a
         +block
-        padding: 10px
+        padding: 10px 15px
         +tc
         color: white
         //width: $navwidth
@@ -265,6 +270,14 @@ body#public
           +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
       &:first-child
         border-left: 1px solid #666
+        a
+          font-size: 17px
+          padding: 12px 10px 11px 10px
+          color: #eee
+      &:last-child a
+        font-size: 16px
+        padding: 13px 12px 11px 12px
+        color: #eee
 
 //@import public
 
