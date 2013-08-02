@@ -1,11 +1,13 @@
 
 #step2.steps
-  .step 2
-  .step_title Choose your room:
-  
-  - if @booking.step == 2
-    - @available_rooms.each do |room|
-      = render "/books/steps/step2_form", room: room.decorate
-      - room.room_type.packages.active.each do |package|
-        - pack = package.decorate.with_inventory room
-        = render "/books/steps/step2_form", room: pack
+	.step_header
+		%i.icon-smile
+		.step Step 2
+		.step_title Choose your room
+	
+	- if @booking.step == 2
+		- @available_rooms.each do |room|
+			= render "/books/steps/step2_form", room: room.decorate
+			- room.room_type.packages.active.each do |package|
+				- pack = package.decorate.with_inventory room
+				= render "/books/steps/step2_form", room: pack
