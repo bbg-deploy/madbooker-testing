@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_reservation_cookie
   after_filter :store_page_stat
 
+  layout :select_layout
+
   
   def current_hotel
     @current_hotel ||= hotel_for_user
@@ -86,6 +88,15 @@ class ApplicationController < ActionController::Base
     return if current_hotel
     return unless account_subdomain.blank?
     raise "do something here when there's no subdomain" 
+  end
+  
+
+  def select_layout
+    if devise_controller?# && resource_name == :user && action_name == 'sign_in'
+      "simple"
+    else
+      "application"
+    end
   end
 
 end
