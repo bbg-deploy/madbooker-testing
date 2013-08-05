@@ -45,7 +45,7 @@ gem 'less_interactions', '0.0.8', :git => 'git://github.com/LessEverything/less_
 gem "twilio-ruby"
 gem "attr_encrypted"
 gem "simple_states"
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
 
 
 # Gems used only for assets and not required
