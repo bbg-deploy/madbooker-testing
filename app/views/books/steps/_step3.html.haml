@@ -32,11 +32,11 @@
               = f.input :made_by_last_name, label: "Your Last name"
             .guest
         #credit_card_form
-          = f.input :cc_number, label: "Credit Card number"
+          = f.input :cc_number, label: "Credit Card number", required: true
           = f.input :cc_month, collection: 1..12, label: "Month"
           = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"
           = f.input :cc_zipcode, label: "Zip code"
-          = f.input :cc_cvv
+          = f.input :cc_cvv, required: true
         #confirmation_info
           = f.input :email_confirmation
           = f.input :sms_confirmation

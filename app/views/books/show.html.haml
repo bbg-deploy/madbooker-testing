@@ -1,14 +1,14 @@
 
 #page
-	%h1 Book a Room
+  %h1 Book a Room
 
-	- unless current_hotel.logo.blank?
-		= image_tag current_hotel.logo.url
+  - unless current_hotel.logo.blank?
+    = image_tag current_hotel.logo.url
 
-	= render "books/steps/step1"
-	= render "books/steps/step2"
-	= render "books/steps/step3"
+  = render "books/steps/step1"
+  = render "books/steps/step2"
+  = render "books/steps/step3"
 .allannote
-	this page could use alot of polish. More of an accordinan functionality, selecting room type could have a confirmation etc.
+  this page could use alot of polish. More of an accordinan functionality, selecting room type could have a confirmation etc.
 
 
