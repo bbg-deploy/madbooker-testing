@@ -1,7 +1,7 @@
 class StripesController < ApplicationController
   
   
-  def index
+  def create
     event = request.body.read.log
     render :text => ""
   end
