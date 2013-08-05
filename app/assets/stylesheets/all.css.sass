@@ -33,7 +33,6 @@ p
   padding: $pad
   background: white
   border: 1px solid #ccc
-  border-bottom: none
 
 /////////////////////////////////
 ////////// Text Styles //////////
@@ -44,7 +43,10 @@ h1
   line-height: 100%
   color: #222
   margin: 0 0 5px 0
-
+  a
+    font-size: 16px
+    font-weight: normal
+    padding: 10px
 h2
   font-size: 21px
   font-weight: normal
@@ -285,10 +287,18 @@ body#public
 
 #footer
   font-size: 12px
-  div
-    +tc
-  a
-    padding: 10px
+  padding: 20px 0
+  color: #777
+  +tr
+  #copyright
+    margin-right: 5px
+  #legal
+    a
+      padding: 5px
+      color: #999
+      text-decoration: underline
+      &:hover
+        +tdnone
 
 
 #filters a
@@ -341,6 +351,55 @@ td.day
       padding-right: 35px
 abbr[title]
   border-bottom: none !important
+
+
+
+
+
+
+
+table.standard
+  width: 100%
+  border: 1px solid #ccc
+  border-bottom: none
+  margin: 20px 0
+  tr th, tr td
+    padding: 10px
+    +tl
+    border-bottom: 1px solid #ccc
+    border-right: 1px solid #ccc
+  tr th
+    background: #eee
+    color: #333
+    font-weight: normal
+  tr td.actions a
+    padding-right: 10px
+  tr:nth-child(even) td
+    background: $yellow
+
+
+/// dashboard
+
+.number_of_searches,
+.total_revenue,
+.revenue_by_room_type,
+.look_to_book
+  border: 1px solid #ccc
+  padding: 20px
+  margin: 20px 0
+  .header
+    +bold
+    font-size: 16px
+    margin: 0 0 5px 0
+
+
+
+
+
+
+
+
+
 
 
 

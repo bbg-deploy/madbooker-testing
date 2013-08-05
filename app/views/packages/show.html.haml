@@ -1,10 +1,27 @@
+%h1
+  Package Summary
 
+.row
+  %strong
+    Description:
+  = @package.description
 
-= @package.description
-= @package.room_name
-= @package.additional_price
-- @package.add_ons.each do |add_on|
-  = add_on.name
+.row
+  %stron
+    Room Name:
+  = @package.room_name
+
+.row
+  %strong
+    Additional Price:
+  = @package.additional_price
+
+.row
+  %strong
+    Add-Ons:
+  - @package.add_ons.each do |add_on|
+    %div
+      = add_on.name
   
 = link_to "Edit", [:edit, current_hotel, @package]
 

@@ -3,11 +3,13 @@
 
 
 
-%h1== Welcome to MadBooker
-= link_to "edit", [:edit, current_hotel]
+%h1
+  Welcome to MadBooker
+  = link_to "edit", [:edit, current_hotel]
 
 .number_of_searches
-  Total number of searches this
+  .header
+    Total number of searches this
   .week
     = @hotel.searches_this_week
   .month
@@ -16,7 +18,8 @@
     = @hotel.searches_daily_average
 
 .total_revenue
-  = link_to "Total revenue this", revenue_hotel_reports_path(current_hotel)
+  .header
+    = link_to "Total revenue this", revenue_hotel_reports_path(current_hotel)
   .week
     = @hotel.revenue_this_week
   .month
@@ -25,7 +28,8 @@
     = @hotel.revenue_daily_average
 
 .revenue_by_room_type
-  = link_to "Revenue by room type ", revenue_by_room_type_hotel_reports_path(current_hotel)
+  .header
+    = link_to "Revenue by room type ", revenue_by_room_type_hotel_reports_path(current_hotel)
   - @hotel.revenue_by_room_type.each do |room_type|
     .room_type
       = room_type.name
@@ -41,7 +45,8 @@
 
 
 .look_to_book
-  Look to book this
+  .header
+    Look to book this
   .week
     = @hotel.look_to_book_week
   .month

@@ -5,6 +5,6 @@
   %td= package.room_name
   %td= package.description.truncate 30
   %td= package.additional_price
-  %td
+  %td.actions
     = link_to "Edit", [:edit, current_hotel, package]
     = package.activate_link

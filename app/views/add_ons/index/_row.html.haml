@@ -5,6 +5,6 @@
   %td= add_on.name
   %td= add_on.description.truncate 30
   %td= add_on.price
-  %td
+  %td.actions
     = link_to "Edit", [:edit, current_hotel, add_on]
     = add_on.activate_link

@@ -2,10 +2,10 @@
 
 
 #footer
-  #copyright
+  %span#copyright
     &copy; Copyright
     = Time.now.year
-  #legal
+  %span#legal
     = link_to "Privacy Policy", "#{privacy_url}", :class=>"nyroModal", :rel=>"nofollow"
     = link_to "Terms of Service", "#{terms_url}", :class=>"nyroModal", :rel=>"nofollow"
 

@@ -1,7 +1,9 @@
 
-= link_to "Add a new Add On", [:new, current_hotel, :add_on]
+%h1
+  Existing Add-Ons
+  = link_to "Create Add-On", [:new, current_hotel, :add_on]
 
-%table
+%table.standard
   %thead
     %tr
       %th Name
