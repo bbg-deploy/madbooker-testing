@@ -1,6 +1,7 @@
 Madbooker::Application.routes.draw do
 
   resources :bookings, :only => [:show]
+  resources :stripes
 
   resources :hotels do
     member do

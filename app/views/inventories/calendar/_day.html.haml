@@ -1,21 +1,22 @@
 
 %div= date.day
-- i = cal.inventory_on( date)
-- if i.blank?
-  .no_inventory
-    No inventory
-- else
-  - i.each do |inventory|
-    .room_type
-      .name 
-        = inventory.room_type.name
-      .available
-        %span
-          Available
-        %span
-          = inventory.available_rooms
-      .booked 
-        %span
-          Booked 
-        %span
-          = inventory.sales_count
+/- i = cal.inventory_on( date)
+/- if i.blank?
+/  .no_inventory
+/    No inventory
+/- else
+/  - i.each do |inventory|
+/    .room_type
+/      .name 
+/        = inventory.room_type.name
+/      .available
+/        %span
+/          Available
+/        %span
+/          = inventory.available_rooms
+/      .booked 
+/        %span
+/          Booked 
+/        %span
+/          = inventory.sales_count
+/
