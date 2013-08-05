@@ -248,40 +248,50 @@ body#public
         width: 90px
         +tr
 
-//$navwidth: $width / 7
+$icon: 50px
+$navwidth: ($width - ($icon * 2)) / 5
 
 #nav
-  +horizontal-list
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
     li 
       padding: 0 0 0 0
-      border: 1px solid #666
-      border-left: none
+      +fl
       a
         +block
         padding: 10px 15px
         +tc
         color: white
-        //width: $navwidth
+        width: $navwidth
         font-size: 13px
+        border: 1px solid #666
+        border-left: none
         +background-image(linear-gradient(rgba(1, 1, 1, .35), rgba(1, 1, 1, .5)))
         &:hover
           +tdnone
           +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
-      &:first-child
+      &.home a
+        font-size: 17px
+        padding: 12px 10px 11px 10px
+        color: #eee
         border-left: 1px solid #666
-        a
-          font-size: 17px
-          padding: 12px 10px 11px 10px
-          color: #eee
-      &:last-child a
+        width: $icon
+      &.logout a
         font-size: 16px
         padding: 13px 12px 11px 12px
         color: #eee
-
-//@import public
+        width: $icon
+      ul 
+        li
+          float: none
+          padding: 0 0 0 0
+          padding: 0 0 0 0 
+          a 
+            +block
+            float: none
+            font-size: 13px !important
+            background: #333
 
 
 
