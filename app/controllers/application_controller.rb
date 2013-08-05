@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
   
 
   def select_layout
-    if devise_controller?# && resource_name == :user && action_name == 'sign_in'
+    if devise_controller? && resource_name == :user && action_name == 'new'
       "simple"
     else
       "application"
