@@ -420,7 +420,6 @@ table.standard
 
 /// dashboard
 
-.number_of_searches,
 .total_revenue,
 .revenue_by_room_type,
 .look_to_book
@@ -429,8 +428,9 @@ table.standard
   margin: 20px 0
   .header
     +bold
-    font-size: 16px
+    font-size: 26px
     margin: 0 0 5px 0
+
 
 .revenue_by_room_type
   .room_type
@@ -444,18 +444,58 @@ table.standard
       width: 210px
       +bold
       margin: 0 0 5px 0
-    .week,
-    .month,
-    .daily_average
+
+.week,
+.month,
+.daily_average
+  +fl
+  margin: 10px 0
+  clear: left
+  span
+    &:first-child
+      +fl
+    &:last-child
+      +fr
+
+
+
+.number_of_searches
+  margin: 0 0 20px 0
+  i
+    font-size: 16px
+    margin: 0 0 -2px 0
+    &.icon-mobile-phone
+      font-size: 20px
+      margin-bottom: -4px
+  .label
+    padding: 10px
+    background: #eee
+    color: #333
+    font-size: 14px
+    +tc
+    border: 1px solid #ccc
+    border-bottom: none
+  .data
+    +fl
+    padding: 30px 20px 0 20px
+    border: 1px solid #ccc
+    border-right: none
+    width: 140px
+    height: 100px
+    &:last-child
+      border-right: 1px solid #ccc
+      background: $yellow
+    .number
+      font-size: 42px
+      +bold
+      +tc
+    .where
+      font-size: 13px
+      margin: 0 0 0 0
+      padding: 10px 0 0 0
+      +tc
       span
-        &:first-child
-          +fl
-        &:last-child
-          +fr
-
-
-
-
+        padding: 2px 0 0 0
 
 
 

@@ -9,7 +9,7 @@
 #data
   .number_of_searches
     .header
-      Total number of searches
+      Searches
     .week
       This Week
       %i.icon-mobile-phone
@@ -21,10 +21,74 @@
     .daily_average
       Daily Average
       = @hotel.searches_daily_average
+  .number_of_searches
+    //.header
+    //  Searches Activity
+    .week
+      .label
+        Searches This Week
+      .data
+        .number
+          15
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          15
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          30
+        .where
+          Total
+    .month
+      .label
+        Searches This Month
+      .data
+        .number
+          1625
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          15
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          1640
+        .where
+          Total
+
+    .daily_average
+      .label
+        Searching Daily Average
+      .data
+        .number
+          5
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          2
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          7
+        .where
+          Total
 
   .total_revenue
     .header
-      = link_to "Total revenue", revenue_hotel_reports_path(current_hotel)
+      = link_to "Revenue", revenue_hotel_reports_path(current_hotel)
     .week
       %i.icon-mobile-phone  
       This Week
@@ -39,7 +103,7 @@
 
   .revenue_by_room_type
     .header
-      = link_to "Revenue by room type", revenue_by_room_type_hotel_reports_path(current_hotel)
+      = link_to "Revenue by Room Type", revenue_by_room_type_hotel_reports_path(current_hotel)
     - @hotel.revenue_by_room_type.each do |room_type|
       .room_type
         .name
