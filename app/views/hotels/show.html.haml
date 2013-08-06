@@ -7,145 +7,213 @@
     = @hotel.name
     Dashboard
 #data
+  //.number_of_searches
+  //  .header
+  //    Searches
+  //  .week
+  //    This Week
+  //    %i.icon-mobile-phone
+  //    = @hotel.searches_this_week
+  //  .month
+  //    This Month
+  //    %i.icon-laptop
+  //    = @hotel.searches_this_month
+  //  .daily_average
+  //    Daily Average
+  //    = @hotel.searches_daily_average
   .number_of_searches
     .header
-      Searches
+      Searches Activity
     .week
-      This Week
-      %i.icon-mobile-phone
-      = @hotel.searches_this_week
-    .month
-      This Month
-      %i.icon-laptop
-      = @hotel.searches_this_month
-    .daily_average
-      Daily Average
-      = @hotel.searches_daily_average
-  .number_of_searches
-    //.header
-    //  Searches Activity
-    .week
-      .label
-        Searches This Week
+      //.label
+      //  Searches Activity
       .data
+        .add +
+        .what
+          Searches This Week
         .number
           15
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Searches This Week
         .number
           15
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Searches This Week
         .number
           30
         .where
+          %i.icon-mobile-phone
+            +
+          %i.icon-laptop
           Total
     .month
-      .label
-        Searches This Month
+      //.label
+      //  Searches This Month
       .data
+        .add +
+        .what
+          Searches This Month
         .number
           1625
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Searches This Month
         .number
           15
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Searches This Month
         .number
           1640
         .where
+          %i.icon-mobile-phone
+            +
+          %i.icon-laptop
           Total
 
     .daily_average
-      .label
-        Searching Daily Average
+      //.label
+      //  Searching Daily Average
       .data
+        .add +
+        .what
+          Search Daily Average
         .number
           5
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Search Daily Average
         .number
           2
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Search Daily Average
         .number
           7
         .where
+          %i.icon-mobile-phone
+            +
+          %i.icon-laptop
           Total
 
-  .total_revenue
+  .total_revenue  
+    .header
+      Revenue Activity
     .week
-      .label
-        Revenue This Week
+      //.label
+      //  Revenue This Week
       .data
+        .add +
+        .what
+          Revenue This Week
         .number
-          15,832.11
+          %span $
+          15,832
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Revenue This Week
         .number
-          25,388.33
+          %span $
+          25,388
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Revenue This Week
         .number
-          70,898.33
+          %span $
+          70,898
         .where
           Total
     .month
-      .label
-        Revenue This Month
+      //.label
+      //  Revenue This Month
       .data
+        .add +
+        .what
+          Revenue This Month
         .number
-          125,832.11
+          %span $
+          125,832
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Revenue This Month
         .number
-          115,832.11
+          %span $
+          115,832
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Revenue This Month
         .number
-          215,832.11
+          %span $
+          215,832
         .where
           Total
 
     .daily_average
-      .label
-        Revenue Daily Average
+      //.label
+      //  Revenue Daily Average
       .data
+        .add +
+        .what
+          Revenue Daily Average
         .number
+          %span $
           5,832
         .where
           %i.icon-mobile-phone
           Mobile
       .data
+        .equal =
+        .what
+          Revenue Daily Average
         .number
-          1,832.01
+          %span $        
+          1,832
         .where
           %i.icon-laptop
           Other
       .data
+        .what
+          Revenue Daily Average
         .number
-          6,832.61
+          %span $
+          6,832
         .where
           Total
 

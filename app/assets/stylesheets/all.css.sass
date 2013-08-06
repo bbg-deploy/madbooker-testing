@@ -444,28 +444,31 @@ table.standard
       +bold
       margin: 0 0 5px 0
 
-.week,
-.month,
-.daily_average
-  +fl
-  margin: 10px 0
-  clear: left
-  span
-    &:first-child
-      +fl
-    &:last-child
-      +fr
+//.week,
+//.month,
+//.daily_average
+//  span
+//    &:first-child
+//      +fl
+//    &:last-child
+//      +fr
 
 
 
 .number_of_searches, .total_revenue
-  margin: 0 0 20px 0
+  margin: 0 0 0 0
   i
     font-size: 16px
     margin: 0 0 -2px 0
     &.icon-mobile-phone
       font-size: 20px
       margin-bottom: -4px
+  .header
+    background: #eee
+    +tc
+    border: 1px solid #ccc
+    border-bottom: 0px
+    padding: 10px
   .label
     padding: 10px
     background: #eee
@@ -476,18 +479,40 @@ table.standard
     border-bottom: none
   .data
     +fl
-    padding: 30px 20px 0 20px
+    +rel
+    padding: 30px 20px 30px 20px
     border: 1px solid #ccc
+    height: 145px
+    border-bottom: none
     border-right: none
-    width: 140px
-    height: 100px
+    width: ($width - (($pad * 2) + 2px)) / 3
     &:last-child
       border-right: 1px solid #ccc
       background: $yellow
-    .number
-      font-size: 42px
-      +bold
+    .add, .equal
+      +abs
+      top: 42%
+      right: -14px
+      padding: 3px 17px 3px 9px
+      +tl
+      background: white
+      border: 1px solid #ccc
+      +border-radius(50%)
+      width: 20px
+      z-index: 2
+    .what
       +tc
+      margin: 0 0 10px 0
+    .number
+      font-size: 32px
+      +bold
+      margin: 0 0 0 -7px
+      +tc
+      span
+        font-size: 20px
+        font-weight: normal
+        margin: 0 -7px 0 0
+        color: #666
     .where
       font-size: 13px
       margin: 0 0 0 0
@@ -496,9 +521,6 @@ table.standard
       span
         padding: 2px 0 0 0
 
-.total_revenue
-  .data
-    width: auto
 
 
 
