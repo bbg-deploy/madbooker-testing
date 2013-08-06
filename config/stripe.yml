@@ -1,0 +1,13 @@
+defaults: &defaults
+  secret_key: sk_test_dIhhceoA3DHS6hh4NMMgh9Md
+  basic: 1
+   
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

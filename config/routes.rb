@@ -1,8 +1,8 @@
 Madbooker::Application.routes.draw do
 
   resources :bookings, :only => [:show]
-  resources :stripes
-
+  match "/stripe" => "stripes#event", via: [:get, :post]
+  
   resources :hotels do
     member do
       delete :delete_logo

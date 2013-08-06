@@ -25,6 +25,8 @@
       show_error_box "Error", "That room is no longer available for those dates.<br/>Please search again."
       
     
+    show: (title, msg)->
+      show_error_box title, msg
 
     init: ->
       frag = new URI().fragment()

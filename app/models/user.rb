@@ -16,6 +16,8 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  time_zone              :string(255)
+#  stripe_customer_id     :string(255)
+#  payment_status         :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -24,6 +26,9 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  #used just to get fields on the devise form
+  attr_accessor :cc_number, :cc_cvv, :cc_month, :cc_year, :stripe_token
       
   has_many :memberships
   has_many :hotels, through: :memberships

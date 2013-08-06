@@ -19,7 +19,7 @@ module DeviseStuff
     end
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:time_zone, :email, :password, :password_confirmation, :current_password) }
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:time_zone, :email, :password, :password_confirmation, :current_password, :cc_number, :cc_month, :cc_year, :cc_cvv, :stripe_token) }
     end
       
   end

@@ -5,9 +5,9 @@
     //= stylesheet_link_tag 'all', media: "all", "data-turbolinks-track" => true 
     = stylesheet_link_tag 'all', media: "all"
     = javascript_include_tag "application", "data-turbolinks-track" => true 
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     = csrf_meta_tag
     = yield(:head)
-    // below is font awesome stuff - http://fortawesome.github.io/Font-Awesome
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   %body
     .container_simple
