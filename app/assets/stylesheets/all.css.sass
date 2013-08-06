@@ -414,7 +414,26 @@ table.standard
     font-size: 16px
     margin: 0 0 5px 0
 
-
+.revenue_by_room_type
+  .room_type
+    border: 1px solid #ccc
+    +fl
+    padding: 15px
+    margin: 10px 20px 10px 0
+    font-size: 13px
+    .name
+      +tc
+      width: 210px
+      +bold
+      margin: 0 0 5px 0
+    .week,
+    .month,
+    .daily_average
+      span
+        &:first-child
+          +fl
+        &:last-child
+          +fr
 
 
 
