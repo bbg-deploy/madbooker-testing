@@ -8,9 +8,9 @@
           %i.icon-caret-down
           Front Desk
         %ul.hidden
+          %li= link_to "Check In", [current_hotel, :check_ins]
           %li= link_to "Bookings", [current_hotel, :bookings]
           %li= link_to "No Shows", [:no_shows, current_hotel, :bookings]
-          %li= link_to "Check In", [current_hotel, :check_ins]
       %li.dropdown
         = link_to "#" do
           %i.icon-caret-down

@@ -4,8 +4,8 @@
 
 #header
   %h1
-    Welcome to MadBooker
-    = link_to "edit", [:edit, current_hotel]
+    = @hotel.name
+    Dashboard
 #data
   .number_of_searches
     .header
@@ -87,6 +87,71 @@
           Total
 
   .total_revenue
+    .week
+      .label
+        Revenue This Week
+      .data
+        .number
+          15,832.11
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          25,388.33
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          70,898.33
+        .where
+          Total
+    .month
+      .label
+        Revenue This Month
+      .data
+        .number
+          125,832.11
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          115,832.11
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          215,832.11
+        .where
+          Total
+
+    .daily_average
+      .label
+        Revenue Daily Average
+      .data
+        .number
+          5,832
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .number
+          1,832.01
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .number
+          6,832.61
+        .where
+          Total
+
+
+
+  .total_revenue
     .header
       = link_to "Revenue", revenue_hotel_reports_path(current_hotel)
     .week
@@ -100,6 +165,7 @@
     .daily_average
       Daily Average
       = @hotel.revenue_daily_average
+
 
   .revenue_by_room_type
     .header
