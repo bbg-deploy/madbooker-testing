@@ -355,8 +355,8 @@ $navwidth: ($width - ($icon * 2)) / 5
 ///// calendar stuff
 
 th.monthName
-  font-size: 22px
-  padding: 10px 0
+  font-size: 18px
+  padding: 0 0 10px 0
 td.day
   font-size: 12px
   .room_type, .no_inventory
@@ -385,10 +385,15 @@ td.day
 #calendar_year
   .calendar_month
     +fl
-    padding: 40px 0 0 0
-    &:nth-child(3n+2)
-      padding-left: 35px
-      padding-right: 35px
+    padding: 23px
+    border-right: 1px solid #ccc
+    border-bottom: 1px solid #ccc
+    height: 330px
+    &:nth-child(3n+3)
+      border-right: none
+    //&:nth-child(3n+2)
+    //  padding-left: 35px
+    //  padding-right: 35px
 abbr[title]
   border-bottom: none !important
 
