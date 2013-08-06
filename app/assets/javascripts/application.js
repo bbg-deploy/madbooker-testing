@@ -21,5 +21,6 @@
 //= require uri
 // require d3.v3.min
 //= require highcharts
+//= require miniDropdown
 //= require module
 //= require_tree .

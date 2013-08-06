@@ -50,7 +50,9 @@ Madbooker::Application.routes.draw do
   end
   
 
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' } do
+    get "logout" => "devise/sessions#logout"
+  end
   
   root :to => 'home#index'
   

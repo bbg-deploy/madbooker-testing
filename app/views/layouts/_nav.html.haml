@@ -1,4 +1,4 @@
-%ul
+%ul.mini_dropdown
   %li.home= link_to '', root_path, :class=>"icon-home"
   - if user_signed_in?
     %li= hotel_link
@@ -7,7 +7,7 @@
         = link_to "#" do
           %i.icon-caret-down
           Front Desk
-        %ul
+        %ul.hidden
           %li= link_to "Bookings", [current_hotel, :bookings]
           %li= link_to "No Shows", [:no_shows, current_hotel, :bookings]
           %li= link_to "Check In", [current_hotel, :check_ins]
@@ -15,7 +15,7 @@
         = link_to "#" do
           %i.icon-caret-down
           Back Office
-        %ul
+        %ul.hidden
           %li= link_to "Inventory", [current_hotel, :inventories]
           %li= link_to "Add Ons", [current_hotel, :add_ons]
           %li= link_to "Packages", [current_hotel, :packages]
