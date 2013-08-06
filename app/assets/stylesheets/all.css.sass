@@ -13,7 +13,7 @@ body
   color: #333
   font-size: 14px
   line-height: 1.5em 
-  background: #eee
+  background: #70b0af
 
 a
   color: #3e86c5
@@ -30,9 +30,18 @@ p
 
 #content
   min-height: 500px   
-  padding: $pad
+  //padding: $pad
   background: white
-  border: 1px solid #ccc
+  border: 1px solid #406463
+  #header
+    background: #eee
+    border-bottom: 1px solid #ccc
+    padding: $pad
+    h1
+      padding: 0 0 0 0
+      margin: 0 0 0 0
+  #data
+    padding: $pad
 
 /////////////////////////////////
 ////////// Text Styles //////////
@@ -121,18 +130,25 @@ div.input
   padding: 10px 0 0 0
   color: #666
 
+=button
+  input[type=submit]
+    padding: 10px 20px
+    +tc
+    color: #333
+    font-size: 13px
+    +bold
+    +arial
+    +background-image(linear-gradient(rgba(229, 229, 229, 1), rgba(229, 229, 229, .80)))
+    border: 1px solid #bbb
+    +border-radius
+    border-bottom: 1px solid #999
+    &:hover
+      +background-image(linear-gradient(rgba(205, 205, 205, 1), rgba(188, 188, 188, 1)))
+
 
 .form-actions
-  input[type=submit]
-    background: #555
-    color: white
-    padding: 10px 20px
-    font-size: 14px
-    //+border-radius
-    +arial
-    border: 1px solid #ccc
-    &:hover
-      background: #333
+  +button
+
 
 =form
   border: 1px solid #ccc
@@ -141,16 +157,7 @@ div.input
 #form_simple, #form
   +form
 
-=button
-  input[type=submit]
-    padding: 10px 20px
-    +tc
-    background: #333
-    color: white
-    font-size: 14px
-    +bold
-    border: 1px solid #ccc
-    +arial
+
 
 #form  
   h1
@@ -165,9 +172,6 @@ div.input
       margin-top: 0px
       font-size: 20px
   .form_action
-    padding: ($pad / 2) $pad
-    border-top: 1px solid #ccc
-    background: #ccc
     +button
 
 #form_simple
@@ -248,69 +252,105 @@ body#public
         width: 90px
         +tr
 
-//$navwidth: $width / 7
+$icon: 50px
+$navwidth: ($width - ($icon * 2)) / 5
 
 #nav
-  +horizontal-list
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
     li 
       padding: 0 0 0 0
-      border: 1px solid #666
-      border-left: none
+      +fl
+      +rel
+      &.dropdown
+        ul 
+          +abs
+          z-index: 9
+          top: 42px
+          left: 0
+          li
+            float: none
+            padding: 0 0 0 0
+            padding: 0 0 0 0 
+            a 
+              +block
+              float: none
+              font-size: 13px !important
+              background: #333
+              &:hover
+                background: #888
       a
         +block
         padding: 10px 15px
         +tc
         color: white
-        //width: $navwidth
+        width: $navwidth
         font-size: 13px
-        +background-image(linear-gradient(rgba(1, 1, 1, .35), rgba(1, 1, 1, .5)))
+        border: 1px solid #406463
+        border-left: none
+        +background-image(linear-gradient(rgba(95, 150, 149, .9), rgba(78, 122, 121, 1)))
         &:hover
           +tdnone
           +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
-      &:first-child
+        i
+          font-size: 16px
+          margin: 0 3px 0 0
+      &.home a
+        font-size: 17px
+        padding: 12px 10px 11px 10px
+        color: #eee
         border-left: 1px solid #666
-        a
-          font-size: 17px
-          padding: 12px 10px 11px 10px
-          color: #eee
-      &:last-child a
+        width: $icon
+      &.logout a
         font-size: 16px
         padding: 13px 12px 11px 12px
         color: #eee
+        width: $icon
 
-//@import public
 
 
 
 #footer
   font-size: 12px
   padding: 20px 0
-  color: #777
+  color: #406463
   +tr
   #copyright
     margin-right: 5px
   #legal
     a
       padding: 5px
-      color: #999
+      color: #406463
       text-decoration: underline
       &:hover
         +tdnone
 
 
-#filters a
-  padding: 7px 10px
-  background: #eee
-  +block
-  +fl
-  margin-right: 5px
-  &:hover
-    background: #333
-    color: white
-    +tdnone
+#filters 
+
+  margin: 10px 0 0 0
+  a
+    padding: 7px 12px
+    +block
+    +background-image(linear-gradient(rgba(1, 1, 1, .05), rgba(1, 1, 1, .15)))
+    border: 1px solid #ccc
+    border-right: none
+    border-bottom: 1px solid #999
+    +fl
+    color: #333
+    font-size: 13px
+    &:first-child
+      +border-top-left-radius
+      +border-bottom-left-radius
+    &:last-child
+      +border-top-right-radius
+      +border-bottom-right-radius
+      border-right: 1px solid #ccc
+    &:hover
+      background: #333
+      color: white
+      +tdnone
 
 ///// calendar stuff
 
@@ -392,7 +432,26 @@ table.standard
     font-size: 16px
     margin: 0 0 5px 0
 
-
+.revenue_by_room_type
+  .room_type
+    border: 1px solid #ccc
+    +fl
+    padding: 15px
+    margin: 10px 20px 10px 0
+    font-size: 13px
+    .name
+      +tc
+      width: 210px
+      +bold
+      margin: 0 0 5px 0
+    .week,
+    .month,
+    .daily_average
+      span
+        &:first-child
+          +fl
+        &:last-child
+          +fr
 
 
 

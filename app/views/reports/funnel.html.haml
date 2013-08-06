@@ -2,14 +2,13 @@
 
 = render "/reports/show/nav"
 
-    
+#data   
+  #funnel_graph
+    :coffeescript
+      data = #{@funnel.data}
+      MB.Graphs.Bar.render "#funnel_graph", "Sales Funnel", data
 
-#funnel_graph
-  :coffeescript
-    data = #{@funnel.data}
-    MB.Graphs.Bar.render "#funnel_graph", "Sales Funnel", data
 
-
-    
+      
     
     
