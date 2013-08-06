@@ -1,16 +1,17 @@
+#header
+  %h1
+    No Shows
 
-%h1
-  No Shows
-
-#calendar
-  #date_picker
-  
-- if @bookings.blank?
-  No No-shows for 
-  = params[:date]
-  
-#today
-  - @bookings.each do |booking|
-    = render "/check_ins/index/booking", booking: booking
+#data
+  #calendar
+    #date_picker
     
+  - if @bookings.blank?
+    No No-shows for 
+    = params[:date]
     
+  #today
+    - @bookings.each do |booking|
+      = render "/check_ins/index/booking", booking: booking
+      
+      

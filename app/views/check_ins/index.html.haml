@@ -1,17 +1,18 @@
+#header
+  %h1
+    Check-Ins
 
-%h1
-  Check-Ins
 
-
-#calendar
-  #date_picker
-  
+#data
+  #calendar
+    #date_picker
     
-- if @bookings.blank?
-  No Reservations for 
-  = params[:date]
+      
+  - if @bookings.blank?
+    No Reservations for 
+    = params[:date]
 
-  
-#today
-  - @bookings.each do |booking|
-    = render "/check_ins/index/booking", booking: booking
+    
+  #today
+    - @bookings.each do |booking|
+      = render "/check_ins/index/booking", booking: booking

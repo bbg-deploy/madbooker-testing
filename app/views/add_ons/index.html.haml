@@ -1,20 +1,22 @@
 
-%h1
-  Existing Add-Ons
-  = link_to "Create Add-On", [:new, current_hotel, :add_on]
+#header
+  %h1
+    Existing Add-Ons
+    = link_to "Create Add-On", [:new, current_hotel, :add_on]
 
-%table.standard
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Price
-      %th
-  %tbody
-    - @add_ons.each do |add_on|
-      = render "/add_ons/index/row", add_on: add_on
-  %tfoot
-    %tr
-      %td{colspan: 4}
-        = will_paginate @add_ons
-      
+#data
+  %table.standard
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Price
+        %th
+    %tbody
+      - @add_ons.each do |add_on|
+        = render "/add_ons/index/row", add_on: add_on
+    %tfoot
+      %tr
+        %td{colspan: 4}
+          = will_paginate @add_ons
+        

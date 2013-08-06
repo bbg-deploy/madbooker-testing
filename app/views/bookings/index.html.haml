@@ -1,32 +1,33 @@
+#header
+  %h1
+    Bookings
 
-%h1
-  Bookings
+  = render "/bookings/index/nav"
 
-= render "/bookings/index/nav"
-
-- if @list 
-  - if @list.blank?
-    No inventory for that day.
-  -else
-    - @list.each do |room|
-      .room_type
-        .heading
-          .name= room.name
-          - if room.available
-            .available= room.available
-            .booked= room.booked
-            .percentage= room.percent_booked
-          - else
-            No inventory
-        .listing
-          - room.rooms.each do |booking|
-            - booking = booking.decorate
-            .room
-              .name= booking.name
-              .rate= booking.lowest_rate
-              .room= booking.room_name
-              .link= link_to "Details", hotel_booking_path(current_hotel, booking)
-    
+#data
+  - if @list 
+    - if @list.blank?
+      No inventory for that day.
+    -else
+      - @list.each do |room|
+        .room_type
+          .heading
+            .name= room.name
+            - if room.available
+              .available= room.available
+              .booked= room.booked
+              .percentage= room.percent_booked
+            - else
+              No inventory
+          .listing
+            - room.rooms.each do |booking|
+              - booking = booking.decorate
+              .room
+                .name= booking.name
+                .rate= booking.lowest_rate
+                .room= booking.room_name
+                .link= link_to "Details", hotel_booking_path(current_hotel, booking)
+      
 
 
 
