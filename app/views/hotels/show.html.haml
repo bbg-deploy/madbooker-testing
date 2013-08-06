@@ -11,8 +11,10 @@
   .header
     Total number of searches this
   .week
+    %i.icon-mobile-phone
     = @hotel.searches_this_week
   .month
+    %i.icon-laptop
     = @hotel.searches_this_month
   .daily_average
     = @hotel.searches_daily_average
@@ -21,8 +23,10 @@
   .header
     = link_to "Total revenue this", revenue_hotel_reports_path(current_hotel)
   .week
+    %i.icon-mobile-phone  
     = @hotel.revenue_this_week
   .month
+    %i.icon-laptop
     = @hotel.revenue_this_month
   .daily_average
     = @hotel.revenue_daily_average
@@ -33,9 +37,15 @@
   - @hotel.revenue_by_room_type.each do |room_type|
     .room_type
       = room_type.name
-      .week= room_type.week
-      .month= room_type.month
-      .daily_average= room_type.average
+      .week
+        Week:
+        = room_type.week
+      .month
+        Month:
+        = room_type.month
+      .daily_average
+        Daily Average:
+        = room_type.average
 
 /.revenue_per_add_on
 /  Revenue per add on this

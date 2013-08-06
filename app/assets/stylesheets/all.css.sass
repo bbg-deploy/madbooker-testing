@@ -258,6 +258,24 @@ $navwidth: ($width - ($icon * 2)) / 5
     li 
       padding: 0 0 0 0
       +fl
+      +rel
+      &.dropdown
+        ul 
+          +abs
+          z-index: 9
+          top: 42px
+          left: 0
+          li
+            float: none
+            padding: 0 0 0 0
+            padding: 0 0 0 0 
+            a 
+              +block
+              float: none
+              font-size: 13px !important
+              background: #333
+              &:hover
+                background: #888
       a
         +block
         padding: 10px 15px
@@ -271,6 +289,9 @@ $navwidth: ($width - ($icon * 2)) / 5
         &:hover
           +tdnone
           +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
+        i
+          font-size: 16px
+          margin: 0 3px 0 0
       &.home a
         font-size: 17px
         padding: 12px 10px 11px 10px
@@ -282,16 +303,7 @@ $navwidth: ($width - ($icon * 2)) / 5
         padding: 13px 12px 11px 12px
         color: #eee
         width: $icon
-      ul 
-        li
-          float: none
-          padding: 0 0 0 0
-          padding: 0 0 0 0 
-          a 
-            +block
-            float: none
-            font-size: 13px !important
-            background: #333
+
 
 
 
