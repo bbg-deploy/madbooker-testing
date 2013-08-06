@@ -455,8 +455,9 @@ table.standard
 
 
 
-.number_of_searches, .total_revenue
+.number_of_searches, .total_revenue, .rev_par
   margin: 0 0 0 0
+  +clear
   i
     font-size: 16px
     margin: 0 0 -2px 0
@@ -520,7 +521,14 @@ table.standard
       +tc
       span
         padding: 2px 0 0 0
-
+.graph_rev_par
+  border: 1px solid #ccc
+  border-bottom: none
+  .rev_par
+    +fr
+    .data
+      border: none
+      border-left: 1px solid #ccc
 
 
 
