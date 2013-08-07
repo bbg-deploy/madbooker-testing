@@ -10,7 +10,12 @@ class Payments::Notification < Less::Interaction
     if respond_to? event, true
       send event 
     else
+      #don't ever return an excpetion.
+      #stripe will try again and again to send the event.
+      #if we can't handle it today, we prob can't tomorrow, better to record it and tell stripe we got it.
+      #(by returning 200)
       Exceptions.record "Unhanded Stripe event '#{event}'"
+      nil
     end
   end  
   
@@ -30,25 +35,20 @@ class Payments::Notification < Less::Interaction
     nil
   end
   
-  def customer_subscription_updated 
-    update_status
-  end
-  
-  def customer_subscription_deleted
-    update_status
-  end
-  
-  def customer_subscription_created
-    update_status
-  end
-  
-  def account_updated
-    update_status
-  end
-  
-  def account_application_deauthorized
-    update_status
-  end
+  #these are the only methods that deal with changes to the subscription status
+  %w(
+    customer_created 
+    customer_updated 
+    customer_deleted 
+    customer.subscription.trial_will_end 
+    customer_subscription_updated 
+    customer_subscription_deleted
+    customer_subscription_created
+    ).each do |method|
+      define_method method do
+        update_status
+      end
+    end
   
   def update_status
     return unless user
@@ -57,13 +57,13 @@ class Payments::Notification < Less::Interaction
   
   
   #these are the stripe events we don't care about
-  %w(customer_subscription_trial_will_end  balance_available  charge_succeeded  charge_failed  charge_refunded  charge_captured  charge_dispute_created  charge_dispute_updated  charge_dispute_closed  customer_created  customer_updated  customer_deleted  customer_card_created  customer_card_updated  customer_card_deleted  customer_discount_created  customer_discount_updated  customer_discount_deleted  invoice_created  invoice_updated  invoice_payment_succeeded  invoice_payment_failed  invoiceitem_created  invoiceitem_updated  invoiceitem_deleted  plan_created  plan_updated  plan_deleted  coupon_created  coupon_deleted  transfer_created  transfer_updated  transfer_paid  transfer_failed  ping).each do |method|
-    define_method :method do
+  %w(customer_subscription_trial_will_end  balance_available  charge_succeeded  charge_failed  charge_refunded  charge_captured  charge_dispute_created  charge_dispute_updated  charge_dispute_closed  customer_card_created  customer_card_updated  customer_card_deleted  customer_discount_created  customer_discount_updated  customer_discount_deleted  invoice_created  invoice_updated  invoice_payment_succeeded  invoice_payment_failed  invoiceitem_created  invoiceitem_updated  invoiceitem_deleted  plan_created  plan_updated  plan_deleted  coupon_created  coupon_deleted  transfer_created  transfer_updated  transfer_paid  transfer_failed  ping).each do |method|
+    define_method method do
       #nothing
+      nil
     end
   end
   
   
-#  Parameters: {"created"=>1326853478, "livemode"=>false, "id"=>"evt_00000000000000", "type"=>"charge_succeeded", "object"=>"event", "data"=>{"object"=>{"id"=>"ch_00000000000000", "object"=>"charge", "created"=>1375725302, "livemode"=>false, "paid"=>true, "amount"=>100, "currency"=>"usd", "refunded"=>false, "fee"=>0, "fee_details"=>nil, "card"=>{"id"=>"cc_00000000000000", "object"=>"card", "last4"=>"4242", "type"=>"Visa", "exp_month"=>8, "exp_year"=>2014, "fingerprint"=>"YVUUSXlbnc9u230c", "customer"=>nil, "country"=>"US", "name"=>nil, "address_line1"=>nil, "address_line2"=>nil, "address_city"=>nil, "address_state"=>nil, "address_zip"=>nil, "address_country"=>nil, "cvc_check"=>nil, "address_line1_check"=>nil, "address_zip_check"=>nil}, "captured"=>true, "failure_message"=>nil, "failure_code"=>nil, "amount_refunded"=>0, "customer"=>nil, "invoice"=>nil, "description"=>"My First Test Charge (created for API docs)", "dispute"=>nil}}, "stripe"=>{"created"=>1326853478, "livemode"=>false, "id"=>"evt_00000000000000", "type"=>"charge_succeeded", "object"=>"event", "data"=>{"object"=>{"id"=>"ch_00000000000000", "object"=>"charge", "created"=>1375725302, "livemode"=>false, "paid"=>true, "amount"=>100, "currency"=>"usd", "refunded"=>false, "fee"=>0, "fee_details"=>nil, "card"=>{"id"=>"cc_00000000000000", "object"=>"card", "last4"=>"4242", "type"=>"Visa", "exp_month"=>8, "exp_year"=>2014, "fingerprint"=>"YVUUSXlbnc9u230c", "customer"=>nil, "country"=>"US", "name"=>nil, "address_line1"=>nil, "address_line2"=>nil, "address_city"=>nil, "address_state"=>nil, "address_zip"=>nil, "address_country"=>nil, "cvc_check"=>nil, "address_line1_check"=>nil, "address_zip_check"=>nil}, "captured"=>true, "failure_message"=>nil, "failure_code"=>nil, "amount_refunded"=>0, "customer"=>nil, "invoice"=>nil, "description"=>"My First Test Charge (created for API docs)", "dispute"=>nil}}}}
 
 end
