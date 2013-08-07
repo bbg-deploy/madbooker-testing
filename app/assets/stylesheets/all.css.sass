@@ -4,7 +4,7 @@
 @import utils
 
 $pad: 30px
-$yellow: #fff5bd
+$yellow: rgba(254, 249, 223, 1)
 
 body
   font-family: "arial"
@@ -618,7 +618,8 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
   width: 430px
   border: 1px solid #bbb
   padding: $pad
-  background: $yellow
+  //background: $yellow
+  +background-image(linear-gradient($yellow, rgba(237, 233, 208, 1)))
 
 
 
