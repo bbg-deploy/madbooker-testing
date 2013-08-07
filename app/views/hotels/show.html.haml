@@ -4,42 +4,265 @@
 
 #header
   %h1
-    Welcome to MadBooker
-    = link_to "edit", [:edit, current_hotel]
+    = @hotel.name
+    Dashboard
 #data
+  //.number_of_searches
+  //  .header
+  //    Searches
+  //  .week
+  //    This Week
+  //    %i.icon-mobile-phone
+  //    = @hotel.searches_this_week
+  //  .month
+  //    This Month
+  //    %i.icon-laptop
+  //    = @hotel.searches_this_month
+  //  .daily_average
+  //    Daily Average
+  //    = @hotel.searches_daily_average
+  .graph_rev_par
+    .graph      
+    .rev_par
+      .data
+        .what
+          RevPar
+        .number
+          %span $
+          15,832
+        .where
+          Past 30 days
+  .total_revenue  
+    .header
+      = link_to "Revenue Stats", revenue_hotel_reports_path(current_hotel)
+    .week
+      //.label
+      //  Revenue This Week
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          %span $
+          15,832
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          %span $
+          25,388
+        .where
+          %i.icon-laptop
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          %span $
+          25,388
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .what
+          This Month
+        .number
+          %span $
+          70,898
+        .where
+          Total
+    .month
+      //.label
+      //  Revenue This Month
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          %span $
+          125,832
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          %span $
+          125,832
+        .where
+          %i.icon-mobile-phone
+          Tablet
+      .data
+        .equal =
+        .what
+          Last Month
+        .number
+          %span $
+          115,832
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .what
+          Last Month
+        .number
+          %span $
+          215,832
+        .where
+          Total
+
   .number_of_searches
     .header
-      Total number of searches
+      Search Activity
     .week
-      This Week
-      %i.icon-mobile-phone
-      = @hotel.searches_this_week
+      //.label
+      //  Searches Activity
+      .data
+        .add +
+        .what
+          This Week
+        .number
+          15
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Week
+        .number
+          15
+        .where
+          %i.icon-mobile-phone
+          Tablet
+      .data
+        .equal =
+        .what
+          This Week
+        .number
+          15
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .what
+          This Week
+        .number
+          30
+        .where
+          //%i.icon-mobile-phone
+          //  +
+          //%i.icon-laptop
+          All Devices
     .month
-      This Month
-      %i.icon-laptop
-      = @hotel.searches_this_month
-    .daily_average
-      Daily Average
-      = @hotel.searches_daily_average
+      //.label
+      //  Searches This Month
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          1625
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          1625
+        .where
+          %i.icon-mobile-phone
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          15
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .what
+          This Month
+        .number
+          1640
+        .where
+          //%i.icon-mobile-phone
+          //  +
+          //%i.icon-laptop
+          All Devices
 
-  .total_revenue
-    .header
-      = link_to "Total revenue", revenue_hotel_reports_path(current_hotel)
-    .week
-      %i.icon-mobile-phone  
-      This Week
-      = @hotel.revenue_this_week
-    .month
-      %i.icon-laptop
-      This Month
-      = @hotel.revenue_this_month
     .daily_average
-      Daily Average
-      = @hotel.revenue_daily_average
+      //.label
+      //  Searching Daily Average
+      .data
+        .add +
+        .what
+          Daily Average
+        .number
+          5
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Daily Average
+        .number
+          5
+        .where
+          %i.icon-mobile-phone
+          Tablet
+      .data
+        .equal =
+        .what
+          Daily Average
+        .number
+          2
+        .where
+          %i.icon-laptop
+          Other
+      .data
+        .what
+          Daily Average
+        .number
+          7
+        .where
+          //%i.icon-mobile-phone
+          //  +
+          //%i.icon-laptop
+          All Devices
+
+
+
+  //.total_revenue
+  //  .header
+  //  .week
+  //    %i.icon-mobile-phone  
+  //    This Week
+  //    = @hotel.revenue_this_week
+  //  .month
+  //    %i.icon-laptop
+  //    This Month
+  //    = @hotel.revenue_this_month
+  //  .daily_average
+  //    Daily Average
+  //    = @hotel.revenue_daily_average
+
 
   .revenue_by_room_type
     .header
-      = link_to "Revenue by room type", revenue_by_room_type_hotel_reports_path(current_hotel)
+      = link_to "Revenue by Room Type", revenue_by_room_type_hotel_reports_path(current_hotel)
     - @hotel.revenue_by_room_type.each do |room_type|
       .room_type
         .name

@@ -8,16 +8,16 @@
     = cal.next_year_link
 
 
-#data
-  #calendar_year
-    - 1.upto(12) do |i|
-      / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
-      .calendar_month
-        = calendar(:show_other_months => false, :year => cal.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
-          - render "inventories/calendar/day_for_year", date: d
-      
-  = render "/inventories/calendar/date_pickers", for_month: false
 
-  #inventories_form
-
+#calendar_year
+  - 1.upto(12) do |i|
+    / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
+    .calendar_month
+      = calendar(:show_other_months => false, :year => cal.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
+        - render "inventories/calendar/day_for_year", date: d
     
+= render "/inventories/calendar/date_pickers", for_month: false
+
+#inventories_form
+
+  

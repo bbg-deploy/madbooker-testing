@@ -33,6 +33,7 @@ p
   //padding: $pad
   background: white
   border: 1px solid #406463
+  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
   #header
     background: #eee
     border-bottom: 1px solid #ccc
@@ -106,7 +107,7 @@ div.input
     border: 1px solid #999
     border-bottom: 1px solid #777
     margin: 0 0 0 0
-    //+box-shadow(#bbb 0 3px 5px inset)
+    +box-shadow(rgba(#333, 0.4) 0 0 11px 1px inset)
   textarea
     width: 100%
     height: 100px
@@ -256,6 +257,7 @@ $icon: 50px
 $navwidth: ($width - ($icon * 2)) / 5
 
 #nav
+  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
@@ -289,6 +291,7 @@ $navwidth: ($width - ($icon * 2)) / 5
         font-size: 13px
         border: 1px solid #406463
         border-left: none
+        border-top: none
         +background-image(linear-gradient(rgba(95, 150, 149, .9), rgba(78, 122, 121, 1)))
         &:hover
           +tdnone
@@ -355,8 +358,8 @@ $navwidth: ($width - ($icon * 2)) / 5
 ///// calendar stuff
 
 th.monthName
-  font-size: 22px
-  padding: 10px 0
+  font-size: 18px
+  padding: 0 0 10px 0
 td.day
   font-size: 12px
   .room_type, .no_inventory
@@ -385,10 +388,15 @@ td.day
 #calendar_year
   .calendar_month
     +fl
-    padding: 40px 0 0 0
-    &:nth-child(3n+2)
-      padding-left: 35px
-      padding-right: 35px
+    padding: 23px
+    border-right: 1px solid #ccc
+    border-bottom: 1px solid #ccc
+    height: 330px
+    &:nth-child(3n+3)
+      border-right: none
+    //&:nth-child(3n+2)
+    //  padding-left: 35px
+    //  padding-right: 35px
 abbr[title]
   border-bottom: none !important
 
@@ -402,7 +410,6 @@ table.standard
   width: 100%
   border: 1px solid #ccc
   border-bottom: none
-  margin: 20px 0
   tr th, tr td
     padding: 10px
     +tl
@@ -420,8 +427,6 @@ table.standard
 
 /// dashboard
 
-.number_of_searches,
-.total_revenue,
 .revenue_by_room_type,
 .look_to_book
   border: 1px solid #ccc
@@ -429,8 +434,9 @@ table.standard
   margin: 20px 0
   .header
     +bold
-    font-size: 16px
+    font-size: 26px
     margin: 0 0 5px 0
+
 
 .revenue_by_room_type
   .room_type
@@ -444,20 +450,98 @@ table.standard
       width: 210px
       +bold
       margin: 0 0 5px 0
-    .week,
-    .month,
-    .daily_average
+
+//.week,
+//.month,
+//.daily_average
+//  span
+//    &:first-child
+//      +fl
+//    &:last-child
+//      +fr
+
+$data_width: ($width - (($pad * 2)) - 3px) / 4
+
+.number_of_searches, .total_revenue, .rev_par
+  margin: 0 0 0 0
+  +clear
+  i
+    font-size: 16px
+    margin: 0 0 -2px 0
+    &.icon-mobile-phone
+      font-size: 20px
+  .header
+    background: #eee
+    +tc
+    border: 1px solid #ccc
+    border-bottom: 0px
+    padding: 23px 20px 20px 20px
+    font-size: 16px
+  .label
+    padding: 10px
+    background: #eee
+    color: #333
+    font-size: 14px
+    +tc
+    border: 1px solid #ccc
+    border-bottom: none
+  .data
+    +fl
+    +rel
+    padding: 30px 20px 30px 20px
+    border: 1px solid #ccc
+    height: 145px
+    border-bottom: none
+    border-right: none
+    width: $data_width
+    +box-shadow(rgba(#333, 0.04) 0 0 11px 1px inset)
+    &:last-child
+      border-right: 1px solid #ccc
+      background: $yellow
+      width: $data_width + 1px
+    .add, .equal
+      +abs
+      top: 42%
+      right: -14px
+      padding: 3px 17px 3px 9px
+      +tl
+      background: white
+      border: 1px solid rgba(1, 1, 1, .32)
+      +border-radius(50%)
+      width: 20px
+      z-index: 2
+      +box-shadow(rgba(#333, 0.1) 0 0 4px 1px)
+
+    .what
+      +tc
+      margin: 0 0 10px 0
+      color: #888
+      font-size: 13px
+    .number
+      font-size: 31px
+      +bold
+      margin: 0 0 0 -7px
+      +tc
       span
-        &:first-child
-          +fl
-        &:last-child
-          +fr
-
-
-
-
-
-
+        font-size: 20px
+        font-weight: normal
+        margin: 0 -7px 0 0
+        color: #666
+    .where
+      font-size: 13px
+      margin: 0 0 0 0
+      padding: 10px 0 0 0
+      +tc
+      span
+        padding: 2px 0 0 0
+.graph_rev_par
+  border: 1px solid #ccc
+  border-bottom: none
+  .rev_par
+    +fr
+    .data
+      border: none
+      border-left: 1px solid #ccc
 
 
 

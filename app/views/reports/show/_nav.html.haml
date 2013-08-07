@@ -4,8 +4,18 @@
   %h1 Reports
 
   #filters
-    = link_to "Revenue", revenue_hotel_reports_path
-    = link_to "Revenue by Room Type", revenue_by_room_type_hotel_reports_path
-    = link_to "Average Daily Rate", daily_hotel_reports_path
-    = link_to "Sales Funnel", funnel_hotel_reports_path
-    = link_to "Searches", searches_hotel_reports_path(date_range: :month)
+    = link_to revenue_hotel_reports_path do
+      %i.icon-money
+      Revenue
+    = link_to revenue_by_room_type_hotel_reports_path do
+      %i.icon-money
+      Revenue by Room Type
+    = link_to daily_hotel_reports_path do
+      %i.icon-money
+      Average Daily Rate
+    = link_to funnel_hotel_reports_path do
+      %i.icon-filter
+      Sales Funnel
+    = link_to searches_hotel_reports_path(date_range: :month) do
+      %i.icon-search
+      Searches
