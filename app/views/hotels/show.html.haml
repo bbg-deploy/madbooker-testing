@@ -22,11 +22,7 @@
   //    Daily Average
   //    = @hotel.searches_daily_average
   .graph_rev_par
-    .graph
-
-
-      
-      
+    .graph      
     .rev_par
       .data
         .what
@@ -38,7 +34,7 @@
           Past 30 days
   .total_revenue  
     .header
-      Revenue Activity
+      = link_to "Revenue Stats", revenue_hotel_reports_path(current_hotel)
     .week
       //.label
       //  Revenue This Week
@@ -122,42 +118,9 @@
         .where
           Total
 
-    //.daily_average
-    //  //.label
-    //  //  Revenue Daily Average
-    //  .data
-    //    .add +
-    //    .what
-    //      Revenue Daily Average
-    //    .number
-    //      %span $
-    //      5,832
-    //    .where
-    //      %i.icon-mobile-phone
-    //      Mobile
-    //  .data
-    //    .equal =
-    //    .what
-    //      Revenue Daily Average
-    //    .number
-    //      %span $        
-    //      1,832
-    //    .where
-    //      %i.icon-laptop
-    //      Other
-    //  .data
-    //    .what
-    //      Revenue Daily Average
-    //    .number
-    //      %span $
-    //      6,832
-    //    .where
-    //      Total
-
-
   .number_of_searches
     .header
-      Searches Activity
+      Search Activity
     .week
       //.label
       //  Searches Activity
@@ -282,20 +245,19 @@
 
 
 
-  .total_revenue
-    .header
-      = link_to "Revenue", revenue_hotel_reports_path(current_hotel)
-    .week
-      %i.icon-mobile-phone  
-      This Week
-      = @hotel.revenue_this_week
-    .month
-      %i.icon-laptop
-      This Month
-      = @hotel.revenue_this_month
-    .daily_average
-      Daily Average
-      = @hotel.revenue_daily_average
+  //.total_revenue
+  //  .header
+  //  .week
+  //    %i.icon-mobile-phone  
+  //    This Week
+  //    = @hotel.revenue_this_week
+  //  .month
+  //    %i.icon-laptop
+  //    This Month
+  //    = @hotel.revenue_this_month
+  //  .daily_average
+  //    Daily Average
+  //    = @hotel.revenue_daily_average
 
 
   .revenue_by_room_type
