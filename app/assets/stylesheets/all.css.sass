@@ -107,7 +107,7 @@ div.input
     border: 1px solid #999
     border-bottom: 1px solid #777
     margin: 0 0 0 0
-    +box-shadow(rgba(#333, 0.4) 0 0 11px 1px inset)
+    +box-shadow(rgba(#333, 0.24) 0 0 1px 1px inset)
   textarea
     width: 100%
     height: 100px
@@ -334,22 +334,27 @@ $navwidth: ($width - ($icon * 2)) / 5
 
   margin: 10px 0 0 0
   a
-    padding: 7px 12px
+    padding: 7px 15px
     +block
     +background-image(linear-gradient(rgba(1, 1, 1, .05), rgba(1, 1, 1, .15)))
-    border: 1px solid #ccc
+    border: 1px solid #999
     border-right: none
-    border-bottom: 1px solid #999
+    border-bottom: 1px solid #777
     +fl
     color: #333
     font-size: 13px
+    &.on
+      background: white
+      +box-shadow(rgba(#333, 0.21) 0 0 5px 1px inset)
+    i
+      margin: 0 4px 0 0
     &:first-child
       +border-top-left-radius
       +border-bottom-left-radius
     &:last-child
       +border-top-right-radius
       +border-bottom-right-radius
-      border-right: 1px solid #ccc
+      border-right: 1px solid #999
     &:hover
       background: #333
       color: white
