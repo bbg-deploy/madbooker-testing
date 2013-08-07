@@ -463,6 +463,24 @@ table.standard
   tr:nth-child(even) td
     background: $yellow
 
+table.standard2
+  width: 100%
+  border: 1px solid #ccc
+  border-bottom: none
+  tr th, tr td
+    padding: 5px
+    font-size: 12px
+    +tl
+    border-bottom: 1px solid #ccc
+    border-right: 1px solid #ccc
+  tr th
+    background: #eee
+    color: #333
+    font-weight: normal
+  tr td.actions a
+    padding-right: 10px
+  tr:nth-child(even) td
+    background: $yellow
 
 /// dashboard
 
@@ -590,7 +608,17 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
   padding: 10px
 
 
-
+#current_team, #right_column
+  +fr
+  width: 430px
+  h3
+    margin: 0 0 10px 0
+#invite, #form_column
+  +fl
+  width: 430px
+  border: 1px solid #bbb
+  padding: $pad
+  background: $yellow
 
 
 

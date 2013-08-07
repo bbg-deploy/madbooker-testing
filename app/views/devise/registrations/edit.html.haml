@@ -8,29 +8,34 @@
     = link_to edit_user_registration_path, :class => 'on' do
       %i.icon-user
       Edit User Information
-    = link_to edit_user_registration_path do
+    = link_to [current_hotel, :memberships] do
       %i.icon-user
-      Invite Team Members
+      Team Members
+
 
 #data
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :email, :required => true, :autofocus => true
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %p
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-      = f.input :password_confirmation, :required => false
-      = f.input :time_zone
-      = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-    .form-actions
-      = f.button :submit, "Update"
+  #form_column
+    %h2
+      Your User Information
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :email, :required => true, :autofocus => true
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %p
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
+        = f.input :password_confirmation, :required => false
+        = f.input :time_zone
+        = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+      .form-actions
+        = f.button :submit, "Update"
 
 
 
-
-  %h3 Cancel my account
-  %p
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-  = link_to "Back", :back
+  #right_column
+    %h3 Cancel my account
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis massa justo, eget fringilla mauris molestie vitae. Pellentesque ante mi, imperdiet at faucibus sed, semper at mi. Ut nisl orci, vestibulum a vehicula non, laoreet in lacus. Maecenas ut lectus velit.
+      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+    
