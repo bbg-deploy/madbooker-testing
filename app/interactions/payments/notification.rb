@@ -27,6 +27,7 @@ class Payments::Notification < Less::Interaction
     u = User.find_by_id data["customer"]
     return @user = u if u
     Exceptions.record "User not found while handling Stripe event", context.params
+    nil
   end
   
   def customer_subscription_updated 
