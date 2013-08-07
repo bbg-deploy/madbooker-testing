@@ -1,17 +1,30 @@
+#header
+  %h1
+    = current_hotel.name
+  #filters
+    = link_to [:edit, current_hotel], :class => 'on' do
+      %i.icon-home
+      Hotel Information
+    = link_to edit_user_registration_path do
+      %i.icon-user
+      Edit User Information
+    = link_to [:edit, current_hotel] do
+      %i.icon-user
+      Invite Team Members
+#hotel_edit
+  //#tabs
+  //  %ul
+  //    %li
+  //      %a{href:"#info"}Info
+  //    %li
+  //      %a{href:"#people"}People
+  //  #info
+  //    = render partial: "/hotels/form/form"
+  //  #people
+  //    = render "/hotels/form/members"
 
-%h1
-  = current_hotel.name
-
-
-#tabs
-  %ul
-    %li
-      %a{href:"#info"}Info
-    %li
-      %a{href:"#people"}People
-
-  #info
-    = render partial: "/hotels/form/form"
-  #people
-    = render "/hotels/form/members"
-
+  //#info
+  
+  = render partial: "/hotels/form/form"
+  //#people
+  //= render "/hotels/form/members"

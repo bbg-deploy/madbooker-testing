@@ -9,6 +9,8 @@
     - if @list.blank?
       No inventory for that day.
     -else
+      %h2
+        Search Results
       - @list.each do |room|
         .room_type
           .heading

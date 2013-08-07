@@ -1,10 +1,8 @@
 
-
-%div
-  %input#daypicker{placeholder: "Pick day"}
+#box
+  %input#daypicker{placeholder: "Pick Date"}
   
-%div
   = form_tag search_hotel_bookings_path(current_hotel), method: :get do
     = text_field_tag 'q', params[:q], placeholder: 'Search'
     = submit_tag "Search"
-  
+    
