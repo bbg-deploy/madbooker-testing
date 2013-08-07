@@ -25,6 +25,7 @@ class Stat < ActiveRecord::Base
   SEARCH = "search"
   LOOK   = "look"
   BOOK   = "book"
+  USER   = "user"
 
   
   scope :searches,      ->{where kind: SEARCH}
@@ -59,6 +60,14 @@ class Stat < ActiveRecord::Base
   
   def self.book context: context
     s = setup context: context, type: BOOK
+    s.save
+    s
+  end
+  
+  def self.new_user context: context
+    s = new
+    s.kind = USER
+    s.data = {user: context.user.id, payment_status: user.payment_status}
     s.save
     s
   end

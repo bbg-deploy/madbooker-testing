@@ -13,7 +13,7 @@ class Payments::Signup < Less::Interaction
     customer            = nil
     ok, customer = check_for_errors do
     Stripe::Customer.create(
-      description:  "#{context.user.id}",
+      description:  context.user.id.to_s,
       card:         context.params[:user][:stripe_token],
       email:        context.user.email,
       plan:         StripeKey.basic
@@ -21,6 +21,7 @@ class Payments::Signup < Less::Interaction
     end
     if ok
       save_the_stripe_data_to_user customer
+      Stat.new_user context: context
       true
     else
       save_the_error_to_the_user customer
@@ -34,6 +35,7 @@ class Payments::Signup < Less::Interaction
   end
   
   def save_the_error_to_the_user message
+    context.user.destroy
     context.user.errors.add :base, message
   end
   

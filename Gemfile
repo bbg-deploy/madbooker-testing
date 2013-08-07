@@ -47,7 +47,6 @@ gem "attr_encrypted"
 gem "simple_states"
 gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
     gem "haml-rails"

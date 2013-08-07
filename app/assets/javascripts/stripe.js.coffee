@@ -20,13 +20,6 @@
         $("#user_cc_number").val ""
         $("#user_cc_cvv").val ""
         $("#signup_form").submit()
-        # var form$ = $("#payment-form");
-        # // token contains id, last4, and card type
-        # var token = response['id'];
-        # // insert the token into the form so it gets submitted to the server
-        # form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-        # // and submit
-        # form$.get(0).submit();
     
     init: ->
       bind_form()

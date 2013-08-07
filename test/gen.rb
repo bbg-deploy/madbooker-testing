@@ -130,7 +130,9 @@ class << self
   def user args = {}
     defaults = {
       :email     => Faker::Internet.email,
-      :time_zone => "UTC"
+      :time_zone => "UTC",
+      :stripe_customer_id => "blah",
+      :payment_status => "active"
     }
     make User, defaults, args
   end

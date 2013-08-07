@@ -14,7 +14,7 @@ class Devise::RegistrationsController < DeviseController
         resource.errors.log
 
     context.user = resource
-    if Payments::Signup.new(context).run && resource.save
+    if resource.save && Payments::Signup.new(context).run
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)

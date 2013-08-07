@@ -5,9 +5,10 @@ class StripesController < ApplicationController
   skip_filter :set_reservation_cookie
   skip_filter :store_page_stat
   
+  respond_to :html, :js, :json, :xml
+  
   def event
-    event = request.body.read.log
+    Payments::Notifcation.new(context).run
     render :text => ""
   end
-  
 end
