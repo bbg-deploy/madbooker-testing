@@ -33,6 +33,7 @@ p
   //padding: $pad
   background: white
   border: 1px solid #406463
+  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
   #header
     background: #eee
     border-bottom: 1px solid #ccc
@@ -106,7 +107,7 @@ div.input
     border: 1px solid #999
     border-bottom: 1px solid #777
     margin: 0 0 0 0
-    //+box-shadow(#bbb 0 3px 5px inset)
+    +box-shadow(rgba(#333, 0.4) 0 0 11px 1px inset)
   textarea
     width: 100%
     height: 100px
@@ -256,6 +257,7 @@ $icon: 50px
 $navwidth: ($width - ($icon * 2)) / 5
 
 #nav
+  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
@@ -289,6 +291,7 @@ $navwidth: ($width - ($icon * 2)) / 5
         font-size: 13px
         border: 1px solid #406463
         border-left: none
+        border-top: none
         +background-image(linear-gradient(rgba(95, 150, 149, .9), rgba(78, 122, 121, 1)))
         &:hover
           +tdnone
@@ -457,7 +460,7 @@ table.standard
 //    &:last-child
 //      +fr
 
-
+$data_width: ($width - (($pad * 2)) - 3px) / 4
 
 .number_of_searches, .total_revenue, .rev_par
   margin: 0 0 0 0
@@ -473,7 +476,8 @@ table.standard
     +tc
     border: 1px solid #ccc
     border-bottom: 0px
-    padding: 10px
+    padding: 20px
+    font-size: 16px
   .label
     padding: 10px
     background: #eee
@@ -490,10 +494,12 @@ table.standard
     height: 145px
     border-bottom: none
     border-right: none
-    width: ($width - (($pad * 2) + 2px)) / 3
+    width: $data_width
+    +box-shadow(rgba(#333, 0.04) 0 0 11px 1px inset)
     &:last-child
       border-right: 1px solid #ccc
       background: $yellow
+      width: $data_width + 1px
     .add, .equal
       +abs
       top: 42%
@@ -501,15 +507,19 @@ table.standard
       padding: 3px 17px 3px 9px
       +tl
       background: white
-      border: 1px solid #ccc
+      border: 1px solid rgba(1, 1, 1, .32)
       +border-radius(50%)
       width: 20px
       z-index: 2
+      +box-shadow(rgba(#333, 0.1) 0 0 4px 1px)
+
     .what
       +tc
       margin: 0 0 10px 0
+      color: #888
+      font-size: 13px
     .number
-      font-size: 32px
+      font-size: 31px
       +bold
       margin: 0 0 0 -7px
       +tc
