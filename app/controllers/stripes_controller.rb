@@ -8,7 +8,7 @@ class StripesController < ApplicationController
   respond_to :html, :js, :json, :xml
   
   def event
-    Payments::Notifcation.new(context).run
+    Payments::Notification.new(context).run
     render :text => ""
   end
 end
