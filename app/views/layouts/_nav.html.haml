@@ -28,9 +28,12 @@
 
       //%li= link_to "Public page", book_url(host: current_hotel.host, protocol: App.protocol), target: :_blank
       %li
-        = link_to edit_user_registration_path do
+        //= link_to edit_user_registration_path do
+        //  %i.icon-cog
+        //  Settings
+        = link_to [:edit, current_hotel] do
           %i.icon-cog
-          My Account
+          Settings
       %li.logout= link_to "", destroy_user_session_path, method: :delete, :class => 'icon-off'
 
       //%li= link_to "Inventory", [current_hotel, :inventories]

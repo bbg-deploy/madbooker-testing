@@ -2,12 +2,15 @@
   %h1
     Edit #{resource_name.to_s.humanize}
   #filters
-    = link_to edit_user_registration_path, :class => 'on' do
-      %i.icon-user
-      Edit User Information
     = link_to [:edit, current_hotel] do
       %i.icon-home
       Hotel Information
+    = link_to edit_user_registration_path, :class => 'on' do
+      %i.icon-user
+      Edit User Information
+    = link_to edit_user_registration_path do
+      %i.icon-user
+      Invite Team Members
 
 #data
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
