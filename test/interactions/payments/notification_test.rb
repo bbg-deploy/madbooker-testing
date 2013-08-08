@@ -9,7 +9,6 @@ class Payments::NotificationTest < MiniTest::Should::TestCase
   
   context "responding to an event we don't handle" do
     setup do
-        p notification.private_methods.sort
       template = stripe_params("customer.subscription.created")
       template["type"] = "blah"
       @context = Context.new params: template
@@ -21,11 +20,13 @@ class Payments::NotificationTest < MiniTest::Should::TestCase
     end
   end
   
-  %w(account.updated charge.dispute.closed charge.dispute.created charge.dispute.updated charge.failed charge.refunded charge.succeeded coupon.created coupon.deleted customer.created customer.deleted customer.discount.created customer.discount.deleted customer.discount.updated customer.subscription.trial_will_end  customer.updated invoice.created invoice.payment_failed invoice.payment_succeeded invoice.updated invoiceitem.created invoiceitem.deleted invoiceitem.updated plan.created plan.deleted plan.updated transfer.created transfer.failed transfer.paid transfer.updated).each do |method|
+  Payments::Notification::IGNORED_EVENTS.each do |method|
     context "responding to #{method} event" do
       setup do
         @context = Context.new params: stripe_params(method)
-        notification.expects method.gsub(".", "_")
+        @user = Gen.user(payment_status: "active")
+        notification.stubs(:user).returns @user
+        #notification.expects method.gsub(".", "_")
         notification.expects( :update_status).never
       end
 
@@ -35,42 +36,28 @@ class Payments::NotificationTest < MiniTest::Should::TestCase
     end
   end
   
-  context "responding to customer_subscription_created event" do
-    setup do
-      @context = Context.new params: stripe_params("customer.subscription.created")
-      @user = Gen.user(payment_status: "active")
-      @user.expects(:update_attribute).with(:payment_status, "trialing")
-      notification.stubs(:user).returns @user
-    end
+  
+  Payments::Notification::HANDLED_EVENTS.each do |method|
+    context "responding to #{method} event" do
+      setup do
+        @context = Context.new params: stripe_params(method)
+        @user = Gen.user(payment_status: "active")
+        @user.expects(:update_attribute).with(:payment_status, status( method))
+        notification.stubs(:user).returns @user
+      end
 
-    should "call the method and change the subscription" do
-      notification.run
+      should "call the method and change the subscription" do
+        notification.run
+      end
     end
   end
-    
-  context "responding to customer_subscription_updated event" do
-    setup do
-      @context = Context.new params: stripe_params("customer.subscription.updated")
-      @user = Gen.user(payment_status: "active")
-      @user.expects(:update_attribute).with(:payment_status, "trialing")
-      notification.stubs(:user).returns @user
-    end
-
-    should "call the method and change the subscription" do
-      notification.run
-    end
-  end
-    
-  context "responding to customer_subscription_deleted event" do
-    setup do
-      @context = Context.new params: stripe_params("customer.subscription.deleted")
-      @user = Gen.user
-      @user.expects(:update_attribute).with(:payment_status, "canceled")
-      notification.stubs(:user).returns @user
-    end
-
-    should "call the method and change the subscription" do
-      notification.run
+      
+      
+  def status method
+    if method.in? %w(customer.subscription.deleted)
+      "canceled"
+    else
+      "trialing"
     end
   end
     

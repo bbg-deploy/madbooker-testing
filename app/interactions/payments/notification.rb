@@ -1,7 +1,17 @@
 class Payments::Notification < Less::Interaction
 
+  #these are the stripe events we don't care about
+  IGNORED_EVENTS = %w(account.updated charge.dispute.closed charge.dispute.created charge.dispute.updated charge.failed charge.refunded charge.succeeded coupon.created coupon.deleted customer.discount.created customer.discount.deleted customer.discount.updated invoice.created invoice.payment_failed invoice.payment_succeeded invoice.updated invoiceitem.created invoiceitem.deleted invoiceitem.updated plan.created plan.deleted plan.updated transfer.created transfer.failed transfer.paid transfer.updated)
+
+  #these are the only methods that deal with changes to the subscription status
+  HANDLED_EVENTS = %w(customer.created customer.updated customer.deleted customer.subscription.trial_will_end customer.subscription.updated customer.subscription.deleted customer.subscription.created )
+
   def run
     handle_notification
+  end
+  
+  def self.clean_event_name name
+    name.gsub(".", "_")
   end
   
   private
@@ -35,34 +45,29 @@ class Payments::Notification < Less::Interaction
     nil
   end
   
-  #these are the only methods that deal with changes to the subscription status
-  %w(
-    customer_created 
-    customer_updated 
-    customer_deleted 
-    customer.subscription.trial_will_end 
-    customer_subscription_updated 
-    customer_subscription_deleted
-    customer_subscription_created
-    ).each do |method|
-      define_method method do
-        update_status
+  HANDLED_EVENTS.each do |method|
+      define_method clean_event_name(method) do
+        if data["status"]
+          update_status data["status"]
+        else
+          update_status data["subscription"]["status"]
+        end
       end
     end
-  
-  def update_status
+      
+  def update_status status
     return unless user
-    user.update_attribute :payment_status, data["status"]
+    user.update_attribute :payment_status, status
   end
   
   
-  #these are the stripe events we don't care about
-  %w(customer_subscription_trial_will_end  balance_available  charge_succeeded  charge_failed  charge_refunded  charge_captured  charge_dispute_created  charge_dispute_updated  charge_dispute_closed  customer_card_created  customer_card_updated  customer_card_deleted  customer_discount_created  customer_discount_updated  customer_discount_deleted  invoice_created  invoice_updated  invoice_payment_succeeded  invoice_payment_failed  invoiceitem_created  invoiceitem_updated  invoiceitem_deleted  plan_created  plan_updated  plan_deleted  coupon_created  coupon_deleted  transfer_created  transfer_updated  transfer_paid  transfer_failed  ping).each do |method|
-    define_method method do
+  IGNORED_EVENTS.each do |method|
+    define_method clean_event_name(method) do
       #nothing
       nil
     end
   end
+  
   
   
 
