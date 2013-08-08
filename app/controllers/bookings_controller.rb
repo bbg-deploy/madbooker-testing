@@ -14,9 +14,8 @@ class BookingsController < ApplicationController
   end
   
   def index
-    if params[:date]
-      @list = Booking::List.new(context: context).run
-    end
+    params[:date] ||= Date.current.to_s :db
+    @list = Booking::List.new(context: context).run
   end
   
   def search
