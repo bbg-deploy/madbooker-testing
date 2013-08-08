@@ -26,8 +26,8 @@ class Payments::NotificationTest < MiniTest::Should::TestCase
         @context = Context.new params: stripe_params(method)
         @user = Gen.user(payment_status: "active")
         notification.stubs(:user).returns @user
-        #notification.expects method.gsub(".", "_")
         notification.expects( :update_status).never
+        Stat.expects(:subscription).never
       end
 
       should "call the method with no errors" do
@@ -44,6 +44,7 @@ class Payments::NotificationTest < MiniTest::Should::TestCase
         @user = Gen.user(payment_status: "active")
         @user.expects(:update_attribute).with(:payment_status, status( method))
         notification.stubs(:user).returns @user
+        Stat.expects :subscription
       end
 
       should "call the method and change the subscription" do

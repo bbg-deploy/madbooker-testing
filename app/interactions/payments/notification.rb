@@ -58,6 +58,7 @@ class Payments::Notification < Less::Interaction
   def update_status status
     return unless user
     user.update_attribute :payment_status, status
+    Stat.subscription user: user
   end
   
   

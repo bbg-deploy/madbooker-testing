@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title= title
+    = stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    = javascript_include_tag "application", "data-turbolinks-track" => true 
+    = csrf_meta_tag
+    = yield(:head)
+  %body
+    .container
+      #header
+        #nav
+          = render :partial => '/layouts/brouchure_nav'
+      #content
+        //%h1= yield(:title)
+        - unless notice.blank?
+          %p.notice= notice
+        - unless alert.blank?
+          %p.alert= alert
+        = yield
+      = render :partial => '/layouts/footer'

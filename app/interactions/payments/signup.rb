@@ -4,7 +4,6 @@ class Payments::Signup < Less::Interaction
     what_does_stripe_say
   end
   
-  
   private
   def what_does_stripe_say
     Stripe.api_version  = "2013-07-05"

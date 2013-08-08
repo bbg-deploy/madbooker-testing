@@ -21,11 +21,12 @@ class Stat < ActiveRecord::Base
   belongs_to :hotel
   
   #page types
-  PAGE   = "page"
-  SEARCH = "search"
-  LOOK   = "look"
-  BOOK   = "book"
-  USER   = "user"
+  PAGE          = "page"
+  SEARCH        = "search"
+  LOOK          = "look"
+  BOOK          = "book"
+  USER          = "user"
+  SUBSCRIPTION  = "subscription"
 
   
   scope :searches,      ->{where kind: SEARCH}
@@ -68,6 +69,14 @@ class Stat < ActiveRecord::Base
     s = new
     s.kind = USER
     s.data = {user: context.user.id, payment_status: context.user.payment_status}
+    s.save
+    s
+  end
+  
+  def self.subscription user: user
+    s = new
+    s.kind = SUBSCRIPTION
+    s.data = {user: user.id, status: user.payment_status}
     s.save
     s
   end
