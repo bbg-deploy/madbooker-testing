@@ -12,12 +12,12 @@ class Payments::Signup < Less::Interaction
     ok                  = nil
     customer            = nil
     ok, customer = check_for_errors do
-    Stripe::Customer.create(
-      description:  context.user.id.to_s,
-      card:         context.params[:user][:stripe_token],
-      email:        context.user.email,
-      plan:         StripeKey.basic
-      )
+      Stripe::Customer.create(
+        description:  context.user.id.to_s,
+        card:         context.params[:user][:stripe_token],
+        email:        context.user.email,
+        plan:         StripeKey.basic
+        )
     end
     if ok
       save_the_stripe_data_to_user customer
@@ -32,6 +32,7 @@ class Payments::Signup < Less::Interaction
   def save_the_stripe_data_to_user customer
     context.user.stripe_customer_id = customer["id"]
     context.user.payment_status = customer["subscription"]["status"]
+    context.user.save
   end
   
   def save_the_error_to_the_user message
@@ -60,12 +61,5 @@ class Payments::Signup < Less::Interaction
   def error_status ex
     ex.http_status
   end
-    # 
-    # puts "Status is: #{e.http_status}"
-    # puts "Type is: #{err[:type]}"
-    # puts "Code is: #{err[:code]}"
-    # # param is '' in this case
-    # puts "Param is: #{err[:param]}"
-    # puts "Message is: #{err[:message]}"
   
 end

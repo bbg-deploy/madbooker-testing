@@ -11,7 +11,6 @@ class Devise::RegistrationsController < DeviseController
   # POST /resource
   def create
     self.resource = build_resource(sign_up_params)
-        resource.errors.log
 
     context.user = resource
     if resource.save && Payments::Signup.new(context).run

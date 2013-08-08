@@ -67,7 +67,7 @@ class Stat < ActiveRecord::Base
   def self.new_user context: context
     s = new
     s.kind = USER
-    s.data = {user: context.user.id, payment_status: user.payment_status}
+    s.data = {user: context.user.id, payment_status: context.user.payment_status}
     s.save
     s
   end
