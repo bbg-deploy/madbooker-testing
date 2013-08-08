@@ -43,7 +43,7 @@ class Inventory::CalendarTest < MiniTest::Should::TestCase
 
       should "return today date" do
         d = calendar.send :date
-        assert_equal Date.today, d
+        assert_equal Date.current, d
       end
 
     end
