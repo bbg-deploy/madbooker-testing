@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   include Rendering
   include DeviseStuff
   include StatsStuff
+  include AuthorizedStuff
   
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
   around_filter :set_time_zone
   before_filter :set_reservation_cookie
   after_filter :store_page_stat
+  before_filter :redirect_unless_user_authorized
 
   layout :select_layout
 
@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
   end
   
   def private_or_public_hotel
-    current_user || hotel_from_subdomain
+    current_hotel || hotel_from_subdomain
   end
    
    

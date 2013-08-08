@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   skip_filter :authenticate_user!
+  layout "brouchure"
   
   def index
     if !account_subdomain.blank?
@@ -9,6 +10,9 @@ class HomeController < ApplicationController
     end
   end
   
+  def not_authorized
+    
+  end
   
   def privacy
     render :layout => false

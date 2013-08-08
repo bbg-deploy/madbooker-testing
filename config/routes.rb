@@ -56,4 +56,6 @@ Madbooker::Application.routes.draw do
   
   get "/privacy", :to => "home#privacy"
   get "/terms", :to => "home#terms"
+  get "/not_authorized", :to => "home#not_authorized", as: :not_authorized
+  
 end
