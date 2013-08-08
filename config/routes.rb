@@ -37,8 +37,6 @@ Madbooker::Application.routes.draw do
     resources :inventories do
       collection do
         get :form
-        get ":year/:month", action: :index, as: "for_month"
-        get ":year", action: :year, as: "for_year"
       end
     end
   end

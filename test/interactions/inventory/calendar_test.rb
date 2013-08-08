@@ -10,27 +10,26 @@ class Inventory::CalendarTest < MiniTest::Should::TestCase
     
     context "converts params to date" do
       setup do        
-        params = {year: "2013", month: "3"}
+        params = {id: "2013"}
         @context = Context.new params:  params, hotel: nil
       end
 
       should "return proper date" do
         d = calendar.send :date
-        assert_equal Date.new(2013,3,1), d
+        assert_equal Date.new(2013), d
       end
 
     end
     
     context "converts invalid params to date" do
       setup do        
-        params = {year: "0", month: "0"}
+        params = {id: "asdf"}
         @context = Context.new params:  params, hotel: nil
       end
 
       should "return raise arg err" do
-        assert_raises ArgumentError do
-          d = calendar.send :date
-        end
+        #nothing raised
+        assert calendar.send( :date)
       end
 
     end

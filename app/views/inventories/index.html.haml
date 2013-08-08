@@ -1,21 +1,22 @@
-
 #header
   %h1
-    Make Inventory Changes
+    Inventory
+
   #filters
-    = cal.for_year_link
-    = cal.previous_month_link
-    = cal.next_month_link
+    = @calendar.previous_year_link
+    = @calendar.next_year_link
 
 
-#data
-  / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
-  = calendar(:year => cal.date.year, :month => cal.date.month, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
-    - render "inventories/calendar/day", date: d
+
+#calendar_year
+  - 1.upto(12) do |i|
+    / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
+    .calendar_month
+      = calendar(:show_other_months => false, :year => @calendar.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
+        - render "inventories/calendar/day", date: d
     
-  = render "/inventories/calendar/date_pickers", for_month: true
+= render "/inventories/calendar/date_pickers", for_month: false
 
+#inventories_form
 
-  #inventories_form
-
-    
+  

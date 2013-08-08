@@ -2,8 +2,12 @@ class InventoriesController < ApplicationController
   
   def index
     i = Inventory::Calendar.new(context: context).run
-    cal = CalendarDecorator.new i
-    res cal, :cal
+    @calendar = CalendarDecorator.new i
+  end
+  
+  def show
+    index
+    render action: "index"
   end
   
   def create
@@ -12,12 +16,6 @@ class InventoriesController < ApplicationController
     create_resource_helper_methods_for i, :resp
   end
   
-  def year
-    
-    i = Inventory::Calendar.new(context: context).run
-    cal = CalendarDecorator.new i
-    res cal, :cal
-  end
   
   
   def form

@@ -10,8 +10,8 @@ class Inventory::Calendar < Less::Interaction
   private
   def date
     return @date if @date
-    @date = Date.current unless context.params[:year] && context.params[:month]
-    @date ||= Date.new context.params[:year].to_i, context.params[:month].to_i
+    @date = Date.current unless context.params[:id]
+    @date ||= Date.new context.params[:id].to_i
   end
   
   
