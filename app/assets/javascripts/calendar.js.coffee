@@ -100,17 +100,11 @@
         set_end_date($(e.currentTarget).data().date)
         
       $(document).off_and_on "mouseenter", '.day_selectable', (e)->
-        #return if selection.isEmpty() or selection.length is 2
         return unless selection.tracking
         e.preventDefault()
         o = $(e.currentTarget)
         r = range selection.s, o.data().date
         select_dates r
-        # clear_selected()
-        # $(".day_selectable").each (i, item)->
-        #   if r.contains to_date($(item).data().date)
-        #     $(item).addClass "selected"        
-        # o.addClass "selected"
     
       
     setup_date_pickers = ->
