@@ -3,12 +3,9 @@
     No Shows
 
 #data
-  #calendar
-    #date_picker
     
   - if @bookings.blank?
-    No No-shows for 
-    = params[:date]
+    No No-shows
     
   #today
     - @bookings.each do |booking|

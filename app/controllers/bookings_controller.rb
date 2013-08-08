@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
   end
   
   def no_shows
-    @bookings = current_hotel.bookings.no_shows.for_date(params[:date]).paginate(pagination_params).decorate
+    @bookings = current_hotel.bookings.no_shows.paginate(pagination_params).decorate
   end
   
   def edit
