@@ -56,7 +56,7 @@ class Booking::Reserve < Less::Interaction
         booking.save!
         @inventories.each do |i|
           price = i.discounted_rate.nil? ? i.rate : i.discounted_rate
-          booking.sales.create!( inventory_id: i.id, hotel_id: context.hotel.id, rate: i.rate, discounted_rate: i.discounted_rate, date: i.date, price: price)
+          booking.sales.create!( inventory_id: i.id, hotel_id: context.hotel.id, rate: i.rate, discounted_rate: i.discounted_rate, date: i.date, price: price, device_type: context.device_type)
         end
       rescue ActiveRecord::RecordInvalid=>e
         response.status = 500
