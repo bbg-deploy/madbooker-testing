@@ -203,7 +203,7 @@ div.input
   color: #666
 
 =button
-  input[type=submit]
+  input[type=submit], button[type=button]
     padding: 10px 20px
     +tc
     color: #333
@@ -227,10 +227,11 @@ div.input
   border: 1px solid #ccc
   background: white
 
-#form_simple, #form
+#form
   +form
 
-
+#form_simple
+  padding: $pad
 
 #form  
   h1
@@ -246,11 +247,6 @@ div.input
       font-size: 20px
   .form_action
     +button
-
-#form_simple
-  width: 400px
-  padding: $pad
-
 
 #footer
   font-size: 12px
