@@ -35,7 +35,7 @@
           Past 30 days
   .total_revenue  
     .header
-      = link_to "Revenue Stats", revenue_hotel_reports_path(current_hotel)
+      = link_to "Revenue Stats", hotel_reports_path(current_hotel)
     .week
       //.label
       //  Revenue This Week
@@ -45,7 +45,7 @@
           This Month
         .number
           %span $
-          15,832
+          = @hotel.mobile_revenue_this_week
         .where
           %i.icon-mobile-phone
           Mobile
@@ -55,9 +55,9 @@
           This Month
         .number
           %span $
-          25,388
+          = @hotel.tablet_revenue_this_week
         .where
-          %i.icon-laptop
+          %i.icon-tablet
           Tablet
       .data
         .equal =
@@ -65,7 +65,7 @@
           This Month
         .number
           %span $
-          25,388
+          = @hotel.other_revenue_this_week
         .where
           %i.icon-laptop
           Other
