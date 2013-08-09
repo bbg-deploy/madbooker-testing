@@ -1,0 +1,15 @@
+#header
+  %h1
+    Guest Check-In
+
+#data
+  #calendar
+    #date_picker
+          
+  - if @bookings.blank?
+    No Reservations for 
+    = params[:date]
+  - else
+    = render "/bookings/index/booking", booking: @bookings
+  
+

@@ -7,7 +7,7 @@
         %i.icon-caret-down
         Front Desk
       %ul.hidden
-        %li= link_to "Check In", [current_hotel, :check_ins]
+        %li= link_to "Check In", [:check_ins, current_hotel, :bookings]
         %li= link_to "Bookings", [current_hotel, :bookings]
         %li= link_to "No Shows", [:no_shows, current_hotel, :bookings]
         %li= link_to "Customer's View", book_url(host: current_hotel.host, protocol: App.protocol), target: :_blank
@@ -35,13 +35,3 @@
         Settings
     %li.logout= link_to "", destroy_user_session_path, method: :delete, :class => 'icon-off'
 
-    //%li= link_to "Inventory", [current_hotel, :inventories]
-    //%li= link_to "Add Ons", [current_hotel, :add_ons]
-    //%li= link_to "Packages", [current_hotel, :packages]
-    //%li= link_to "Bookings", [current_hotel, :bookings]
-    //%li= link_to "No Shows", [:no_shows, current_hotel, :bookings]
-    //%li= link_to "Check In", [current_hotel, :check_ins]
-    //%li= link_to "Reports", [current_hotel, :reports]
-    //%li= link_to "Public page", book_url(host: current_hotel.host, protocol: App.protocol), target: :_blank
-    //%li= link_to "My Account", edit_user_registration_path
-    //%li= link_to "", destroy_user_session_path, method: :delete, :class => 'icon-off'

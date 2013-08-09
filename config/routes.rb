@@ -19,11 +19,11 @@ Madbooker::Application.routes.draw do
       collection do
         get :search
         get :no_shows
+        get :check_ins
       end
     end
     resources :packages
     resources :add_ons
-    resources :check_ins
     resources :memberships
     resource :reports do
       collection do

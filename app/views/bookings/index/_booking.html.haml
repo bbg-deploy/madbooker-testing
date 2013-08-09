@@ -1,0 +1,25 @@
+
+
+
+
+#next_guests
+  %table.standard
+    %thead
+      %tr
+        %th Customer
+        %th State
+        %th Room Type
+        %th Arrival 
+        %th Departure
+        %th Rate
+        %th 
+    %tbody
+      - @bookings.each do |booking|
+        %tr
+          %td= booking.name
+          %td= booking.state.titleize
+          %td= booking.room_name
+          %td= booking.arrive
+          %td= booking.depart
+          %td= booking.lowest_rate
+          %td= link_to "Details", [current_hotel, booking]

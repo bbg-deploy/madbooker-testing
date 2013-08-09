@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
   
   def index
     params[:date] ||= Date.current.to_s :db
-    @list = Booking::List.new(context: context).run
+    @bookings = current_hotel.bookings.for_date(params[:date]).paginate(pagination_params).decorate
   end
   
   def search
@@ -37,6 +37,10 @@ class BookingsController < ApplicationController
   end
   
   
+  def check_ins
+    @bookings = current_hotel.bookings.open.for_date(params[:date]).by_last_name.decorate
+    render
+  end
     
   def check_in
     current_hotel.bookings.find(params[:id]).check_in!
