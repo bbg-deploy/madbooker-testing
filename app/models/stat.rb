@@ -2,18 +2,18 @@
 #
 # Table name: stats
 #
-#  id         :integer          not null, primary key
-#  hotel_id   :integer
-#  start      :date
-#  end        :date
-#  user_bug   :string(255)
-#  kind       :string(255)
-#  url        :string(255)
-#  subdomain  :string(255)
-#  data       :text
-#  created_at :datetime
-#  updated_at :datetime
-#  mobile     :boolean          default(FALSE), not null
+#  id          :integer          not null, primary key
+#  hotel_id    :integer
+#  start       :date
+#  end         :date
+#  user_bug    :string(255)
+#  kind        :string(255)
+#  url         :string(255)
+#  subdomain   :string(255)
+#  data        :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  device_type :string(255)
 #
 
 class Stat < ActiveRecord::Base
@@ -89,7 +89,7 @@ class Stat < ActiveRecord::Base
     s.hotel_id = context.hotel.id
     s.user_bug = context.user_bug
     s.kind = type
-    s.mobile = context.mobile || false
+    s.device_type = context.device_type || "unknown"
     s.subdomain = context.hotel.subdomain
     s
   end

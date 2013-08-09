@@ -70,7 +70,7 @@ CREATE TABLE `bookings` (
   `bookable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `paid` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,14 +238,15 @@ CREATE TABLE `sales` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `price` decimal(15,4) DEFAULT NULL,
-  `mobile` tinyint(1) DEFAULT '0',
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `device_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_sales_on_inventory_id` (`inventory_id`),
   KEY `index_sales_on_booking_id` (`booking_id`),
   KEY `index_sales_on_hotel_id` (`hotel_id`),
-  KEY `index_sales_on_state` (`state`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `index_sales_on_state` (`state`),
+  KEY `index_sales_on_device_type` (`device_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +281,7 @@ CREATE TABLE `stats` (
   `data` text COLLATE utf8_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `mobile` tinyint(1) NOT NULL DEFAULT '0',
+  `device_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_stats_on_hotel_id` (`hotel_id`),
   KEY `index_stats_on_subdomain` (`subdomain`),
@@ -290,8 +291,9 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_start` (`start`),
   KEY `index_stats_on_end` (`end`),
   KEY `index_stats_on_created_at` (`created_at`),
-  KEY `index_stats_on_kind` (`kind`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `index_stats_on_kind` (`kind`),
+  KEY `deveice_type` (`device_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +323,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -333,7 +335,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-06  8:04:41
+-- Dump completed on 2013-08-09 14:22:50
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -403,3 +405,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130725143101');
 INSERT INTO schema_migrations (version) VALUES ('20130726160142');
 
 INSERT INTO schema_migrations (version) VALUES ('20130806120313');
+
+INSERT INTO schema_migrations (version) VALUES ('20130809175840');
+
+INSERT INTO schema_migrations (version) VALUES ('20130809181051');

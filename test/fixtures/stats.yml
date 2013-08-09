@@ -2,18 +2,18 @@
 #
 # Table name: stats
 #
-#  id         :integer          not null, primary key
-#  hotel_id   :integer
-#  start      :date
-#  end        :date
-#  user_bug   :string(255)
-#  kind       :string(255)
-#  url        :string(255)
-#  subdomain  :string(255)
-#  data       :text
-#  created_at :datetime
-#  updated_at :datetime
-#  mobile     :boolean          default(FALSE), not null
+#  id          :integer          not null, primary key
+#  hotel_id    :integer
+#  start       :date
+#  end         :date
+#  user_bug    :string(255)
+#  kind        :string(255)
+#  url         :string(255)
+#  subdomain   :string(255)
+#  data        :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  device_type :string(255)
 #
 
 # Read about fixtures at
