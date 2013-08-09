@@ -1,16 +1,19 @@
-#form_simple
+#form_simple_header
   %h2 Let's Setup Your New Booking System!
   %h3 Takes just 5 minutes to get setup!
-
-
+#form_simple
   = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {id: :signup_form} do |f|
     = f.error_notification
     = f.error :base
     .form-inputs
+      %h3
+        Account Information
       = f.input :email, :autofocus => true
       = f.input :password
       = f.input :password_confirmation
       
+      %h3
+        Billing Information
       = f.input :cc_number, label: "Credit Card number"
       = f.input :cc_month, collection: 1..12, label: "Month"
       = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"

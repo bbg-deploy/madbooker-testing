@@ -1,0 +1,217 @@
+
+@charset "utf-8"
+@import compass
+@import utils
+
+
+body#brochure
+  font-family: "arial"
+  margin: 0px auto
+  padding: 0px
+  color: #333
+  font-size: 14px
+  line-height: 1.5em 
+  background: white
+
+a
+  color: #3e86c5
+  +tdnone
+  &:hover
+    color: #333
+    text-decoration: underline
+
+p
+  line-height: 1.5em 
+  
+*
+  +box-sizing(border-box)
+
+#content
+  min-height: 500px   
+  //padding: $pad
+  //background: white
+  //border: 1px solid #406463
+  //+box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
+  #data
+    padding: $pad
+
+/////////////////////////////////
+////////// Text Styles //////////
+
+h1
+  font-size: 34px
+  +bold
+  line-height: 100%
+  color: #222
+  margin: 0 0 5px 0
+  a
+    font-size: 16px
+    font-weight: normal
+    padding: 10px
+h2
+  font-size: 21px
+  font-weight: normal
+  line-height: 100%
+  color: #333
+  margin: 0 0 10px 0
+h3
+  font-size: 17px
+  line-height: 100%
+  margin: 0 0 20px 0
+  font-weight: normal
+
+h4
+  font-size: 17px
+  font-weight: normal
+  line-height: 100%
+  color: #888
+  margin: 15px 0 20px 0
+  
+
+
+.container_simple
+  margin: 0 auto
+  width: $simple_width
+.container
+  margin: 0 auto
+  width: $width
+
+
+#header
+  border-bottom: 1px solid #ccc
+
+
+#logo
+  +fl
+  font-size: 20px
+  padding: 20px 0
+#nav
+  +fr
+  margin: 10px 0 0 0
+  ul
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+    li 
+      padding: 0 0 0 0
+      +fl
+      a
+        +block
+        padding: 10px 15px
+        +tc
+        color: #333
+        font-size: 13px
+        &:hover
+          +tdnone
+          background: #eee
+        i
+          font-size: 16px
+          margin: 0 3px 0 0
+      &.home a
+        font-size: 17px
+        padding: 12px 10px 11px 10px
+        width: $icon
+
+$point_width: ($width - ($pad * 2)) / 3
+
+#points
+  padding: $pad 0
+  .point
+    +fl
+    width: 300px
+    padding: 20px
+    border: 1px solid #ccc
+    +tc
+    h2
+      font-size: 16px
+      +bold
+      line-height: 150%
+      margin: 0 0 0 0
+      padding: 0 0 0 0
+    p
+      margin: 0 0 0 0
+      padding: 0 0 0 0
+    &:nth-child(2)
+      margin: 0 $pad
+
+#top_area
+  padding: $pad 0
+
+#features
+  padding: 40px 0
+  h1
+    +tc
+  .feature_intro
+    padding: 0 200px 50px 200px
+    font-size: 16px
+    +tc
+  .feature
+    padding: $pad 0 100px 0
+    .feature_text
+      font-size: 15px
+      h2
+        font-size: 20px
+        +bold
+        margin: 0 0 0 0
+        padding: 0 0 0 0
+      p 
+        padding-top: 0px
+        margin-top: 10px
+        line-height: 160%
+    .screenshot
+      border: 1px solid #bbb
+      +border-radius
+      background: white
+      +box-shadow(rgba(#333, 0.14) 0 0 11px 1px)
+    
+    ///screenshot right
+    &:nth-child(3), &:nth-child(7)
+      .feature_text
+        +fl
+        width: 370px
+        margin: 120px 0 0 0
+      .screenshot
+        +fr
+        height: 500px
+        width: 550px
+
+    /// centered
+    &:nth-child(4), &:nth-child(6)
+      .feature_text
+        width: 500px
+        margin: 0 0 20px 200px
+      .screenshot
+        height: 500px
+        width: 100%
+    
+    ///screenshot left
+    &:nth-child(5)
+      .feature_text
+        +fr
+        width: 370px
+        margin: 120px 0 0 0
+      .screenshot
+        +fl
+        height: 500px
+        width: 550px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

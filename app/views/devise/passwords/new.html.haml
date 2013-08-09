@@ -1,9 +1,12 @@
+#form_simple_header
+  %h2 Forgot your password?
+  %h3 We'll email you a temporary password.
+
 #form_simple
-	%h2 Forgot your password?
-	= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-		= f.error_notification
-		.form-inputs
-			= f.input :email, :required => true, :autofocus => true
-		.form-actions
-			= f.button :submit, "Send me reset password instructions"
-	= render "devise/shared/links"
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, :required => true, :autofocus => true, :label => 'Enter Your Email Address', :hint => 'This must be the email address you signed up with.'
+    .form-actions
+      = f.button :submit, "Submit"
+  = render "devise/shared/links"
