@@ -4,7 +4,7 @@ class StatTest < MiniTest::Should::TestCase
   
   
   def context
-    @context ||= Context.new hotel: Gen.hotel, user: Gen.user, mobile: @mobile, user_bug: "asdfasdfas", params: {}
+    @context ||= Context.new hotel: Gen.hotel, user: Gen.user, device_type: @device_type, user_bug: "asdfasdfas", params: {}
   end
   
   context "creating stats" do

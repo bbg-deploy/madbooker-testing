@@ -32,7 +32,6 @@ class Reports::RevenueByRoomType < Less::Interaction
       row = out.select{|x| x.date == month}.first
       fill_room_data row.rooms, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
     end
-    #assign_totals out
     normalize_data out
   end
   
@@ -79,11 +78,7 @@ class Reports::RevenueByRoomType < Less::Interaction
       context.hotel.packages.find(bookable_id).room_type
     end
   end
-  
-  def assign_totals arr
-    arr.each {|d| d.total = d.mobile + d.other}
-  end
-  
+    
   def init_rows
     arr = []
     (Date.current.beginning_of_year.month..Date.current.month).to_a.each do |month|

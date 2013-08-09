@@ -88,7 +88,7 @@ class << self
       :discounted_rate => 0,
       :price           => price,
       :date            => Date.today,
-      :mobile          => false,
+      :device_type     => "desktop",
       :state           => nil
     }
     make Sale, defaults, args 

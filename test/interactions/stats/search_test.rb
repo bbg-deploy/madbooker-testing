@@ -14,7 +14,7 @@ class Stats::SearchTest < MiniTest::Should::TestCase
         Gen.inventory(room_type_id: 3)
         ]
       params = {:booking => {:arrive => "2013-03-13", :depart => "2013-03-17"}}
-      @context = Context.new hotel: Gen.hotel, params: params, mobile: true
+      @context = Context.new hotel: Gen.hotel, params: params, device_type: "desktop"
       Stat.any_instance.stubs(:save)
     end
 

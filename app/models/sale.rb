@@ -12,8 +12,8 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  price           :decimal(15, 4)
-#  mobile          :boolean          default(FALSE)
 #  state           :string(255)
+#  device_type     :string(255)
 #
 
 class Sale < ActiveRecord::Base

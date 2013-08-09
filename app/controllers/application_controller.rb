@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   helper_method :title
 
   def context
-    @context ||= Context.new hotel: current_hotel, user: current_user, params: params, mobile: mobile?, user_bug: user_bug
+    @context ||= Context.new hotel: current_hotel, user: current_user, params: params, device_type: device_type, user_bug: user_bug
   end
 
 
