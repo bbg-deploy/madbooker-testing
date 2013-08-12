@@ -13,7 +13,7 @@
     / style info: http://rubydoc.info/github/topfunky/calendar_helper/master/CalendarHelper:calendar
     .calendar_month
       = calendar(:show_other_months => false, :year => @calendar.date.year, :month => i, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
-        - render "inventories/calendar/day", date: d
+        - render "inventories/calendar/day", date: d, show_details: false
     
 = render "/inventories/calendar/date_pickers", for_month: false
 

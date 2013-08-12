@@ -12,11 +12,11 @@ module AuthorizedStuff
     end
     
     def user_authorized?
-      return true unless current_hotel.log
+      return true unless current_hotel
       return true if controller_name == "home"
-      return true if devise_controller?.log
-      return true if hotel_from_subdomain.log
-      return true if current_hotel.owner.log.payment_status.in?( %w(trialing active)).log
+      return true if devise_controller?
+      return true if hotel_from_subdomain
+      return true if current_hotel.owner.payment_status.in?( %w(trialing active))
     end  
   end
   

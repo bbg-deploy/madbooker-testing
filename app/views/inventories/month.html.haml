@@ -1,0 +1,8 @@
+= @calendar.previous_month_link
+= @calendar.next_month_link
+ 
+ 
+= calendar(:year => @calendar.date.year, :month => @calendar.date.month, :first_day_of_week => 0, :day_class => "day day_selectable") do |d|
+  - render "inventories/calendar/day", date: d, show_details: true
+  
+ 
