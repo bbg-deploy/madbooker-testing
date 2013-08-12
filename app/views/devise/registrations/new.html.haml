@@ -15,7 +15,7 @@
       
       %h3
         %i.icon-credit-card
-        Billing Information
+        Secure Billing Form
       = f.input :cc_number, label: "Credit Card Number", :wrapper_class => 'credit_card_number'
       = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
       = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => 'year'
