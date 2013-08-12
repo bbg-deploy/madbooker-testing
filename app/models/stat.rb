@@ -27,6 +27,13 @@ class Stat < ActiveRecord::Base
   BOOK          = "book"
   USER          = "user"
   SUBSCRIPTION  = "subscription"
+  
+  #device_types
+  MOBILE        = "mobile"
+  TABLET        = "tablet"
+  DESKTOP       = "desktop"
+  TV            = "tv"
+  DEVICE_TYPES  = [MOBILE, TABLET, DESKTOP] #tv ignored for now
 
   
   scope :searches,      ->{where kind: SEARCH}

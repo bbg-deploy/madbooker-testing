@@ -1,68 +1,148 @@
 class DashboardDecorator < HotelDecorator
   
   
-  def mobile_revenue_this_week
-    
+  def mobile_revenue_this_month
+    revenue_this_month "mobile"
   end
   
-  def tablet_revenue_this_week
-    
+  def tablet_revenue_this_month
+    revenue_this_month "table"
   end
   
-  def other_revenue_this_week
-    
+  def other_revenue_this_month
+    revenue_this_month "desktop"
   end
   
-  def revenue_this_week
-    #o = mobile_other_total_from_group model.sales.range(Time.week).group(:mobile).paid.sum( :price)
+  def total_revenue_this_month
+    mobile_revenue_this_month + tablet_revenue_this_month + other_revenue_this_month
   end
   
-  def revenue_this_month
-    #mobile_other_total_from_group model.sales.range(Time.month).group(:mobile).paid.sum( :price)
+  def mobile_revenue_last_month
+    revenue_last_month "mobile"
   end
   
-  def revenue_daily_average
-    #mobile_other_total_from_group model.sales.range(Time.month).group(:mobile).paid.average( :price)
+  def tablet_revenue_last_month
+    revenue_last_month "table"
+  end
+  
+  def other_revenue_last_month
+    revenue_last_month "desktop"
+  end
+  
+  def total_revenue_last_month
+    mobile_revenue_last_month + tablet_revenue_last_month + other_revenue_last_month
+  end
+  
+  def mobile_search_this_week
+    @mobile_search_this_week ||= searches_by_range_and_device Time.week, :mobile
+  end
+  
+  def tablet_search_this_week
+    @tablet_search_this_week ||= searches_by_range_and_device Time.week, :tablet
+  end
+  
+  def other_search_this_week
+    @other_search_this_week ||= searches_by_range_and_device Time.week, :desktop
+  end
+  
+  def total_search_this_week
+    mobile_search_this_week + tablet_search_this_week + other_search_this_week
+  end
+  
+  def mobile_search_this_month
+    @mobile_search_this_month ||= searches_by_range_and_device Time.month, :mobile
+  end
+  
+  def tablet_search_this_month
+    @tablet_search_this_month ||= searches_by_range_and_device Time.month, :tablet
+  end
+  
+  def other_search_this_month
+    @other_search_this_month ||= searches_by_range_and_device Time.month, :desktop
+  end
+  
+  def total_search_this_month
+    mobile_search_this_month + tablet_search_this_month + other_search_this_month
+  end
+  
+  def mobile_search_daily_average
+    @mobile_search_daily_average ||= (mobile_search_this_month / Date.current.day).round(1)
+  end
+  
+  def tablet_search_daily_average
+    @tablet_search_daily_average ||= (tablet_search_this_month / Date.current.day).round(1)
+  end
+  
+  def other_search_daily_average
+    @other_search_daily_average ||= (other_search_this_month / Date.current.day).round(1)
+  end
+  
+  def total_search_daily_average
+    @total_search_daily_average ||= (total_search_this_month / Date.current.day).round(1)
   end
   
   def revenue_by_room_type
-    Hotel::RevenueByRoomType.new(Context.new hotel: current_hotel, user: current_user).run
+   Hotel::RevenueByRoomType.new(Context.new hotel: current_hotel, user: current_user).run
   end
   
-  def searches_this_week
-    #o = mobile_other_total_from_group model.stats.searches.range(Time.week).group(:mobile).count
-    #link_to o, searches_hotel_reports_path(current_hotel, date_range: :month)
+  def look_to_book
+    a = look_to_book_week
+    b = look_to_book_month
+    c = look_to_book_daily_average
+    [
+      OpenStruct.new( name: Stat::MOBILE.titleize, week: a[0], month: b[0], average: c[0]),
+      OpenStruct.new( name: Stat::TABLET.titleize, week: a[1], month: b[1], average: c[1]),
+      OpenStruct.new( name: Stat::DESKTOP.titleize, week: a[2], month: b[2], average: c[2])
+    ]
+    
   end
   
-  def searches_this_month
-    #mobile_other_total_from_group searches_this_month_raw
-  end
-  
-  def searches_daily_average
-    x = searches_this_month_raw
-    #mobile_other_total x[true].to_d/ Date.current.day, x[false].to_d/ Date.current.day
-  end
-  
+  private
   def look_to_book_week
-    #mobile_other_average *look_to_book_ratio( model.stats.range(Time.week).group(:kind, :mobile).look_to_book.count)
+    @look_to_book_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind, :device_type).look_to_book.count)
   end
   
   def look_to_book_month
-    #mobile_other_average *look_to_book_ratio( model.stats.range(Time.month).group(:kind, :mobile).look_to_book.count)    
+    @look_to_book_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind, :device_type).look_to_book.count)    
   end
   
   def look_to_book_daily_average
-    #m, o  = look_to_book_ratio( model.stats.range(Time.month).group(:kind, :mobile).look_to_book.count)    
-    #mobile_other_average m/Date.current.day, o/Date.current.day    
+    return @look_to_book_daily_average if @look_to_book_daily_average
+    a = look_to_book_ratio( model.stats.range(Time.month).group(:kind, :device_type).look_to_book.count)    
+    @look_to_book_daily_average = a.map {|d| (d / Date.current.day).round(1)}
   end
   
   
-  private
+  def searches_by_range_and_device range, device
+    model.stats.searches.range(range).where("device_type = ?", device).count
+  end
+    
+  def revenue_this_month type
+    grouped_revenue_this_month[type] || 0.0
+  end
+  
+  def revenue_last_month type
+    grouped_revenue_last_month[type] || 0.0
+  end
+
+  def grouped_revenue_this_month
+  @grouped_revenue_this_month ||= grouped_revenue_based_on_range Time.month
+  end
+  
+  def grouped_revenue_last_month
+    @grouped_revenue_this_month ||= grouped_revenue_based_on_range(Time.current.last_month.beginning_of_month..Time.current.last_month.end_of_month)
+  end
+  
+  def grouped_revenue_based_on_range range
+    model.sales.range(range).group(:device_type).paid.sum( :price)
+  end
+  
   def look_to_book_ratio group
-    [
-      look_to_book_math( group[[Stat::LOOK, true]],  group[[Stat::BOOK, true]]),
-      look_to_book_math( group[[Stat::LOOK, false]], group[[Stat::BOOK, false]])
-    ]    
+    arr = []
+    Stat::DEVICE_TYPES.each do |device_type|
+      arr << look_to_book_math( group[[Stat::LOOK, device_type]],  group[[Stat::BOOK, device_type]])
+    end
+    arr
   end
   
   def look_to_book_math look, book
@@ -71,27 +151,10 @@ class DashboardDecorator < HotelDecorator
     if look == 0 || book == 0
       0
     else
-      look / book
+      (look / book).round(1)
     end
   end
   
-  def searches_this_month_raw
-    model.stats.searches.range(Time.month).group(:mobile).count
-  end
-  
-  def mobile_other_average mobile, other
-    "Mobile: #{mobile}%, Other: #{other}%, Average: #{[mobile, other].average}%"
-  end
-  
-  def mobile_other_total_from_group g
-    mobile_other_total g[true], g[false]
-  end
-  
-  def mobile_other_total mobile, other
-    mobile = mobile.to_d
-    other = other.to_d
-    "Mobile: #{mobile}, Other: #{other}, Total: #{mobile + other}"
-  end
   
   
 end

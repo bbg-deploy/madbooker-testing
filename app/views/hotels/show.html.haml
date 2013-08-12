@@ -21,7 +21,7 @@
           This Month
         .number
           %span $
-          = @hotel.mobile_revenue_this_week
+          = @hotel.mobile_revenue_this_month
         .where
           %i.icon-mobile-phone
           Mobile
@@ -31,7 +31,7 @@
           This Month
         .number
           %span $
-          = @hotel.tablet_revenue_this_week
+          = @hotel.tablet_revenue_this_month
         .where
           %i.icon-tablet
           Tablet
@@ -41,7 +41,7 @@
           This Month
         .number
           %span $
-          = @hotel.other_revenue_this_week
+          = @hotel.other_revenue_this_month
         .where
           %i.icon-laptop
           Other
@@ -50,7 +50,7 @@
           This Month
         .number
           %span $
-          70,898
+          = @hotel.total_revenue_this_month
         .where
           Total
     .month
@@ -62,7 +62,7 @@
           Last Month
         .number
           %span $
-          125,832
+          = @hotel.mobile_revenue_last_month
         .where
           %i.icon-mobile-phone
           Mobile
@@ -72,9 +72,9 @@
           Last Month
         .number
           %span $
-          125,832
+          = @hotel.tablet_revenue_last_month
         .where
-          %i.icon-mobile-phone
+          %i.icon-tablet
           Tablet
       .data
         .equal =
@@ -82,7 +82,7 @@
           Last Month
         .number
           %span $
-          115,832
+          = @hotel.other_revenue_last_month
         .where
           %i.icon-laptop
           Other
@@ -91,7 +91,7 @@
           Last Month
         .number
           %span $
-          215,832
+          = @hotel.total_revenue_last_month
         .where
           Total
 
@@ -106,7 +106,7 @@
         .what
           This Week
         .number
-          15
+          = @hotel.mobile_search_this_week
         .where
           %i.icon-mobile-phone
           Mobile
@@ -115,16 +115,16 @@
         .what
           This Week
         .number
-          15
+          = @hotel.tablet_search_this_week
         .where
-          %i.icon-mobile-phone
+          %i.icon-tablet
           Tablet
       .data
         .equal =
         .what
           This Week
         .number
-          15
+          = @hotel.other_search_this_week
         .where
           %i.icon-laptop
           Other
@@ -132,7 +132,7 @@
         .what
           This Week
         .number
-          30
+          = @hotel.total_search_this_week
         .where
           //%i.icon-mobile-phone
           //  +
@@ -146,7 +146,7 @@
         .what
           This Month
         .number
-          1625
+          = @hotel.mobile_search_this_month
         .where
           %i.icon-mobile-phone
           Mobile
@@ -155,16 +155,16 @@
         .what
           This Month
         .number
-          1625
+          = @hotel.tablet_search_this_month
         .where
-          %i.icon-mobile-phone
+          %i.icon-tablet
           Tablet
       .data
         .equal =
         .what
           This Month
         .number
-          15
+          = @hotel.other_search_this_month
         .where
           %i.icon-laptop
           Other
@@ -172,7 +172,7 @@
         .what
           This Month
         .number
-          1640
+          = @hotel.total_search_this_month
         .where
           //%i.icon-mobile-phone
           //  +
@@ -187,7 +187,7 @@
         .what
           Daily Average
         .number
-          5
+          = @hotel.mobile_search_daily_average
         .where
           %i.icon-mobile-phone
           Mobile
@@ -196,16 +196,16 @@
         .what
           Daily Average
         .number
-          5
+          = @hotel.tablet_search_daily_average
         .where
-          %i.icon-mobile-phone
+          %i.icon-tablet
           Tablet
       .data
         .equal =
         .what
           Daily Average
         .number
-          2
+          = @hotel.other_search_daily_average
         .where
           %i.icon-laptop
           Other
@@ -213,7 +213,7 @@
         .what
           Daily Average
         .number
-          7
+          = @hotel.total_search_daily_average
         .where
           //%i.icon-mobile-phone
           //  +
@@ -222,71 +222,6 @@
 
 
 
-  //.total_revenue
-  //  .header
-  //  .week
-  //    %i.icon-mobile-phone  
-  //    This Week
-  //    = @hotel.revenue_this_week
-  //  .month
-  //    %i.icon-laptop
-  //    This Month
-  //    = @hotel.revenue_this_month
-  //  .daily_average
-  //    Daily Average
-  //    = @hotel.revenue_daily_average
-
-  //.number_of_searches
-  //  .header
-  //    Searches
-  //  .week
-  //    This Week
-  //    %i.icon-mobile-phone
-  //    = @hotel.searches_this_week
-  //  .month
-  //    This Month
-  //    %i.icon-laptop
-  //    = @hotel.searches_this_month
-  //  .daily_average
-  //    Daily Average
-  //    = @hotel.searches_daily_average
-  //.graph_rev_par
-  //  .graph      
-  //  .rev_par
-  //    .data
-  //      .what
-  //        ADR
-  //      .number
-  //        %span $
-  //        15,832
-  //      .where
-  //        Average 30 days
-
-  //.number_of_searches
-  //  .header
-  //    Searches
-  //  .week
-  //    This Week
-  //    %i.icon-mobile-phone
-  //    = @hotel.searches_this_week
-  //  .month
-  //    This Month
-  //    %i.icon-laptop
-  //    = @hotel.searches_this_month
-  //  .daily_average
-  //    Daily Average
-  //    = @hotel.searches_daily_average
-  //.graph_rev_par
-  //  .graph      
-  //  .rev_par
-  //    .data
-  //      .what
-  //        RevPar
-  //      .number
-  //        %span $
-  //        15,832
-  //      .where
-  //        Average 30 days
   .revenue_by_room_type
     .header
       = link_to "Revenue by Room Type", revenue_by_room_type_hotel_reports_path(current_hotel)
@@ -304,22 +239,26 @@
           %span Daily Average:
           %span= room_type.average
 
-  /.revenue_per_add_on
-  /  Revenue per add on this
-  /  .week
-  /  .month
-  /  .daily_average
 
 
-  .look_to_book
+  .revenue_by_room_type
     .header
-      Look to book this
-    .week
-      = @hotel.look_to_book_week
-    .month
-      = @hotel.look_to_book_month
-    .daily_average
-      = @hotel.look_to_book_daily_average
+      Look to book
+    - @hotel.look_to_book.each do |device|
+      .room_type
+        .name
+          = device.name
+        .week
+          %span Week:
+          %span= device.week
+        .month
+          %span Month:
+          %span= device.month
+        .daily_average
+          %span Daily Average:
+          %span= device.average
+
+      
 
 
 
