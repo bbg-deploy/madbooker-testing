@@ -309,6 +309,20 @@ $navwidth: ($width - ($icon * 2)) / 5
 
 ///// calendar stuff
 
+
+.month_calendar
+  table
+    width: 100%
+    td.day, td.otherMonth
+      border: 1px solid #ccc
+      padding: 10px
+      +rel
+      .room_type
+        .available
+          color: #333
+        .booked
+          color: #333
+
 th.monthName
   font-size: 18px
   padding: 0 0 10px 0
@@ -322,16 +336,15 @@ td.day
     .row
       line-height: 120%
     .name
-      +bold
       font-size: 13px
     .available, .booked 
       span
         &:first-child
-          color: #ddd
+          color: #888
           width: 30px
           +fl
         &:last-child
-          color: white
+          color: #888
           width: 50px
           +fr
           +tr
@@ -692,8 +705,6 @@ a.add_link
         width: 500px
         +fl
         color: #333
-
-
 
 
 
