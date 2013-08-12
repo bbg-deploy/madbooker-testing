@@ -3,6 +3,7 @@
 @import compass
 @import utils
 @import normalize
+@import susy
 
 $pad: 30px
 $yellow: rgba(254, 249, 223, 1)
@@ -45,6 +46,11 @@ p
   #data
     padding: $pad
 
+$total-columns: 4 // 12 columns
+$column-width: 100px // columns are 4em wide
+$gutter-width: $pad // with 1em gutters
+$grid-padding: $pad // and 1em padding on the grid container
+
 
 #form_simple_header
   background: #eee
@@ -54,12 +60,30 @@ p
     margin: 0 0 0 0
 #form_simple
   padding: $pad
+  +container
+  div.email
+    +span-columns(4 omega)
+  div.password
+    +span-columns(2)
+    &:nth-child(4)
+      +span-columns(2 omega)
+  div.credit_card_number
+    +span-columns(4 omega)
+  div.security
+    +span-columns(2 omega)
+  div.month
+    +span-columns(1)
+  div.year
+    +span-columns(1)
+
   h3
-    margin: 20px 0 15px 0
-    padding: 0 0 0 0
+    margin: 0 0 15px 0
+    padding: $pad 0 0 0
+    +clear
     +bold
     &:first-child
-      margin-top: 0px
+      padding-top: 0px
+
 
 /////////////////////////////////
 ////////// Text Styles //////////

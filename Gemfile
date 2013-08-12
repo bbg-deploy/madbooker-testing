@@ -53,6 +53,7 @@ gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
     gem 'sass-rails'
     gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
     gem  "compass-normalize"
+    gem "susy"
 group :assets do
 #   gem 'jquery-rails'
 #  gem 'compass-colors'

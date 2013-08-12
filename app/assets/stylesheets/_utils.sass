@@ -1,6 +1,7 @@
 @import compass
 @import compass/utilities/general/clearfix
 @import compass/utilities/general/float
+@import susy
 
 =header($font-weight: 300, $font-style: normal)
   font:
@@ -160,12 +161,17 @@ div
   padding: 10px
   font-size: 14px
   +arial
+  width: 100% !important
   border: 1px solid #999
   border-bottom: 1px solid #777
   margin: 0 0 0 0
   +box-shadow(rgba(#333, 0.24) 0 0 1px 1px inset)
 
-div.input
+div.input,
+div.security,
+div.month,
+div.year,
+div.credit_card_number
   padding: 0 0 15px 0
   label
     +block
