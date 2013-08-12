@@ -17,4 +17,16 @@ class CalendarDecorator < ApplicationDecorator
     end
   end
   
+  def previous_month_link
+    link_to month_hotel_inventories_path( hotel, previous_month.year, previous_month.month) do
+      "<i class='icon-calendar'></i> ".html_safe + previous_month.strftime('%B %Y')
+    end
+  end
+
+  def next_month_link
+    link_to month_hotel_inventories_path( hotel, next_month.year, next_month.month) do
+      "<i class='icon-calendar'></i> ".html_safe + next_month.strftime('%B %Y')
+    end
+  end
+  
 end

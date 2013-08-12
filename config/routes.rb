@@ -41,6 +41,9 @@ Madbooker::Application.routes.draw do
     end
   end
   
+  get "/hotels/:hotel_id/inventories/month/:year/:month", to: "inventories#month", as: :month_hotel_inventories
+  
+  
   resource :book do
     post :select_dates
     post :select_room
