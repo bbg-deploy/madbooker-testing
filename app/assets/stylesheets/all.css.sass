@@ -349,19 +349,40 @@ td.day
           +fr
           +tr
 
+$calendarwidth: ($width - 2px) / 3
 
 #calendar_year
   .calendar_month
     +fl
-    padding: 23px
+    padding: 20px 0 0 0
     border-right: 1px solid #ccc
     border-bottom: 1px solid #ccc
-    height: 330px
+    height: 310px
+    width: $calendarwidth
     &:nth-child(3n+3)
       border-right: none
-    //&:nth-child(3n+2)
-    //  padding-left: 35px
-    //  padding-right: 35px
+    table 
+      margin: 0 auto
+      tr
+        th, td
+          padding: 4px
+          +tc 
+        th
+          font-size: 12px
+          font-weight: normal
+          color: #999
+          &.monthName
+            +bold
+            font-size: 16px
+            padding: 0 0 0 0
+            color: #333
+        td
+          &.day
+            border: 1px solid #ccc
+            padding: 7px 10px
+          &.weekendDay
+            background: #eee
+          
 abbr[title]
   border-bottom: none !important
 
