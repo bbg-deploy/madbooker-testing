@@ -22,5 +22,6 @@
 // require d3.v3.min
 //= require highcharts
 //= require miniDropdown
+//= require chosen.jquery.min
 //= require module
 //= require_tree .
