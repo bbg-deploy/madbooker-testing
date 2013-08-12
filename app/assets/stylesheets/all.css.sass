@@ -107,20 +107,47 @@ h4
 
 body#public
   background: white
+  .container
+    width: 600px
+  #hotel_information
+    //padding: $pad 0 0 0
+    .logo
+      +fl
+      margin: 20px 0 0 0
+    #hotel_data_holder 
+      +fl
+      margin: 0 0 0 40px
+      font-size: 13px
+      .hotel_date
+        +rel
+        padding: 2px 0 2px 25px
+        i
+          +abs
+          top: 8px
+          left: 0
+      #hotel_name
+        +bold
+        margin: 20px 0 3px -25px
+        font-size: 14px
+      #hotel_address
+      #hotel_phone
+      #hotel_website
   #page
     background: white
     border: 1px solid #ccc
-    width: 600px
-    margin: 0 auto
+    //width: 600px
+    margin: $pad 0 0 0
+    //+fr
     h1
       background: $yellow
-      padding: $pad
+      padding: 20px $pad
       margin: 0 0 0 0
+      font-size: 18px
     .steps
       border-top: 1px solid #ccc
       padding: $pad
       &:first-child
-        padding-top: 0px
+        border-top: 0px
       +button
     .step_header
       font-size: 16px
