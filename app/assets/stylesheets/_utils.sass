@@ -1,6 +1,7 @@
 @import compass
 @import compass/utilities/general/clearfix
 @import compass/utilities/general/float
+@import susy
 
 =header($font-weight: 300, $font-style: normal)
   font:
@@ -160,17 +161,35 @@ div
   padding: 10px
   font-size: 14px
   +arial
+  width: 100% !important
   border: 1px solid #999
   border-bottom: 1px solid #777
   margin: 0 0 0 0
   +box-shadow(rgba(#333, 0.24) 0 0 1px 1px inset)
 
-div.input
+div.input,
+div.security,
+div.month,
+div.year,
+div.credit_card_number,
+div.password_login,
+div.email_login,
+div.hotel_name,
+div.fax,
+div.phone,
+div.time_zone,
+div.inventory_threshold,
+div.currency,
+div.website_url,
+div.subdomain,
+div.number_of_rooms,
+div.discounted_rate,
+div.default_rate
   padding: 0 0 15px 0
   label
     +block
     padding: 0 0 3px 0
-    font-size: 14px
+    font-size: 13px
   input[type=email], 
   input[type=password], 
   input[type=text], 
@@ -193,14 +212,17 @@ div.input
   span.hint
     +block
     font-size: 12px
-    color: #555
+    color: #888
+    margin: 2px 0 0 0
   
 #link a 
   +block
   font-size: 12px
   +tdnone
-  padding: 10px 0 0 0
+  padding: 20px 0 0 0
   color: #666
+  &:hover
+    color: #333
 
 =button
   input[type=submit], button[type=button]

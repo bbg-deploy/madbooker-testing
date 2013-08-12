@@ -7,17 +7,19 @@
     = f.error :base
     .form-inputs
       %h3
+        %i.icon-user
         Account Information
       = f.input :email, :autofocus => true
       = f.input :password
       = f.input :password_confirmation
       
       %h3
+        %i.icon-credit-card
         Billing Information
-      = f.input :cc_number, label: "Credit Card number"
-      = f.input :cc_month, collection: 1..12, label: "Month"
-      = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"
-      = f.input :cc_cvv
+      = f.input :cc_number, label: "Credit Card Number", :wrapper_class => 'credit_card_number'
+      = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
+      = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => 'year'
+      = f.input :cc_cvv, label: "CVC", :wrapper_class => 'security'
       = f.input :stripe_token, as: :hidden
     .form-actions
       = button_tag "Sign up", type: :button, id: "sign_up_button"

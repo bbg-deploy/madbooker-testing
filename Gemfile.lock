@@ -104,6 +104,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    compass-normalize (1.4.3)
+      compass (>= 0.12.0)
     daemon_controller (1.1.5)
     daemons (1.1.9)
     debug_inspector (0.0.2)
@@ -297,6 +299,7 @@ DEPENDENCIES
   chronic
   coffee-rails
   colored
+  compass-normalize
   compass-rails!
   devise (= 3.0.0.rc)
   draper
