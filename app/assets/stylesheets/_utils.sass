@@ -171,7 +171,9 @@ div.input,
 div.security,
 div.month,
 div.year,
-div.credit_card_number
+div.credit_card_number,
+div.password_login,
+div.email_login
   padding: 0 0 15px 0
   label
     +block
@@ -205,8 +207,10 @@ div.credit_card_number
   +block
   font-size: 12px
   +tdnone
-  padding: 10px 0 0 0
+  padding: 20px 0 0 0
   color: #666
+  &:hover
+    color: #333
 
 =button
   input[type=submit], button[type=button]

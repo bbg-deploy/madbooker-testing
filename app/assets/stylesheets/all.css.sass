@@ -31,7 +31,7 @@ p
   +box-sizing(border-box)
 
 #content
-  min-height: 500px   
+  min-height: 250px   
   //padding: $pad
   background: white
   border: 1px solid #406463
@@ -46,43 +46,7 @@ p
   #data
     padding: $pad
 
-$total-columns: 4 // 12 columns
-$column-width: 100px // columns are 4em wide
-$gutter-width: $pad // with 1em gutters
-$grid-padding: $pad // and 1em padding on the grid container
 
-
-#form_simple_header
-  background: #eee
-  border-bottom: 1px solid #ccc
-  padding: $pad
-  h3
-    margin: 0 0 0 0
-#form_simple
-  padding: $pad
-  +container
-  div.email
-    +span-columns(4 omega)
-  div.password
-    +span-columns(2)
-    &:nth-child(4)
-      +span-columns(2 omega)
-  div.credit_card_number
-    +span-columns(4 omega)
-  div.security
-    +span-columns(2 omega)
-  div.month
-    +span-columns(1)
-  div.year
-    +span-columns(1)
-
-  h3
-    margin: 0 0 15px 0
-    padding: $pad 0 0 0
-    +clear
-    +bold
-    &:first-child
-      padding-top: 0px
 
 
 /////////////////////////////////
@@ -564,6 +528,62 @@ input.valid, input:required:valid
   background-repeat: no-repeat
 
 
+
+
+////// forms
+
+
+
+$total-columns: 4 // 12 columns
+$column-width: 100px // columns are 4em wide
+$gutter-width: $pad // with 1em gutters
+$grid-padding: $pad // and 1em padding on the grid container
+
+
+#form_simple_header
+  background: #eee
+  border-bottom: 1px solid #ccc
+  padding: $pad
+  h3
+    margin: 0 0 0 0
+#form_simple
+  padding: $pad
+  +container
+  div.email
+    +span-columns(4 omega)
+  div.password
+    +span-columns(2)
+    &:nth-child(4)
+      +span-columns(2 omega)
+  div.credit_card_number
+    +span-columns(4 omega)
+  div.security
+    +span-columns(2 omega)
+  div.month
+    +span-columns(1)
+  div.year
+    +span-columns(1)
+  div.email_login
+    +span-columns(3)
+  div.password_login
+    +span-columns(1 omega)
+  .form-actions
+    +rel
+    margin: 10px 0 0 0
+    div.remember_login
+      +abs
+      top: 8px
+      left: 100px
+      font-size: 12px
+      input
+        margin: 0 5px 0 0
+  h3
+    margin: 0 0 15px 0
+    padding: $pad 0 0 0
+    +clear
+    +bold
+    &:first-child
+      padding-top: 0px
 
 
 
