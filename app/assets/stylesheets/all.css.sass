@@ -256,7 +256,7 @@ $navwidth: ($width - ($icon * 2)) / 5
   a
     padding: 7px 15px
     +block
-    +background-image(linear-gradient(rgba(1, 1, 1, .05), rgba(1, 1, 1, .15)))
+    +background-image(linear-gradient(rgba(242, 242, 242, 1), rgba(209, 207, 207, 1)))
     border: 1px solid #999
     border-right: none
     border-bottom: 1px solid #777
@@ -640,14 +640,31 @@ a.add_link
 
 
 
-
-
-#status
-  background: #333
-  color: white
-  padding: 10px
-  margin: 0 0 20px 0
-
+#guest_data
+  border: 1px solid #ccc
+  padding: 20px
+  margin: 10px 0 0 0
+  +rel
+  #filters
+    +abs
+    top: -30px
+    z-index: 2
+    left: 20px
+  #status
+    color: #333
+    padding: 10px 0
+    margin: 10px 0
+  .row
+    padding: 3px 0
+    span
+      &:first-child
+        width: 120px
+        +fl
+        color: #666
+      &:last-child
+        width: 500px
+        +fl
+        color: #333
 
 
 
