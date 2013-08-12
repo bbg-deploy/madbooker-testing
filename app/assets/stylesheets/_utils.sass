@@ -2,6 +2,7 @@
 @import compass/utilities/general/clearfix
 @import compass/utilities/general/float
 @import susy
+@import animate
 
 =header($font-weight: 300, $font-style: normal)
   font:
@@ -153,7 +154,6 @@ div
 .rel
   +rel
 
-  
 
 
 =input
@@ -285,7 +285,17 @@ div.default_rate
 
 
 
-
+p.notice  
+  +animate(fadeOut, 3s, 2s)
+  position: fixed
+  padding: 10px 20px
+  background: $yellow
+  color: black
+  border: 1px solid #666
+  top: 10px
+  left: 10px
+  margin: 0 0 0 0
+  +border-radius(5px)
 
 
 
