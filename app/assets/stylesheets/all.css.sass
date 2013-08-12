@@ -8,6 +8,7 @@
 $pad: 30px
 $yellow: rgba(254, 249, 223, 1)
 
+
 body
   font-family: "arial"
   margin: 0px auto
@@ -18,7 +19,7 @@ body
   background: #70b0af
 
 a
-  color: #3e86c5
+  color: rgba(78, 122, 121, 1)
   +tdnone
   &:hover
     color: #333
@@ -534,9 +535,9 @@ input.valid, input:required:valid
 
 
 
-$total-columns: 4 // 12 columns
-$column-width: 100px // columns are 4em wide
-$gutter-width: $pad // with 1em gutters
+//$total-columns: 4 // 12 columns
+//$column-width: 100px // columns are 4em wide
+$gutter-width: 1.5em // with 1em gutters
 $grid-padding: $pad // and 1em padding on the grid container
 
 
@@ -550,23 +551,24 @@ $grid-padding: $pad // and 1em padding on the grid container
   padding: $pad
   +container
   div.email
-    +span-columns(4 omega)
+    +span-columns(12 omega)
   div.password
-    +span-columns(2)
+    +span-columns(6)
     &:nth-child(4)
-      +span-columns(2 omega)
+      +span-columns(6 omega)
   div.credit_card_number
-    +span-columns(4 omega)
+    +span-columns(12 omega)
   div.security
-    +span-columns(2 omega)
+    +span-columns(4 omega)
   div.month
-    +span-columns(1)
+    +span-columns(4)
   div.year
-    +span-columns(1)
+    +span-columns(4)
+  
   div.email_login
-    +span-columns(3)
+    +span-columns(8)
   div.password_login
-    +span-columns(1 omega)
+    +span-columns(4 omega)
   .form-actions
     +rel
     margin: 10px 0 0 0
@@ -587,6 +589,62 @@ $grid-padding: $pad // and 1em padding on the grid container
     i
       margin: 0 4px 0 0
       font-size: 15px
+
+
+
+
+#form
+  div.hotel_name
+    +span-columns(5)
+  div.phone, div.fax
+    +span-columns(2)
+  div.time_zone,
+  div.inventory_threshold
+    +span-columns(4)
+  div.currency
+    +span-columns(2)
+  div.website_url,
+  div.subdomain
+    +span-columns(5)
+  div.number_of_rooms,
+  div.default_rate,
+    +span-columns(4)
+  div.discounted_rate
+    +span-columns(4 omega)
+  .fields
+    border: 1px dotted #777
+    padding: 20px
+    background: #eee
+    margin: 0 0 20px 0
+    +rel
+    .remove 
+      +tr
+      +abs
+      bottom: 10px
+      right: 20px
+      a
+        +block
+        color: red
+        font-size: 12px
+        i
+          margin: 0 3px 0 0
+.button_footer
+  padding: $pad
+  background: #eee
+  border-top: 1px solid #ccc
+a.add_link 
+  +clear
+  +block
+  color: rgba(78, 122, 121, 1)
+  padding: 0 0 20px 0
+
+
+
+
+
+
+
+
 
 
 
