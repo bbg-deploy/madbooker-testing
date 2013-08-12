@@ -7,12 +7,14 @@
     = f.error :base
     .form-inputs
       %h3
+        %i.icon-user
         Account Information
       = f.input :email, :autofocus => true
       = f.input :password
       = f.input :password_confirmation
       
       %h3
+        %i.icon-credit-card
         Billing Information
       = f.input :cc_number, label: "Credit Card Number", :wrapper_class => 'credit_card_number'
       = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
