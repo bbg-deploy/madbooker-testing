@@ -3,7 +3,7 @@
   .step_header
     %i.icon-credit-card
     .step Step 3
-    .step_title Checkout
+    .step_title Secure Checkout
   
   - if @booking.step == 3
     #checkout
@@ -23,25 +23,27 @@
             %li
               %a{href: "#for_other"}For Someone Else
           #for_me
-            = f.input :first_name
-            = f.input :last_name
-            = f.input :email
+            = f.input :first_name, :wrapper_class => 'first_name'
+            = f.input :last_name, :wrapper_class => 'last_name'
+            = f.input :email, :wrapper_class => 'email'
+            = f.input :email_confirmation, :wrapper_class => 'email_confirmation'
+
           #for_other
             .booker
-              = f.input :made_by_first_name, label: "Your First name"
-              = f.input :made_by_last_name, label: "Your Last name"
+              = f.input :made_by_first_name, label: "Your First name", :wrapper_class => 'first_name'
+              = f.input :made_by_last_name, label: "Your Last name", :wrapper_class => 'last_name'
             .guest
         #credit_card_form
-          = f.input :cc_number, label: "Credit Card number", required: true
-          = f.input :cc_month, collection: 1..12, label: "Month"
-          = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"
-          = f.input :cc_zipcode, label: "Zip code"
-          = f.input :cc_cvv, required: true
+          = f.input :cc_number, label: "Credit Card number", required: true, :wrapper_class => 'credit_card_number'
+          = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
+          = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => 'year'
+          = f.input :cc_zipcode, label: "Zip code", :wrapper_class => 'zip_code'
+          = f.input :cc_cvv, required: true, :wrapper_class => 'security', :label => 'CVC'
         #confirmation_info
-          = f.input :email_confirmation
-          = f.input :sms_confirmation
-          
-        = f.submit "Book It!"
+          = f.input :sms_confirmation, :label => 'SMS Confirmation', :wrapper_class => 'sms'
+        
+        .form-actions  
+          = f.submit "Book It!"
           
           
           

@@ -4,7 +4,7 @@
 	.step_header
 		%i.icon-calendar
 		.step Step 1
-		.step_title Choose your dates
+		.step_title Choose Your Dates
 	= simple_form_for @booking, url: select_dates_book_path, remote: true do |f|
 		= f.input :arrive, as: "string", required: true, input_html: { size: 15 }
 		= f.input :depart, as: "string", required: true, input_html: { size: 15 }

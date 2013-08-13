@@ -349,6 +349,15 @@ td.day
           +fr
           +tr
 
+#instructions
+  border-bottom: 1px solid #ccc
+  padding: 20px
+  +tc
+  +bold
+  font-size: 15px
+  color: #444
+  background: $yellow
+
 $calendarwidth: ($width - 2px) / 3
 
 #calendar_year
@@ -608,8 +617,9 @@ $grid-padding: $pad // and 1em padding on the grid container
   padding: $pad
   h3
     margin: 0 0 0 0
+
 #form_simple
-  padding: $pad
+  padding: $pad    
   +container
   div.email
     +span-columns(12 omega)
@@ -651,8 +661,22 @@ $grid-padding: $pad // and 1em padding on the grid container
       margin: 0 4px 0 0
       font-size: 15px
 
-
-
+#checkout
+  +container
+  div.credit_card_number
+    +span-columns(12 omega)
+  div.security
+    +span-columns(3 omega)
+  div.month, div.year, div.zip_code
+    +span-columns(3)
+  div.year
+    +span-columns(3)
+  div.first_name, div.email, div.sms
+    +span-columns(6)
+  div.last_name, div.email_confirmation
+    +span-columns(6 omega)
+  .form-actions
+    margin: 10px 0 0 0
 
 #form
   div.hotel_name

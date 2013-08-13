@@ -176,6 +176,7 @@ div.input,
 div.security,
 div.month,
 div.year,
+div.zip_code,
 div.credit_card_number,
 div.password_login,
 div.email_login,
@@ -189,12 +190,18 @@ div.website_url,
 div.subdomain,
 div.number_of_rooms,
 div.discounted_rate,
-div.default_rate
+div.default_rate,
+div.first_name,
+div.last_name,
+div.email,
+div.email_confirmation,
+div.sms
   padding: 0 0 15px 0
   label
     +block
     padding: 0 0 3px 0
     font-size: 13px
+    text-transform: capitalize
   input[type=email], 
   input[type=password], 
   input[type=text], 
@@ -304,7 +311,28 @@ p.notice
 
 
 
-
-
-
+.ui-widget
+  +arial
+//.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+.ui-widget-content  
+  border: none
+  background: none
+  ul.ui-widget-header
+    border: none
+    border-bottom: 1px solid #ccc
+    background: none
+    padding: 0 0 0 3px
+    margin: 10px 0 20px 0
+    li
+      a
+        font-size: 13px
+      &.ui-state-default
+        +fl
+        padding: 10px 20px
+        border: 1px solid #bbb
+        background: none
+        margin: 0 3px 0 0
+        border-bottom: none
+      &.ui-state-active
+        background: #eee
   
