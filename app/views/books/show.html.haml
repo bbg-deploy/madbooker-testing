@@ -6,13 +6,20 @@
     #hotel_name.hotel_date= @hotel.name
     #hotel_address.hotel_date
       %i.icon-home
-      = @hotel.street
+      %div= @hotel.street1
+      %div= @hotel.street2
+      %div= @hotel.street3
+      %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
+      //%div= @hotel.country
+      //%div
+     
+
     #hotel_phone.hotel_date
       %i.icon-phone
       = @hotel.phone
     #hotel_website.hotel_date
       %i.icon-laptop
-      = @hotel.url
+      = link_to "Website", @hotel.url
 
 #page
   //%h1 Book a Room
