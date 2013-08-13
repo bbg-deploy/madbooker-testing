@@ -268,6 +268,7 @@ $navwidth: ($width - ($icon * 2)) / 5
   input#daypicker, input[type=text]
     +input
     +fl
+    width: 150px !important
   input#daypicker
     border-right: none
   form
@@ -323,35 +324,35 @@ $navwidth: ($width - ($icon * 2)) / 5
         .booked
           color: #333
 
-th.monthName
-  font-size: 18px
-  padding: 0 0 10px 0
-td.day
-  font-size: 12px
-  +rel
-  .day_number
-    +bold
-    font-size: 16px
-  .room_type, .no_inventory
-    width: 102px
-  .room_type
-    padding: 5px 0
-    width: 102px
-    .row
-      line-height: 120%
-    .name
-      font-size: 13px
-    .available, .booked 
-      span
-        &:first-child
-          color: #888
-          width: 30px
-          +fl
-        &:last-child
-          color: #888
-          width: 50px
-          +fr
-          +tr
+    th.monthName
+      font-size: 18px
+      padding: 0 0 10px 0
+    td.day
+      font-size: 12px
+      +rel
+      .day_number
+        +bold
+        font-size: 16px
+      .room_type, .no_inventory
+        width: 102px
+      .room_type
+        padding: 5px 0
+        width: 102px
+        .row
+          line-height: 120%
+        .name
+          font-size: 13px
+        .available, .booked 
+          span
+            &:first-child
+              color: #888
+              width: 30px
+              +fl
+            &:last-child
+              color: #888
+              width: 50px
+              +fr
+              +tr
 
 #instructions
   border-bottom: 1px solid #ccc
@@ -586,8 +587,8 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
   display: none
 
 /*calendar*/
-//.day_selectable.selected
-//background: $yellow
+.day_selectable.selected
+  background: darken($yellow, 10%)
 
 
 
@@ -685,6 +686,8 @@ $grid-padding: $pad // and 1em padding on the grid container
 #form
   div.hotel_name
     +span-columns(5)
+  div.email
+    +span-columns(3 omega)  
   div.phone, div.fax
     +span-columns(2)
   div.time_zone,
@@ -700,6 +703,21 @@ $grid-padding: $pad // and 1em padding on the grid container
     +span-columns(4)
   div.discounted_rate
     +span-columns(4 omega)
+  div.address
+    +span-columns(6)
+  div.address2
+    +span-columns(3)
+  div.address3
+    +span-columns(3 omega)
+  div.city
+    +span-columns(4)
+  div.state
+    +span-columns(2)  
+  div.country
+    +span-columns(3)
+  div.postal_code
+    +span-columns(2 omega)
+
   .fields
     border: 1px dotted #777
     padding: 20px
@@ -743,6 +761,7 @@ a.add_link
     color: #333
     padding: 10px 0
     margin: 10px 0
+    +bold
   .row
     padding: 3px 0
     span
