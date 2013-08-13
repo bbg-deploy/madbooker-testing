@@ -752,16 +752,18 @@ a.add_link
         color: #333
 
 #inventories_form
-  position: fixed
-  top: 0px
-  left: 0px
-  width: 100%
-  background: white
-  border: 1px solid #ccc
-  padding: $pad
-  +box-shadow(rgba(#333, 0.75) 0 2px 20px 11px)
-  .fields
-    display: inline
-  div.input
-    +span-columns(2)
+  form
+    position: fixed
+    top: 100px
+    left: 50%
+    margin-left: -250px
+    width: 500px
+    background: white
+    border: 1px solid #ccc
+    padding: $pad
+    +box-shadow(rgba(#333, 0.5) 0 2px 40px 11px)
+    .fields
+      display: inline
+    div.input
+      +span-columns(4)
 
