@@ -9,7 +9,6 @@ class StatTest < MiniTest::Should::TestCase
   
   context "creating stats" do
     setup do
-      
     end
 
     should "page" do

@@ -11,7 +11,14 @@
       = f.input :phone, :placeholder => '555-555-5555', :wrapper_class => 'phone'
       = f.input :fax, :placeholder => '555-555-5555', :wrapper_class => 'fax'
       .clear
-      = f.input :address, :label => 'Hotel Address', :hint => 'Please include your full mailing address.'
+      = f.input :street1, :hint => 'Please include your full mailing address.'
+      = f.input :street2, :hint => 'Please include your full mailing address.'
+      = f.input :street3, :hint => 'Please include your full mailing address.'
+      = f.input :city, :hint => 'Please include your full mailing address.'
+      = f.input :state, :hint => 'Please include your full mailing address.'
+      = f.input :country, :hint => 'Please include your full mailing address.', priority: [ "United States", "Canada" ]
+      = f.input :postal_code, :hint => 'Please include your full mailing address.'
+      = f.input :email
 
       = f.input :minimal_inventory_notification_threshold, :hint => "I don't know what this does.", :wrapper_class => 'inventory_threshold'
       = f.association :currency, collection: Currency.options_for_select, :wrapper_class => 'currency'

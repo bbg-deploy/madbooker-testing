@@ -17,7 +17,7 @@ module Hotel::Params
         pa = params.permit :user_id, :name, :address, :url, :phone, :fax, 
           :url, :room_rates_display, :subdomain, :google_analytics_code, :time_zone,
           :fine_print, :logo, :room_rates_display, :minimal_inventory_notification_threshold, 
-          :currency_id,
+          :currency_id, :street1, :street2, :street3, :city, :state, :country, :postal_code, :email,
           :room_types_attributes => [:name, :description, :number_of_rooms, 
           :default_rate, :discounted_rate, :_destroy, :id]
       else

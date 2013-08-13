@@ -20,7 +20,12 @@ class << self
       :fax                   => Faker::PhoneNumber.phone_number,
       :room_rates_display    => [1,2].sample,
       :subdomain             => Faker::Internet.domain_word,
-      :address               => Faker::Address.street_address,
+      :street1               => Faker::Address.street_address,
+      :city                  => Faker::Address.city,
+      :state                 => Faker::Address.state,
+      :country               => Faker::Address.country,
+      :postal_code           => Faker::Address.zip_code,
+      :email                 => Faker::Internet.email,
       :google_analytics_code => Faker::Name.name,
       :fine_print            => Faker::Lorem.paragraphs(5).join 
     }
