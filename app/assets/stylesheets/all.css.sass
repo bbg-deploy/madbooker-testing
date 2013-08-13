@@ -328,6 +328,10 @@ th.monthName
   padding: 0 0 10px 0
 td.day
   font-size: 12px
+  +rel
+  .day_number
+    +bold
+    font-size: 16px
   .room_type, .no_inventory
     width: 102px
   .room_type
@@ -582,8 +586,8 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
   display: none
 
 /*calendar*/
-.day_selectable.selected
-  background: brown
+//.day_selectable.selected
+//background: $yellow
 
 
 
