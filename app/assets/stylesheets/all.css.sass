@@ -107,20 +107,47 @@ h4
 
 body#public
   background: white
+  .container
+    width: 600px
+  #hotel_information
+    //padding: $pad 0 0 0
+    .logo
+      +fl
+      margin: 20px 0 0 0
+    #hotel_data_holder 
+      +fl
+      margin: 0 0 0 40px
+      font-size: 13px
+      .hotel_date
+        +rel
+        padding: 2px 0 2px 25px
+        i
+          +abs
+          top: 8px
+          left: 0
+      #hotel_name
+        +bold
+        margin: 20px 0 3px -25px
+        font-size: 14px
+      #hotel_address
+      #hotel_phone
+      #hotel_website
   #page
     background: white
     border: 1px solid #ccc
-    width: 600px
-    margin: 0 auto
+    //width: 600px
+    margin: $pad 0 0 0
+    //+fr
     h1
       background: $yellow
-      padding: $pad
+      padding: 20px $pad
       margin: 0 0 0 0
+      font-size: 18px
     .steps
       border-top: 1px solid #ccc
       padding: $pad
       &:first-child
-        padding-top: 0px
+        border-top: 0px
       +button
     .step_header
       font-size: 16px
@@ -282,6 +309,20 @@ $navwidth: ($width - ($icon * 2)) / 5
 
 ///// calendar stuff
 
+
+.month_calendar
+  table
+    width: 100%
+    td.day, td.otherMonth
+      border: 1px solid #ccc
+      padding: 10px
+      +rel
+      .room_type
+        .available
+          color: #333
+        .booked
+          color: #333
+
 th.monthName
   font-size: 18px
   padding: 0 0 10px 0
@@ -295,33 +336,62 @@ td.day
     .row
       line-height: 120%
     .name
-      +bold
       font-size: 13px
     .available, .booked 
       span
         &:first-child
-          color: #ddd
+          color: #888
           width: 30px
           +fl
         &:last-child
-          color: white
+          color: #888
           width: 50px
           +fr
           +tr
 
+#instructions
+  border-bottom: 1px solid #ccc
+  padding: 20px
+  +tc
+  +bold
+  font-size: 15px
+  color: #444
+  background: $yellow
+
+$calendarwidth: ($width - 2px) / 3
 
 #calendar_year
   .calendar_month
     +fl
-    padding: 23px
+    padding: 20px 0 0 0
     border-right: 1px solid #ccc
     border-bottom: 1px solid #ccc
-    height: 330px
+    height: 310px
+    width: $calendarwidth
     &:nth-child(3n+3)
       border-right: none
-    //&:nth-child(3n+2)
-    //  padding-left: 35px
-    //  padding-right: 35px
+    table 
+      margin: 0 auto
+      tr
+        th, td
+          padding: 4px
+          +tc 
+        th
+          font-size: 12px
+          font-weight: normal
+          color: #999
+          &.monthName
+            +bold
+            font-size: 16px
+            padding: 0 0 0 0
+            color: #333
+        td
+          &.day
+            border: 1px solid #ccc
+            padding: 7px 10px
+          &.weekendDay
+            background: #eee
+          
 abbr[title]
   border-bottom: none !important
 
@@ -547,8 +617,9 @@ $grid-padding: $pad // and 1em padding on the grid container
   padding: $pad
   h3
     margin: 0 0 0 0
+
 #form_simple
-  padding: $pad
+  padding: $pad    
   +container
   div.email
     +span-columns(12 omega)
@@ -590,8 +661,22 @@ $grid-padding: $pad // and 1em padding on the grid container
       margin: 0 4px 0 0
       font-size: 15px
 
-
-
+#checkout
+  +container
+  div.credit_card_number
+    +span-columns(12 omega)
+  div.security
+    +span-columns(3 omega)
+  div.month, div.year, div.zip_code
+    +span-columns(3)
+  div.year
+    +span-columns(3)
+  div.first_name, div.email, div.sms
+    +span-columns(6)
+  div.last_name, div.email_confirmation
+    +span-columns(6 omega)
+  .form-actions
+    margin: 10px 0 0 0
 
 #form
   div.hotel_name
@@ -666,9 +751,17 @@ a.add_link
         +fl
         color: #333
 
-
-
-
-
-
+#inventories_form
+  position: fixed
+  top: 0px
+  left: 0px
+  width: 100%
+  background: white
+  border: 1px solid #ccc
+  padding: $pad
+  +box-shadow(rgba(#333, 0.75) 0 2px 20px 11px)
+  .fields
+    display: inline
+  div.input
+    +span-columns(2)
 
