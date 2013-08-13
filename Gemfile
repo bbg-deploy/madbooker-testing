@@ -46,6 +46,7 @@ gem "twilio-ruby"
 gem "attr_encrypted"
 gem "simple_states"
 gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
+gem 'country_select'
 
 # Gems used only for assets and not required
 # in production environments by default.

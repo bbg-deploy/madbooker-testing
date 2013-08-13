@@ -10,7 +10,7 @@
 #  fax                                      :string(255)
 #  room_rates_display                       :string(255)
 #  subdomain                                :string(255)
-#  address                                  :text
+#  street1                                  :string(255)
 #  google_analytics_code                    :text
 #  fine_print                               :text
 #  logo_file_name                           :string(255)
@@ -22,6 +22,13 @@
 #  time_zone                                :string(255)      default("Eastern Time (US & Canada)")
 #  minimal_inventory_notification_threshold :integer          default(0)
 #  currency_id                              :integer          default(840)
+#  street2                                  :string(255)
+#  street3                                  :string(255)
+#  city                                     :string(255)
+#  state                                    :string(255)
+#  country                                  :string(255)
+#  postal_code                              :string(255)
+#  email                                    :string(255)
 #
 
 class Hotel < ActiveRecord::Base
@@ -47,6 +54,9 @@ class Hotel < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :url
   validates_presence_of :subdomain
+  validates_presence_of :email
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
+
   
   
   def url
