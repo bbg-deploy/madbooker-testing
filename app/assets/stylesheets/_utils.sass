@@ -244,21 +244,27 @@ div.email
   &:hover
     color: #333
 
+
+=style
+  padding: 10px 20px
+  +tc
+  color: #333
+  font-size: 13px
+  +bold
+  +arial
+  +background-image(linear-gradient(rgba(223, 223, 223, 1), rgba(190, 190, 190, 1)))
+  border: 1px solid #999
+  +border-radius
+  border-bottom: 1px solid #777
+  &:hover
+    background: #333
+    color: white
+    +tdnone
+
 =button
   input[type=submit], button[type=button]
-    padding: 10px 20px
-    +tc
-    color: #333
-    font-size: 13px
-    +bold
-    +arial
-    +background-image(linear-gradient(rgba(223, 223, 223, 1), rgba(190, 190, 190, 1)))
-    border: 1px solid #999
-    +border-radius
-    border-bottom: 1px solid #777
-    &:hover
-      background: #333
-      color: white
+    +style
+
 
 .form-actions
   +button
