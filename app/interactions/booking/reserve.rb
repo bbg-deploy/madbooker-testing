@@ -1,4 +1,5 @@
 class Booking::Reserve < Less::Interaction
+  include Booking::Params
   
   attr_accessor :error
   
@@ -69,8 +70,13 @@ class Booking::Reserve < Less::Interaction
   end
   
   def send_confirmations
+    send_hotel_confirmation
     send_email_confirmation unless booking.email_confirmation.blank?
     send_sms_confirmation unless booking.sms_confirmation.blank?
+  end
+  
+  def send_hotel_confirmation
+    BookingMailer.hotel_confirmation(booking.decorate).deliver
   end
   
   def send_email_confirmation

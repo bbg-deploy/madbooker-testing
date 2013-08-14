@@ -6,12 +6,12 @@ development:
   twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
   twilio_number: 7164626651 #716-4MBOOK1
   twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
-  from_address: melanie@madbooker.com
+  from_address: support@madbooker.com
 
 test:
   domain: example.test
   protocol: http
-  from_address: melanie@madbooker.com
+  from_address: support@madbooker.com
 
 staging:
   domain: mb.lesseverything.com
@@ -19,7 +19,7 @@ staging:
   twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
   twilio_number: 7164626651
   twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
-  from_address: melanie@madbooker.com
+  from_address: support@madbooker.com
   
 production:
   domain: madbooker.com
@@ -27,5 +27,5 @@ production:
   twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
   twilio_number: 7164626651
   twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
-  from_address: melanie@madbooker.com
+  from_address: support@madbooker.com
   

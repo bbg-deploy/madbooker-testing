@@ -57,7 +57,9 @@ class Hotel < ActiveRecord::Base
   validates_presence_of :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
 
-  
+  def public_email_address
+    "#{name} <reservations@madbooker.com>"
+  end
   
   def url
     "#{App.protocol}://#{subdomain}.#{App.domain}/book"
