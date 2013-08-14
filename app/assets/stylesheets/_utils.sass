@@ -195,7 +195,24 @@ div.first_name,
 div.last_name,
 div.email,
 div.email_confirmation,
-div.sms
+div.sms,
+div.address,
+div.address2,
+div.address3,
+div.city,
+div.state,
+div.country,
+div.postal_code,
+div.email,
+div.arrival,
+div.departure,
+div.your_first_name,
+div.your_last_name,
+div.credit_card,
+div.cc_month,
+div.cc_year,
+div.cc_zip,
+div.cvc
   padding: 0 0 15px 0
   label
     +block
@@ -236,21 +253,27 @@ div.sms
   &:hover
     color: #333
 
+
+=style
+  padding: 10px 20px
+  +tc
+  color: #333
+  font-size: 13px
+  +bold
+  +arial
+  +background-image(linear-gradient(rgba(223, 223, 223, 1), rgba(190, 190, 190, 1)))
+  border: 1px solid #999
+  +border-radius
+  border-bottom: 1px solid #777
+  &:hover
+    background: #333
+    color: white
+    +tdnone
+
 =button
   input[type=submit], button[type=button]
-    padding: 10px 20px
-    +tc
-    color: #333
-    font-size: 13px
-    +bold
-    +arial
-    +background-image(linear-gradient(rgba(223, 223, 223, 1), rgba(190, 190, 190, 1)))
-    border: 1px solid #999
-    +border-radius
-    border-bottom: 1px solid #777
-    &:hover
-      background: #333
-      color: white
+    +style
+
 
 .form-actions
   +button

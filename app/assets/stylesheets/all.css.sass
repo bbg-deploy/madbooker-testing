@@ -59,10 +59,7 @@ h1
   line-height: 100%
   color: #222
   margin: 0 0 5px 0
-  a
-    font-size: 16px
-    font-weight: normal
-    padding: 10px
+
 h2
   font-size: 21px
   font-weight: normal
@@ -123,7 +120,7 @@ body#public
         padding: 2px 0 2px 25px
         i
           +abs
-          top: 8px
+          top: 5px
           left: 0
       #hotel_name
         +bold
@@ -268,6 +265,7 @@ $navwidth: ($width - ($icon * 2)) / 5
   input#daypicker, input[type=text]
     +input
     +fl
+    width: 150px !important
   input#daypicker
     border-right: none
   form
@@ -278,18 +276,25 @@ $navwidth: ($width - ($icon * 2)) / 5
     margin: 0 0 0 12px
 
 
+=header-style
+  +background-image(linear-gradient(rgba(242, 242, 242, 1), rgba(209, 207, 207, 1)))
+  border: 1px solid #999
+  padding: 7px 15px
+  +block
+  +fl
+  color: #333
+  font-size: 13px
+  border-bottom: 1px solid #777
+  &:hover
+    background: #333
+    color: white
+    +tdnone
+
 #filters 
   margin: 10px 0 0 0
   a
-    padding: 7px 15px
-    +block
-    +background-image(linear-gradient(rgba(242, 242, 242, 1), rgba(209, 207, 207, 1)))
-    border: 1px solid #999
+    +header-style
     border-right: none
-    border-bottom: 1px solid #777
-    +fl
-    color: #333
-    font-size: 13px
     &.on
       background: white
       +box-shadow(rgba(#333, 0.21) 0 0 5px 1px inset)
@@ -302,10 +307,15 @@ $navwidth: ($width - ($icon * 2)) / 5
       +border-top-right-radius
       +border-bottom-right-radius
       border-right: 1px solid #999
-    &:hover
-      background: #333
-      color: white
-      +tdnone
+
+
+a.create
+  +header-style
+  margin: 10px 0 0 0
+  +border-radius
+  i
+    font-size: 12px
+    margin-right: 5px
 
 ///// calendar stuff
 
@@ -323,31 +333,35 @@ $navwidth: ($width - ($icon * 2)) / 5
         .booked
           color: #333
 
-th.monthName
-  font-size: 18px
-  padding: 0 0 10px 0
-td.day
-  font-size: 12px
-  .room_type, .no_inventory
-    width: 102px
-  .room_type
-    padding: 5px 0
-    width: 102px
-    .row
-      line-height: 120%
-    .name
-      font-size: 13px
-    .available, .booked 
-      span
-        &:first-child
-          color: #888
-          width: 30px
-          +fl
-        &:last-child
-          color: #888
-          width: 50px
-          +fr
-          +tr
+    th.monthName
+      font-size: 18px
+      padding: 0 0 10px 0
+    td.day
+      font-size: 12px
+      +rel
+      .day_number
+        +bold
+        font-size: 16px
+      .room_type, .no_inventory
+        width: 102px
+      .room_type
+        padding: 5px 0
+        width: 102px
+        .row
+          line-height: 120%
+        .name
+          font-size: 13px
+        .available, .booked 
+          span
+            &:first-child
+              color: #888
+              width: 30px
+              +fl
+            &:last-child
+              color: #888
+              width: 50px
+              +fr
+              +tr
 
 #instructions
   border-bottom: 1px solid #ccc
@@ -440,56 +454,62 @@ table.standard2
 
 /// dashboard
 
-.revenue_by_room_type,
-.look_to_book
-  border: 1px solid #ccc
-  padding: 20px
-  margin: 20px 0
-  .header
-    +bold
-    font-size: 26px
-    margin: 0 0 5px 0
+//.revenue_by_room_type,
+//.look_to_book
+//  border: 1px solid #ccc
+//  padding: 20px
+//  margin: 20px 0
+//  .header
+//    +bold
+//    font-size: 26px
+//    margin: 0 0 5px 0
 
 
 .revenue_by_room_type
   .room_type
-    border: 1px solid #ccc
-    +fl
-    padding: 15px
-    margin: 10px 20px 10px 0
+    border-top: 1px solid #ccc
     font-size: 13px
+    border-left: 1px solid #ccc
+    div
+      height: 77px
     .name
-      +tc
-      width: 210px
+      width: 300px
+      padding: 31px 28px
+      background: #eee
+      +fl
       +bold
-      margin: 0 0 5px 0
-
-//.week,
-//.month,
-//.daily_average
-//  span
-//    &:first-child
-//      +fl
-//    &:last-child
-//      +fr
+      +tr
+    .daily_average
+      border-left: 1px solid #ccc
+    .week,
+    .month_row,
+    .daily_average
+      border-right: 1px solid #ccc
+      padding: 20px
+      +fl
+      width: 199px
+      span
+        +block
+        +tc
+        &:last-child
+          color: #777
+          margin-top: 3px
+        &:first-child
+          font-size: 32px
+          +bold
 
 $data_width: ($width - (($pad * 2)) - 3px) / 4
 
-.number_of_searches, .total_revenue, .rev_par
-  margin: 0 0 0 0
+.number_of_searches, .total_revenue, .rev_par, .revenue_by_room_type, .revenue_by_room_type
+  margin: 0 0 40px 0
   +clear
-  i
-    font-size: 16px
-    margin: 0 0 -2px 0
-    &.icon-mobile-phone
-      font-size: 20px
+  border-bottom: 1px solid #ccc
   .header
-    background: #eee
-    +tc
-    border: 1px solid #ccc
-    border-bottom: 0px
-    padding: 23px 20px 20px 20px
-    font-size: 16px
+    padding: 0 0 10px 0px
+    font-size: 18px
+    +bold
+    i
+      margin: 0 1px 0 0
   .label
     padding: 10px
     background: #eee
@@ -501,9 +521,9 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
   .data
     +fl
     +rel
-    padding: 30px 20px 30px 20px
+    padding: 20px 20px 20px 20px
     border: 1px solid #ccc
-    height: 145px
+    height: 115px
     border-bottom: none
     border-right: none
     width: $data_width
@@ -527,7 +547,7 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
 
     .what
       +tc
-      margin: 0 0 10px 0
+      margin: 0 0 5px 0
       color: #888
       font-size: 13px
     .number
@@ -543,18 +563,16 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
     .where
       font-size: 13px
       margin: 0 0 0 0
-      padding: 10px 0 0 0
+      padding: 5px 0 0 0
+      color: #666
       +tc
       span
         padding: 2px 0 0 0
-.graph_rev_par
-  border: 1px solid #ccc
-  border-bottom: none
-  .rev_par
-    +fr
-    .data
-      border: none
-      border-left: 1px solid #ccc
+      i
+        font-size: 16px
+        &.icon-mobile-phone
+          font-size: 20px
+
 
 #ui-datepicker-div
   background: white
@@ -583,7 +601,7 @@ $data_width: ($width - (($pad * 2)) - 3px) / 4
 
 /*calendar*/
 .day_selectable.selected
-  background: brown
+  background: darken($yellow, 10%)
 
 
 
@@ -678,9 +696,44 @@ $grid-padding: $pad // and 1em padding on the grid container
   .form-actions
     margin: 10px 0 0 0
 
+.edit_addon, .edit_package
+  div.input
+    +span-columns(6)
+  div.boolean
+    padding: 5px 0
+
+.edit_guest
+  .room_type_name
+    padding: 0 0 15px 0
+    +clear
+  div.arrival,
+  div.departure
+    +span-columns(2)
+  div.email_confirmation,  
+  div.last_name,
+  div.your_first_name,
+  div.first_name,
+  div.email,
+  div.credit_card,
+  div.sms
+    +span-columns(3)
+  div.cc_month,
+  div.cc_year
+    +span-columns(1)
+  div.cc_zip,
+  div.cvc
+    +span-columns(2)
+  div.your_last_name
+    +span-columns(3 omega)
+  .form-actions 
+    margin-top: 10px
+
+
 #form
   div.hotel_name
     +span-columns(5)
+  div.email
+    +span-columns(3 omega)  
   div.phone, div.fax
     +span-columns(2)
   div.time_zone,
@@ -696,6 +749,21 @@ $grid-padding: $pad // and 1em padding on the grid container
     +span-columns(4)
   div.discounted_rate
     +span-columns(4 omega)
+  div.address
+    +span-columns(6)
+  div.address2
+    +span-columns(3)
+  div.address3
+    +span-columns(3 omega)
+  div.city
+    +span-columns(4)
+  div.state
+    +span-columns(2)  
+  div.country
+    +span-columns(3)
+  div.postal_code
+    +span-columns(2 omega)
+
   .fields
     border: 1px dotted #777
     padding: 20px
@@ -739,6 +807,7 @@ a.add_link
     color: #333
     padding: 10px 0
     margin: 10px 0
+    +bold
   .row
     padding: 3px 0
     span
@@ -752,16 +821,55 @@ a.add_link
         color: #333
 
 #inventories_form
-  position: fixed
-  top: 0px
-  left: 0px
-  width: 100%
-  background: white
-  border: 1px solid #ccc
-  padding: $pad
-  +box-shadow(rgba(#333, 0.75) 0 2px 20px 11px)
-  .fields
-    display: inline
-  div.input
-    +span-columns(2)
+  form
+    position: fixed
+    top: 100px
+    left: 50%
+    margin-left: -250px
+    width: 500px
+    background: white
+    border: 1px solid #ccc
+    padding: $pad
+    +box-shadow(rgba(#333, 0.5) 0 2px 40px 11px)
+    .fields
+      display: inline
+    div.input
+      +span-columns(4)
+
+#filters
+  +fl
+#dates_text_fields
+  +fl
+  margin: 10px 0 0 10px
+  input
+    +input
+    width: 100px !important
+    &#date_start
+    &#date_end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

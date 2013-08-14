@@ -2,7 +2,9 @@
 #header
   %h1
     Existing Add-Ons
-    = link_to "Create Add-On", [:new, current_hotel, :add_on]
+  = link_to [:new, current_hotel, :add_on], :class=>'create' do
+    %i.icon-plus
+    Create Add-on
 
 #data
   %table.standard

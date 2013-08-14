@@ -2,7 +2,9 @@
 #header
   %h1 
     Existing Packages
-    = link_to "Create a Package", [:new, current_hotel, :package]
+  = link_to [:new, current_hotel, :package], :class=>'create' do
+    %i.icon-plus
+    Create a Package
 
 #data
   %table.standard

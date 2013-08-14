@@ -2,5 +2,6 @@
 
 - for_month ||= false
 
-= text_field_tag :start, "", id: :date_start, "data-for_month" => for_month
-= text_field_tag :end, "", id: :date_end
+#dates_text_fields
+  = text_field_tag :start, "", id: :date_start, "data-for_month" => for_month, :placeholder => 'start date'
+  = text_field_tag :end, "", id: :date_end, :placeholder => 'end date'
