@@ -2,30 +2,34 @@
   %h1
     Edit Guest
 
-#data
+#data.edit_guest
   = simple_form_for [current_hotel, booking] do |f|
 
     #summary
     #room_info
-      = f.input :arrive, as: "string"
-      = f.input :depart, as: "string"
-      = booking.bookable.name
+      .room_type_name
+        Room Type:
+        = booking.bookable.name
+      = f.input :arrive, as: "string", :wrapper_class => "arrival"
+      = f.input :depart, as: "string", :wrapper_class => "departure"
       ///= f.association :room_type
     #registration_info
-      = f.input :first_name
-      = f.input :last_name
-      = f.input :email
-      = f.input :made_by_first_name, label: "Your First name"
-      = f.input :made_by_last_name, label: "Your Last name"
+      = f.input :first_name, :wrapper_class => "first_name"
+      = f.input :last_name, :wrapper_class => "last_name"
+      = f.input :made_by_first_name, label: "Your First name", :wrapper_class => "your_first_name"
+      = f.input :made_by_last_name, label: "Your Last name", :wrapper_class => "your_last_name"
+      .clear
+      = f.input :email, :wrapper_class => "email"
+      = f.input :email_confirmation, :wrapper_class => "email_confirm"
     #credit_card_form
-      = f.input :cc_number, label: "Credit Card number"
-      = f.input :cc_month, collection: 1..12, label: "Month"
-      = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year"
-      = f.input :cc_zipcode, label: "Zip code"
-      = f.input :cc_cvv
+      = f.input :cc_number, label: "Credit Card number", :wrapper_class => "credit_card"
+      = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => "cc_month"
+      = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => "cc_year"
+      .clear
+      = f.input :cc_zipcode, label: "Zip code", :wrapper_class => "cc_zip"
+      = f.input :cc_cvv, :wrapper_class => "cvc"
     #confirmation_info
-      = f.input :email_confirmation
-      = f.input :sms_confirmation
+      = f.input :sms_confirmation, :wrapper_class => "sms"
     .form-actions  
       = f.submit "Save Changes"
       
