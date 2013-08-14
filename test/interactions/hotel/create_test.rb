@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hotel::CreateTest < MiniTest::Should::TestCase
+class Hotel::CreateTest < ActiveSupport::TestCase
 
 
   def create

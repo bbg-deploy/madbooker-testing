@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Stats::SearchTest < MiniTest::Should::TestCase
+class Stats::SearchTest < ActiveSupport::TestCase
 
   def search
     @search ||= Stats::Search.new context: @context, available_rooms: @available_rooms, user_bug: "user"

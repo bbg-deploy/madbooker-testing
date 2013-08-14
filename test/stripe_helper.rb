@@ -1,6 +1,6 @@
 
 
-class MiniTest::Should::TestCase
+class ActiveSupport::TestCase
   
   WEBHOOKS = {
 		'account.updated' => {"created"=>1326853478, "livemode"=>false, "id"=>"evt_00000000000000", "type"=>"account.updated", "object"=>"event", "data"=>{"object"=>{"id"=>"acct_00000000000000", "email"=>"test@stripe.com", "statement_descriptor"=>"TEST", "details_submitted"=>true, "charge_enabled"=>false, "transfer_enabled"=>false, "currencies_supported"=>["USD"], "default_currency"=>"USD", "country"=>"US", "object"=>"account"}, "previous_attributes"=>{"details_submitted"=>false}}, "stripe"=>{"created"=>1326853478, "livemode"=>false, "id"=>"evt_00000000000000", "type"=>"account.updated", "object"=>"event", "data"=>{"object"=>{"id"=>"acct_00000000000000", "email"=>"test@stripe.com", "statement_descriptor"=>"TEST", "details_submitted"=>true, "charge_enabled"=>false, "transfer_enabled"=>false, "currencies_supported"=>["USD"], "default_currency"=>"USD", "country"=>"US", "object"=>"account"}, "previous_attributes"=>{"details_submitted"=>false}}}},

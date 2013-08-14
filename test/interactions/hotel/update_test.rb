@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hotel::UpdateTest < MiniTest::Should::TestCase
+class Hotel::UpdateTest < ActiveSupport::TestCase
 
 
   def update

@@ -14,5 +14,14 @@ module ApplicationHelper
   def replace_content_with_partial(dom_el, partial)
     "$('#{dom_el}').html('#{escape_javascript(render(partial))}')".html_safe
   end
+  
+  def bookables
+    a = []
+    current_hotel.room_types.decorate.each do |room_type|
+      a << room_type
+      a << room_type.packages.active.decorate
+    end
+    a.flatten
+  end
 
 end

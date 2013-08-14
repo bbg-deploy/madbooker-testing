@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Inventory::CreateTest < MiniTest::Should::TestCase
+class Inventory::CreateTest < ActiveSupport::TestCase
 
 
   def create

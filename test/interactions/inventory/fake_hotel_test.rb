@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Inventory::FakeHotelTest < MiniTest::Should::TestCase
+class Inventory::FakeHotelTest < ActiveSupport::TestCase
 
   context "a fake hotel" do
     

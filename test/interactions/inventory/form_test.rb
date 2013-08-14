@@ -2,7 +2,7 @@ require 'test_helper'
 
 
 
-class Inventory::FormTest < MiniTest::Should::TestCase
+class Inventory::FormTest < ActiveSupport::TestCase
 
   def form
     @form ||= Inventory::Form.new context: @context

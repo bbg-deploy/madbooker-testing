@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'stripe_helper'
 
-class Payments::SignupTest < MiniTest::Should::TestCase
+class Payments::SignupTest < ActiveSupport::TestCase
 
   def signup
     @signup ||= Payments::Signup.new context: context

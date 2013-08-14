@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BookingTest < MiniTest::Should::TestCase
+class BookingTest < ActiveSupport::TestCase
   
   context "after save" do
     setup do

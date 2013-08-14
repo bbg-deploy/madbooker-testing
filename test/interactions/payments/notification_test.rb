@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'stripe_helper'
 
-class Payments::NotificationTest < MiniTest::Should::TestCase
+class Payments::NotificationTest < ActiveSupport::TestCase
 
   def notification
     @notification ||= Payments::Notification.new context: @context

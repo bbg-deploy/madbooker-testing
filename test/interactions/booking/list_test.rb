@@ -7,7 +7,7 @@ class Array
   end
 end
 
-class Booking::ListTest < MiniTest::Should::TestCase
+class Booking::ListTest < ActiveSupport::TestCase
   
   def percentage inventory
     inventory.sales_count.to_d / inventory.available_rooms * 100
@@ -69,7 +69,7 @@ class Booking::ListTest < MiniTest::Should::TestCase
   context "with inventory and bookings" do
     setup do
       @hotel = Gen.hotel
-      @room_types = [Gen.room_type(id: 1), Gen.room_type(id: 2)]
+      @room_types = [Gen.room_type!(id: 1), Gen.room_type!(id: 2)]
       @hotel.stubs(:room_types).returns @room_types
       
       @inventory = [Gen.inventory(room_type_id: @room_types[0].id), Gen.inventory(room_type_id: @room_types[1].id)]

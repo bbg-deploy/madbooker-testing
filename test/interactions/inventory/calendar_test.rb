@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Inventory::CalendarTest < MiniTest::Should::TestCase
+class Inventory::CalendarTest < ActiveSupport::TestCase
 
   def calendar
     @calendar ||= Inventory::Calendar.new context: @context

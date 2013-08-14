@@ -6,11 +6,13 @@
   = simple_form_for [current_hotel, booking] do |f|
 
     #summary
+      Make suer you check for 
+      = link_to "availablitly", month_hotel_inventories_path(current_hotel, Date.current.year, Date.current.month)
+      before changing thte room type or date.
     #room_info
       = f.input :arrive, as: "string"
       = f.input :depart, as: "string"
-      = booking.bookable.name
-      ///= f.association :room_type
+      = f.input :bookable, collection: bookables.map{|b| [b.name, "#{b.class.to_s[0]}#{b.id}"]},label: "Room", selected: "#{booking.bookable.class.to_s[0]}#{booking.bookable.id}"
     #registration_info
       = f.input :first_name
       = f.input :last_name

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Inventory::SyncWithRoomTypesTest < MiniTest::Should::TestCase
+class Inventory::SyncWithRoomTypesTest < ActiveSupport::TestCase
   
   def sync
     return @sync ||= Inventory::SyncWithRoomTypes.new( @context, raises: @raises, range: @range)

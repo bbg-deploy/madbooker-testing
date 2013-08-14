@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PackageDecoratorTest < MiniTest::Should::TestCase
+class PackageDecoratorTest < ActiveSupport::TestCase
   
   def decorated_package
     @decorated_package ||= @package.decorate.with_inventory @inventory

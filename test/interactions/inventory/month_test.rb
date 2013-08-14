@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Inventory::MonthTest < MiniTest::Should::TestCase
+class Inventory::MonthTest < ActiveSupport::TestCase
 
   def month
     @month ||= Inventory::Month.new @date, nil

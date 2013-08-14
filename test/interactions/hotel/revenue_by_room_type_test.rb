@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Hotel::RevenueByRoomTypeTest < MiniTest::Should::TestCase
+class Hotel::RevenueByRoomTypeTest < ActiveSupport::TestCase
 
 
   def rev

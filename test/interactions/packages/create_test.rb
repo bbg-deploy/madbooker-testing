@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Packages::CreateTest < MiniTest::Should::TestCase
+class Packages::CreateTest < ActiveSupport::TestCase
 
   def create
     @create ||= Packages::Create.new context: @context

@@ -137,10 +137,13 @@ class << self
       :email     => Faker::Internet.email,
       :time_zone => "UTC",
       :stripe_customer_id => "blah",
-      :payment_status => "active"
+      :payment_status => "active",
+      :password => "123456",
+      :password_confirmation => "123456"
     }
     make User, defaults, args
   end
+  
   
   
   private

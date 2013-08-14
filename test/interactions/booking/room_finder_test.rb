@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Booking::RoomFinderTest < MiniTest::Should::TestCase
+class Booking::RoomFinderTest < ActiveSupport::TestCase
 
 
   def room_finder

@@ -95,8 +95,9 @@ group :test do
   gem 'mocha', require: false
   gem 'timecop'
   gem 'minitest-rails'
+  gem 'minitest-spec-rails'
   #gem 'minitest'
-  gem "minitest_should"
+  #gem "minitest_should"
   gem 'simplecov'
   #gem 'factory_girl_rails'
   # gem 'raindrops'

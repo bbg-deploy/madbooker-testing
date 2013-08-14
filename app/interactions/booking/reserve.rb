@@ -1,5 +1,4 @@
 class Booking::Reserve < Less::Interaction
-  include Booking::Params
   
   attr_accessor :error
   

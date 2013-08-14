@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Packages::UpdateTest < MiniTest::Should::TestCase
+class Packages::UpdateTest < ActiveSupport::TestCase
 
   def update
     @update ||= Packages::Update.new context: @context
@@ -42,6 +42,7 @@ class Packages::UpdateTest < MiniTest::Should::TestCase
     end
 
     should "pass with one empty item and one id add_on_ids" do
+      Gen.add_on! id: 1
       @context = Context.new hotel: Gen.hotel, params: param(Gen.package, ["", "1"])
       update.expects(:save).once
       assert update.run.errors.empty?

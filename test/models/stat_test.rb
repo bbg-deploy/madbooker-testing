@@ -1,6 +1,6 @@
 require "test_helper"
 
-class StatTest < MiniTest::Should::TestCase
+class StatTest < ActiveSupport::TestCase
   
   
   def context
