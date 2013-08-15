@@ -391,26 +391,28 @@ $calendarwidth: ($width - 2px) / 4
     padding: 20px 0 0 0
     border-right: 1px solid #ccc
     border-bottom: 1px solid #ccc
-    height: 260px
+    height: 240px
     width: $calendarwidth
-    &:nth-child(3n+3)
+    &:nth-child(4n+4)
       border-right: none
     table 
       margin: 0 auto
       tr
         th, td
-          padding: 4px
           +tc 
         th
           font-size: 11px
           font-weight: normal
           color: #999
+          height: 20px
           &.monthName
             +bold
-            font-size: 15px
+            font-size: 13px
             padding: 0 0 0 0
             color: #333
         td
+          width: 27px
+          height: 27px
           &.day
             border: 1px solid #ccc
             font-size: 11px
@@ -841,30 +843,35 @@ a.add_link
 
 #inventories_form
   form
-    +abs
+    position: fixed
     top: 0px
     left: 50%
-    margin-left: -300px
-    width: 600px
+    margin-left: -400px
+    width: 800px
     background: white
     border: 1px solid #999
     //padding: $pad
     +box-shadow(rgba(#333, 0.5) 0 2px 40px 11px)
     .fields
+    div.name
+      padding: 20px 20px 0 0
+      +bold
+      +span-columns(6)
     div.input
-      +span-columns(4)
+      +span-columns(2)
       &:nth-child(4n-4)
-        +span-columns(4 omega)
+        +span-columns(2 omega)
 
     .room_type_inventor
-      padding: ($pad - 10px) $pad 10px $pad
+      padding: 10px $pad 0px $pad
       border-bottom: 1px solid #ccc
       h3
         margin: 0 0 10px 0
         padding: 0 0 0 0
+        font-size: 13px
+        +bold
     .form-actions
-      padding: $pad
-      background: #eee
+      padding: 10px $pad $pad $pad
 
 
 #filters
@@ -879,8 +886,33 @@ a.add_link
     &#date_end
 
 
-
-
+.ui-dialog
+  background: white
+  border: 1px solid #ccc
+  +box-shadow(rgba(#333, 0.5) 0 2px 10px 5px)
+  .ui-resizable-handle
+    display: none !important
+  +border-radius
+  .ui-dialog-content 
+    padding: $pad
+    +tc
+  .ui-dialog-titlebar
+    background: #ddd
+    +border-radius(0px)
+    border: none
+    border-bottom: 1px solid #ccc
+    padding: 10px
+    button.ui-dialog-titlebar-close
+      +fr
+      .ui-button-text
+        display: none
+      .ui-icon-closethick
+  .ui-dialog-buttonpane
+    +tc
+    border: none
+    padding: 0 $pad $pad $pad
+    button.ui-button
+      padding: 8px 15px
 
 @import choosen
 

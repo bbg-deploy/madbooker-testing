@@ -5,9 +5,8 @@
   = hidden_field_tag "hotel[end]", inventory_form.range.last
   = f.simple_fields_for :inventories, inventory_form.hotel.inventories  do |ff|
     .room_type_inventor
-      %h3
+      .name
         = ff.object.room_type.name
-      .clear
       = ff.input :room_type_id, as: :hidden
       = ff.input :available_rooms
       = ff.input :rate
