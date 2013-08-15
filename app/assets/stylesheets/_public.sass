@@ -3,34 +3,44 @@ body#public
   .container
     width: 960px
   #hotel_information
-    //padding: $pad 0 0 0
-    .logo
-      +fl
-      margin: 20px 0 0 0
-    #hotel_data_holder 
-      +fl
-      margin: 0 0 0 40px
-      font-size: 13px
-      .hotel_date
-        +rel
-        padding: 0 20px 0 21px
-        i
-          +abs
-          top: 3px
-          left: 0
-      #hotel_name
-        +bold
-        margin: 20px 0 3px -25px
-        font-size: 14px
-      #hotel_address
+    width: 720px
+    margin: 0 auto
+    padding: 20px 0
+    +rel
+    #logo
+      width: 300px
+      margin: 0 20px 0 0
+    #hotel_data_holder
+      +abs
+      width: 400px
+      top: 50%
+      left: 320px
+      margin-top: -20px
+      .hotel_data_column 
         +fl
-      #hotel_data_column
-        +fl
+        margin: 0 auto
+        font-size: 13px
+        &:last-child
+          +fr
+    .hotel_date
+      +rel
+      padding: 0 20px 0 21px
+      i
+        +abs
+        top: 3px
+        left: 0
+    #hotel_name
+      +bold
+      margin: 0 0 3px 0
+      font-size: 17px
+      +tc
+    #hotel_address
+      width: 260px
+
 
   #page
     background: white
     border: 1px solid #ccc
-    width: 700px
     margin: $pad 0 0 0
     +fr
     h1
