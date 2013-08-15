@@ -13,7 +13,9 @@
     weight: $font-weight
     style: $font-style  
 
-
+=hide_search
+  .chosen-search
+    display: none
 ////////
 
 $pad: 30px
@@ -212,7 +214,8 @@ div.credit_card,
 div.cc_month,
 div.cc_year,
 div.cc_zip,
-div.cvc
+div.cvc,
+div.room_name
   padding: 0 0 15px 0
   label
     +block
@@ -320,7 +323,7 @@ div.cvc
 
 
 
-p.notice  
+p.notice, p.alert  
   +animate(fadeOut, 3s, 2s)
   position: fixed
   padding: 10px 20px

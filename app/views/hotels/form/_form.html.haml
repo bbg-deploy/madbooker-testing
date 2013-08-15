@@ -10,7 +10,6 @@
       = f.input :name, :label => 'The Name of Your Hotel or BNB', :wrapper_class => 'hotel_name'
       = f.input :phone, :placeholder => '555-555-5555', :wrapper_class => 'phone'
       = f.input :fax, :placeholder => '555-555-5555', :wrapper_class => 'fax'
-      = f.input :email, :wrapper_class => 'email'
       .clear
       = f.input :street1, :wrapper_class => 'address'
       = f.input :street2, :wrapper_class => 'address2'
@@ -23,12 +22,16 @@
       = f.input :minimal_inventory_notification_threshold, :hint => "I don't know what this does.", :wrapper_class => 'inventory_threshold'
       = f.association :currency, collection: Currency.options_for_select, :wrapper_class => 'currency'
       = f.input :time_zone, :wrapper_class => 'time_zone'
+      = f.input :email, :wrapper_class => 'email'
+
       .clear
       = f.input :logo, :hint => "Size recommendations needed", :label => 'Hotel Logo'
       - if f.object.logo?
         #logo
           = image_tag f.object.logo.url(:thumb)
-          = link_to 'delete logo', delete_logo_hotel_path(hotel), method: :delete, remote: true
+          = link_to delete_logo_hotel_path(hotel), method: :delete, remote: true, :class => "delete_logo" do
+            %i.icon-remove
+            Delete Logo
     .section
       %h3 
         %i.icon-laptop
@@ -46,11 +49,13 @@
         %i.icon-moon
         Creating Room Types
       = f.fields_for :room_types do |ff|
-        = ff.input :name, :placeholder => 'Honeymoon Suite', :label => "Name This Room Type"
-        = ff.input :description, :placeholder => 'This beautiful 500sq ft room...', :label => "Describe This Room"
+        = ff.input :name, :placeholder => 'Honeymoon Suite', :label => "Name This Room Type", :wrapper_class => 'room_name'
         = ff.input :number_of_rooms, :value => '1', :wrapper_class => 'number_of_rooms'
         = ff.input :default_rate, :placeholder => '1', :wrapper_class => 'default_rate'
-        = ff.input :discounted_rate, :placeholder => '1', :hint=>'is this suppose to be a dollar amount or %, what does this do?', :wrapper_class => 'discounted_rate'
+        = ff.input :discounted_rate, :placeholder => '1', :wrapper_class => 'discounted_rate'
+        .clear
+        = ff.input :description, :placeholder => 'This beautiful 500sq ft room...', :label => "Describe This Room"
+
         .clear
         .remove
           = ff.link_to_remove do
