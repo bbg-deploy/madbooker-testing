@@ -97,8 +97,14 @@ h4
       display: none
     .section
       border-top: none
-
-
+    #logo
+      img
+        +fl
+      a.delete_logo
+        padding: 10px
+        margin: 10px 0 0 10px
+        font-size: 13px
+        +fl
 
 
 
@@ -298,6 +304,9 @@ $navwidth: ($width - ($icon * 2)) / 5
     &.on
       background: white
       +box-shadow(rgba(#333, 0.21) 0 0 5px 1px inset)
+      &:hover
+        cursor: auto
+        color: #333
     i
       margin: 0 4px 0 0
     &:first-child
@@ -316,6 +325,8 @@ a.create
   i
     font-size: 12px
     margin-right: 5px
+
+
 
 ///// calendar stuff
 
@@ -651,9 +662,10 @@ $grid-padding: $pad // and 1em padding on the grid container
     +span-columns(4 omega)
   div.month
     +span-columns(4)
+    +hide_search
   div.year
     +span-columns(4)
-  
+    +hide_search
   div.email_login
     +span-columns(8)
   div.password_login
@@ -730,28 +742,37 @@ $grid-padding: $pad // and 1em padding on the grid container
 
 
 #form
+  div.time_zone
+    +span-columns(3)  
   div.hotel_name
-    +span-columns(5)
+    +span-columns(6)
   div.email
     +span-columns(3 omega)  
-  div.phone, div.fax
-    +span-columns(2)
-  div.time_zone,
+  div.phone
+    +span-columns(3)
+  div.fax
+    +span-columns(3 omega)
   div.inventory_threshold
     +span-columns(4)
+
+  div.room_name
+    +span-columns(6)    
+  div.number_of_rooms,
+  div.default_rate
+    +span-columns(2)
+  div.discounted_rate
+    +span-columns(2 omega)
+  
   div.currency
     +span-columns(2)
-  div.website_url,
+  div.website_url
+    +span-columns(6)    
   div.subdomain
-    +span-columns(5)
-  div.number_of_rooms,
-  div.default_rate,
-    +span-columns(4)
-  div.discounted_rate
-    +span-columns(4 omega)
-  div.address
+    +span-columns(6 omega)  
+  div.address,
     +span-columns(6)
-  div.address2
+  div.address2,
+  div.country
     +span-columns(3)
   div.address3
     +span-columns(3 omega)
@@ -759,10 +780,8 @@ $grid-padding: $pad // and 1em padding on the grid container
     +span-columns(4)
   div.state
     +span-columns(2)  
-  div.country
-    +span-columns(3)
   div.postal_code
-    +span-columns(2 omega)
+    +span-columns(3 omega)
 
   .fields
     border: 1px dotted #777
@@ -772,9 +791,9 @@ $grid-padding: $pad // and 1em padding on the grid container
     +rel
     .remove 
       +tr
-      +abs
-      bottom: 10px
-      right: 20px
+      //+abs
+      //bottom: 10px
+      //right: 20px
       a
         +block
         color: red
@@ -851,6 +870,7 @@ a.add_link
 
 
 
+@import choosen
 
 
 
