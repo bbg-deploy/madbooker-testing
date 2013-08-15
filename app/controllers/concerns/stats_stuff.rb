@@ -29,14 +29,10 @@ module StatsStuff
     end
     
     def look_to_book!
-      if session[:last_look].blank? || session[:last_look] < Time.current.advance(minutes: -20)
-        Stat.look context: context
-      end
-      session[:last_look] = Time.current 
+      Stat.look context: context
     end
     
     def look_to_booked!
-      session[:last_look] = nil
       Stat.book context: context
     end
     
