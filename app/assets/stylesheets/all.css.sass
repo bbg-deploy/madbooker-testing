@@ -383,7 +383,7 @@ a.create
   color: #444
   background: $yellow
 
-$calendarwidth: ($width - 2px) / 3
+$calendarwidth: ($width - 2px) / 4
 
 #calendar_year
   .calendar_month
@@ -391,7 +391,7 @@ $calendarwidth: ($width - 2px) / 3
     padding: 20px 0 0 0
     border-right: 1px solid #ccc
     border-bottom: 1px solid #ccc
-    height: 310px
+    height: 260px
     width: $calendarwidth
     &:nth-child(3n+3)
       border-right: none
@@ -402,18 +402,18 @@ $calendarwidth: ($width - 2px) / 3
           padding: 4px
           +tc 
         th
-          font-size: 12px
+          font-size: 11px
           font-weight: normal
           color: #999
           &.monthName
             +bold
-            font-size: 16px
+            font-size: 15px
             padding: 0 0 0 0
             color: #333
         td
           &.day
             border: 1px solid #ccc
-            padding: 7px 10px
+            font-size: 11px
           &.weekendDay
             background: #eee
           
@@ -841,19 +841,31 @@ a.add_link
 
 #inventories_form
   form
-    position: fixed
-    top: 100px
+    +abs
+    top: 0px
     left: 50%
-    margin-left: -250px
-    width: 500px
+    margin-left: -300px
+    width: 600px
     background: white
-    border: 1px solid #ccc
-    padding: $pad
+    border: 1px solid #999
+    //padding: $pad
     +box-shadow(rgba(#333, 0.5) 0 2px 40px 11px)
     .fields
-      display: inline
     div.input
       +span-columns(4)
+      &:nth-child(4n-4)
+        +span-columns(4 omega)
+
+    .room_type_inventor
+      padding: ($pad - 10px) $pad 10px $pad
+      border-bottom: 1px solid #ccc
+      h3
+        margin: 0 0 10px 0
+        padding: 0 0 0 0
+    .form-actions
+      padding: $pad
+      background: #eee
+
 
 #filters
   +fl
