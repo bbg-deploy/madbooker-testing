@@ -50,7 +50,7 @@ class Hotel < ActiveRecord::Base
   ROOM_RATE_DISPLAY = ["Short", "Long"]
   
   accepts_nested_attributes_for :room_types, :allow_destroy => true
-
+  
   validates_presence_of :name
   validates_presence_of :url
   validates_presence_of :subdomain

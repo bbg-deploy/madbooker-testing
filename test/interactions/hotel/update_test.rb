@@ -97,6 +97,34 @@ class Hotel::UpdateTest < ActiveSupport::TestCase
       end
     end
     
+    context "removes a new room_type that has bookings" do
+      setup do
+        Gen.booking! hotel_id: @hotel.id, bookable_id: @hotel.room_types[0].id, bookable_type: "RoomType"
+        @params[:hotel][:room_types_attributes][0][:id] = @hotel.room_types[0].id
+        @params[:hotel][:room_types_attributes][1][:id] = @hotel.room_types[1].id
+        @params[:hotel][:room_types_attributes][0][:_destroy] = "true"
+        @context = Context.new(user: Gen.user(id: 7), params: @params, hotel: @hotel)
+      end
+
+      should "not delete the room type" do
+        h_attr = @hotel.attributes
+        rt = @hotel.room_types
+        book_count = Booking.count
+        hotel = nil
+        assert_no_difference "Hotel.count" do
+        assert_no_difference "RoomType.count" do
+        assert_no_difference "Booking.count" do
+          hotel = update.run.object
+        end
+        end
+        end
+        assert_equal 1, hotel.errors.size
+        assert_equal "You can not delete a room type that has bookings.", hotel.errors.messages.values.join
+        assert_equal h_attr, hotel.attributes
+        assert_equal rt, hotel.reload.room_types
+      end
+    end
+    
     context "removes all room_types" do
       setup do
         @params[:hotel][:room_types_attributes][0][:_destroy] = true
@@ -120,6 +148,7 @@ class Hotel::UpdateTest < ActiveSupport::TestCase
         assert_equal h_attr, hotel.attributes
         assert_equal rt, hotel.room_types
         assert !hotel.errors.blank?
+        assert_equal "You must have at least one room type.", hotel.errors.messages.values.join
       end
     end
     

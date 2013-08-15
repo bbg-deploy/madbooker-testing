@@ -22,6 +22,7 @@ class Hotel::Update < Less::Interaction
   def save
     begin
       Hotel.transaction do
+        ensure_deleting_room_type_is_safe_to_delete
         hotel.update_attributes! hotel_params
         if hotel.room_types.reload.count == 0
           hotel.errors.add :base, "You must have at least one room type."
@@ -62,6 +63,22 @@ class Hotel::Update < Less::Interaction
       }
     end
     @inventory_params = inv
+  end
+  
+  def ensure_deleting_room_type_is_safe_to_delete
+    context.params[:hotel][:room_types_attributes].each do |index, room_attr|
+      next unless room_attr[:_destroy].to_bool
+      room_type = hotel.room_types.find room_attr[:id]
+      raise_cant_delete_room_type if room_type.bookings.count > 0
+      room_type.packages.each do |package|
+        raise_cant_delete_room_type if package.bookings.count > 0
+      end
+    end
+  end
+  
+  def raise_cant_delete_room_type
+    hotel.errors.add :base, "You can not delete a room type that has bookings."
+    raise ActiveRecord::RecordInvalid.new hotel
   end
   
 end
