@@ -24,9 +24,18 @@
           %div= @hotel.street3
           %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
 #page
-  //%h1 Book a Room
-  = render "books/steps/step1"
-  = render "books/steps/step2"
-  = render "books/steps/step3"
+  #column_steps
+    %ul
+      %li
+        Step 1, Choose your dates
+      %li
+        Step 2, Choose your room
+      %li
+        Step 4, Checkout
+
+  #content_steps      
+    = render "books/steps/step1"
+    = render "books/steps/step2"
+    = render "books/steps/step3"
 
 

@@ -5,11 +5,16 @@ body#public
   #hotel_information
     width: 720px
     margin: 0 auto
-    padding: 20px 0
+    padding: $pad 0
     +rel
-    #logo
+    #logo, #hotel_name
       width: 300px
       margin: 0 20px 0 0
+    #hotel_name
+      +bold
+      font-size: 22px
+      padding: 0 0 5px 0
+      +tc
     #hotel_data_holder
       +abs
       width: 400px
@@ -29,11 +34,7 @@ body#public
         +abs
         top: 3px
         left: 0
-    #hotel_name
-      +bold
-      margin: 0 0 3px 0
-      font-size: 17px
-      +tc
+
     #hotel_address
       width: 260px
 
@@ -41,8 +42,13 @@ body#public
   #page
     background: white
     border: 1px solid #ccc
-    margin: $pad 0 0 0
+  #column_steps
+    +fl
+    width: 180px
+  #content_steps
+    border-left: 1px solid #ccc
     +fr
+    width: 770px
     h1
       background: $yellow
       padding: 20px $pad
