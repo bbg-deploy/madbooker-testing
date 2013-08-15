@@ -24,14 +24,24 @@
           %div= @hotel.street3
           %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
 #page
-  #column_steps
+  #steps_list
     %ul
       %li
-        Step 1, Choose your dates
+        = link_to '#', :class=>'on' do
+          %span
+            Step 1
+          Choose Your Dates
       %li
-        Step 2, Choose your room
+        = link_to '#' do
+          %span
+            Step 2
+          Choose Your Room
       %li
-        Step 4, Checkout
+        = link_to '#' do
+          %span
+            Step 3
+          Checkout
+
 
   #content_steps      
     = render "books/steps/step1"

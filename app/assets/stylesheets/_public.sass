@@ -40,15 +40,42 @@ body#public
 
 
   #page
-    background: white
+    background: #eee
     border: 1px solid #ccc
-  #column_steps
+  #steps_list
     +fl
-    width: 180px
+    width: 208px
+    padding: 0 0 0 0
+    ul 
+      padding: 0 0 0 0
+      margin: 0 0 0 0
+      li
+        list-style: none
+        a
+          +block
+          padding: $pad
+          border-bottom: 1px solid #ccc
+          +bold
+          color: black
+          span
+            +block
+            font-weight: normal 
+          &:hover
+            +tdnone
+            background: black
+            color: white
+          &.on
+            background: white
+            &:hover
+              background: white
+              color: black
+
+
   #content_steps
     border-left: 1px solid #ccc
     +fr
-    width: 770px
+    background: white
+    width: 750px
     h1
       background: $yellow
       padding: 20px $pad
