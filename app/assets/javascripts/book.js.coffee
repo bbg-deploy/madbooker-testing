@@ -48,6 +48,7 @@
       first = $("#booking_first_name").val()
       last  = $("#booking_last_name").val()
       email = $("#booking_email").val()
+      conf_email = $("#booking_email_confirmation").val()
       if to == "#for_other"
         $(guest).html($(from).html())
         $(from).html("")
@@ -59,6 +60,8 @@
       $("#booking_first_name").val(first)
       $("#booking_last_name").val(last)
       $("#booking_email").val(email)
+      $("#booking_email_confirmation").val(conf_email)
+      setup_copy_email_address()
 
     unguestify_labels = ->
       guestifying_labels("abbr> Guest's", "abbr>")
@@ -70,12 +73,17 @@
 
     guestify_labels = ->
       guestifying_labels("abbr>", "abbr> Guest's")
+      
+    setup_copy_email_address = ->
+      $(document).off_and_on "keyup", "#booking_email", (e)->
+        $("#booking_email_confirmation").val($("#booking_email").val())
     
     init: ->
       setup_date_pickers()
       setup_credit_card_number_validator()
       setup_credit_card_validator()
       setup_tabs()
+      setup_copy_email_address()
   )()
 
 
