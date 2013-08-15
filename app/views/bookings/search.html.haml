@@ -14,8 +14,7 @@
 
   %h2
     Search Results
-  - @bookings.each do |booking|  
-    = render "/bookings/index/booking", booking: booking
+  = render "/bookings/index/booking"
             
   = will_paginate @bookings
 
