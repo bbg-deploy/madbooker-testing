@@ -12,14 +12,13 @@
       %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
       //%div= @hotel.country
       //%div
-     
-
-    #hotel_phone.hotel_date
-      %i.icon-phone
-      = @hotel.phone
-    #hotel_website.hotel_date
-      %i.icon-laptop
-      = link_to "Website", @hotel.url
+    #hotel_data_column
+      #hotel_phone.hotel_date
+        %i.icon-phone
+        = @hotel.phone
+      #hotel_website.hotel_date
+        %i.icon-laptop
+        = link_to "Website", @hotel.url
 
 #page
   //%h1 Book a Room
