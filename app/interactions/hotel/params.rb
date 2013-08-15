@@ -13,15 +13,13 @@ module Hotel::Params
       params = params_from_either_context_or_direct
       
       if params.respond_to? :permit
-        1.log
         pa = params.permit :user_id, :name, :address, :url, :phone, :fax, 
           :url, :room_rates_display, :subdomain, :google_analytics_code, :time_zone,
           :fine_print, :logo, :room_rates_display, :minimal_inventory_notification_threshold, 
           :currency_id, :street1, :street2, :street3, :city, :state, :country, :postal_code, :email,
           :room_types_attributes => [:name, :description, :number_of_rooms, 
-          :default_rate, :discounted_rate, :_destroy, :id]
+          :default_rate, :discounted_rate, :_destroy, :id, :image]
       else
-        2.log
         pa = params
       end
       if pa[:logo].nil?

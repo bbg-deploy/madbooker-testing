@@ -7,6 +7,11 @@ Madbooker::Application.routes.draw do
     member do
       delete :delete_logo
     end
+    resources :room_types do
+      member do
+        delete :delete_image
+      end
+    end
     resources :bookings do
       member do
         put :check_in

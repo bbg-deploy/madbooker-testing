@@ -3,7 +3,7 @@ class InventoryDecorator < ApplicationDecorator
   
   decorates_association :room_type
   
-  delegate :name, :description, to: :room_type
-
+  delegate :name, :description, :image, to: :room_type
+  
 
 end
