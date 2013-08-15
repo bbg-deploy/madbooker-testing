@@ -92,33 +92,43 @@ class DashboardDecorator < HotelDecorator
   def tablet_look_to_book_this_week
      @tablet_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "tablet").look_to_book.count)
   end
+  
   def other_look_to_book_this_week
      @other_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "desktop").look_to_book.count)
   end
+  
   def total_look_to_book_this_week
     @total_look_to_book_this_week ||= mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week
   end
+  
   def mobile_look_to_book_this_month
      @mobile_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "mobile").look_to_book.count)
   end
+  
   def tablet_look_to_book_this_month
      @tablet_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "tablet").look_to_book.count)
   end
+  
   def other_look_to_book_this_month
      @other_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "desktop").look_to_book.count)
   end
+  
   def total_look_to_book_this_month
     @total_look_to_book_this_month ||= mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month
+  
   end
   def mobile_look_to_book_daily_average
     @mobile_look_to_book_daily_average ||= (mobile_look_to_book_this_month / Date.current.day).round(1)
   end
+  
   def tablet_look_to_book_daily_average
     @tablet_look_to_book_daily_average ||= (tablet_look_to_book_this_month / Date.current.day).round(1)
   end
+  
   def other_look_to_book_daily_average
     @other_look_to_book_daily_average ||= (other_look_to_book_this_month / Date.current.day).round(1)
   end
+  
   def total_look_to_book_daily_average
     @total_look_to_book_daily_average ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month / Date.current.day).round(1)
   end
