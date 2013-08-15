@@ -843,7 +843,7 @@ a.add_link
 
 #inventories_form
   form
-    +abs
+    position: fixed
     top: 0px
     left: 50%
     margin-left: -300px
@@ -859,14 +859,15 @@ a.add_link
         +span-columns(4 omega)
 
     .room_type_inventor
-      padding: ($pad - 10px) $pad 10px $pad
-      border-bottom: 1px solid #ccc
+      padding: ($pad - 10px) $pad 0px $pad
+      //border-bottom: 1px solid #ccc
       h3
         margin: 0 0 10px 0
         padding: 0 0 0 0
+        font-size: 13px
+        +bold
     .form-actions
-      padding: $pad
-      background: #eee
+      padding: 10px $pad $pad $pad
 
 
 #filters
