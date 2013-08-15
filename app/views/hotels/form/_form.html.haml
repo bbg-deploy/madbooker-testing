@@ -57,6 +57,14 @@
         = ff.input :description, :placeholder => 'This beautiful 500sq ft room...', :label => "Describe This Room"
 
         .clear
+        = ff.input :image, :hint => "Size recommendations needed", :label => 'Room Image'
+        - if ff.object.image?
+          %div{id: dom_id(ff.object, "image")}
+            = image_tag ff.object.image.url(:medium)
+            = link_to delete_image_hotel_room_type_path(hotel, ff.object), method: :delete, remote: true, :class => "delete_logo" do
+              %i.icon-remove
+              Delete Image
+        .clear
         .remove
           = ff.link_to_remove do
             %i.icon-trash

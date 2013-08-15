@@ -1,5 +1,8 @@
 class PackageDecorator < ApplicationDecorator
   delegate_all
+  
+  
+  delegate :image, to: :room_type
 
   def activate_link
     str = active? ? "Inactivate" : "Activate"

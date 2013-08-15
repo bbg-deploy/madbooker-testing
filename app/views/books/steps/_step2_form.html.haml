@@ -1,5 +1,6 @@
 
 .room
+  .image= image_tag room.image.url(:medium)
   .name= room.name
   .description= room.description
   = render "/books/steps/price", room: room
