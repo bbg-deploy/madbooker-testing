@@ -49,11 +49,7 @@ class Reports::Funnel < Less::Interaction
       "Other"
     end
   end
-  
-  def order_steps step
-    (rand * 10).to_i
-  end
-    
+      
   def uninited_row( month: nil)
     OpenStruct.new date: month, urls: []
   end
@@ -77,7 +73,7 @@ class Reports::Funnel < Less::Interaction
     arr.each do |struct|
       urls.each do |url|
         next if url.in? struct.urls.map(&:url)
-        struct.urls << uninited_data(url)#, (rand*100).to_i)
+        struct.urls << uninited_data(url)
       end
     end
     arr
@@ -97,10 +93,10 @@ class Reports::Funnel < Less::Interaction
   def normalize_urls urls_and_counts
     out = []
     urls_and_counts.each do |url_and_count|
+      next if url_and_count.url == "Other"
       new_url_and_count = out.select{|x| x.url == url_and_count.url}.first
       if new_url_and_count.nil?
         new_url_and_count = uninited_data url_and_count.url
-        new_url_and_count.order = order_steps url_and_count.url
         out << new_url_and_count
       end
       new_url_and_count.count += url_and_count.count

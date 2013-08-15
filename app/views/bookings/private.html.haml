@@ -70,19 +70,19 @@
     
     .row
       %span Rate:
-      %span= @booking.rate
+      %span= format @booking.rate
     
     .row
       %span Discount:
-      %span= @booking.discounted_rate
+      %span= format @booking.discounted_rate
     
     .row
       %span Arrival: 
-      %span= @booking.arrive
+      %span= format @booking.arrive
     
     .row
       %span Departure:
-      %span= @booking.depart
+      %span= format @booking.depart
     
     .row
       %span Made by:
@@ -90,7 +90,7 @@
     
     .row
       %span Made on:
-      %span= @booking.created_at
+      %span= format @booking.created_at
 
 
 

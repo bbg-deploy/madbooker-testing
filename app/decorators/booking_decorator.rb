@@ -37,7 +37,7 @@ class BookingDecorator < ApplicationDecorator
   def summary
     room = bookable.name
     
-    "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{arrive} and departing on #{depart}."
+    "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{h.format arrive} and departing on #{h.format depart}."
   end
   
   def range

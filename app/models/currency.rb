@@ -23,8 +23,8 @@ class Currency < ActiveRecord::Base
   
   
 
-  def self.options_for_select selected_id = -1
-    (short_list + all_but_short_list).map {|c| c.to_option}#2(c.id == selected_id)}
+  def self.options_for_select
+    (short_list + all_but_short_list).map {|c| c.to_option}
   end
   
   def html_symbol
@@ -32,7 +32,9 @@ class Currency < ActiveRecord::Base
   end
 
   def label
-    "#{code}" + ( html_symbol.blank? || html_symbol.include?("&") ? '' : " ( #{html_symbol} )" )
+    l = code
+    return l if html_symbol.blank?
+    "#{l} ( #{html_symbol} )".html_safe
   end
 
   def to_option

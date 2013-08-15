@@ -19,7 +19,7 @@
           %td= booking.name
           %td= booking.state.titleize
           %td= booking.room_name
-          %td= booking.arrive
-          %td= booking.depart
-          %td= booking.lowest_rate
+          %td= format booking.arrive
+          %td= format booking.depart
+          %td= format booking.lowest_rate
           %td= link_to "Details", [current_hotel, booking]

@@ -4,13 +4,13 @@
     .row
       .label
         Room Rate:
-      .price= room.rate
+      .price= format room.rate
   - else
     .row
       .label
         Original Room Rate:
-      .old_pice= room.rate
+      .old_pice= format room.rate
     .row
       .label
         Discounted Room Rate:
-      .price= room.discounted_rate
+      .price= format room.discounted_rate
