@@ -237,27 +237,117 @@
 
 
 
-  .revenue_by_room_type
+  .number_of_searches
     .header
-      %i.icon-search
-      Look To Book
+      %i.icon-flag-checkered
+      Look to Book
+    .week
+      .data
+        .add +
+        .what
+          This Week
+        .number
+          = @hotel.mobile_look_to_book_this_week
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Week
+        .number
+          = @hotel.tablet_look_to_book_this_week
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          This Week
+        .number
+          = @hotel.other_look_to_book_this_week
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          This Week
+        .number
+          = @hotel.total_look_to_book_this_week
+        .where
+          All Devices
+    .month_row
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = @hotel.mobile_look_to_book_this_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = @hotel.tablet_look_to_book_this_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          = @hotel.other_look_to_book_this_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          This Month
+        .number
+          = @hotel.total_look_to_book_this_month
+        .where
+          All Devices
 
-    - @hotel.look_to_book.each do |device|
-      .room_type
-        .name
-          = device.name
-        .daily_average
-          %span= device.average
-          %span Daily Average
-        .week
-          %span= device.week
-          %span Week
-        .month_row
-          %span= device.month
-          %span Month
+    .daily_average
+      .data
+        .add +
+        .what
+          Daily Average
+        .number
+          = @hotel.mobile_look_to_book_daily_average
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Daily Average
+        .number
+          = @hotel.tablet_look_to_book_daily_average
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          Daily Average
+        .number
+          = @hotel.other_look_to_book_daily_average
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          Daily Average
+        .number
+          = @hotel.total_look_to_book_daily_average
+        .where
+          All Devices
 
-
-      
 
 
 

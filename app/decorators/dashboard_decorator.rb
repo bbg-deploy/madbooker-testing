@@ -85,34 +85,46 @@ class DashboardDecorator < HotelDecorator
    Hotel::RevenueByRoomType.new(Context.new hotel: current_hotel, user: current_user).run
   end
   
-  def look_to_book
-    a = look_to_book_week
-    b = look_to_book_month
-    c = look_to_book_daily_average
-    [
-      OpenStruct.new( name: Stat::MOBILE.titleize, week: a[0], month: b[0], average: c[0]),
-      OpenStruct.new( name: Stat::TABLET.titleize, week: a[1], month: b[1], average: c[1]),
-      OpenStruct.new( name: Stat::DESKTOP.titleize, week: a[2], month: b[2], average: c[2])
-    ]
-    
+  def mobile_look_to_book_this_week
+     @mobile_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "mobile").look_to_book.count)
+  end
+
+  def tablet_look_to_book_this_week
+     @tablet_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "tablet").look_to_book.count)
+  end
+  def other_look_to_book_this_week
+     @other_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "desktop").look_to_book.count)
+  end
+  def total_look_to_book_this_week
+    @total_look_to_book_this_week ||= mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week
+  end
+  def mobile_look_to_book_this_month
+     @mobile_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "mobile").look_to_book.count)
+  end
+  def tablet_look_to_book_this_month
+     @tablet_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "tablet").look_to_book.count)
+  end
+  def other_look_to_book_this_month
+     @other_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "desktop").look_to_book.count)
+  end
+  def total_look_to_book_this_month
+    @total_look_to_book_this_month ||= mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month
+  end
+  def mobile_look_to_book_daily_average
+    @mobile_look_to_book_daily_average ||= (mobile_look_to_book_this_month / Date.current.day).round(1)
+  end
+  def tablet_look_to_book_daily_average
+    @tablet_look_to_book_daily_average ||= (tablet_look_to_book_this_month / Date.current.day).round(1)
+  end
+  def other_look_to_book_daily_average
+    @other_look_to_book_daily_average ||= (other_look_to_book_this_month / Date.current.day).round(1)
+  end
+  def total_look_to_book_daily_average
+    @total_look_to_book_daily_average ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month / Date.current.day).round(1)
   end
   
-  private
-  def look_to_book_week
-    @look_to_book_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind, :device_type).look_to_book.count)
-  end
   
-  def look_to_book_month
-    @look_to_book_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind, :device_type).look_to_book.count)    
-  end
-  
-  def look_to_book_daily_average
-    return @look_to_book_daily_average if @look_to_book_daily_average
-    a = look_to_book_ratio( model.stats.range(Time.month).group(:kind, :device_type).look_to_book.count)    
-    @look_to_book_daily_average = a.map {|d| (d / Date.current.day).round(1)}
-  end
-  
-  
+  private  
   def searches_by_range_and_device range, device
     model.stats.searches.range(range).where("device_type = ?", device).count
   end
@@ -136,13 +148,9 @@ class DashboardDecorator < HotelDecorator
   def grouped_revenue_based_on_range range
     model.sales.range(range).group(:device_type).paid.sum( :price)
   end
-  
+    
   def look_to_book_ratio group
-    arr = []
-    Stat::DEVICE_TYPES.each do |device_type|
-      arr << look_to_book_math( group[[Stat::LOOK, device_type]],  group[[Stat::BOOK, device_type]])
-    end
-    arr
+    look_to_book_math( group[Stat::LOOK],  group[Stat::BOOK])
   end
   
   def look_to_book_math look, book
