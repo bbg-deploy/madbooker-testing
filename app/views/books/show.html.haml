@@ -1,30 +1,51 @@
 
 #hotel_information
-  - unless current_hotel.logo.blank?
-    .logo= image_tag current_hotel.logo.url, :style => 'width: 230px;'
-  #hotel_data_holder
-    #hotel_name.hotel_date= @hotel.name
-    #hotel_address.hotel_date
-      %i.icon-home
-      %div= @hotel.street1
-      %div= @hotel.street2
-      %div= @hotel.street3
-      %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
-      //%div= @hotel.country
-      //%div
-     
+  - if current_hotel.logo.blank?
+    #hotel_name
+      = @hotel.name
+  - else
+    #logo= image_tag current_hotel.logo.url, :style => 'width: 300px;'
+  
+  #hotel_data
 
-    #hotel_phone.hotel_date
-      %i.icon-phone
-      = @hotel.phone
-    #hotel_website.hotel_date
-      %i.icon-laptop
-      = link_to "Website", @hotel.url
-
+    #hotel_data_holder
+      .hotel_data_column
+        #hotel_phone.hotel_date
+          %i.icon-phone
+          = @hotel.phone
+        #hotel_website.hotel_date
+          %i.icon-laptop
+          = link_to "Website", @hotel.url
+      .hotel_data_column
+        #hotel_address.hotel_date
+          %i.icon-home
+          %div= @hotel.street1
+          %div= @hotel.street2
+          %div= @hotel.street3
+          %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
 #page
-  //%h1 Book a Room
-  = render "books/steps/step1"
-  = render "books/steps/step2"
-  = render "books/steps/step3"
+  #steps_list
+    %ul
+      %li
+        = link_to '#', :class=>'on' do
+          %span
+            Step 1
+          Choose Your Dates
+      %li
+        = link_to '#' do
+          %span
+            Step 2
+          Choose Your Room
+      %li
+        = link_to '#' do
+          %span
+            Step 3
+          Checkout
+
+
+  #content_steps      
+    = render "books/steps/step1"
+    = render "books/steps/step2"
+    = render "books/steps/step3"
 
 

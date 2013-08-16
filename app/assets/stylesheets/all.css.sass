@@ -108,85 +108,6 @@ h4
 
 
 
-body#public
-  background: white
-  .container
-    width: 600px
-  #hotel_information
-    //padding: $pad 0 0 0
-    .logo
-      +fl
-      margin: 20px 0 0 0
-    #hotel_data_holder 
-      +fl
-      margin: 0 0 0 40px
-      font-size: 13px
-      .hotel_date
-        +rel
-        padding: 2px 0 2px 25px
-        i
-          +abs
-          top: 5px
-          left: 0
-      #hotel_name
-        +bold
-        margin: 20px 0 3px -25px
-        font-size: 14px
-      #hotel_address
-      #hotel_phone
-      #hotel_website
-  #page
-    background: white
-    border: 1px solid #ccc
-    //width: 600px
-    margin: $pad 0 0 0
-    //+fr
-    h1
-      background: $yellow
-      padding: 20px $pad
-      margin: 0 0 0 0
-      font-size: 18px
-    .steps
-      border-top: 1px solid #ccc
-      padding: $pad
-      &:first-child
-        border-top: 0px
-      +button
-    .step_header
-      font-size: 16px
-      +clear
-      .step
-        +fl
-        padding: 0 15px 0 0
-        color: #666
-      .step_title
-        +fl
-        +bold
-      i
-        +fl
-        font-size: 18px
-        margin: 0 15px 0 0
-    #step1 
-      div.input
-        +fl
-        margin: 0 20px 0 0
-        width: 150px
-      .form_action
-        +clear
-    #step2 i
-      font-size: 21px
-    form
-      margin: 15px 0 0 0
-    .room
-      border: 1px solid #ccc
-      padding: $pad
-      margin: 20px 0 0 0
-      .name
-        +bold
-        font-size: 15px
-      .description
-        margin: 3px 0 0 0
-
 
 .pricing_holder
   padding: 10px 0 0 0
@@ -915,10 +836,32 @@ a.add_link
       padding: 8px 15px
 
 @import choosen
+@import public
 
-
-
-
+#thanks
+  width: 700px
+  border: 1px solid #888
+  padding: 90px 90px 90px 160px
+  margin: 100px 0 0 0
+  +rel
+  .icon-smile
+    font-size: 55px
+    +abs
+    top: 90px
+    left: 90px
+  h1   
+    margin: 0 0 10px 0  
+  h2
+    color: #666
+    margin: 5px 0 0 0   
+    font-size: 19px  
+  .summary
+    margin: 10px 0 10px 0
+  .seeya
+    font-size: 18px
+    color: #666
+    margin: 0 0 15px 0
+    +italic
 
 
 

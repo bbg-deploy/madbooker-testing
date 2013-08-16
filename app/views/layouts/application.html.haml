@@ -10,8 +10,9 @@
   %body
     .container
       #header
-        #nav
-          = render :partial => '/layouts/nav'
+        - unless current_hotel.blank?
+          #nav
+            = render :partial => '/layouts/nav'
       #content
         //%h1= yield(:title)
         - unless notice.blank?

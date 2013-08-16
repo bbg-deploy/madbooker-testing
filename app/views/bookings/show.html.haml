@@ -1,8 +1,17 @@
+#thanks
+  %i.icon-smile
+  %h1
+    Thank you for booking.
+  %h2
+    An email confirmation has been sent!          
+  .summary= @booking.summary
 
+  .seeya
+    See you soon!  
 
-Thank you for booking!
-
-Here are the details:
-          
-.Summary= @booking.summary
-  
+  #hotel_name.hotel_date= @hotel.name
+  #hotel_address
+    %div= @hotel.street1
+    %div= @hotel.street2
+    %div= @hotel.street3
+    %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}

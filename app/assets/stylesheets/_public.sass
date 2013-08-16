@@ -1,0 +1,124 @@
+body#public
+  background: white
+  .container
+    width: 960px
+  #hotel_information
+    width: 720px
+    margin: 0 auto
+    padding: $pad 0
+    +rel
+    #logo, #hotel_name
+      width: 300px
+      margin: 0 20px 0 0
+    #hotel_name
+      +bold
+      font-size: 22px
+      padding: 0 0 5px 0
+      +tc
+    #hotel_data_holder
+      +abs
+      width: 400px
+      top: 50%
+      left: 320px
+      margin-top: -20px
+      .hotel_data_column 
+        +fl
+        margin: 0 auto
+        font-size: 13px
+        &:last-child
+          +fr
+    .hotel_date
+      +rel
+      padding: 0 20px 0 21px
+      i
+        +abs
+        top: 3px
+        left: 0
+
+    #hotel_address
+      width: 260px
+
+
+  #page
+    background: #eee
+    border: 1px solid #ccc
+  #steps_list
+    +fl
+    width: 208px
+    padding: 0 0 0 0
+    ul 
+      padding: 0 0 0 0
+      margin: 0 0 0 0
+      li
+        list-style: none
+        a
+          +block
+          padding: $pad
+          border-bottom: 1px solid #ccc
+          +bold
+          color: black
+          span
+            +block
+            font-weight: normal 
+          &:hover
+            +tdnone
+            background: black
+            color: white
+          &.on
+            background: white
+            &:hover
+              background: white
+              color: black
+
+
+  #content_steps
+    border-left: 1px solid #ccc
+    +fr
+    background: white
+    width: 750px
+    h1
+      background: $yellow
+      padding: 20px $pad
+      margin: 0 0 0 0
+      font-size: 18px
+    .steps
+      border-top: 1px solid #ccc
+      padding: $pad
+      &:first-child
+        border-top: 0px
+      +button
+    .step_header
+      font-size: 16px
+      +clear
+      .step
+        +fl
+        padding: 0 15px 0 0
+        color: #666
+      .step_title
+        +fl
+        +bold
+      i
+        +fl
+        font-size: 18px
+        margin: 0 15px 0 0
+    #step1 
+      div.input
+        +fl
+        margin: 0 20px 0 0
+        width: 150px
+      .form_action
+        +clear
+    #step2 i
+      font-size: 21px
+    form
+      margin: 15px 0 0 0
+    .room
+      border: 1px solid #ccc
+      padding: $pad
+      margin: 20px 0 0 0
+      .name
+        +bold
+        font-size: 15px
+      .description
+        margin: 3px 0 0 0
+
