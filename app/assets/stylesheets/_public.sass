@@ -6,29 +6,24 @@ body#public
     width: 960px
   #hotel_information
     width: 720px
-    margin: 0 auto
-    padding: $pad 0
+    //margin: 0 auto
     +rel
     #logo, #hotel_name
-      width: 300px
-      margin: 0 0 0 0
+      width: 200px
+      margin: 0 $pad 0 0
+      +fl
     #hotel_name
       +bold
       font-size: 22px
       padding: 0 0 5px 0
       +tc
     #hotel_data_holder
-      +abs
-      width: 400px
-      top: 50%
-      left: 330px
-      margin-top: -20px
+      +fl
+      margin: 30px 0 0 0
       .hotel_data_column 
-        +fl
         margin: 0 auto
         font-size: 13px
         &:last-child
-          +fr
     .hotel_date
       +rel
       padding: 0 20px 0 21px

@@ -25,7 +25,7 @@
       = f.input :email, :wrapper_class => 'email'
 
       .clear
-      = f.input :logo, :hint => "Size recommendations needed", :label => 'Hotel Logo'
+      = f.input :logo, :hint => "190px by 150px in jpg or png format", :label => 'Hotel Logo'
       - if f.object.logo?
         #logo
           = image_tag f.object.logo.url(:thumb)
