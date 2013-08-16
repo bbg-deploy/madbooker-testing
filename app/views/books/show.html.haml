@@ -4,7 +4,7 @@
     #hotel_name
       = @hotel.name
   - else
-    #logo= image_tag current_hotel.logo.url, :style => 'width: 300px;'
+    #logo= image_tag current_hotel.logo.url(:medium)
   
   #hotel_data
 
@@ -29,16 +29,19 @@
       %li
         = link_to '#', :class=>'on' do
           %span
+            %i.icon-calendar
             Step 1
           Choose Your Dates
       %li
         = link_to '#' do
           %span
+            %i.icon-smile
             Step 2
           Choose Your Room
       %li
         = link_to '#' do
           %span
+            %i.icon-credit-card
             Step 3
           Checkout
 

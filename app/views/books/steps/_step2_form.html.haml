@@ -1,6 +1,7 @@
 
 .room
-  .image= image_tag room.image.url(:medium)
+  - unless room.image.url.blank?
+    .image= image_tag room.image.url(:medium)
   .name= room.name
   .description= room.description
   = render "/books/steps/price", room: room
@@ -15,4 +16,4 @@
         = f.input :bookable_id, as: "hidden", input_html: {value: room.room_type_id}
         = f.input :bookable_type, as: "hidden", input_html: {value: "RoomType"}
         
-      = f.submit "Yes!"
+      = f.submit "Choose Room"
