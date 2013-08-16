@@ -5,8 +5,6 @@ body#public
   .container
     width: 960px
   #hotel_information
-    width: 720px
-    //margin: 0 auto
     +rel
     #logo, #hotel_name
       width: 200px
@@ -17,29 +15,60 @@ body#public
       font-size: 22px
       padding: 0 0 5px 0
       +tc
-    #hotel_data_holder
+    #hotel_data
       +fl
       margin: 30px 0 0 0
       .hotel_data_column 
         margin: 0 auto
         font-size: 13px
         &:last-child
-    .hotel_date
-      +rel
-      padding: 0 20px 0 21px
-      i
-        +abs
-        top: 3px
-        left: 0
+      .hotel_date
+        +rel
+        padding: 0 20px 0 21px
+        i
+          +abs
+          top: 3px
+          left: 0
+      #hotel_address
+        width: 260px
+    #steps_list2
+      +fr
+      margin: 20px 0 0 0
+      ul li 
+        list-style: none
+        margin: 0 10px 0 0
+        +fl
+        a
+          +block
+          +fl
+          width: 133px
+          padding: 10px
+          color: #999
+          border: 1px solid #ccc
+          +border-radius
+          i
+            display: none
+          span
+            +bold
+            +block
+            font-size: 13px
+          &:hover
+            background: #ddd
+            +tdnone
+          &.on
+            color: #111
+            border: 1px solid #333
+            &:hover 
+              background: none
+              color: #111
 
-    #hotel_address
-      width: 260px
 
 
   #page
-    background: #eee
-    border: 1px solid #ccc
+    //background: #eee
+    //border: 1px solid #ccc
   #steps_list
+    display: none !important
     +fl
     width: 208px
     padding: 0 0 0 0
@@ -71,10 +100,10 @@ body#public
 
 
   #content_steps
-    border-left: 1px solid #ccc
-    +fr
+    //border-left: 1px solid #ccc
+    //+fr
     background: white
-    width: 750px
+    //width: 750px
     h1
       background: $yellow
       padding: 20px $pad
@@ -87,20 +116,26 @@ body#public
         border-top: 0px
       +button
     .step_header
-      font-size: 16px
+      font-size: 21px
       +clear
+      +tc
+      margin: 0 0 $pad 0
+      span
+        +tc
       .step
-        +fl
-        padding: 0 15px 0 0
+        //+fl
+        padding: 0 5px 0 0
         color: #666
       .step_title
-        +fl
+        //+fl
         +bold
       i
-        +fl
         font-size: 18px
-        margin: 0 15px 0 0
+        margin: 0 5px 0 0
     #step1 
+      margin: 0 auto
+      border: 1px solid #ccc
+      width: 500px
       div.input
         +fl
         margin: 0 20px 0 0
@@ -108,8 +143,28 @@ body#public
       .form_action
         +fl
         margin: 24px 0 0 0
-    #step2 i
-      font-size: 21px
+    #step2 
+      margin: 0 auto
+      border: 1px solid #ccc
+      padding: $pad
+      .room
+        +clear
+        +rel
+        .data
+          padding: 0 0 $pad 250px
+          font-size: 13px
+        .image
+          +abs
+          top: 5px
+          left: 0px
+          img
+        .name
+          font-size: 16px
+          +bold
+        .description
+        .choose
+      i
+        font-size: 21px
     form
       margin: 15px 0 0 0
     .room
@@ -119,4 +174,51 @@ body#public
         font-size: 15px
       .description
         margin: 3px 0 0 0
+
+
+.pricing_holder
+  padding: 10px 0 0 0
+  .row
+    div
+      +fl
+      &:first-child
+        width: 220px
+        +bold
+      &:last-child
+        width: 90px
+        +tr
+
+
+#step3
+  width: 600px
+  margin: 0 auto
+  border: 1px solid #ccc
+  padding: $pad
+  #checkout
+    div.credit_card_number
+      +span-columns(12 omega)
+    div.security
+      +span-columns(3 omega)
+    div.month, div.year, div.zip_code
+      +span-columns(3)
+    div.year
+      +span-columns(3)
+    div.first_name, div.email, div.sms
+      +span-columns(6)
+    div.last_name, div.email_confirmation
+      +span-columns(6 omega)
+    .form-actions
+      margin: 10px 0 0 0
+
+
+
+
+
+
+
+
+
+
+
+
 

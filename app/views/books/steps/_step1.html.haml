@@ -2,9 +2,10 @@
 #step1.steps
 
 	.step_header
-		%i.icon-calendar
-		.step Step 1
-		.step_title Choose Your Dates
+		%span.step 
+			%i.icon-calendar
+			Step 1
+		%span.step_title Choose Your Dates
 	= simple_form_for @booking, url: select_dates_book_path, remote: true do |f|
 		= f.input :arrive, as: "string", required: true, input_html: { size: 15 }, :placeholder => "click for date"
 		= f.input :depart, as: "string", required: true, input_html: { size: 15 }, :placeholder => "click for date"

@@ -109,17 +109,7 @@ h4
 
 
 
-.pricing_holder
-  padding: 10px 0 0 0
-  .row
-    div
-      +fl
-      &:first-child
-        width: 220px
-        +bold
-      &:last-child
-        width: 90px
-        +tr
+
 
 
 $navwidth: ($width - ($icon * 2)) / 5
@@ -615,22 +605,7 @@ $grid-padding: $pad // and 1em padding on the grid container
       margin: 0 4px 0 0
       font-size: 15px
 
-#checkout
-  +container
-  div.credit_card_number
-    +span-columns(12 omega)
-  div.security
-    +span-columns(3 omega)
-  div.month, div.year, div.zip_code
-    +span-columns(3)
-  div.year
-    +span-columns(3)
-  div.first_name, div.email, div.sms
-    +span-columns(6)
-  div.last_name, div.email_confirmation
-    +span-columns(6 omega)
-  .form-actions
-    margin: 10px 0 0 0
+
 
 .edit_addon, .edit_package
   div.input

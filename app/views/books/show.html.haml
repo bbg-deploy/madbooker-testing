@@ -5,7 +5,7 @@
       = @hotel.name
   - else
     #logo= image_tag current_hotel.logo.url, :style => 'width: 190px; height: 150px;'
-  
+
   #hotel_data
 
     #hotel_data_holder
@@ -23,6 +23,27 @@
           %div= @hotel.street2
           %div= @hotel.street3
           %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
+  #steps_list2
+    %ul
+      %li
+        = link_to '#', :class=>'on' do
+          %span
+            %i.icon-calendar
+            Step 1
+          Choose Dates
+      %li
+        = link_to '#' do
+          %span
+            %i.icon-smile
+            Step 2
+          Choose Room
+      %li
+        = link_to '#' do
+          %span
+            %i.icon-credit-card
+            Step 3
+          Checkout
+
 #page
   #steps_list
     %ul
