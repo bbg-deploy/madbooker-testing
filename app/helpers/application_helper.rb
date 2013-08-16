@@ -32,7 +32,7 @@ module ApplicationHelper
   end
   
   def format_date val
-    val.strftime "%b %d, %y"
+    val.strftime "%b %d, %Y"
   end
   
   def format_big_decimal val
@@ -48,7 +48,7 @@ module ApplicationHelper
   end
   
   def format_active_support_time_with_zone val
-    val.strftime "%b %d, %y %I:%M%p"
+    val.strftime "%b %d, %Y %I:%M%p"
   end
   
 
