@@ -2,9 +2,19 @@
   %h1
     Guest Check-In
 
+  #box
+    %input#daypicker{placeholder: "Pick Date"}
+    
+    = form_tag search_hotel_bookings_path(current_hotel), method: :get do
+      = text_field_tag 'q', params[:q], placeholder: 'Search'
+      = submit_tag "Search"
+      
+
+
+
 #data
-  #calendar
-    #date_picker
+  //#calendar
+  //  #date_picker
           
   - if @bookings.blank?
     No Reservations for 
