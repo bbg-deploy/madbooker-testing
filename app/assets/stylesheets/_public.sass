@@ -1,11 +1,17 @@
 
 
 body#public
-  background: white
+  //background: white
   .container
     width: 960px
+  #page_white
+    background: white
+    border: 1px solid #666
+    border-top: none
   #hotel_information
     +rel
+    width: 500px
+    margin: 0 auto
     #logo, #hotel_name
       width: 200px
       margin: 0 $pad 0 0
@@ -16,7 +22,7 @@ body#public
       padding: 0 0 5px 0
       +tc
     #hotel_data
-      +fl
+      +fr
       margin: 30px 0 0 0
       .hotel_data_column 
         margin: 0 auto
@@ -30,9 +36,10 @@ body#public
           top: 3px
           left: 0
       #hotel_address
-        width: 260px
+        max-width: 260px
     #steps_list2
       +fr
+      display: none
       margin: 20px 0 0 0
       ul li 
         list-style: none
@@ -65,7 +72,6 @@ body#public
 
 
   #page
-    //background: #eee
     //border: 1px solid #ccc
   #steps_list
     display: none !important
@@ -105,7 +111,7 @@ body#public
     background: white
     //width: 750px
     h1
-      background: $yellow
+      //background: $yellow
       padding: 20px $pad
       margin: 0 0 0 0
       font-size: 18px
@@ -119,7 +125,7 @@ body#public
       font-size: 21px
       +clear
       +tc
-      margin: 0 0 $pad 0
+      //margin: 0 0 $pad 0
       span
         +tc
       .step
@@ -133,10 +139,12 @@ body#public
         font-size: 18px
         margin: 0 5px 0 0
     #step1 
-      margin: 0 auto
-      border: 1px solid #ccc
-      width: 500px
-      background: $yellow
+      border-top: 1px solid #ccc
+      form
+        width: 430px
+        margin: 0 auto
+        padding-top: $pad
+      //background: $yellow
       div.input
         +fl
         margin: 0 20px 0 0
@@ -146,14 +154,16 @@ body#public
         margin: 24px 0 0 0
     #step2 
       margin: 0 auto
-      border: 1px solid #ccc
+      border-top: 1px solid #ccc
       padding: $pad
       .room
         +clear
         +rel
+        margin: 35px 0 0 0
         .data
           padding: 0 0 $pad 250px
           font-size: 13px
+          min-height: 220px
         .image
           +abs
           top: 5px
@@ -167,7 +177,7 @@ body#public
       i
         font-size: 21px
     form
-      margin: 15px 0 0 0
+      padding: 15px 0 0 0
     .room
       margin: 20px 0 0 0
       .name
@@ -191,13 +201,16 @@ body#public
 
 
 #step3
-  width: 600px
+  //width: 600px
   margin: 0 auto
-  border: 1px solid #ccc
+  border-top: 1px solid #ccc
   padding: $pad
-  background: $yellow
+  //background: $yellow
 
   #checkout
+    form
+      width: 500px
+      margin: 0 auto
     div.credit_card_number
       +span-columns(12 omega)
     div.security

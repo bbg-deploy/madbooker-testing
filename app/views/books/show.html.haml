@@ -1,50 +1,51 @@
 
-#hotel_information
-  - if current_hotel.logo.blank?
-    #hotel_name
-      = @hotel.name
-  - else
-    #logo= image_tag current_hotel.logo.url, :style => 'width: 190px; height: 150px;'
+#page_white
+  #hotel_information
+    - if current_hotel.logo.blank?
+      #hotel_name
+        = @hotel.name
+    - else
+      #logo= image_tag current_hotel.logo.url, :style => 'width: 190px; height: 150px;'
 
-  #hotel_data
+    #hotel_data
 
-    #hotel_data_holder
-      .hotel_data_column
-        #hotel_phone.hotel_date
-          %i.icon-phone
-          = @hotel.phone
-        #hotel_website.hotel_date
-          %i.icon-laptop
-          = link_to "Website", @hotel.url
-      .hotel_data_column
-        #hotel_address.hotel_date
-          %i.icon-home
-          %div= @hotel.street1
-          %div= @hotel.street2
-          %div= @hotel.street3
-          %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
-  #steps_list2
-    %ul
-      %li
-        = link_to '#', :class=>'on' do
-          %span
-            %i.icon-calendar
-            Step 1
-          Choose Dates
-      %li
-        = link_to '#' do
-          %span
-            %i.icon-smile
-            Step 2
-          Choose Room
-      %li
-        = link_to '#' do
-          %span
-            %i.icon-credit-card
-            Step 3
-          Checkout
+      #hotel_data_holder
+        .hotel_data_column
+          #hotel_phone.hotel_date
+            %i.icon-phone
+            = @hotel.phone
+          #hotel_website.hotel_date
+            %i.icon-laptop
+            = link_to "Website", @hotel.url
+        .hotel_data_column
+          #hotel_address.hotel_date
+            %i.icon-home
+            %div= @hotel.street1
+            %div= @hotel.street2
+            %div= @hotel.street3
+            %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
+  //#steps_list2
+  //  %ul
+  //    %li
+  //      = link_to '#', :class=>'on' do
+  //        %span
+  //          %i.icon-calendar
+  //          Step 1
+  //        Choose Dates
+  //    %li
+  //      = link_to '#' do
+  //        %span
+  //          %i.icon-smile
+  //          Step 2
+  //        Choose Room
+  //    %li
+  //      = link_to '#' do
+  //        %span
+  //          %i.icon-credit-card
+  //          Step 3
+  //        Checkout
 
-#page
+  #page
   #steps_list
     %ul
       %li
