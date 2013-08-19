@@ -43,8 +43,14 @@
         #confirmation_info
           = f.input :sms_confirmation, :label => 'Cell Phone Number', :placeholder => '555-555-5555', :wrapper_class => 'sms', :hint => 'If you want to receive SMS confirmations'
         
+        - unless current_hotel.fine_print.blank?
+          .fine_print
+            By clicking the button below you agree to the following:
+            %div
+              = current_hotel.fine_print
+
         .form-actions  
-          = f.submit "Book It!"
+          = f.submit "Submit Reservation"
           
           
           

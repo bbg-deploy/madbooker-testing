@@ -40,7 +40,7 @@
       = f.input :subdomain, :hint => "http://yoursubdomain.madbooker.com", :label => "Madbooker Subdomain", :wrapper_class => 'subdomain'
       .clear
       = f.input :google_analytics_code, :hint => "I don't know how to set this up."
-      = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This is the agreement the guest will agree to before submitting their booking", :placeholder => 'test'
+      = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This is the agreement the guest will agree to before submitting their booking"
       /= f.input :room_rates_display, collection: Hotel::ROOM_RATE_DISPLAY, include_blank: false
       
 
