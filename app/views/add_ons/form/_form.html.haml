@@ -4,7 +4,7 @@
 = simple_form_for [current_hotel, add_on] do |f|
   = f.input :name, :placeholder => 'Day spa package'
   = f.input :description
-  = f.input :price
+  = f.input :price, as: :money_amount
   = f.input :active
   .clear
   .form-actions

@@ -47,7 +47,7 @@ class Reports::AverageDailyRate < Less::Interaction
     if rev == 0 || quantity == 0
       0
     else
-      rev / quantity
+      (rev / quantity).round(2)
     end
   end
   
