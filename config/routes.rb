@@ -61,7 +61,8 @@ Madbooker::Application.routes.draw do
   end
   
   root :to => 'home#index'
-  
+
+  get "/setup", :to => "home#setup"
   get "/features", :to => "home#features"
   get "/privacy", :to => "home#privacy"
   get "/terms", :to => "home#terms"

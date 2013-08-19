@@ -6,13 +6,13 @@
 
 
 body#brochure
-  font-family: "arial"
+  +header
   margin: 0px auto
   padding: 0px
   color: #333
   font-size: 14px
   line-height: 1.5em 
-  background: white
+  //background: url(sunset.jpg) no-repeat
 
 a
   color: #3e86c5
@@ -45,6 +45,8 @@ h1
   line-height: 100%
   color: #222
   margin: 0 0 5px 0
+  +header
+
   a
     font-size: 16px
     font-weight: normal
@@ -54,11 +56,13 @@ h2
   font-weight: normal
   line-height: 100%
   color: #333
+  +header
   margin: 0 0 10px 0
 h3
-  font-size: 17px
+  font-size: 22px
   line-height: 100%
   margin: 0 0 20px 0
+  +serif
   font-weight: normal
 
 h4
@@ -67,6 +71,7 @@ h4
   line-height: 100%
   color: #888
   margin: 15px 0 20px 0
+  +header
   
 
 
@@ -80,7 +85,7 @@ h4
 
 #header
   border-bottom: 1px solid #ccc
-
+  background: white
 
 #logo
   +fl
@@ -119,6 +124,8 @@ $point_width: ($width - ($pad * 2)) / 3
   .point
     +fl
     width: 300px
+    background: white
+    +border-radius
     padding: 20px
     border: 1px solid #ccc
     +tc

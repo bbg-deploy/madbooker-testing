@@ -1,8 +1,8 @@
 %ul.mini_dropdown
   %li.home= link_to '', root_path, :class=>"icon-home"
-  %li= link_to 'Features', features_path
-  %li= link_to 'Easy Setup', '#'
-  %li= link_to 'Happy Customers', '#'
+  %li= link_to 'Simple Features', features_path
+  %li= link_to 'Easy Setup', setup_path
+  //%li= link_to 'Happy Customers', '#'
   - if user_signed_in? #returned here for non auth
     %li= link_to "Log in", new_user_session_path
     %li.logout= link_to "", destroy_user_session_path, method: :delete, :class => 'icon-off'
