@@ -45,6 +45,10 @@ class HotelsController < ApplicationController
     current_hotel.update_attribute :logo, nil
   end
   
+  def setup_instructions
+    render
+  end
+  
   private
   
 end

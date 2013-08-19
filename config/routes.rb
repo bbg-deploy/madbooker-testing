@@ -7,6 +7,9 @@ Madbooker::Application.routes.draw do
     member do
       delete :delete_logo
     end
+    collection do
+      get 'setup_instructions'
+    end
     resources :room_types do
       member do
         delete :delete_image
