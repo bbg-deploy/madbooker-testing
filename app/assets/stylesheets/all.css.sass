@@ -395,11 +395,9 @@ table.standard2
     border-top: 1px solid #ccc
     font-size: 13px
     border-left: 1px solid #ccc
-    div
-      height: 77px
     .name
       width: 300px
-      padding: 31px 28px
+      padding: 42px 28px 35px 20px
       background: #eee
       +fl
       +bold
@@ -413,15 +411,21 @@ table.standard2
       padding: 20px
       +fl
       width: 199px
-      span
-        +block
+      .when
         +tc
-        &:last-child
-          color: #777
-          margin-top: 3px
-        &:first-child
-          font-size: 32px
-          +bold
+        +block
+      .number
+        +tc
+        margin: 10px 0 0 0
+        span
+          +tc
+          &:first-child
+            color: #777
+            margin-top: 3px
+            font-size: 16px
+          &:last-child
+            font-size: 32px
+            +bold
 
 $data_width: ($width - (($pad * 2)) - 3px) / 4
 

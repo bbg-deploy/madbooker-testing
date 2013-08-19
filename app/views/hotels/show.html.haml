@@ -107,18 +107,18 @@
         .daily_average
           .number
             %span= @hotel.currency.html_symbol
-            = format_for_dash room_type.average
-          %span Daily Average
+            %span= format_for_dash room_type.average
+          .when Daily Average
         .week
           .number
             %span= @hotel.currency.html_symbol
-            = format_for_dash room_type.week
-          %span Week
+            %span= format_for_dash room_type.week
+          .when Week
         .month_row
           .number
             %span= @hotel.currency.html_symbol
-            = format_for_dash room_type.month
-          %span Month
+            %span= format_for_dash room_type.month
+          .when Month
 
 
 
