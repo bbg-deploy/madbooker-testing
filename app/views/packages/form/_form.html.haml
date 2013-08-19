@@ -3,7 +3,7 @@
 
 = simple_nested_form_for [current_hotel, package] do |f|
   = f.association :room_type, collection: current_hotel.room_types.map{|a| ["#{a.name} (#{a.default_rate})", a.id]}
-  = f.input :additional_price
+  = f.input :additional_price, as: :money_amount
   = f.association :add_ons, required: true, collection: current_hotel.add_ons.active.map{|a| ["#{a.name} (#{a.price})", a.id]}
   .clear
   .form-actions
