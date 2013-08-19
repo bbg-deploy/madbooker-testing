@@ -10,7 +10,7 @@ $yellow: rgba(254, 249, 223, 1)
 
 
 body
-  font-family: "arial"
+  +header
   margin: 0px auto
   padding: 0px
   color: #333
@@ -59,18 +59,21 @@ h1
   line-height: 100%
   color: #222
   margin: 0 0 5px 0
-
+  +header
 h2
   font-size: 21px
   font-weight: normal
   line-height: 100%
   color: #333
   margin: 0 0 10px 0
+  +header
+
 h3
   font-size: 17px
   line-height: 100%
   margin: 0 0 20px 0
   font-weight: normal
+  +serif
 
 h4
   font-size: 17px
@@ -78,6 +81,7 @@ h4
   line-height: 100%
   color: #888
   margin: 15px 0 20px 0
+  +header
   
 
 
@@ -109,17 +113,7 @@ h4
 
 
 
-.pricing_holder
-  padding: 10px 0 0 0
-  .row
-    div
-      +fl
-      &:first-child
-        width: 220px
-        +bold
-      &:last-child
-        width: 90px
-        +tr
+
 
 
 $navwidth: ($width - ($icon * 2)) / 5
@@ -361,7 +355,8 @@ table.standard
   tr th
     background: #eee
     color: #333
-    font-weight: normal
+    +bold
+    font-size: 13px
   tr td.actions a
     padding-right: 10px
   tr:nth-child(even) td
@@ -404,11 +399,9 @@ table.standard2
     border-top: 1px solid #ccc
     font-size: 13px
     border-left: 1px solid #ccc
-    div
-      height: 77px
     .name
       width: 300px
-      padding: 31px 28px
+      padding: 42px 28px 35px 20px
       background: #eee
       +fl
       +bold
@@ -422,15 +415,21 @@ table.standard2
       padding: 20px
       +fl
       width: 199px
-      span
-        +block
+      .when
         +tc
-        &:last-child
-          color: #777
-          margin-top: 3px
-        &:first-child
-          font-size: 32px
-          +bold
+        +block
+      .number
+        +tc
+        margin: 10px 0 0 0
+        span
+          +tc
+          &:first-child
+            color: #777
+            margin-top: 3px
+            font-size: 16px
+          &:last-child
+            font-size: 32px
+            +bold
 
 $data_width: ($width - (($pad * 2)) - 3px) / 4
 
@@ -614,22 +613,7 @@ $grid-padding: $pad // and 1em padding on the grid container
       margin: 0 4px 0 0
       font-size: 15px
 
-#checkout
-  +container
-  div.credit_card_number
-    +span-columns(12 omega)
-  div.security
-    +span-columns(3 omega)
-  div.month, div.year, div.zip_code
-    +span-columns(3)
-  div.year
-    +span-columns(3)
-  div.first_name, div.email, div.sms
-    +span-columns(6)
-  div.last_name, div.email_confirmation
-    +span-columns(6 omega)
-  .form-actions
-    margin: 10px 0 0 0
+
 
 .edit_addon, .edit_package
   div.input

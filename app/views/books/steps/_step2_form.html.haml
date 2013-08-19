@@ -1,18 +1,20 @@
 
 .room
-  .image= image_tag room.image.url(:medium)
-  .name= room.name
-  .description= room.description
-  = render "/books/steps/price", room: room
-  %div
-    = simple_form_for @booking, url: select_room_book_path, remote: true do |f|
-      = f.input :arrive, as: "hidden"
-      = f.input :depart, as: "hidden"
-      - if room.is_a? PackageDecorator
-        = f.input :bookable_id, as: "hidden", input_html: {value: room.id}
-        = f.input :bookable_type, as: "hidden", input_html: {value: "Package"}
-      - else  
-        = f.input :bookable_id, as: "hidden", input_html: {value: room.room_type_id}
-        = f.input :bookable_type, as: "hidden", input_html: {value: "RoomType"}
-        
-      = f.submit "Yes!"
+  - unless room.image.url.blank?
+    .image= image_tag room.image.url, :style => 'width: 220px; height: 220px;'
+  .data
+    .name= room.name
+    .description= room.description
+    = render "/books/steps/price", room: room
+    .choose
+      = simple_form_for @booking, url: select_room_book_path, remote: true do |f|
+        = f.input :arrive, as: "hidden"
+        = f.input :depart, as: "hidden"
+        - if room.is_a? PackageDecorator
+          = f.input :bookable_id, as: "hidden", input_html: {value: room.id}
+          = f.input :bookable_type, as: "hidden", input_html: {value: "Package"}
+        - else  
+          = f.input :bookable_id, as: "hidden", input_html: {value: room.room_type_id}
+          = f.input :bookable_type, as: "hidden", input_html: {value: "RoomType"}
+          
+        = f.submit "Choose"

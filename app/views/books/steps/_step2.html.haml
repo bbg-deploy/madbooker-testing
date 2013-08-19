@@ -1,9 +1,10 @@
 
 #step2.steps
 	.step_header
-		%i.icon-smile
-		.step Step 2
-		.step_title Choose Your Room
+		%span.step 
+			%i.icon-smile
+			Step 2
+		%span.step_title Choose Your Room
 	
 	- if @booking.step == 2
 		- @available_rooms.each do |room|

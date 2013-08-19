@@ -7,11 +7,15 @@
 @import jquery.ui.theme 
 @import jquery.ui.datepicker
 
+
+=serif
+  font-family: "chaparral-pro"
+
+
 =header($font-weight: 300, $font-style: normal)
-  font:
-    family: "omnes-pro-1"
-    weight: $font-weight
-    style: $font-style  
+  font-family: "proxima-nova"
+  weight: $font-weight
+  style: $font-style  
 
 =hide_search
   .chosen-search
@@ -167,7 +171,7 @@ div
   background: white !important
   padding: 10px
   font-size: 14px
-  +arial
+  +header
   width: 100% !important
   border: 1px solid #999
   border-bottom: 1px solid #777
@@ -263,7 +267,7 @@ div.room_name
   color: #333
   font-size: 13px
   +bold
-  +arial
+  +header
   +background-image(linear-gradient(rgba(223, 223, 223, 1), rgba(190, 190, 190, 1)))
   border: 1px solid #999
   +border-radius
