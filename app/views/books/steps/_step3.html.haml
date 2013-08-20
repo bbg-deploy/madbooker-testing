@@ -5,52 +5,52 @@
       %i.icon-credit-card
       Step 3
     %span.step_title Secure Checkout
-  
-  - if @booking.step == 3
-    #checkout
-      = simple_form_for @booking, url: checkout_book_path, remote: true, html: {id: "checkout_form"} do |f|
-        = f.error :base, :error_method => :to_sentence
-        = f.input :arrive, as: "hidden"
-        = f.input :depart, as: "hidden"
-        = f.input :bookable_id, as: "hidden"
-        = f.input :bookable_type, as: "hidden"
+  .step_content
+    - if @booking.step == 3
+      #checkout
+        = simple_form_for @booking, url: checkout_book_path, remote: true, html: {id: "checkout_form"} do |f|
+          = f.error :base, :error_method => :to_sentence
+          = f.input :arrive, as: "hidden"
+          = f.input :depart, as: "hidden"
+          = f.input :bookable_id, as: "hidden"
+          = f.input :bookable_type, as: "hidden"
     
-        #summary
-          = @booking.summary
-        #checkout_tabs
-          %ul
-            %li
-              %a{href: "#for_me"}For Me
-            %li
-              %a{href: "#for_other"}For Someone Else
-          #for_me
-            = f.input :first_name, :wrapper_class => 'first_name'
-            = f.input :last_name, :wrapper_class => 'last_name'
-            = f.input :email, :wrapper_class => 'email'
-            = f.input :email_confirmation, :wrapper_class => 'email_confirmation'
+          #summary
+            = @booking.summary
+          #checkout_tabs
+            %ul
+              %li
+                %a{href: "#for_me"}For Me
+              %li
+                %a{href: "#for_other"}For Someone Else
+            #for_me
+              = f.input :first_name, :wrapper_class => 'first_name'
+              = f.input :last_name, :wrapper_class => 'last_name'
+              = f.input :email, :wrapper_class => 'email'
+              = f.input :email_confirmation, :wrapper_class => 'email_confirmation'
 
-          #for_other
-            .booker
-              = f.input :made_by_first_name, label: "Your First name", :wrapper_class => 'first_name'
-              = f.input :made_by_last_name, label: "Your Last name", :wrapper_class => 'last_name'
-            .guest
-        #credit_card_form
-          = f.input :cc_number, label: "Credit Card number", required: true, :wrapper_class => 'credit_card_number'
-          = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
-          = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => 'year'
-          = f.input :cc_zipcode, label: "Zip code", :wrapper_class => 'zip_code'
-          = f.input :cc_cvv, required: true, :wrapper_class => 'security', :label => 'CVC'
-        #confirmation_info
-          = f.input :sms_confirmation, :label => 'Cell Phone Number', :placeholder => '555-555-5555', :wrapper_class => 'sms', :hint => 'If you want to receive SMS confirmations'
+            #for_other
+              .booker
+                = f.input :made_by_first_name, label: "Your First name", :wrapper_class => 'first_name'
+                = f.input :made_by_last_name, label: "Your Last name", :wrapper_class => 'last_name'
+              .guest
+          #credit_card_form
+            = f.input :cc_number, label: "Credit Card number", required: true, :wrapper_class => 'credit_card_number'
+            = f.input :cc_month, collection: 1..12, label: "Month", :wrapper_class => 'month'
+            = f.input :cc_year, collection: Date.current.year..(Date.current + 10.years).year, label: "Year", :wrapper_class => 'year'
+            = f.input :cc_zipcode, label: "Zip code", :wrapper_class => 'zip_code'
+            = f.input :cc_cvv, required: true, :wrapper_class => 'security', :label => 'CVC'
+          #confirmation_info
+            = f.input :sms_confirmation, :label => 'Cell Phone Number', :placeholder => '555-555-5555', :wrapper_class => 'sms', :hint => 'If you want to receive SMS confirmations'
         
-        - unless current_hotel.fine_print.blank?
-          .fine_print
-            By clicking the button below you agree to the following:
-            %div
-              = current_hotel.fine_print
+          - unless current_hotel.fine_print.blank?
+            .fine_print
+              By clicking the button below you agree to the following:
+              %div
+                = current_hotel.fine_print
 
-        .form-actions  
-          = f.submit "Submit Reservation"
+          .form-actions  
+            = f.submit "Submit Reservation"
           
           
           
