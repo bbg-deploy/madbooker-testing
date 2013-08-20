@@ -851,8 +851,44 @@ a.add_link
 
 
 
-
-
+#setup
+  #data
+    h2
+      margin: 0 0 5px 0 !important
+      span
+        font-weight: 700
+        margin-right: 4px
+    #code_boxes
+      border-bottom: 1px solid #ccc
+      margin: 10px 0 $pad 0 
+      .code_box
+        width: ((960px - ($pad * 2)) / 4) - 1px
+        +fl
+        +tc
+        border: 1px solid #ccc
+        border-bottom: none
+        border-right: none
+        padding: 20px
+        &:nth-child(4n+4)
+          border-right: 1px solid #ccc
+        textarea
+          +block
+          margin: 15px 0 10px 0
+          width: 100%
+          +arial
+          font-size: 13px
+          height: 50px
+        .copy
+          font-size: 12px
+          +arial
+          +tc
+          +italic
+          color: #777
+          line-height: 130%
+        .example
+          a
+            display: inline-block
+            
 
 
 
