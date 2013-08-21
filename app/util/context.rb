@@ -1,7 +1,7 @@
 class Context
   attr_accessor :hotel, :user, :params, :device_type, :user_bug
   
-  def initialize(hotel: nil, user: nil, params: params, device_type: nil, user_bug: "")
+  def initialize(hotel: nil, user: nil, params: {}, device_type: nil, user_bug: "")
     self.hotel         = hotel
     self.user          = user
     self.params        = params

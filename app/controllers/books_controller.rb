@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
   
   def select_room
-    @booking = current_hotel.bookings.new(booking_params).decorate
+    @booking = current_hotel.bookings.new(Booking::ParamsWithRate.new(context).run).decorate
     @booking.step = 3
     render
   end
