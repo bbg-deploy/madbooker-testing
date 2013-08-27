@@ -47,22 +47,21 @@ gem "attr_encrypted"
 gem "simple_states"
 gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
 gem 'country_select'
+#gem "less_ga", path: "/Users/steve/rails/less_ga"
+gem "httparty"
+gem "google-api-client"
 
-# Gems used only for assets and not required
-# in production environments by default.
-    gem "haml-rails"
-    gem 'sass-rails'
-    gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
-    gem  "compass-normalize"
-    gem "susy"
-    gem 'jquery-ui-sass-rails'
 
-group :assets do
+gem "haml-rails"
+gem 'sass-rails'
+gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
+gem  "compass-normalize"
+gem "susy"
+gem 'jquery-ui-sass-rails'
 #   gem 'jquery-rails'
 #  gem 'compass-colors'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
-end
 
 
 group :development, :staging do

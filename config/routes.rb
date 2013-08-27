@@ -40,6 +40,9 @@ Madbooker::Application.routes.draw do
         get :revenue_by_room_type
         get :daily
         get :funnel
+        get :ga
+        get :google_auth
+        delete :remove_google_auth
       end
     end
     resources :inventories do
@@ -50,7 +53,7 @@ Madbooker::Application.routes.draw do
   end
   
   get "/hotels/:hotel_id/inventories/month/:year/:month", to: "inventories#month", as: :month_hotel_inventories
-  
+  get "/oauth2callback", to: "reports#oauth2callback", as: :oauth2callback
   
   resource :book do
     post :select_dates

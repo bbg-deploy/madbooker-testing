@@ -1,0 +1,30 @@
+
+= render "/reports/show/nav"
+
+
+- unless @g_authed
+  = link_to "Authenticate with Google Analytics", [:google_auth, current_hotel, :reports]
+  
+- else
+  = link_to "Remove Google Analytics Authentication", [:remove_google_auth, current_hotel, :reports], method: :delete
+  #data   
+    #ga
+      - if @accounts
+        %h2 Pick an account to use
+        - @accounts[:items].each do |account|
+          .item
+            = link_to account[:name], ga_hotel_reports_path(current_hotel, account_id: account[:id])
+      - if @profiles
+        %h2 Pick a profile to use
+        - @profiles[:items].each do |profile|
+          .item
+            = link_to profile[:name], ga_hotel_reports_path(current_hotel, profile_id: profile[:id])
+      - if @data
+        #ga_graph
+          :coffeescript
+            data = #{@data}
+            MB.Graphs.Line.render "#ga_graph", "title", data
+
+
+      
+    

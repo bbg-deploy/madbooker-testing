@@ -143,6 +143,12 @@ CREATE TABLE `hotels` (
   `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postal_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gauth_access_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gauth_refresh_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gauth_expires_in` int(11) DEFAULT NULL,
+  `gauth_issued_at` datetime DEFAULT NULL,
+  `ga_account_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ga_profile_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -304,7 +310,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_created_at` (`created_at`),
   KEY `index_stats_on_kind` (`kind`),
   KEY `deveice_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=239 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=348 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +352,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-15 15:02:59
+-- Dump completed on 2013-08-26 13:27:51
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -424,3 +430,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130809181051');
 INSERT INTO schema_migrations (version) VALUES ('20130813113439');
 
 INSERT INTO schema_migrations (version) VALUES ('20130815190158');
+
+INSERT INTO schema_migrations (version) VALUES ('20130822144640');
+
+INSERT INTO schema_migrations (version) VALUES ('20130826171948');

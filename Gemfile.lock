@@ -74,6 +74,10 @@ GEM
     atomic (1.1.10)
     attr_encrypted (1.2.1)
       encryptor (>= 1.1.1)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
@@ -125,9 +129,22 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    extlib (0.9.16)
     faker (1.2.0)
       i18n (~> 0.5)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     fssm (0.2.10)
+    google-api-client (0.6.3)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (~> 0.8.4)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      signet (>= 0.4.4)
+      uuidtools (>= 2.1.0)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -137,6 +154,9 @@ GEM
       railties (>= 3.1, < 4.1)
     hashr (0.0.22)
     hike (1.2.3)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.4)
     intercom (0.1.11)
     jbuilder (1.0.2)
@@ -180,6 +200,8 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.7)
+    multi_xml (0.5.5)
+    multipart-post (1.2.0)
     mysql2 (0.3.13)
     nested_form (0.3.2)
     nested_has_many_through (0.0.2)
@@ -243,6 +265,11 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     settingslogic (2.0.9)
+    signet (0.4.5)
+      addressable (>= 2.2.3)
+      faraday (~> 0.8.1)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     simple_form (1.4.1)
     simple_states (1.0.0)
       activesupport
@@ -315,7 +342,9 @@ DEPENDENCIES
   devise (= 3.0.0.rc)
   draper
   faker
+  google-api-client
   haml-rails
+  httparty
   intercom
   jbuilder (~> 1.0.1)
   jquery-rails

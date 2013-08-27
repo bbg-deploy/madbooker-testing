@@ -29,6 +29,12 @@
 #  country                                  :string(255)
 #  postal_code                              :string(255)
 #  email                                    :string(255)
+#  gauth_access_token                       :string(255)
+#  gauth_refresh_token                      :string(255)
+#  gauth_expires_in                         :integer
+#  gauth_issued_at                          :datetime
+#  ga_account_id                            :string(255)
+#  ga_profile_id                            :string(255)
 #
 
 
