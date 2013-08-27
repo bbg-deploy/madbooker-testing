@@ -21,9 +21,10 @@
             = link_to profile[:name], ga_hotel_reports_path(current_hotel, profile_id: profile[:id])
       - if @data
         #ga_graph
-          :coffeescript
-            data = #{@data}
-            MB.Graphs.Line.render "#ga_graph", "title", data
+          /:coffeescript
+          /  data = #{@data}
+          /  MB.Graphs.Line.render "#ga_graph", "title", data
+          = debug @data
 
 
       

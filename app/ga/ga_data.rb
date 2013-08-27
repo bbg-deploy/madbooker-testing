@@ -1,21 +1,48 @@
 
 class GaData
   
-  attr_accessor :range, :id, :access_token, :profile_id, :ga
-  def initialize range: last_30_days, access_token: "", profile_id: "", ga: nil
+  attr_accessor :range, :ga
+  def initialize range: last_30_days, ga: nil
     self.range              = last_30_days
-    self.access_token       = access_token
-    self.profile_id         = profile_id
     self.ga                 = ga
   end
   
   
-  def visitors range: range
-    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:date"
-#    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits,ga:bounces&dimensions=ga:country,ga:region"
+  def accounts
+    get "https://www.googleapis.com/analytics/v3/management/accounts"
   end
   
+  def profiles account_id
+    get  "https://www.googleapis.com/analytics/v3/management/accounts/#{account_id}/webproperties/#{@google_analytics_code}/profiles"
+  end
   
+  def visitors
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:date"
+  end
+  
+  # -total visits
+  # direct
+  # ppc
+  # -organic
+  # referrals
+  # +mobile
+  # 
+  # -transactions,ga:transactions
+  # revenue
+  # cpa???
+  # -cpc
+  # 
+  # -visits
+  # direct
+  # -cpc,ga:CPC
+  # -organic
+  # referral
+  # -mobile
+  # +. For city locations, wed like to list the top 20 cities.
+  
+  def inbound
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:organicSearches,ga:visits&dimensions=ga:date,ga:isMobile,ga:city"
+  end
   
   private
   
@@ -32,29 +59,26 @@ class GaData
   end
   
   def hit_api url
-    final_url = final_url url
-    x = 0
-    catch :retry do
-      h = HTTParty.get final_url
-      res = h.parsed_response.with_indifferent_access
-      if res[:error] && res[:error][:code] == 401 && x == 0
-        x += 1
-        a = ga.auth.reauthorize
-        if a[:access_token]
-          a.ga.access_token = a[:access_token]
-          throw :retry 
-        end
+    res = hit_api_directly url
+    if res[:error] && res[:error][:code] == 401
+      if ga.reauth
+        res = hit_api_directly url
       end
-      res
     end
+    res
+  end
+  
+  def hit_api_directly url
+    h = HTTParty.get final_url(url)
+    h.parsed_response.with_indifferent_access
   end
   
   def add_token url
-    "#{puctuate_url url}access_token=#{@access_token}"
+    "#{puctuate_url url}access_token=#{ga.access_token}"
   end
   
   def add_id url
-    "#{puctuate_url url}ids=ga:#{profile_id}"
+    "#{puctuate_url url}ids=ga:#{ga.profile_id}"
   end
   
   def add_range url

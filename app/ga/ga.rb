@@ -9,14 +9,14 @@ require 'google/api_client'
 class Ga
 #require 'less/ga/auth'
   
-  attr_accessor :client_id, :client_secret, :webproperty, :scope, :auth_callback_url, :access_token, :google_analytics_code, :hotel, :refresh_token, :profile_id
+  attr_accessor :client_id, :client_secret, :webproperty, :scope, :auth_callback_url, :access_token, :google_analytics_code, :hotel, :refresh_token, :profile_id, :refresh_callback
   
   # Initialize the auth object
   # @param [String] client_id    The client_id supplied to your app while registering your app with google
   # @param [String] client_secret    The client_secret supplied to your app while registering your app with google
   # @param [String] webproperty   Optional. The id for the analytics you're going after. Can be found using the webproperties method
   # @param [String] scope    Optional. Defaults to 'https://www.googleapis.com/auth/analytics.readonly'
-  def initialize(client_id: "", client_secret: "", webproperty: nil, scope: "https://www.googleapis.com/auth/analytics.readonly", auth_callback_url: "", access_token: "", google_analytics_code: "", refresh_token: "", profile_id: "")
+  def initialize(client_id: "", client_secret: "", webproperty: nil, scope: "https://www.googleapis.com/auth/analytics.readonly", auth_callback_url: "", access_token: "", google_analytics_code: "", refresh_token: "", profile_id: "", refresh_callback: nil)
     self.client_id         = client_id
     self.client_secret     = client_secret
     self.webproperty       = webproperty
@@ -26,27 +26,24 @@ class Ga
     self.refresh_token     = refresh_token
     self.profile_id        = profile_id
     self.google_analytics_code = google_analytics_code
+    self.refresh_callback  = refresh_callback
   end
   
   def auth
-    @auth ||= ::GaAuth.new client_id: @client_id, client_secret:@client_secret, scope: @scope, auth_callback_url: @auth_callback_url, access_token: access_token, refresh_token: refresh_token
+    @auth ||= ::GaAuth.new scope: @scope, ga: self
   end
   
   def data
-    @data ||= ::GaData.new profile_id: profile_id, access_token: access_token, ga: self
+    @data ||= ::GaData.new  ga: self
   end
   
-  def accounts
-    data.send :get, "https://www.googleapis.com/analytics/v3/management/accounts"
+  def reauth
+    a = auth.reauthorize
+    return false unless a["access_token"]
+    access_token = a[:access_token]
+    refresh_callback.call a[:access_token]
+    true
   end
-  
-  def profiles account_id
-    data.send :get,  "https://www.googleapis.com/analytics/v3/management/accounts/#{account_id}/webproperties/#{@google_analytics_code}/profiles"
-  end
-  
-  # def access_token= str
-  #   auth.access_token = str
-  # end
   
   
   

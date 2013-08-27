@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
     if params[:account_id]
       redirect_to ga_hotel_reports_path(profile_id: current_hotel.ga_profile_id) and return if current_hotel.ga_profile_id
       current_hotel.update_attribute :ga_account_id, params[:account_id]
-      @profiles = less_ga.profiles params[:account_id]
+      @profiles = less_ga.data.profiles params[:account_id]
       if @profiles[:items].size == 1
         redirect_to ga_hotel_reports_path(profile_id: @profiles[:items][0][:id])
       else
@@ -40,10 +40,11 @@ class ReportsController < ApplicationController
     elsif params[:profile_id]
       current_hotel.update_attribute :ga_profile_id, params[:profile_id]
       less_ga.profile_id = params[:profile_id]
-      @data = Reports::X.new(data: less_ga.data.visitors).run
+      #@data = Reports::X.new(data: less_ga.data.visitors).run
+      @data = less_ga.data.inbound
     else
       redirect_to ga_hotel_reports_path(account_id: current_hotel.ga_account_id) and return if current_hotel.ga_account_id
-      @accounts = less_ga.accounts
+      @accounts = less_ga.data.accounts
       if @accounts[:items].size == 1
         redirect_to ga_hotel_reports_path(account_id: @accounts[:items][0][:id])
       else
@@ -91,7 +92,9 @@ class ReportsController < ApplicationController
       webproperty: current_hotel.google_analytics_code, 
       access_token: current_hotel.gauth_access_token, 
       refresh_token: current_hotel.gauth_refresh_token, 
-      google_analytics_code: current_hotel.google_analytics_code
+      google_analytics_code: current_hotel.google_analytics_code,
+      profile_id: current_hotel.ga_profile_id,
+      refresh_callback: ->(access_token){current_hotel.update_attribute :gauth_access_token, access_token}
   end
   
   
