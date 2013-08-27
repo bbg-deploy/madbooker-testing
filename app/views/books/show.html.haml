@@ -1,11 +1,12 @@
 
 #page_white
   #hotel_information
-    - if current_hotel.logo.blank?
-      #hotel_name
-        = @hotel.name
-    - else
-      #logo= image_tag current_hotel.logo.url, :style => 'width: 190px; height: 150px;'
+    = link_to current_hotel.url do
+      - if current_hotel.logo.blank?
+        #hotel_name
+          = @hotel.name
+      - else
+        #logo= image_tag current_hotel.logo.url, :style => 'width: 190px; height: 150px;'
 
     #hotel_data
 
@@ -16,7 +17,7 @@
             = @hotel.phone
           #hotel_website.hotel_date
             %i.icon-laptop
-            = link_to "Website Url", @hotel.url
+            = link_to "Website", @hotel.url
         .hotel_data_column
           #hotel_address.hotel_date
             %i.icon-home

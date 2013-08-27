@@ -67,7 +67,7 @@ class Hotel < ActiveRecord::Base
     "#{name} <reservations@madbooker.com>"
   end
   
-  def url
+  def booking_url
     "#{App.protocol}://#{subdomain}.#{App.domain}/book"
   end
 
