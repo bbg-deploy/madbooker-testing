@@ -61,6 +61,9 @@ Madbooker::Application.routes.draw do
     post :checkout
   end
   
+  resources :inviteds
+  get "/invited/:guid", to: "inviteds#show", as: :guid_invited
+  
 
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' } do
     get "logout" => "devise/sessions#logout"

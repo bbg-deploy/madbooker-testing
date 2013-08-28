@@ -1,2 +1,2 @@
 
-<%= replace_with_partial "#membership", "/hotels/form/members" %>
+<%= replace_with_partial "#data", "/memberships/index/index" %>

@@ -14,7 +14,7 @@ class Membership::Invite < Less::Interaction
   end
   
   def add
-    @membership = context.hotel.memberships.create email: context.params[:membership][:email], user_id: user.try(:id)#it's ok if it's nill here
+    @membership = context.hotel.memberships.create email: context.params[:membership][:email], guid: UUIDTools::UUID.random_create.to_s.gsub("-", ""), user_id: user.try(:id)#it's ok if it's nill here
   end
   
   def invite

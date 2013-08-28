@@ -36,12 +36,21 @@ class GaData
   # direct
   # -cpc,ga:CPC
   # -organic
-  # referral
+  # referral, ga:fullReferrer
+  # + ga:source
   # -mobile
   # +. For city locations, wed like to list the top 20 cities.
   
+  
+  # 1. top 20 cities
+  # 2. per day for 30days:
+  #   1. visits
+  #   2. cpc
+  #   3. organic
+  
   def inbound
-    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:organicSearches,ga:visits&dimensions=ga:date,ga:isMobile,ga:city"
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:source,ga:date"
+#    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:organicSearches,ga:visits&dimensions=ga:source,ga:date,ga:isMobile"
   end
   
   private
