@@ -1,0 +1,26 @@
+
+
+  
+#form_simple_header
+  %h2 
+    Welcome to 
+    = @hotel.name
+  %h3 Pick a password to join the hotel.
+#form_simple
+  = simple_form_for @user, url: inviteds_path, method: :post, :html => {id: :signup_form} do |f|
+    = f.error_notification
+    = f.error :base
+    .form-inputs
+      %h3
+        %i.icon-user
+        Account Information
+      = f.input :email, :autofocus => true
+      = f.input :password
+      = f.input :password_confirmation
+      = hidden_field_tag "guid", params[:guid]
+      
+    .form-actions
+      = submit_tag "Sign up"
+
+
+

@@ -1,0 +1,38 @@
+
+
+
+#data
+  #invite
+    %h2
+      Invite a New Team Member
+    = simple_form_for  [current_hotel, Membership.new], remote: true do |f|
+      = f.input :email
+      .form-actions
+        = f.submit "Invite"
+
+  - if current_hotel.memberships.blank?
+    test
+  - else
+    #current_team  
+      %h3
+        Current Team  
+      %table.standard2
+        %thead
+          %tr
+            %th
+              Name
+            %th
+              Level
+
+        - current_hotel.memberships.includes(:user).decorate.each do |membership|
+          %tr.member{id: dom_id(membership)}
+            %td.email
+              = membership.name
+            %td
+              - if membership.user.blank?
+                (invited)
+              - if membership.user_id == current_hotel.owner_id
+                Owner
+              - else
+                %span.link= link_to "Remove", hotel_membership_path(current_hotel, membership), method: :delete, remote: true
+
