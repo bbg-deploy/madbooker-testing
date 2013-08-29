@@ -1,0 +1,8 @@
+
+= render "/reports/show/nav"
+= render "/reports/show/ga_nav"
+
+#data   
+  #ga_graph
+    :coffeescript
+      MB.Graphs.Bar2.render "#ga_graph", "Top 20 Sources", #{@data.series.to_json}, #{@data.headers.to_json}

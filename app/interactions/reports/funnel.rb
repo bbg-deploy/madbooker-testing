@@ -28,7 +28,7 @@ class Reports::Funnel < Less::Interaction
       count = v
       month = k[1]
       struct = a.select{|x| x.date.month == month}.first
-      struct.urls << uninited_data(fix_url(url), count)
+      struct.data << uninited_data(fix_url(url), count)
     end
     normalize_data( ensure_each_has_same_urls a)
   end
@@ -51,7 +51,7 @@ class Reports::Funnel < Less::Interaction
   end
       
   def uninited_row( month: nil)
-    OpenStruct.new date: month, urls: []
+    OpenStruct.new date: month, data: []
   end
   
   def uninited_data url = "", count = 0
@@ -69,11 +69,11 @@ class Reports::Funnel < Less::Interaction
   end
   
   def ensure_each_has_same_urls arr
-    urls = arr.map(&:urls).flatten.map{|a| a.url}.flatten.uniq
+    urls = arr.map(&:data).flatten.map{|a| a.url}.flatten.uniq
     arr.each do |struct|
       urls.each do |url|
-        next if url.in? struct.urls.map(&:url)
-        struct.urls << uninited_data(url)
+        next if url.in? struct.data.map(&:url)
+        struct.data << uninited_data(url)
       end
     end
     arr
@@ -83,7 +83,7 @@ class Reports::Funnel < Less::Interaction
     out = []
     arr.each do |month|
       struct = uninited_row month: month.date
-      struct.urls = normalize_urls month.urls
+      struct.data = normalize_urls month.data
       out << struct      
     end
     out

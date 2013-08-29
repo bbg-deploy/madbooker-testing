@@ -40,7 +40,7 @@ class Ga
   def reauth
     a = auth.reauthorize
     return false unless a["access_token"]
-    access_token = a[:access_token]
+    self.access_token = a[:access_token]
     refresh_callback.call a[:access_token]
     true
   end

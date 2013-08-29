@@ -74,5 +74,15 @@ class Hotel < ActiveRecord::Base
   def host
     "#{subdomain}.#{App.domain}"
   end
+  
+  def remove_google
+    update_attributes :gauth_access_token => nil, 
+      :gauth_refresh_token => nil, 
+      :gauth_expires_in =>nil, 
+      :gauth_issued_at => nil,
+      :gauth_access_token  => nil,
+      :ga_profile_id => nil,
+      :ga_account_id => nil
+  end
 
 end

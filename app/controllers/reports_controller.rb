@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_filter :ensure_g_auth, only: [:visits, :cities, :sources]
+  
   
   def show
     render    
@@ -26,31 +28,32 @@ class ReportsController < ApplicationController
   end
   
   def ga
-    @g_authed = g_authed?
-    return unless @g_authed
-    if params[:account_id]
-      redirect_to ga_hotel_reports_path(profile_id: current_hotel.ga_profile_id) and return if current_hotel.ga_profile_id
-      current_hotel.update_attribute :ga_account_id, params[:account_id]
-      @profiles = less_ga.data.profiles params[:account_id]
-      if @profiles[:items].size == 1
-        redirect_to ga_hotel_reports_path(profile_id: @profiles[:items][0][:id])
-      else
-        render
-      end
-    elsif params[:profile_id]
-      current_hotel.update_attribute :ga_profile_id, params[:profile_id]
-      less_ga.profile_id = params[:profile_id]
-      #@data = Reports::X.new(data: less_ga.data.visitors).run
-      @data = less_ga.data.inbound
-    else
-      redirect_to ga_hotel_reports_path(account_id: current_hotel.ga_account_id) and return if current_hotel.ga_account_id
-      @accounts = less_ga.data.accounts
-      if @accounts[:items].size == 1
-        redirect_to ga_hotel_reports_path(account_id: @accounts[:items][0][:id])
-      else
-        render
-      end
+    render and return unless g_authed?
+    
+    store_ga_attributes
+
+    ga = Hotel::Gaa.new(context, :less_ga => less_ga).run
+    if ga.go_to_report?
+      redirect_to visits_hotel_reports_path(current_hotel)
+      return
+    elsif ga.need_to_pick_account?
+      @accounts = ga.accounts
+    elsif ga.need_to_pick_profile?
+      @profiles = ga.profiles
     end
+    render
+  end
+  
+  def visits
+    @data = Reports::X.new(data: less_ga.data.inbound).run
+  end
+  
+  def sources
+    @data = Reports::Bar.new(data: less_ga.data.sources, dimension: "ga:source").run
+  end
+  
+  def cities
+    @data = Reports::Bar.new(data: less_ga.data.cities, dimension: "ga:city").run
   end
   
   def google_auth
@@ -72,11 +75,15 @@ class ReportsController < ApplicationController
   end
   
   def remove_google_auth
-    current_hotel.update_attributes :gauth_access_token => nil, :gauth_refresh_token => nil, :gauth_expires_in =>nil, :gauth_issued_at => nil
+    current_hotel.remove_google
     redirect_to [:ga, current_hotel, :reports]
   end
   
   private
+  def ensure_g_auth
+    redirect_to ga_hotel_reports_path(current_hotel) unless g_authed?
+  end
+  
   def date_range
     @date_range ||= DateRange.from_params params
   end
@@ -84,6 +91,7 @@ class ReportsController < ApplicationController
   def g_authed?
     !current_hotel.gauth_access_token.blank?
   end
+  helper_method :g_authed?
   
   def less_ga
     @less_ga ||= Ga.new client_id: App.ga_client_id,
@@ -105,6 +113,11 @@ class ReportsController < ApplicationController
     h[:gauth_expires_in]    = hash[:expires_in]
     h[:gauth_issued_at]     = hash[:issued_at]
     h    
+  end
+
+  def store_ga_attributes
+    current_hotel.update_attribute( :ga_account_id, params[:account_id]) if params[:account_id]
+    current_hotel.upd ate_attribute( :ga_profile_id, params[:profile_id]) if params[:profile_id]
   end
   
 end

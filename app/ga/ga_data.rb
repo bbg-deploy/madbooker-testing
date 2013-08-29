@@ -13,7 +13,7 @@ class GaData
   end
   
   def profiles account_id
-    get  "https://www.googleapis.com/analytics/v3/management/accounts/#{account_id}/webproperties/#{@google_analytics_code}/profiles"
+    get  "https://www.googleapis.com/analytics/v3/management/accounts/#{account_id}/webproperties/#{ga.google_analytics_code}/profiles"
   end
   
   def visitors
@@ -32,10 +32,10 @@ class GaData
   # cpa???
   # -cpc
   # 
-  # -visits
+  # -visits, ga:visits
   # direct
-  # -cpc,ga:CPC
-  # -organic
+  # -cpc, ga:CPC
+  # -organic, ga:organicSearches
   # referral, ga:fullReferrer
   # + ga:source
   # -mobile
@@ -49,8 +49,15 @@ class GaData
   #   3. organic
   
   def inbound
-    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:source,ga:date"
-#    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:organicSearches,ga:visits&dimensions=ga:source,ga:date,ga:isMobile"
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:organicSearches,ga:CPC,ga:visits&dimensions=ga:date"
+  end
+  
+  def sources
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:source"
+  end
+  
+  def cities
+    hit_api "https://www.googleapis.com/analytics/v3/data/ga?metrics=ga:visits&dimensions=ga:city"
   end
   
   private
@@ -78,8 +85,11 @@ class GaData
   end
   
   def hit_api_directly url
+    "GaData.hit_api_directly: #{url}".log
     h = HTTParty.get final_url(url)
-    h.parsed_response.with_indifferent_access
+    o = h.parsed_response.with_indifferent_access
+    "Exiting GaData.hit_api_directly".log
+    o
   end
   
   def add_token url

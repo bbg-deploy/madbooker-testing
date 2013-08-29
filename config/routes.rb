@@ -41,6 +41,9 @@ Madbooker::Application.routes.draw do
         get :daily
         get :funnel
         get :ga
+        get :visits
+        get :cities
+        get :sources
         get :google_auth
         delete :remove_google_auth
       end

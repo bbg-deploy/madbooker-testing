@@ -1,0 +1,6 @@
+
+- unless g_authed?
+  = link_to "Authenticate with Google Analytics", [:google_auth, current_hotel, :reports]
+  
+- else
+  = link_to "Remove Google Analytics Authentication", [:remove_google_auth, current_hotel, :reports], method: :delete

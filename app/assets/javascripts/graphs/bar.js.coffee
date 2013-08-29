@@ -5,7 +5,7 @@
       series = (data)->
         out = []
         data.each (d)->
-          d.urls.each (pair)->
+          d.data.each (pair)->
             current = out.find (o)-> o.name is pair.url
             if current
               current.data.add pair.count

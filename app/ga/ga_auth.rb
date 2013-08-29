@@ -28,11 +28,12 @@ class GaAuth
   def reauthorize
     #{"access_token"=>"ya29.AHES6ZSesJMBes2nCdNSKNzuiuOddSqdssRUNt7HyCChBDzXPtpbpsM", "token_type"=>"Bearer", "expires_in"=>3600}
     #{"error"=>{"errors"=>[{"domain"=>"global", "reason"=>"required", "message"=>"Login Required", "locationType"=>"header", "location"=>"Authorization"}], "code"=>401, "message"=>"Login Required"}}
+    "reauthorizing".log
     h = {}
     h[:access_token] = ga.access_token
     h[:refresh_token] = ga.refresh_token
     u = user_credentials h
-    u.refresh!.with_indifferent_access
+    u.refresh!.with_indifferent_access.log
   end
   
   
