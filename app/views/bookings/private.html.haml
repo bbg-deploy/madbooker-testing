@@ -91,6 +91,22 @@
     .row
       %span Made on:
       %span= format @booking.created_at
+      
+    - if @booking.no_show?
+      = link_to_function "Show credit card info", "$('#cc_info').slideToggle()"
+      #cc_info.hidden
+        .row
+          %span CC Number:
+          %span= @booking.cc_number
+        .row
+          %span CC CVV:
+          %span= @booking.cc_cvv
+        .row
+          %span CC Expiration:
+          %span= "#{@booking.cc_month}/#{@booking.cc_year}"
+        .row
+          %span CC Zip:
+          %span= @booking.cc_zipcode
 
 
 
