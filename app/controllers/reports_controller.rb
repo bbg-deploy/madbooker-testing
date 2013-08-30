@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
   end
   
   def visits
-    @data = Reports::Visits.new(data: less_ga.data.inbound).run
+    @data = Reports::Visits.new(data: less_ga.data.inbound.log).run
   end
   
   def sources
@@ -65,11 +65,11 @@ class ReportsController < ApplicationController
     begin
       auth_hash = less_ga.auth.handle_callback params
       current_hotel.update_attributes correct_keys(auth_hash)
-    rescue GaAuth::AccessDeniedError => e
+    rescue Less::Ga::Auth::AccessDeniedError => e
       #display error message to user?
-      Expecptions.record e
+      Exceptions.record e
     rescue Signet::AuthorizationError =>e
-      Expecptions.record e
+      Exceptions.record e
     end
     redirect_to [:ga, current_hotel, :reports]
   end
@@ -89,7 +89,7 @@ class ReportsController < ApplicationController
   end
   
   def g_authed?
-    !current_hotel.gauth_access_token.blank?
+    !current_hotel.gauth_access_token.blank? && !current_hotel.google_analytics_code.blank?
   end
   helper_method :g_authed?
   

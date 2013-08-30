@@ -125,7 +125,7 @@ CREATE TABLE `hotels` (
   `room_rates_display` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `subdomain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `street1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `google_analytics_code` text COLLATE utf8_unicode_ci,
+  `google_analytics_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fine_print` text COLLATE utf8_unicode_ci,
   `logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -191,7 +191,7 @@ CREATE TABLE `memberships` (
   `updated_at` datetime DEFAULT NULL,
   `guid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +311,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_created_at` (`created_at`),
   KEY `index_stats_on_kind` (`kind`),
   KEY `deveice_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=350 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -341,7 +341,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -353,7 +353,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-27 14:04:23
+-- Dump completed on 2013-08-30  8:26:35
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -437,3 +437,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130822144640');
 INSERT INTO schema_migrations (version) VALUES ('20130826171948');
 
 INSERT INTO schema_migrations (version) VALUES ('20130827180311');
+
+INSERT INTO schema_migrations (version) VALUES ('20130830122448');

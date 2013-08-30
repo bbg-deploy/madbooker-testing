@@ -11,7 +11,7 @@
 #  room_rates_display                       :string(255)
 #  subdomain                                :string(255)
 #  street1                                  :string(255)
-#  google_analytics_code                    :text
+#  google_analytics_code                    :string(255)
 #  fine_print                               :text
 #  logo_file_name                           :string(255)
 #  logo_content_type                        :string(255)
