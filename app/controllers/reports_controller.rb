@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_filter :ensure_g_auth, only: [:visits, :cities, :sources]
+  rescue_from Signet::AuthorizationError, with: :handle_ga_auth_error
   
   
   def show
@@ -40,6 +41,10 @@ class ReportsController < ApplicationController
       @accounts = ga.accounts
     elsif ga.need_to_pick_profile?
       @profiles = ga.profiles
+    else
+      #prob chose a goog account that doesn't match the hotel.google_analytics_code
+      current_hotel.remove_google
+      @error = "We didn't find any Google Analytics accounts or profile that match the Google Analytics Code that is stored in the Hotel's Settings. Please double check everything."
     end
     render
   end
@@ -92,6 +97,12 @@ class ReportsController < ApplicationController
     !current_hotel.gauth_access_token.blank? && !current_hotel.google_analytics_code.blank?
   end
   helper_method :g_authed?
+  
+  def handle_ga_auth_error ex
+    Exceptions.record ex
+    current_hotel.remove_google
+    redirect_to [:ga, current_hotel, :reports]
+  end
   
   def less_ga
     @less_ga ||= Less::Ga::Sb.new client_id: App.ga_client_id,

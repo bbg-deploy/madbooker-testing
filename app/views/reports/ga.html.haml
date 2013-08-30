@@ -14,4 +14,7 @@
       - @profiles[:items].each do |profile|
         .item
           = link_to profile[:name], ga_hotel_reports_path(current_hotel, profile_id: profile[:id])
-    
+    - if @error
+      %h2 We hit a snag
+      .item
+        = @error

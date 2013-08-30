@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: git@github.com:LessEverything/less_ga.git
-  revision: 3777fd2333f8538bfb22e7757b4a18a41178ef82
+  revision: fe7c5ae2cf4142fa0fb755c8eab07dd8ecd0e67f
   specs:
     less_ga (0.0.2)
       faraday (= 0.8.8)
