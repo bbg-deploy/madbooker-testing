@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class Hotel::GaaTest < ActiveSupport::TestCase
+class Hotel::GaTest < ActiveSupport::TestCase
 
 
   def ga
-    ga ||= Hotel::Gaa.new context: @context, less_ga: @less_ga
+    ga ||= Hotel::Ga.new context: @context, less_ga: @less_ga
   end
   
   context "a google auth" do

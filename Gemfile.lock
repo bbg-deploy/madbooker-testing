@@ -33,6 +33,15 @@ GIT
       open4
 
 GIT
+  remote: git@github.com:LessEverything/less_ga.git
+  revision: 3777fd2333f8538bfb22e7757b4a18a41178ef82
+  specs:
+    less_ga (0.0.2)
+      faraday (= 0.8.8)
+      google-api-client (= 0.6.3)
+      httparty (= 0.11.0)
+
+GIT
   remote: http://github.com/stripe/stripe-ruby
   revision: fd09e677311d7d78a02af9b6c7f61b3a2c3b752d
   specs:
@@ -342,9 +351,7 @@ DEPENDENCIES
   devise (= 3.0.0.rc)
   draper
   faker
-  google-api-client
   haml-rails
-  httparty
   intercom
   jbuilder (~> 1.0.1)
   jquery-rails
@@ -352,6 +359,7 @@ DEPENDENCIES
   jquery-ui-sass-rails
   json
   less-js-routes!
+  less_ga!
   less_interactions (= 0.0.8)!
   letter_opener!
   memoist

@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
     
     store_ga_attributes
 
-    ga = Hotel::Gaa.new(context, :less_ga => less_ga).run
+    ga = Hotel::Ga.new(context, :less_ga => less_ga).run
     if ga.go_to_report?
       redirect_to visits_hotel_reports_path(current_hotel)
       return
@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
   end
   
   def visits
-    @data = Reports::X.new(data: less_ga.data.inbound).run
+    @data = Reports::Visits.new(data: less_ga.data.inbound).run
   end
   
   def sources
@@ -94,7 +94,7 @@ class ReportsController < ApplicationController
   helper_method :g_authed?
   
   def less_ga
-    @less_ga ||= Ga.new client_id: App.ga_client_id,
+    @less_ga ||= Less::Ga::Sb.new client_id: App.ga_client_id,
       client_secret: App.ga_client_secret,
       auth_callback_url: oauth2callback_url, 
       webproperty: current_hotel.google_analytics_code, 
@@ -117,7 +117,7 @@ class ReportsController < ApplicationController
 
   def store_ga_attributes
     current_hotel.update_attribute( :ga_account_id, params[:account_id]) if params[:account_id]
-    current_hotel.upd ate_attribute( :ga_profile_id, params[:profile_id]) if params[:profile_id]
+    current_hotel.update_attribute( :ga_profile_id, params[:profile_id]) if params[:profile_id]
   end
   
 end

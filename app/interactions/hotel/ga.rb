@@ -1,4 +1,4 @@
-class Hotel::Gaa < Less::Interaction
+class Hotel::Ga < Less::Interaction
   
   expects :context
   expects :less_ga

@@ -1,4 +1,4 @@
-class Reports::X < Less::Interaction
+class Reports::Visits < Less::Interaction
 
   expects :data
 
