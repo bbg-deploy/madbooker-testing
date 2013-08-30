@@ -1,8 +1,14 @@
 
 - unless g_authed?
   - if current_hotel.google_analytics_code.blank?
+    %H2 1.
     = link_to "Please add your Google Analytics code to your settings", [:edit, current_hotel]
+    %h2 2.
+    Authenticate with Google Analytics
   - elsif current_hotel.gauth_access_token.blank?
+    %h2 1.
+    Please add your Google Analytics code to your settings
+    %h2 2.    
     = link_to "Authenticate with Google Analytics", [:google_auth, current_hotel, :reports]
   
 - else

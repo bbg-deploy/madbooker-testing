@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
   end
   
   def visits
-    @data = Reports::Visits.new(data: less_ga.data.inbound.log).run
+    @data = Reports::Visits.new(data: less_ga.data.inbound).run
   end
   
   def sources
