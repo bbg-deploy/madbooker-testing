@@ -1,0 +1,20 @@
+
+
+This is your Low Invenotry Report from Madbooker.com
+
+The following dates have fewer rooms available than your threshold of 
+= @hotel.minimal_inventory_notification_threshold
+
+- @inventories.each do |inventory|
+  %div
+    On
+    = inventory.date
+    for room type
+    = inventory.room_type.name
+    of
+    = inventory.available_rooms
+    available rooms 
+    = inventory.sales_count
+    have been booked, which leaves only
+    = inventory.available_rooms - inventory.sales_count
+    that are still available to be booked.

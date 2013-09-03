@@ -16,7 +16,7 @@ module AuthorizedStuff
       return true if controller_name == "home"
       return true if devise_controller?
       return true if hotel_from_subdomain
-      return true if current_hotel.owner.payment_status.in?( %w(trialing active))
+      return true if current_hotel.owner.paying?
     end  
   end
   

@@ -33,4 +33,10 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :hotels, through: :memberships
   
+  scope :paying, ->{ where "payment_status in ('trialing', 'active')" }
+  
+  def paying?
+    payment_status.in?( %w(trialing active))
+  end
+  
 end

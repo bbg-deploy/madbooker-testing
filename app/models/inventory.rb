@@ -25,7 +25,9 @@ class Inventory < ActiveRecord::Base
   scope :for_month, ->(date){where date: date.change(day:1)..date.end_of_month}
   scope :range, ->(range) { where date: range }
   scope :for_date, ->(date) { where date: date }
+  scope :next_30_days, -> { where date: Date.current..(Date.current+30)}
   scope :with_availablity, ->{where("available_rooms - sales_count > 0")}
+  scope :past_threshold, ->(threshold){ where " available_rooms - sales_count <= ?", threshold }
   
   
   

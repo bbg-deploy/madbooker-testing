@@ -144,6 +144,24 @@ class << self
     make User, defaults, args
   end
   
+  def membership args = {}
+    defaults = {
+      :hotel_id   => 1,
+      :user_id    => 1,
+      :email      => Faker::Internet.email
+    }
+    make Membership, defaults, args
+  end
+  
+  
+  def hotel_and_stuff! hotel_args = {}
+    u = user!
+    h = hotel!( {owner_id: u.id}.merge(hotel_args))
+    membership! user_id: u.id, hotel_id: h.id
+    room_type! hotel_id: h.id
+    room_type! hotel_id: h.id
+    h
+  end
   
   
   private
