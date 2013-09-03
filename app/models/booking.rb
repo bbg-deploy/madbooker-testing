@@ -51,6 +51,7 @@ class Booking < ActiveRecord::Base
     end
     where(arrive: date)
   }
+  scope :need_cleanup, ->{ where "arrive < ? and encrypted_cc_number is not null", Date.current - 14 }
   
   
   validates_presence_of :hotel_id, :bookable_id, :bookable_type, :arrive, :depart, 

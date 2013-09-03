@@ -1,7 +1,6 @@
 class Cron::LowInventory < Less::Interaction
   
   
-  attr_accessor :inventories
   
   def run
     @stats = OpenStruct.new hotels: 0, inventories: 0, details: []
