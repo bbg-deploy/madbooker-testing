@@ -16,5 +16,8 @@
       = link_to [current_hotel, :memberships], :class => 'on' do
         %i.icon-user
         Team Members
+      = link_to setup_instructions_hotels_path do
+        %i.icon-user
+        Setup Instructions
 
   = render "/memberships/index/index"
