@@ -86,7 +86,7 @@ class ReportsController < ApplicationController
   
   private
   def ensure_g_auth
-    redirect_to ga_hotel_reports_path(current_hotel) unless g_authed?
+    redirect_to ga_hotel_reports_path(current_hotel) unless g_authed? && g_setup?
   end
   
   def date_range
@@ -94,9 +94,15 @@ class ReportsController < ApplicationController
   end
   
   def g_authed?
-    !current_hotel.gauth_access_token.blank? && !current_hotel.google_analytics_code.blank?
+    !current_hotel.gauth_access_token.blank? && 
+    !current_hotel.google_analytics_code.blank?
   end
   helper_method :g_authed?
+  
+  def g_setup?
+    !current_hotel.ga_account_id.blank? &&
+    !current_hotel.ga_profile_id.blank?
+  end
   
   def handle_ga_auth_error ex
     Exceptions.record ex
