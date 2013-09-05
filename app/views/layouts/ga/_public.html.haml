@@ -1,0 +1,23 @@
+
+%script
+  ga('create', '#{App.ga_account_id}', {'allowLinker':true, 'cookieDomain': '#{App.ga_root_domain}' });
+  ga('send','pageview');
+  
+- if @hotel.google_analytics_code_type == Hotel.GA_UNIVERSAL_ANALYTICS
+  %script
+    ga('create', "#{@hotel.google_analytics_code}", {'name':'clientTracker' 'allowLinker':true, 'cookieDomain':'#{App.ga_root_domain}'});
+    ga('clientTracker.send','pageview');
+- elsif @hotel.google_analytics_code_type == Hotel.GA_CLASSIC_ASYNCHRONOUS
+  %script
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', "#{@hotel.google_analytics_code}"]);
+    _gaq.push(['_setDomainName', '#{App.ga_root_domain}']);
+    _gaq.push(['_setAllowLinker', true]);
+  
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })(); 

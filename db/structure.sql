@@ -149,6 +149,7 @@ CREATE TABLE `hotels` (
   `gauth_issued_at` datetime DEFAULT NULL,
   `ga_account_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ga_profile_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `google_analytics_code_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Universal Analytics',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -311,7 +312,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_created_at` (`created_at`),
   KEY `index_stats_on_kind` (`kind`),
   KEY `deveice_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=361 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,7 +354,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-08-30  8:26:35
+-- Dump completed on 2013-09-04 12:18:34
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -439,3 +440,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130826171948');
 INSERT INTO schema_migrations (version) VALUES ('20130827180311');
 
 INSERT INTO schema_migrations (version) VALUES ('20130830122448');
+
+INSERT INTO schema_migrations (version) VALUES ('20130904161137');

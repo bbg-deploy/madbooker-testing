@@ -11,11 +11,15 @@ development:
   ga_client_secret: zOeeme99_dQ6vKAtNZ2l9dK-
   redirect_uri:	urn:ietf:wg:oauth:2.0:oob
   redirect_url: http://localhost
+  ga_account_id: UA-43393407-2
+  ga_root_domain: lesseverything.com
 
 test:
   domain: example.test
   protocol: http
   from_address: support@madbooker.com
+  ga_account_id: UA-43393407-2
+  ga_root_domain: lesseverything.com
 
 staging:
   domain: mb.lesseverything.com
@@ -26,6 +30,8 @@ staging:
   ga_client_id: 924558594137.apps.googleusercontent.com
   ga_client_secret: cjOcr6peVLD_uEpqGVIUqk1f
   from_address: support@madbooker.com
+  ga_account_id: UA-43393407-2
+  ga_root_domain: lesseverything.com
   
 production:
   domain: madbooker.com
@@ -36,4 +42,6 @@ production:
   ga_client_id: 711350426594.apps.googleusercontent.com
   ga_client_secret: rKIWH2dLNfJS8ah-kH9DQLtn
   from_address: support@madbooker.com
+  ga_account_id: UA-43393407-1
+  ga_root_domain: madbooker.com
   

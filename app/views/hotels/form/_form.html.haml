@@ -39,7 +39,9 @@
       = f.input :url, :label => "Hotel Website URL", :hint => "http://yourwebsite.com", :wrapper_class => 'website_url'
       = f.input :subdomain, :hint => "http://yoursubdomain.madbooker.com", :label => "Madbooker Subdomain", :wrapper_class => 'subdomain'
       .clear
-      = f.input :google_analytics_code, :hint => "UA-XXXXXX-1"
+      = f.input :google_analytics_code, :hint => "UA-XXXXXX-1", :wrapper_class => "google_analytics_code"
+      = f.input :google_analytics_code_type, :hint => "<a href='javascript: return false' id='google_analytics_code_type_help_clicker'>What's the difference?</a>".html_safe, :wrapper_class => "google_analytics_code_type", collection: Hotel::GOOGLE_ANALYTICS_TYPES
+      .clear
       = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This is the agreement the guest will agree to before submitting their booking"
       /= f.input :room_rates_display, collection: Hotel::ROOM_RATE_DISPLAY, include_blank: false
       

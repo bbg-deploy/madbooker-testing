@@ -54,6 +54,9 @@ class Hotel < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
   ROOM_RATE_DISPLAY = ["Short", "Long"]
+  GA_UNIVERSAL_ANALYTICS = "Universal Analytics"
+  GA_CLASSIC_ASYNCHRONOUS = "Classic Asynchronous"
+  GOOGLE_ANALYTICS_TYPES = [GA_UNIVERSAL_ANALYTICS, GA_CLASSIC_ASYNCHRONOUS]
   
   accepts_nested_attributes_for :room_types, :allow_destroy => true
   

@@ -21,7 +21,7 @@ class HotelsController < ApplicationController
   def create
     hotel = Hotel::Create.new(context).run
     if hotel.persisted?
-      redirect_to [:edit, hotel], notice: "Saved"
+      redirect_to setup_instructions_hotels_path, notice: "Saved"
     else
       res hotel.decorate
     end
