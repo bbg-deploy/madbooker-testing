@@ -853,6 +853,26 @@ a.add_link
 
 
 
+=yellow_box
+  background: $yellow
+  padding: $pad
+  border: 1px solid #ccc
+  margin: 15px 0
+  h3
+    +header(700)
+    font-weight: 600
+    font-size: 15px
+    margin: 0 0 0 0 !important
+    padding: 0 0 0 0 !important
+  .if, .copy
+    margin: 5px 0 12px 0
+  textarea
+    +block
+    width: 500px
+    +arial
+    margin: 0 0 0 0
+    font-size: 13px
+    height: 70px
 
 
 #setup
@@ -891,29 +911,24 @@ a.add_link
       &:last-child
         margin-left: $pad
 
-
     #use_this_code
+      +yellow_box
       +rel
-      border: 1px solid #ccc
-      +clear
-      padding: $pad
-      margin: 15px 0 0 0
       .what
+        font-weight: 700
+        padding: 0 0 10px 0
+        font-size: 16px
+      .hint
         +abs
-        top: -10px
-        left: ($pad - 5px)
-        padding: 0 5px
-        background: white
-      textarea
-        +block
-        width: 500px
-        +arial
-        margin: 10px 0 0 0
+        top: 90px
+        width: 250px
+        right: 90px
+        line-height: 145%
         font-size: 13px
-        height: 50px
-      .copy
-      #example_text
-      #example
+  .highlight
+    +yellow_box
+    textarea
+
 
 
 
