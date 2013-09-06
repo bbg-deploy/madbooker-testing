@@ -858,47 +858,62 @@ a.add_link
 #setup
   #data
     h2
-      margin: 0 0 5px 0 !important
+      margin: 35px 0 5px 0 !important
+      &:first-child
+        margin-top: 0px !important
       span
         font-weight: 700
         margin-right: 4px
-    #code_boxes
-      border-bottom: 1px solid #ccc
-      margin: 10px 0 $pad 0 
-      .code_box
-        width: ((960px - ($pad * 2)) / 4) - 1px
+
+  #link_builder
+    .option
+      width: 160px
+      +fl
+      margin: ($pad / 2) 0
+      &:nth-child(2)
+        margin-left: $pad
+        margin-right: $pad
+    #preview
+      width: 400px
+      +fl
+      padding: 18px 18px 0 0
+      margin: 21px 0 0 0
+      .what
         +fl
-        +tc
-        border: 1px solid #ccc
-        border-bottom: none
-        border-right: none
-        padding: 20px
-        &:nth-child(4n+4)
-          border-right: 1px solid #ccc
-        textarea
-          +block
-          margin: 15px 0 10px 0
-          width: 100%
-          +arial
-          font-size: 13px
-          height: 50px
-        .copy
-          font-size: 12px
-          +arial
-          +tc
-          +italic
-          color: #777
-          line-height: 130%
-        .example
-          a
-            display: inline-block
-            
+        &:first-child
+          margin-right: 15px
+        &:last-child
+          margin-left: 15px
+      #example
+        +fl
+      &:nth-child(2)
+        margin-left: $pad
+      &:last-child
+        margin-left: $pad
 
 
-
-
-
-
+    #use_this_code
+      +rel
+      border: 1px solid #ccc
+      +clear
+      padding: $pad
+      margin: 15px 0 0 0
+      .what
+        +abs
+        top: -10px
+        left: ($pad - 5px)
+        padding: 0 5px
+        background: white
+      textarea
+        +block
+        width: 500px
+        +arial
+        margin: 10px 0 0 0
+        font-size: 13px
+        height: 50px
+      .copy
+      #example_text
+      #example
 
 
 

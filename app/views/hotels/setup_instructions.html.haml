@@ -24,19 +24,32 @@
     You must pick a button or link to put on your website. This link will send your website visitors into your madbooker booking engine.
     
     #link_builder
-      What would you like your button/link to say?
-      = select_tag "", options_for_select(["Book Your Room", 'Book Your Nights', "Make a Reservation", 'Reserve Your Room']), :id => "link_text"
+      .option
+        Pick Your Text
+        = select_tag "", options_for_select(["Book Your Room", 'Book Your Nights', "Make a Reservation", 'Reserve Your Room']), :id => "link_text"
       
-      How would you like your button to look?
-      = select_tag "", options_for_select(["Link", "Grey button", "Green button", "Blue button"]), :id => :link_look
-      = hidden_field_tag "", current_hotel.booking_url, id: "booking_url"
-    
-    
-      .code_box
-        .copy
-          Here's what your button/lik will look like.
+      .option
+        Pick Your Style
+        = select_tag "", options_for_select(["Link", "Grey button", "Green button", "Blue button"]), :id => :link_look
+        = hidden_field_tag "", current_hotel.booking_url, id: "booking_url"
+      
+          
+      #preview
+        .what
+          Preview
+          %i.icon-long-arrow-right
+        //.copy
+        //Here's what your button/link will look like.
         #example
           = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
+        .what
+          %i.icon-long-arrow-left
+          Preview
+
+      .clear
+      #use_this_code  
+        .what
+          Copy & Paste
         .copy
           Here's the code you'll need to add to your website.
         %textarea#example_text
@@ -90,5 +103,14 @@
           <a href="#{current_hotel.booking_url}" onclick="_gaq.push(['_link', "#{current_hotel.host}"])" target="_blank">Book Your Room</a>
     %h2
       Frenquently Asked Questions
-    Have as many links to your booking engine as you like.
-    How do publish the link? 
+    .faq
+      .question
+        = link_to "Have as many links to your booking engine as you like.", "#"
+      .answer
+        Here's the answer to the question.
+    .faq
+      .question
+        = link_to "Do publish the link? ", "#"
+      .answer
+        Here's the answer to the question.
+
