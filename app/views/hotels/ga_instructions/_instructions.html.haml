@@ -1,0 +1,53 @@
+
+There are two ways to tell. First get to your Google Analytics admin screen:
+%ol
+  %li Go to Google Analytics #{link_to "http://www.google.com/analytics/", "http://www.google.com/analytics/"}
+  %li Log in to your account
+  %li Pick the Analytics account you'd like to manage
+  %li From the dashboad click on "Admin" on the top right.
+  %li In the middle column ("Property") click "Trcking Info"
+If there are suboptions "Session Settings", "Organic Search Sources", "Referral Exclusion List", and "Search Term Exclusion List"
+then you are using the #{Hotel::GA_UNIVERSAL_ANALYTICS}, if not then you are using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}.
+
+If you're still not sure you can check the Tracking code itself.
+You are using the #{Hotel::GA_UNIVERSAL_ANALYTICS} if it looks like this:
+%pre
+  %code
+    :escaped
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-xxxxxxx-1');
+        ga('send', 'pageview');
+
+      </script>
+
+You are using the #{Hotel::GA_CLASSIC_ASYNCHRONOUS} if it looks like this:
+%pre
+  %code
+    :escaped
+      <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-xxxxxxx-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+
+If you're still not sure, see which the page looks closest to.
+You are using the #{Hotel::GA_UNIVERSAL_ANALYTICS} if it looks like this:
+= image_tag "js-tracking-configuation.png"
+
+You are using the #{Hotel::GA_CLASSIC_ASYNCHRONOUS} if it looks like this:
+= image_tag "Google Analytics-2.jpg"
+

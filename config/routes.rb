@@ -9,6 +9,7 @@ Madbooker::Application.routes.draw do
     end
     collection do
       get 'setup_instructions'
+      get :ga_instructions
     end
     resources :room_types do
       member do
