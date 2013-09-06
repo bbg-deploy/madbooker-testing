@@ -48,13 +48,15 @@
 
       .clear
       #use_this_code  
-        .what
+        %h3
           Copy & Paste
         .copy
           Here's the code you'll need to add to your website.
         %textarea#example_text
           = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
-    
+        .hint
+          %i.icon-long-arrow-left
+          Double click on the text inside the white box and copy and paste that into your website's code base.
 
     %h2
       %span
@@ -76,21 +78,29 @@
       Ensure that cross­domain tracking is configured in Google Analytics.
     Note, this step may be ommited if you're not using Google Analytics integration.
     Add this snippet to the page with the link/button above:
-    If you're using #{Hotel::GA_UNIVERSAL_ANALYTICS}:
-    %pre
-      %code
-        :escaped
+    
+    .highlight
+      %h3
+        Copy and Paste this if...
+      .if
+        If you're using #{Hotel::GA_UNIVERSAL_ANALYTICS}:  
+      %textarea
+        :plain
           <script>
-            ga('require', 'linker');
-            ga('linker:autoLink', "#{App.ga_root_domain}");
+          ga('require', 'linker');
+          ga('linker:autoLink', "#{App.ga_root_domain}");
           </script>
-    If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
-    Add the following snippet to the button/link snippet above.
-    This is what needs to be added:
-    %pre
-      %code
-        :escaped
+    
+    .highlight
+      %h3
+        Copy and Paste this if...
+      .if
+        If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
+      %textarea
+        :plain
           _gaq.push(['_link', "#{current_hotel.host}"])
+    
+
     So this:
     %pre
       %code
