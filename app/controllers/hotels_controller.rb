@@ -50,7 +50,7 @@ class HotelsController < ApplicationController
   end
   
   def ga_instructions
-    render layout: false
+    #render layout: false
   end
   
   private
