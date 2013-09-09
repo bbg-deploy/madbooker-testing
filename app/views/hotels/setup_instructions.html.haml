@@ -74,6 +74,7 @@
       
     %h2
       %span
+        <a href='#{ga_instructions_hotels_path}' target='_blank'>figure out which one</a>
         Step 4
       Ensure that cross­domain tracking is configured in Google Analytics.
     Note, this step may be ommited if you're not using Google Analytics integration.
@@ -123,4 +124,12 @@
         = link_to "Do publish the link? ", "#"
       .answer
         Here's the answer to the question.
-
+    .faq
+      .question
+        = link_to "How can I tell if I use Google Analytics #{Hotel::GA_UNIVERSAL_ANALYTICS} or #{Hotel::GA_CLASSIC_ASYNCHRONOUS}?", "#"
+      .answer
+        = render "/hotels/ga_instructions/instructions"
+        
+        
+        
+        
