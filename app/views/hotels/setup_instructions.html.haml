@@ -74,62 +74,92 @@
       
     %h2
       %span
-        <a href='#{ga_instructions_hotels_path}' target='_blank'>figure out which one</a>
-        Step 4
-      Ensure that cross­domain tracking is configured in Google Analytics.
-    Note, this step may be ommited if you're not using Google Analytics integration.
-    Add this snippet to the page with the link/button above:
+        Step 2
+      Copy & Paste The Booking Code Into Your Website
+    This give your visitors the ability to click and see your new booking engine.
+
+    //Ensure that cross­domain tracking is configured in Google Analytics.
+    //Note, this step may be ommited if you're not using Google Analytics integration.
+    //Add this snippet to the page with the link/button above:
+    //<a href='#{ga_instructions_hotels_path}' target='_blank'>figure out which one</a>
+
+    .clear
     
     .highlight
-      %h3
-        Copy and Paste this if...
-      .if
+      .header
         If you're using #{Hotel::GA_UNIVERSAL_ANALYTICS}:  
+      .candp
+        Copy and Paste
       %textarea
         :plain
           <script>
           ga('require', 'linker');
           ga('linker:autoLink', "#{App.ga_root_domain}");
           </script>
-    
-    //.highlight
-    //  %h3
-    //    Copy and Paste this if...
-    //  .if
-    //    If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
-    //  %textarea
-    //    :plain
-    //      _gaq.push(['_link', "#{current_hotel.host}"])
-    
+      %br
+      %textarea#example_text
+        = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
 
-    So this:
-    %pre
-      %code
-        :escaped
-          <a href="#{current_hotel.booking_url}" target="_blank">Book Your Room</a>
-    becomes this:
-    %pre
-      %code
+
+    .or
+      OR
+
+    .highlight.highlight_right
+      .header
+        If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
+      .candp
+        Copy and Paste
+      //%textarea
+      //:plain
+      //_gaq.push(['_link', "#{current_hotel.host}"])
+      %textarea
         :escaped
           <a href="#{current_hotel.booking_url}" onclick="_gaq.push(['_link', "#{current_hotel.host}"])" target="_blank">Book Your Room</a>
+      .figure_out
+        %strong
+          %i.icon-question-sign
+          Help Tip:
+        Google Analytics, Universal Analytics or Classic Asynchronous.
+        <a href='#{ga_instructions_hotels_path}' target='_blank'>Which one do you use?</a>
+
+
+    .clear
+
+    //So this:
+    //%pre
+    //  %code
+    //    :escaped
+    //      <a href="#{current_hotel.booking_url}" target="_blank">Book Your Room</a>
+    //becomes this:
+
     %h2
-      Frenquently Asked Questions
-    .faq
-      .question
-        = link_to "Have as many links to your booking engine as you like.", "#"
-      .answer
-        Here's the answer to the question.
-    .faq
-      .question
-        = link_to "Do publish the link? ", "#"
-      .answer
-        Here's the answer to the question.
-    .faq
-      .question
-        = link_to "How can I tell if I use Google Analytics #{Hotel::GA_UNIVERSAL_ANALYTICS} or #{Hotel::GA_CLASSIC_ASYNCHRONOUS}?", "#"
-      .answer
-        = render "/hotels/ga_instructions/instructions"
-        
+      %span
+        Step 3
+      Publish Your Updated Website
+    This will make your your embedded link or button to your Madbooker booking engine live.
+
+
+
+    #faq
+
+      %h2
+        Frenquently Asked Questions
+      .faq
+        .question
+          Have as many links to your booking engine as you like?
+        .answer
+          As many links as you want.
+      //.faq
+      //  .question
+      //    How do publish the link?
+      //  .answer
+      //    Here's the answer to the question.
+      .faq
+        .question
+          How can I tell if I use Google Analytics #{Hotel::GA_UNIVERSAL_ANALYTICS} or #{Hotel::GA_CLASSIC_ASYNCHRONOUS}?
+        .answer
+          = render "/hotels/ga_instructions/instructions"
+          
         
         
         
