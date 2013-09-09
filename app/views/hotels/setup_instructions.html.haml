@@ -47,29 +47,29 @@
           Preview
 
       .clear
-      #use_this_code  
-        %h3
-          Copy & Paste
-        .copy
-          Here's the code you'll need to add to your website.
-        %textarea#example_text
-          = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
-        .hint
-          %i.icon-long-arrow-left
-          Double click on the text inside the white box and copy and paste that into your website's code base.
+      //#use_this_code  
+      //  %h3
+      //    Copy & Paste
+      //  .copy
+      //    Here's the code you'll need to add to your website.
+      //  %textarea#example_text
+      //    = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
+      //  .hint
+      //    %i.icon-long-arrow-left
+      //    Double click on the text inside the white box and copy and paste that into your website's code base.
 
-    %h2
-      %span
-        Step 2
-      Add your button/link to you website
-    Take the code from Step 1 and insert it into your website.
-      
-      
-    %h2
-      %span
-        Step 3
-      Publish Your Updated Website
-    This will make your your embedded link or button to your Madbooker booking engine live.
+    //%h2
+    //  %span
+    //    Step 2
+    //  Add your button/link to you website
+    //Take the code from Step 1 and insert it into your website.
+    //  
+    //  
+    //%h2
+    //  %span
+    //    Step 3
+    //  Publish Your Updated Website
+    //This will make your your embedded link or button to your Madbooker booking engine live.
 
       
     %h2
@@ -91,14 +91,14 @@
           ga('linker:autoLink', "#{App.ga_root_domain}");
           </script>
     
-    .highlight
-      %h3
-        Copy and Paste this if...
-      .if
-        If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
-      %textarea
-        :plain
-          _gaq.push(['_link', "#{current_hotel.host}"])
+    //.highlight
+    //  %h3
+    //    Copy and Paste this if...
+    //  .if
+    //    If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
+    //  %textarea
+    //    :plain
+    //      _gaq.push(['_link', "#{current_hotel.host}"])
     
 
     So this:
