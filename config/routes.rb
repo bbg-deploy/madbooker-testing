@@ -46,6 +46,7 @@ Madbooker::Application.routes.draw do
         get :cities
         get :sources
         get :google_auth
+        get :denials
         delete :remove_google_auth
       end
     end

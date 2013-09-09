@@ -28,6 +28,10 @@ class ReportsController < ApplicationController
     @funnel = Reports::Funnel.new(context).run
   end
   
+  def denials
+    @denials = Reports::Denials.new(context).run
+  end
+  
   def ga
     render and return unless g_authed?
     

@@ -11,7 +11,7 @@
             marker: { symbol: 'circle'}
           }
 
-      render: (selector, title, data, categories)->
+      render: (selector, title, data, categories, yTitle)->
         data[0].dataLabels = {
           enabled: true,
           rotation: -90,
@@ -40,7 +40,7 @@
             }
           }
           yAxis: {
-            title: { text: 'Visits' }
+            title: { text: yTitle }
           }
           legend: { enabled: false }
           series: data
