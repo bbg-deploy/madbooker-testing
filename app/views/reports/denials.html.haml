@@ -1,0 +1,9 @@
+
+
+= render "/reports/show/nav"
+
+#data   
+  #denials_graph
+    :coffeescript
+      MB.Graphs.Bar2.render "#denials_graph", "Denials", #{@denials.series.to_json}, #{@denials.headers.to_json}, "Denials"
+
