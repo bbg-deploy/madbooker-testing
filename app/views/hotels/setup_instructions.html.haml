@@ -120,8 +120,8 @@
           %i.icon-question-sign
           Help Tip:
         Google Analytics, Universal Analytics or Classic Asynchronous.
-        <a href='#{ga_instructions_hotels_path}' target='_blank'>Which one do you use?</a>
-
+        //<a href='#{ga_instructions_hotels_path}' target='_blank'>Which one do you use?</a>
+        = link_to 'Which one do you use?', '#instructions'
 
     .clear
 
@@ -149,12 +149,8 @@
           Have as many links to your booking engine as you like?
         .answer
           As many links as you want.
-      //.faq
-      //  .question
-      //    How do publish the link?
-      //  .answer
-      //    Here's the answer to the question.
       .faq
+        %a{:name=>'instructions'}
         .question
           How can I tell if I use Google Analytics #{Hotel::GA_UNIVERSAL_ANALYTICS} or #{Hotel::GA_CLASSIC_ASYNCHRONOUS}?
         .answer
