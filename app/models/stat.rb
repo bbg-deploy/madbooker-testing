@@ -36,12 +36,15 @@ class Stat < ActiveRecord::Base
   DEVICE_TYPES  = [MOBILE, TABLET, DESKTOP] #tv ignored for now
 
   
+  scope :mobile,        ->{where device_type: MOBILE}
+  scope :tablet,        ->{where device_type: TABLET}
+  scope :desktop,       ->{where device_type: DESKTOP}
   scope :searches,      ->{where kind: SEARCH}
   scope :pages,         ->{where kind: PAGE}
   scope :look_to_book,  ->{where kind: [LOOK, BOOK]}
   scope :denials,       ->{ where( kind: SEARCH).where('data like \'%"available_rooms":[]%\'') }
   scope :range,         ->(range) { where created_at: range }
-  scope :searched_for,   ->(range) { where "start between ? and ? or end between ? and ?", range.first, range.last, range.first, range.last}
+  scope :searched_for,   ->(range) { where "? between start and end or ? between start and end", range.first, range.last }
   
   
   

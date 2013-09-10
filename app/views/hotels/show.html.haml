@@ -11,7 +11,7 @@
 
   .total_revenue  
     .header
-      = link_to hotel_reports_path(current_hotel) do
+      = link_to revenue_hotel_reports_path(current_hotel) do
         %i.icon-money
         Revenue Stats
     .week
@@ -90,6 +90,84 @@
         .number
           %span= @hotel.currency.html_symbol
           = format_for_dash @hotel.total_revenue_last_month
+        .where
+          Total
+
+
+
+  .denials  
+    .header
+      = link_to denials_hotel_reports_path(current_hotel) do
+        %i.icon-exclamation-sign
+        Denial Stats
+    .week
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = @hotel.mobile_denials_this_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = @hotel.tablet_denials_this_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          = @hotel.other_denials_this_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          This Month
+        .number
+          = @hotel.total_denials_this_month
+        .where
+          Total
+    .month_row
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          = @hotel.mobile_denials_last_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          = @hotel.tablet_denials_last_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          Last Month
+        .number
+          = @hotel.other_denials_last_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          Last Month
+        .number
+          = @hotel.total_denials_last_month
         .where
           Total
 
