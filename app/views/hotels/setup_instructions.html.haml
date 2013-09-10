@@ -32,6 +32,7 @@
         Pick Your Style
         = select_tag "", options_for_select(["Link", "Grey button", "Green button", "Blue button"]), :id => :link_look
         = hidden_field_tag "", current_hotel.booking_url, id: "booking_url"
+        = hidden_field_tag "", current_hotel.host, id: "host"
       
           
       #preview
@@ -89,7 +90,7 @@
       .header
         If you're using #{Hotel::GA_UNIVERSAL_ANALYTICS}:  
       .candp
-        Copy and Paste
+        Copy and Paste into the head area just before the &lt;/head&gt;
       %textarea
         :plain
           <script>
@@ -97,7 +98,8 @@
           ga('linker:autoLink', "#{App.ga_root_domain}");
           </script>
       %br
-      %textarea#example_text
+      Add this where you want your button/link to appear
+      %textarea#example_text1
         = link_to 'Book Your Room', current_hotel.booking_url, :target=>'_blank'
 
 
@@ -112,7 +114,7 @@
       //%textarea
       //:plain
       //_gaq.push(['_link', "#{current_hotel.host}"])
-      %textarea
+      %textarea#example_text2
         :escaped
           <a href="#{current_hotel.booking_url}" onclick="_gaq.push(['_link', "#{current_hotel.host}"])" target="_blank">Book Your Room</a>
       .figure_out
