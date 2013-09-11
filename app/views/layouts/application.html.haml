@@ -17,7 +17,6 @@
           #nav
             = render :partial => '/layouts/nav'
       #content
-        //%h1= yield(:title)
         - unless notice.blank?
           %p.notice= notice
         - unless alert.blank?
