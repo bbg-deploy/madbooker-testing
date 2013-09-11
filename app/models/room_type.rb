@@ -24,7 +24,7 @@ class RoomType < ActiveRecord::Base
   has_many :packages
   
   
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "missing_:style.png"
   
   validates_presence_of :name, :number_of_rooms, :default_rate
 end
