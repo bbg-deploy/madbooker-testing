@@ -4,7 +4,7 @@
     Thank you for booking.
   %h2
     An email confirmation has been sent!          
-  .summary= @booking.summary
+  .summary= render "/books/summary/summary"
 
   .seeya
     See you soon!  
@@ -15,3 +15,5 @@
     %div= @hotel.street2
     %div= @hotel.street3
     %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
+    %div= link_to @hotel.url, @hotel.url
+

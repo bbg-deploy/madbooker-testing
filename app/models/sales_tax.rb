@@ -25,4 +25,21 @@ class SalesTax < ActiveRecord::Base
   PERCENTAGE = "Percentage"
   FIXED_AMOUNT = "Fixed amount"
   CALCULATED_HOW = [PERCENTAGE, FIXED_AMOUNT]
+  
+  
+  def per_night?
+    calculated_by == PER_NIGHT
+  end
+  
+  def per_stay?
+    calculated_by == PER_STAY
+  end
+  
+  def percentage?
+    calculated_how == PERCENTAGE    
+  end
+  
+  def fixed_amount?
+    calculated_how == FIXED_AMOUNT
+  end
 end

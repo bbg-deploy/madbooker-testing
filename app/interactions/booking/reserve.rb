@@ -71,7 +71,7 @@ class Booking::Reserve < Less::Interaction
   
   def send_confirmations
     send_hotel_confirmation
-    send_email_confirmation unless booking.email_confirmation.blank?
+    send_email_confirmation
     send_sms_confirmation unless booking.sms_confirmation.blank?
   end
   

@@ -1,13 +1,43 @@
 class SalesTaxDecorator < ApplicationDecorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def quantity nights
+    if per_stay?
+      1
+    else
+      nights
+    end
+  end
+  
+  def price rate, nights
+    if per_stay?
+      price_for_stay rate
+    else
+      price_for_nights rate, nights
+    end
+  end
+  
+  
+  protected
+  
+  def price_for_stay rate
+    if fixed_amount?
+      amount
+    else
+      calc_percent rate
+    end
+  end
+  
+  def price_for_nights rate, nights
+    if fixed_amount?
+      (amount * nights).round 2
+    else
+      calc_percent(rate) * nights
+    end      
+  end
+  
+  def calc_percent rate
+    (rate * amount * 0.01).round 2
+  end
 
 end

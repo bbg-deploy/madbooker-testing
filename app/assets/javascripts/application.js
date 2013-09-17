@@ -16,7 +16,7 @@
 //= require jquery-ui-1.10.3.custom.min
 //= require jquery_nested_form
 //= require sugar-1.3.min
-// require turbolinks
+//= require turbolinks
 //= require jquery.creditCardValidator
 //= require uri
 // require d3.v3.min

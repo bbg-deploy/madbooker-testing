@@ -153,6 +153,17 @@ class << self
     make Membership, defaults, args
   end
   
+  def sales_tax args = {}
+    defaults = {
+      :name            => "Sale tax",
+      :calculated_by   => SalesTax::PER_NIGHT,
+      :calculated_how  => SalesTax::FIXED_AMOUNT,
+      :amount          => 10,
+      :hotel_id        => 1      
+    }
+    make SalesTax, defaults, args
+  end
+  
   
   def hotel_and_stuff! hotel_args = {}
     u = user!

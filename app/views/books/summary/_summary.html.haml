@@ -1,0 +1,18 @@
+
+
+.invoice
+  .line
+    .description= "#{@booking.log.room_name} arriving on #{format @booking.arrive} and departing on #{format @booking.depart}. "
+    .quantity= "#{@booking.days} #{"day".pluralize @booking.days}"
+    .price= format @booking.lowest_rate
+    .line_total= format @booking.lowest_rate * @booking.days
+  - (current_hotel || @hotel).sales_taxes.decorate.each do |tax|
+    .line
+      .description= tax.name
+      .quantity= tax.quantity @booking.days
+      .price= format tax.price @booking.lowest_rate, 1
+      .line_total= format tax.price @booking.lowest_rate, @booking.days
+  
+      
+
+

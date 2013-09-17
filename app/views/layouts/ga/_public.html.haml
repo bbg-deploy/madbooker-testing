@@ -7,7 +7,7 @@
 - if @hotel.google_analytics_code_type == Hotel::GA_UNIVERSAL_ANALYTICS
   / code 3
   %script
-    ga('create', "#{@hotel.google_analytics_code}", {'name':'clientTracker' 'allowLinker':true, 'cookieDomain':'#{App.ga_root_domain}'});
+    ga('create', "#{@hotel.google_analytics_code}", {'name':'clientTracker', 'allowLinker':true, 'cookieDomain':'#{App.ga_root_domain}'});
     ga('clientTracker.send','pageview');
 - elsif @hotel.google_analytics_code_type == Hotel.GA_CLASSIC_ASYNCHRONOUS
   / code 4

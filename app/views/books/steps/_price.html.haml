@@ -9,7 +9,8 @@
     .row
       .label
         Original Room Rate:
-      .old_pice= format room.rate * @booking.days
+      .old_pice
+        %strike= format room.rate * @booking.days
     .row
       .label
         Discounted Room Rate:
