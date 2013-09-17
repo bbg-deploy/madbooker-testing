@@ -35,6 +35,7 @@
 #  gauth_issued_at                          :datetime
 #  ga_account_id                            :string(255)
 #  ga_profile_id                            :string(255)
+#  google_analytics_code_type               :string(255)      default("Universal Analytics")
 #
 
 class Hotel < ActiveRecord::Base
@@ -50,6 +51,7 @@ class Hotel < ActiveRecord::Base
   has_many :packages, :dependent => :destroy
   has_many :sales, :dependent => :destroy
   has_many :stats, :dependent => :destroy
+  has_many :sales_taxes, :dependent => :destroy
   
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 

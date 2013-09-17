@@ -1,0 +1,27 @@
+#header
+  = render "/hotels/form/nav", on: :tax
+
+  .clear
+  %h1
+    Existing Sales Taxes
+  = link_to [:new, current_hotel, :add_on], :class=>'create' do
+    %i.icon-plus
+    Create Sales Tax/Fee
+#data
+  %table.standard
+    %thead
+      %tr
+        %th Name
+        %th Amount
+        %th Calculated By
+        %th Calculated How
+        %th
+    %tbody
+      - @sales_taxes.each do |sales_tax|
+        = render "/sales_taxes/index/row", sales_tax: sales_tax
+    - if @sales_taxes.total_pages > 1
+      %tfoot
+        %tr
+          %td{colspan: 5}
+            = will_paginate @sales_taxes
+        

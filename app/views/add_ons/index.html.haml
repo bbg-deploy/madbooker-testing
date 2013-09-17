@@ -17,8 +17,10 @@
     %tbody
       - @add_ons.each do |add_on|
         = render "/add_ons/index/row", add_on: add_on
-    %tfoot
-      %tr
-        %td{colspan: 4}
-          = will_paginate @add_ons
+        
+    - if @add_ons.total_pages > 1
+      %tfoot
+        %tr
+          %td{colspan: 4}
+            = will_paginate @add_ons
         

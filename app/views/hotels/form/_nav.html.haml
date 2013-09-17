@@ -1,0 +1,28 @@
+
+
+- on ||= :hotel
+- hotel_class = on == :hotel ? "on" : ""
+- tax_class = on == :tax ? "on" : ""
+- user_class = on == :user ? "on" : ""
+- membership_class = on == :membership ? "on" : ""
+- setup_class = on == :setup ? "on" : ""
+
+
+
+#filters
+  = link_to [:edit, current_hotel], :class => hotel_class do
+    %i.icon-home
+    Hotel Information
+  = link_to [current_hotel, :sales_taxes], :class => tax_class do
+    %i.icon-credit-card
+    Sales Tax
+  = link_to edit_user_registration_path, :class => user_class do
+    %i.icon-user
+    Edit User Information
+  = link_to [current_hotel, :memberships], :class => membership_class do
+    %i.icon-group
+    Team Members
+  = link_to setup_instructions_hotels_path, :class => setup_class do
+    %i.icon-info-sign
+    Setup Instructions
+

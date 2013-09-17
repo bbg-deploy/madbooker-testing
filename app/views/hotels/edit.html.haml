@@ -1,19 +1,7 @@
 #header
   %h1
     = current_hotel.name
-  #filters
-    = link_to [:edit, current_hotel], :class => 'on' do
-      %i.icon-home
-      Hotel Information
-    = link_to edit_user_registration_path do
-      %i.icon-user
-      Edit User Information
-    = link_to [current_hotel, :memberships] do
-      %i.icon-user
-      Team Members
-    = link_to setup_instructions_hotels_path do
-      %i.icon-user
-      Setup Instructions
+  = render "/hotels/form/nav", on: :hotel
     
 
 #hotel_edit

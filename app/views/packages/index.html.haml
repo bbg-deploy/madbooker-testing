@@ -17,10 +17,12 @@
     %tbody
       - @packages.each do |package|
         = render "/packages/index/row", package: package
-    %tfoot
-      %tr
-        %td{colspan: 4}
-          = will_paginate @packages
+        
+    - if @packages.total_pages > 1
+      %tfoot
+        %tr
+          %td{colspan: 4}
+            = will_paginate @packages
         
 
 
