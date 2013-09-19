@@ -36,6 +36,29 @@ CREATE TABLE `add_ons` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `applied_sales_taxes`
+--
+
+DROP TABLE IF EXISTS `applied_sales_taxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `applied_sales_taxes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_id` int(11) DEFAULT NULL,
+  `sales_tax_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `calculated_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `calculated_how` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `amount` decimal(15,2) DEFAULT NULL,
+  `total` decimal(15,2) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `bookings`
 --
 
@@ -69,8 +92,9 @@ CREATE TABLE `bookings` (
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `bookable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `paid` datetime DEFAULT NULL,
+  `total` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,13 +283,14 @@ CREATE TABLE `sales` (
   `price` decimal(15,4) DEFAULT NULL,
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `device_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `total` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_sales_on_inventory_id` (`inventory_id`),
   KEY `index_sales_on_booking_id` (`booking_id`),
   KEY `index_sales_on_hotel_id` (`hotel_id`),
   KEY `index_sales_on_state` (`state`),
   KEY `index_sales_on_device_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,7 +310,7 @@ CREATE TABLE `sales_taxes` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +357,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_created_at` (`created_at`),
   KEY `index_stats_on_kind` (`kind`),
   KEY `deveice_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=391 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,7 +399,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-11 14:55:12
+-- Dump completed on 2013-09-18 11:30:53
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -464,3 +489,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130830122448');
 INSERT INTO schema_migrations (version) VALUES ('20130904161137');
 
 INSERT INTO schema_migrations (version) VALUES ('20130911185104');
+
+INSERT INTO schema_migrations (version) VALUES ('20130917173122');
+
+INSERT INTO schema_migrations (version) VALUES ('20130918152946');

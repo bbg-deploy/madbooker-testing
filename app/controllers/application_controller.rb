@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
   def ensure_hotel
     return if current_hotel
     return unless account_subdomain.blank?
-    raise "do something here when there's no subdomain" 
+    render :file => "public/401.html", :status => :unauthorized
   end
   
 

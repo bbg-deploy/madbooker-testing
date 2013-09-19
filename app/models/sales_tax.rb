@@ -15,6 +15,7 @@
 class SalesTax < ActiveRecord::Base
   
   belongs_to :hotel
+  has_many :applied_sales_taxes, :dependent => :nullify
   
   validates_presence_of :name, :calculated_by, :calculated_how, :amount, :hotel_id
   

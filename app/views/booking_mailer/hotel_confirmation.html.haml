@@ -3,6 +3,5 @@
 A new booking was just placed via MadBooker.com
 
 
-You can view it here: 
-= @booking.url
+= link_to "View it", hotel_booking_url(@booking.hotel, @booking, host: App.domain, protocol: App.protocol)
 

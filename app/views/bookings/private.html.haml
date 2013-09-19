@@ -75,6 +75,15 @@
     .row
       %span Discount:
       %span= format @booking.discounted_rate
+      
+    - @booking.applied_sales_taxes.each do |tax|
+      .row
+        %span #{tax.name}:
+        %span= format tax.total
+
+    .row
+      %span Total:
+      %span= format @booking.total
     
     .row
       %span Arrival: 

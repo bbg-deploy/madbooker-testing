@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   include Booking::Params
   before_filter :ensure_hotel
-  skip_filter :authenticate_user!
+  skip_filter :authenticate_user!, :only => :show
 
   def show
     if hotel_from_subdomain

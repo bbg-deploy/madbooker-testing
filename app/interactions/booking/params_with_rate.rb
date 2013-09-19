@@ -37,6 +37,7 @@ class Booking::ParamsWithRate < Less::Interaction
   
   def rate_from_room_type_from_available_rooms room_type_id
     inventory = inventory_from_room_type_from_available_rooms room_type_id
+    return {rate: nil, discounted_rate: nil} if inventory.blank?
     {rate: inventory.rate, discounted_rate: inventory.discounted_rate}
   end
   

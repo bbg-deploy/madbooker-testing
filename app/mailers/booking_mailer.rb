@@ -1,6 +1,6 @@
 class BookingMailer < ActionMailer::Base
   default from: App.from_address
-
+  
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
