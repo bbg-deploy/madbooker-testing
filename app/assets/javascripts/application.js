@@ -23,5 +23,6 @@
 //= require highcharts
 //= require miniDropdown
 //= require chosen.jquery.min
+//= require google-analytics-turbolinks
 //= require module
 //= require_tree .

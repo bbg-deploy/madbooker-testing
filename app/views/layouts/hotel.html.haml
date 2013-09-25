@@ -8,9 +8,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="//use.typekit.net/chf3bqp.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    = yield(:head)
-    = render "layouts/ga/global"
-    = render "layouts/ga/public"
+    = yield( :head)
   %body#public
     .container
       - unless notice.blank?
@@ -20,3 +18,5 @@
       = yield
       #footer
         #dialog-message.hidden
+    = render "layouts/ga/global"
+    = render "layouts/ga/public"
