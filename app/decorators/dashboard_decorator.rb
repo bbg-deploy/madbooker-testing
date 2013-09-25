@@ -183,7 +183,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def grouped_revenue_based_on_range range
-    model.sales.range(range).group(:device_type).paid.sum( :price)
+    model.sales.range(range).group(:device_type).paid.sum( :total)
   end
     
   def look_to_book_ratio group

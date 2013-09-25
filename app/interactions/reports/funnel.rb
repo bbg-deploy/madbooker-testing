@@ -33,20 +33,29 @@ class Reports::Funnel < Less::Interaction
     normalize_data( ensure_each_has_same_urls a)
   end
   
+  STEPS = {
+    booked: "Booked", 
+    attempt: "Attempt to book", 
+    choose_room: "Choose room", 
+    choose_dates: "Choose dates", 
+    start: "Start",
+    other: "Other"
+  }
+  
   def fix_url url
     case true
     when url["bookings"] != nil
-      "Booked"
+      STEPS[:booked]
     when url.ends_with?( "checkout")
-      "Step 4"
+      STEPS[:attempt]
     when url.ends_with?( "select_room")
-      "Step 3"
+      STEPS[:choose_room]
     when url.ends_with?( "select_dates")
-      "Step 2"
+      STEPS[:choose_dates]
     when url.ends_with?( "book") || url["error=499"] != nil
-      "Step 1"
+      STEPS[:start]
     else
-      "Other"
+      STEPS[:other]
     end
   end
       
@@ -105,7 +114,7 @@ class Reports::Funnel < Less::Interaction
   end
   
   def sort_steps arr
-    order = ["Step 1", "Step 2", "Step 3", "Step 4", "Booked", "Other"]
+    order = [STEPS[:start], STEPS[:choose_dates], STEPS[:choose_room], STEPS[:attempt], STEPS[:booked], STEPS[:other]]
     arr.sort {|a,b| order.index(a.url) <=> order.index(b.url)}
   end
   
