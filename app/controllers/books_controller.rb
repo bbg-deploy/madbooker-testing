@@ -8,6 +8,7 @@ class BooksController < ApplicationController
   def show
     @booking = current_hotel.bookings.new.decorate
     @booking.step = 1
+    Stat.funnel step: Stat::FUNNEL_STEPS[:start], context: context
     render
   end
   
@@ -16,6 +17,7 @@ class BooksController < ApplicationController
     @booking.step = 2
     @available_rooms = Booking::RoomFinder.new(context: context).run.available_rooms
     Stats::Search.new( context: context, available_rooms: @available_rooms).run
+    Stat.funnel step: Stat::FUNNEL_STEPS[:choose_dates], context: context
     look_to_book!
     render
   end
@@ -23,6 +25,7 @@ class BooksController < ApplicationController
   def select_room
     @booking = Booking::Build.new(Context.new(hotel: current_hotel, params: Booking::ParamsWithRate.new(context).run)).run
     @booking.step = 3
+    Stat.funnel step: Stat::FUNNEL_STEPS[:choose_room], context: context
     render
   end
   
@@ -30,7 +33,11 @@ class BooksController < ApplicationController
     @result = Booking::Reserve.new(context: context).run
     @booking = @result.object.booking.decorate
     @booking.step = 3
-    look_to_booked!
+    Stat.funnel step: Stat::FUNNEL_STEPS[:attempt], context: context
+    if @result.success?
+      Stat.funnel step: Stat::FUNNEL_STEPS[:booked], context: context
+      look_to_booked! 
+    end
     render
   end
   

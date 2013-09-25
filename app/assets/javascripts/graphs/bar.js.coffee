@@ -6,11 +6,11 @@
         out = []
         data.each (d)->
           d.data.each (pair)->
-            current = out.find (o)-> o.name is pair.url
+            current = out.find (o)-> o.name is pair.step
             if current
               current.data.add pair.count
             else
-              out.add {name: pair.url, data: [pair.count]}
+              out.add {name: pair.step, data: [pair.count]}
         out.map (o)->
           {
             name: o.name.titleize()
@@ -30,7 +30,7 @@
           yAxis: {
             title: { text: 'Amount' }
           }
-          legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0 }
+          legend: { y: -10 }
           series: series data
         }
         

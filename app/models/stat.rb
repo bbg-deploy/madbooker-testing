@@ -27,6 +27,7 @@ class Stat < ActiveRecord::Base
   BOOK          = "book"
   USER          = "user"
   SUBSCRIPTION  = "subscription"
+  FUNNEL        = "funnel"
   
   #device_types
   MOBILE        = "mobile"
@@ -34,6 +35,16 @@ class Stat < ActiveRecord::Base
   DESKTOP       = "desktop"
   TV            = "tv"
   DEVICE_TYPES  = [MOBILE, TABLET, DESKTOP] #tv ignored for now
+  
+  
+  
+  FUNNEL_STEPS = {
+    booked: "Booked", 
+    attempt: "Attempt to book", 
+    choose_room: "Choose room", 
+    choose_dates: "Choose dates", 
+    start: "Start"
+  }
 
   
   scope :mobile,        ->{where device_type: MOBILE}
@@ -41,6 +52,7 @@ class Stat < ActiveRecord::Base
   scope :desktop,       ->{where device_type: DESKTOP}
   scope :searches,      ->{where kind: SEARCH}
   scope :pages,         ->{where kind: PAGE}
+  scope :funnels,       ->{where kind: FUNNEL}
   scope :look_to_book,  ->{where kind: [LOOK, BOOK]}
   scope :denials,       ->{ where( kind: SEARCH).where('data like \'%"available_rooms":[]%\'') }
   scope :range,         ->(range) { where created_at: range }
@@ -51,6 +63,14 @@ class Stat < ActiveRecord::Base
   def self.page url: "", context: context
     s = setup context: context, type: PAGE
     s.url = url
+    s.data = filter_cc_(context.params).to_json
+    s.save
+    s
+  end
+    
+  def self.funnel step: "", context: context
+    s = setup context: context, type: FUNNEL
+    s.url = step
     s.data = filter_cc_(context.params).to_json
     s.save
     s
@@ -92,7 +112,6 @@ class Stat < ActiveRecord::Base
     s.save
     s
   end
-  
   
   private
   

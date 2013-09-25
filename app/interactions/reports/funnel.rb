@@ -14,7 +14,7 @@ class Reports::Funnel < Less::Interaction
   
   private 
   def get_data
-    @get_data ||= context.hotel.stats.pages.group(:url, "month(created_at)").count
+    @get_data ||= context.hotel.stats.funnels.group(:url, "month(created_at)").count
   end
   
   def fill_data
@@ -24,47 +24,21 @@ class Reports::Funnel < Less::Interaction
       a << struct
     end
     get_data.each do |k,v|
-      url = k[0]
+      step = k[0]
       count = v
       month = k[1]
       struct = a.select{|x| x.date.month == month}.first
-      struct.data << uninited_data(fix_url(url), count)
+      struct.data << uninited_data( step, count)
     end
-    normalize_data( ensure_each_has_same_urls a)
+    normalize_data( ensure_each_has_same_steps a)
   end
-  
-  STEPS = {
-    booked: "Booked", 
-    attempt: "Attempt to book", 
-    choose_room: "Choose room", 
-    choose_dates: "Choose dates", 
-    start: "Start",
-    other: "Other"
-  }
-  
-  def fix_url url
-    case true
-    when url["bookings"] != nil
-      STEPS[:booked]
-    when url.ends_with?( "checkout")
-      STEPS[:attempt]
-    when url.ends_with?( "select_room")
-      STEPS[:choose_room]
-    when url.ends_with?( "select_dates")
-      STEPS[:choose_dates]
-    when url.ends_with?( "book") || url["error=499"] != nil
-      STEPS[:start]
-    else
-      STEPS[:other]
-    end
-  end
-      
+        
   def uninited_row( month: nil)
     OpenStruct.new date: month, data: []
   end
   
-  def uninited_data url = "", count = 0
-    OpenStruct.new url: url, count: count, order: 0
+  def uninited_data step = "", count = 0
+    OpenStruct.new step: step, count: count, order: 0
   end
   
   def init_months
@@ -77,12 +51,12 @@ class Reports::Funnel < Less::Interaction
     Date.current.change( month: month, day: 1)
   end
   
-  def ensure_each_has_same_urls arr
-    urls = arr.map(&:data).flatten.map{|a| a.url}.flatten.uniq
+  def ensure_each_has_same_steps arr
+    steps = arr.map(&:data).flatten.map{|a| a.step}.flatten.uniq
     arr.each do |struct|
-      urls.each do |url|
-        next if url.in? struct.data.map(&:url)
-        struct.data << uninited_data(url)
+      steps.each do |step|
+        next if step.in? struct.data.map(&:step)
+        struct.data << uninited_data(step)
       end
     end
     arr
@@ -92,30 +66,29 @@ class Reports::Funnel < Less::Interaction
     out = []
     arr.each do |month|
       struct = uninited_row month: month.date
-      struct.data = normalize_urls month.data
+      struct.data = normalize_steps month.data
       out << struct      
     end
     out
   end
   
   # removes simliar urls while retaining their counts
-  def normalize_urls urls_and_counts
+  def normalize_steps steps_and_counts
     out = []
-    urls_and_counts.each do |url_and_count|
-      next if url_and_count.url == "Other"
-      new_url_and_count = out.select{|x| x.url == url_and_count.url}.first
-      if new_url_and_count.nil?
-        new_url_and_count = uninited_data url_and_count.url
-        out << new_url_and_count
+    steps_and_counts.each do |step_and_count|
+      new_step_and_count = out.select{|x| x.step == step_and_count.step}.first
+      if new_step_and_count.nil?
+        new_step_and_count = uninited_data step_and_count.step
+        out << new_step_and_count
       end
-      new_url_and_count.count += url_and_count.count
+      new_step_and_count.count += step_and_count.count
     end
     sort_steps out
   end
   
   def sort_steps arr
-    order = [STEPS[:start], STEPS[:choose_dates], STEPS[:choose_room], STEPS[:attempt], STEPS[:booked], STEPS[:other]]
-    arr.sort {|a,b| order.index(a.url) <=> order.index(b.url)}
+    order = [Stat::FUNNEL_STEPS[:start], Stat::FUNNEL_STEPS[:choose_dates], Stat::FUNNEL_STEPS[:choose_room], Stat::FUNNEL_STEPS[:attempt], Stat::FUNNEL_STEPS[:booked]]
+    arr.sort {|a,b| order.index(a.step) <=> order.index(b.step)}
   end
   
 end
