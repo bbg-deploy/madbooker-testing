@@ -7,6 +7,7 @@
       $("#inventories_form").effect( "highlight")
       
     clear_selected = ->
+      $(".day_selectable.selected.wasWeekendDay").removeClass("wasWeekendDay").addClass("weekendDay")
       $(".day_selectable.selected").removeClass("selected")
       
     to_date = (d)->
@@ -58,7 +59,9 @@
       $(".day_selectable").each (i, item)->
         if r.contains to_date($(item).data().date)
           
-          $(item).addClass "selected"        
+          $(item).addClass "selected"      
+          if $(item).is(".weekendDay")  
+            $(item).removeClass("weekendDay").addClass("wasWeekendDay")
         
       
     is_valid = ->
