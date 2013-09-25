@@ -4,9 +4,9 @@
 .invoice
   .line
     .description= "#{@booking.room_name} arriving on #{format @booking.arrive} and departing on #{format @booking.depart}. "
-    .quantity= "#{@booking.days} #{"day".pluralize @booking.days}"
+    .quantity= "#{@booking.nights} #{"day".pluralize @booking.nights}"
     .price= format @booking.lowest_rate
-    .line_total= format @booking.lowest_rate * @booking.days
+    .line_total= format @booking.lowest_rate * @booking.nights
   - @booking.applied_sales_taxes.each do |tax|
     .line
       .description= tax.name

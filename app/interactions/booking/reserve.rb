@@ -50,12 +50,12 @@ class Booking::Reserve < Less::Interaction
   #   end
   #   @inventory = i.first
   # end
-  # 
-  # def inventories
-  #   return @inventories if @inventories
-  #   @inventories = room_finder.all_rooms[booking.room_type_id]
-  # end
-  # 
+  
+  def inventories
+    return @inventories if @inventories
+    @inventories = room_finder.all_rooms[booking.room_type_id]
+  end
+  
   def setup_booking_and_save
     Booking.transaction do
       begin
@@ -79,9 +79,9 @@ class Booking::Reserve < Less::Interaction
   
   
   def create_sales
-    @inventories.each do |i|
+    inventories.each do |i|
       price = i.discounted_rate.nil? ? i.rate : i.discounted_rate
-      booking.sales.create!( inventory_id: i.id, hotel_id: context.hotel.id, rate: i.rate, discounted_rate: i.discounted_rate, date: i.date, price: price, device_type: context.device_type, total: booking.total)
+      booking.sales.create!( inventory_id: i.id, hotel_id: context.hotel.id, rate: i.rate, discounted_rate: i.discounted_rate, date: i.date, price: price, device_type: context.device_type, total: booking.total/booking.nights, state: booking.state)
     end
   end
   
@@ -101,7 +101,7 @@ class Booking::Reserve < Less::Interaction
   
   def send_sms_confirmation
     b = booking.decorate
-    Sms.deliver booking.sms_confirmation, "Reservation complete! #{b.days} night(s) starting on #{b.arrive}. Details: #{b.url}"
+    Sms.deliver booking.sms_confirmation, "Reservation complete! #{b.nights} night(s) starting on #{b.arrive}. Details: #{b.url}"
   end
   
     

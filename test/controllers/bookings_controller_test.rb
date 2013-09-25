@@ -14,7 +14,7 @@ class BookingsControllerTest < ActionController::TestCase
     end
 
     should "work fine" do
-      
+      sign_in @user
       put :update, @params
       assert_equal 3, assigns(:booking).bookable_id
     end

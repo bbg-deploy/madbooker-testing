@@ -64,7 +64,7 @@ class << self
       :arrive             => Date.today,
       :depart             => Date.today,
       :rate               => (50..120).to_a.sample,
-      :discounted_rate    => 0,
+      :discounted_rate    => nil,
       :first_name         => Faker::Name.first_name,
       :last_name          => Faker::Name.last_name,
       :made_by_first_name => Faker::Name.first_name,

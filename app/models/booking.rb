@@ -97,7 +97,6 @@ class Booking < ActiveRecord::Base
   end
   
   def persist_state_to_sales
-    return true unless state_changed?
     return true unless sales.count > 0
     sales.update_all state: state
   end

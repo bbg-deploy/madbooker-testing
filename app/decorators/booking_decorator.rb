@@ -30,7 +30,7 @@ class BookingDecorator < ApplicationDecorator
     end
   end
   
-  def days
+  def nights
     range.to_a.size - 1
   end
   
