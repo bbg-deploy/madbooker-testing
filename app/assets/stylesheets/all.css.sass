@@ -8,7 +8,8 @@
 $pad: 30px
 $yellow: rgba(254, 249, 223, 1)
 
-
+$green: rgba(108, 179, 68, 1)
+$blue: rgba(113, 146, 195, 1)
 body
   +header
   margin: 0px auto
@@ -16,7 +17,7 @@ body
   color: #333
   font-size: 14px
   line-height: 1.5em 
-  background: #70b0af
+  background: lighten($green, 15%)
 
 a
   color: rgba(78, 122, 121, 1)
@@ -35,8 +36,9 @@ p
   min-height: 250px   
   //padding: $pad
   background: white
-  border: 1px solid #406463
-  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
+  border: 1px solid #777
+  border-top: none
+  +box-shadow(rgba(#333, 0.23) 0 0 11px 1px)
   #header
     background: #eee
     border-bottom: 1px solid #ccc
@@ -119,7 +121,7 @@ h4
 $navwidth: ($width - ($icon * 2)) / 5
 
 #nav
-  +box-shadow(rgba(#333, 0.4) 0 0 11px 1px)
+  +box-shadow(rgba(#333, 0.24) 0 0 11px 1px)
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
@@ -128,6 +130,8 @@ $navwidth: ($width - ($icon * 2)) / 5
       +fl
       +rel
       &.dropdown
+        a:hover
+          background: none
         ul 
           +abs
           z-index: 9
@@ -142,35 +146,39 @@ $navwidth: ($width - ($icon * 2)) / 5
               float: none
               font-size: 13px !important
               background: #333
+              color: lighten($green, 20%)
               &:hover
-                background: #888
+                background: #111
       a
         +block
         padding: 10px 15px
         +tc
-        color: white
+        color: #333
         width: $navwidth
-        font-size: 13px
-        border: 1px solid #406463
+        font-size: 14px
+        +bold
+        border: 1px solid #888
         border-left: none
         border-top: none
-        +background-image(linear-gradient(rgba(95, 150, 149, .9), rgba(78, 122, 121, 1)))
+        //+background-image(linear-gradient(lighten($green, 15%), lighten($green, 5%)))
+        +background-image(linear-gradient(lighten($blue, 15%), lighten($blue, 5%)))
+
         &:hover
           +tdnone
-          +background-image(linear-gradient(rgba(1, 1, 1, .45), rgba(1, 1, 1, .65)))
+          +background-image(linear-gradient(lighten($green, 25%), lighten($green, 20%)))
         i
-          font-size: 16px
-          margin: 0 3px 0 0
+          font-size: 14px
+          margin: 0 1px 0 0
       &.home a
         font-size: 17px
         padding: 12px 10px 11px 10px
-        color: #eee
-        border-left: 1px solid #666
+        color: #333
+        border-left: 1px solid #888
         width: $icon
       &.logout a
         font-size: 16px
         padding: 13px 12px 11px 12px
-        color: #eee
+        color: #333
         width: $icon
 
 
