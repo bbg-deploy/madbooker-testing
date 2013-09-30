@@ -15,7 +15,7 @@ body#brochure
   //background: url(sunset.jpg) no-repeat
 
 a
-  color: #3e86c5
+  color: $blue
   +tdnone
   &:hover
     color: #333
@@ -87,13 +87,13 @@ h4
   border-bottom: 1px solid #ccc
   background: white
 
-#logo
+a.logo
   +fl
   font-size: 20px
-  padding: 20px 0
+  margin: 20px 0
 #nav
   +fr
-  margin: 10px 0 0 0
+  margin: 20px 0 0 0
   ul
     margin: 0 0 0 0
     padding: 0 0 0 0
@@ -105,7 +105,7 @@ h4
         padding: 10px 15px
         +tc
         color: #333
-        font-size: 13px
+        font-size: 15px
         &:hover
           +tdnone
           background: #eee
@@ -120,7 +120,7 @@ h4
 $point_width: ($width - ($pad * 3)) / 4
 
 #points
-  padding: 15px 0 $pad 0
+  padding: $pad 0
   .point
     +fl
     width: $point_width
@@ -131,7 +131,7 @@ $point_width: ($width - ($pad * 3)) / 4
     margin: 0 0 0 $pad
     +tc
     h2
-      font-size: 16px
+      font-size: 18px
       +bold
       line-height: 150%
       margin: 0 0 0 0
@@ -213,7 +213,7 @@ $download_this: 400px
 
 
 #download_third
-  padding: $pad 0
+  padding: ($pad * 2) 0
   .download_this
     +fl
     width: $download_this
@@ -259,12 +259,15 @@ $download_this: 400px
         margin: 0 0 0 0
         font-size: 17px
         font-weight: 500
-        border-top: 1px solid #ccc
+        border-top: 1px solid #777
 
 
 
+#green_area
+  background: lighten($green, 35%)
 
-
+#green_area2
+  background: lighten($green, 15%)
 
 
 
