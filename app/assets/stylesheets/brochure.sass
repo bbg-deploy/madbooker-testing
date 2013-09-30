@@ -2,7 +2,7 @@
 @charset "utf-8"
 @import compass
 @import utils
-@import normalize
+@import compass/reset
 
 
 body#brochure
@@ -117,17 +117,18 @@ h4
         padding: 12px 10px 11px 10px
         width: $icon
 
-$point_width: ($width - ($pad * 2)) / 3
+$point_width: ($width - ($pad * 3)) / 4
 
 #points
-  padding: $pad 0
+  padding: 15px 0 $pad 0
   .point
     +fl
-    width: 300px
+    width: $point_width
     background: white
     +border-radius
     padding: 20px
     border: 1px solid #ccc
+    margin: 0 0 0 $pad
     +tc
     h2
       font-size: 16px
@@ -138,11 +139,15 @@ $point_width: ($width - ($pad * 2)) / 3
     p
       margin: 0 0 0 0
       padding: 0 0 0 0
-    &:nth-child(2)
-      margin: 0 $pad
+    &:first-child
+      margin: 0 0 0 0
+
+
 
 #top_area
-  padding: $pad 0
+  padding: $pad 0 0 0
+  h1, h3
+    +tc
 
 #features
   padding: 40px 0
@@ -204,13 +209,57 @@ $point_width: ($width - ($pad * 2)) / 3
         
 
 
+$download_this: 400px
 
 
-
+#download_third
+  padding: $pad 0
+  .download_this
+    +fl
+    width: $download_this
+    border: 1px solid #ccc
+    background: #eee
+    padding: 20px
+    height: 200px
+  .content
+    width: $width - $download_this - $pad
+    +fr
 
 
 @import choosen
 
+
+#reasons_holder
+  padding: 0 0 0 0
+  +clear
+  .reasons
+    +fl
+    width: $width / 2
+    //border: 1px solid #ccc
+    padding: $pad
+    &:first-child
+      border-right: none
+    h3, h4, li
+      +tc
+    h3
+      font-size: 22px
+      margin: 0 0 0 0
+      padding: 0 0 8px 0
+    h4
+      margin: 0 0 0 0
+      padding: 0 0 15px 0
+      color: #777
+      font-size: 18px
+      +serif
+    ul
+      padding: 0 0 0 0
+      margin: 0 0 0 0
+      li
+        padding: 8px
+        margin: 0 0 0 0
+        font-size: 17px
+        font-weight: 500
+        border-top: 1px solid #ccc
 
 
 
