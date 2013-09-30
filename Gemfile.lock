@@ -144,6 +144,7 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     fssm (0.2.10)
+    google-analytics-turbolinks (0.0.3)
     google-api-client (0.6.3)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -351,6 +352,7 @@ DEPENDENCIES
   devise (= 3.0.0.rc)
   draper
   faker
+  google-analytics-turbolinks
   haml-rails
   intercom
   jbuilder (~> 1.0.1)

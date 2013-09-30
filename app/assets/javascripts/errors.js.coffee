@@ -31,8 +31,11 @@
     init: ->
       frag = new URI().fragment()
       if frag
-        e = frag.split("=")[1]
-        @["handle_error_#{e}"].apply()
+        kv = frag.split("=")
+        k = kv[0]
+        v = kv[1]
+        return unless k == "errror"
+        @["handle_error_#{v}"].apply()
   )()
 
 

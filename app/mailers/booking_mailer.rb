@@ -1,6 +1,6 @@
 class BookingMailer < ActionMailer::Base
   default from: App.from_address
-
+  
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,7 +8,7 @@ class BookingMailer < ActionMailer::Base
   #
   def confirmation booking
     @booking = booking.decorate
-    mail to: booking.email_confirmation, subject: "Your Hotel Booking", from: booking.hotel.public_email_address
+    mail to: booking.email, subject: "Your Hotel Booking", from: booking.hotel.public_email_address
   end
   
   def hotel_confirmation booking

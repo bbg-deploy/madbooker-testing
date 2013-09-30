@@ -1,0 +1,10 @@
+
+
+= @sales_tax.name
+= @sales_tax.amount
+= @sales_tax.calculated_by
+= @sales_tax.calculated_how
+
+= link_to "Edit", [:edit, current_hotel, @sales_tax]
+= link_to "All", [current_hotel, :sales_taxes]
+

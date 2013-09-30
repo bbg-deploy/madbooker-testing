@@ -15,10 +15,11 @@ class MoneyAmountInput < SimpleForm::Inputs::StringInput
   def input
     i = input_html_options
     i[:value] = two_decmial_spaces i[:value]
-    "$ #{@builder.text_field(attribute_name, i.log)}".html_safe
+    @builder.text_field attribute_name, i
   end
   
   def two_decmial_spaces str
+    return str if str.blank?
     return "#{str}.00" unless str["."]
     return str if str[-3] == "."
     return "#{str}0" if str[-2] == "."

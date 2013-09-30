@@ -133,6 +133,33 @@ class DashboardDecorator < HotelDecorator
     @total_look_to_book_daily_average ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month / Date.current.day).round(1)
   end
   
+  def mobile_denials_this_month
+    @mobile_denials_this_month ||= current_hotel.stats.searched_for( Time.current.beginning_of_month.to_date..Time.current.end_of_month.to_date).mobile.denials.count
+  end
+  
+  def tablet_denials_this_month
+    @tablet_denials_this_month ||= current_hotel.stats.searched_for( Time.current.beginning_of_month.to_date..Time.current.end_of_month.to_date).tablet.denials.count
+  end
+  def other_denials_this_month
+    @other_denials_this_month ||= current_hotel.stats.searched_for( Time.current.beginning_of_month.to_date..Time.current.end_of_month.to_date).desktop.denials.count
+  end
+  def total_denials_this_month
+    mobile_denials_this_month + tablet_denials_this_month + other_look_to_book_this_month
+  end
+
+  
+  def mobile_denials_last_month
+    @mobile_denials_last_month ||= current_hotel.stats.searched_for( Time.current.last_month.beginning_of_month.to_date..Time.current.last_month.end_of_month.to_date).mobile.denials.count
+  end  
+  def tablet_denials_last_month
+    @tablet_denials_last_month ||= current_hotel.stats.searched_for( Time.current.last_month.beginning_of_month.to_date..Time.current.last_month.end_of_month.to_date).tablet.denials.count
+  end
+  def other_denials_last_month
+    @other_denials_last_month ||= current_hotel.stats.searched_for( Time.current.last_month.beginning_of_month.to_date..Time.current.last_month.end_of_month.to_date).desktop.denials.count
+  end
+  def total_denials_last_month
+    mobile_denials_last_month + tablet_denials_last_month + other_denials_last_month
+  end
   
   private  
   def searches_by_range_and_device range, device
@@ -156,7 +183,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def grouped_revenue_based_on_range range
-    model.sales.range(range).group(:device_type).paid.sum( :price)
+    model.sales.range(range).group(:device_type).paid.sum( :total)
   end
     
   def look_to_book_ratio group

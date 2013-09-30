@@ -1,0 +1,11 @@
+
+- sales_tax ||= @sales_tax || current_hotel.sales_taxes.build
+
+= simple_form_for [current_hotel, sales_tax] do |f|
+  = f.input :name, :placeholder => 'Hotel usage fee'
+  = f.input :calculated_by, collection: SalesTax::CALCULATED_BY
+  = f.input :calculated_how, collection: SalesTax::CALCULATED_HOW
+  = f.input :amount, as: :money_amount
+  .clear
+  .form-actions
+    = f.submit "Save"

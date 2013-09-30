@@ -119,7 +119,7 @@ class Devise::RegistrationsController < DeviseController
   end
 
   def sign_up_params
-    devise_parameter_sanitizer.for(:sign_up)
+    params[:user].permit( :email, :password, :password_confirmation, :cc_number, :cc_month, :cc_year, :cc_cvv, :stripe_token) 
   end
 
   def account_update_params

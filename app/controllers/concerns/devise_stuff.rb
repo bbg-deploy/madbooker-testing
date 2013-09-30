@@ -10,7 +10,7 @@ module DeviseStuff
     end
   
     def after_sign_in_path_for(resource)
-      return edit_hotel_path(current_hotel) unless current_hotel.blank?
+      return hotel_path(current_hotel) unless current_hotel.blank?
       new_hotel_path
     end
   

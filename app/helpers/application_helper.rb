@@ -36,7 +36,7 @@ module ApplicationHelper
   end
   
   def format_big_decimal val
-    number_to_currency val, unit: current_hotel.currency.html_symbol
+    number_to_currency val, unit: (current_hotel || @hotel).currency.html_symbol
   end
   
   def format_float val

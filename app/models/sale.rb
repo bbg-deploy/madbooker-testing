@@ -14,6 +14,7 @@
 #  price           :decimal(15, 4)
 #  state           :string(255)
 #  device_type     :string(255)
+#  total           :decimal(15, 2)
 #
 
 class Sale < ActiveRecord::Base

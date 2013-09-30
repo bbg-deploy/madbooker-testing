@@ -1,5 +1,6 @@
 class Reports::Denials < Less::Interaction
   
+  attr_accessor :range
   
   def run
     self
@@ -19,13 +20,17 @@ class Reports::Denials < Less::Interaction
     }]
   end
   
-  private 
+  def total
+    data.map( &:count ).sum
+  end
+  
   def range
     @range ||= (Date.current)..(Date.current+30)
   end
+  private 
   
   def stats
-    @stats ||= Stat.range(range).denials
+    @stats ||= context.hotel.stats.searched_for(range).denials
   end
   
   def data

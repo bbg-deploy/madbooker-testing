@@ -38,6 +38,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  
+  def remove_non_permitted_booking_attrs hash
+    hash[:booking].delete_if {|k,v| k.to_s.in? %w(id hotel_id encrypted_cc_number encrypted_cc_cvv state customer_id rate discounted_rate created_at updated_at guid paid total) }
+    hash
+  end
+
 end
 
 class Sms

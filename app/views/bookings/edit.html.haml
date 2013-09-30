@@ -7,7 +7,7 @@
 
     #summary
       Make suer you check for 
-      = link_to "availablitly", month_hotel_inventories_path(current_hotel, Date.current.year, Date.current.month)
+      = link_to "availability", month_hotel_inventories_path(current_hotel, Date.current.year, Date.current.month)
       before changing thte room type or date.
     #room_info
       = f.input :arrive, as: "string", :wrapper_class => "arrival"
@@ -20,7 +20,6 @@
       = f.input :made_by_last_name, label: "Your Last name", :wrapper_class => "your_last_name"
       .clear
       = f.input :email, :wrapper_class => "email"
-      = f.input :email_confirmation, :wrapper_class => "email_confirm"
       = f.input :sms_confirmation, :wrapper_class => "sms"
       .clear
     .form-actions  

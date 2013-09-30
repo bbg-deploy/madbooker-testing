@@ -16,7 +16,7 @@
           = f.input :bookable_type, as: "hidden"
     
           #summary
-            = @booking.summary
+            = render "/books/summary/summary"
           #checkout_tabs
             %ul
               %li
@@ -27,7 +27,6 @@
               = f.input :first_name, :wrapper_class => 'first_name'
               = f.input :last_name, :wrapper_class => 'last_name'
               = f.input :email, :wrapper_class => 'email'
-              = f.input :email_confirmation, :wrapper_class => 'email_confirmation'
 
             #for_other
               .booker

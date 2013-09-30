@@ -28,6 +28,7 @@
 #  state               :string(255)
 #  bookable_type       :string(255)
 #  paid                :datetime
+#  total               :decimal(15, 2)
 #
 
 
@@ -37,7 +38,9 @@ class Booking < ActiveRecord::Base
   belongs_to :hotel
   belongs_to :bookable, polymorphic: true
   has_many :sales, :dependent => :destroy
+  has_many :applied_sales_taxes, :dependent => :destroy
   has_many :inventories, :through => :sales
+  
   
   attr_encrypted :cc_number, :key => "3acfbcdebdd42df8c3bbe1cd6d72ec3"
   attr_encrypted :cc_cvv, :key => "a2250c90839d4eb8b7c76cc4a0c06822"
@@ -94,7 +97,6 @@ class Booking < ActiveRecord::Base
   end
   
   def persist_state_to_sales
-    return true unless state_changed?
     return true unless sales.count > 0
     sales.update_all state: state
   end

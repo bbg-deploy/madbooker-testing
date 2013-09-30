@@ -28,7 +28,7 @@ class Reports::AverageDailyRate < Less::Interaction
   end
   
   def room_revenue
-    @room_revenue ||= context.hotel.sales.range(Date.year).group("month(date)").paid.sum( :price)  
+    @room_revenue ||= context.hotel.sales.range(Date.year).group("month(date)").paid.sum( :total)  
   end
 
   def fill_data

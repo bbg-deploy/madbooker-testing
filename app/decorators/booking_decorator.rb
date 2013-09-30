@@ -30,15 +30,10 @@ class BookingDecorator < ApplicationDecorator
     end
   end
   
-  def days
-    range.to_a.size
+  def nights
+    range.to_a.size - 1
   end
   
-  def summary
-    room = bookable.name
-    
-    "You've selected a #{room} for #{days} #{"day".pluralize days}, arriving on #{h.format arrive} and departing on #{h.format depart}. The price per night is #{h.format lowest_rate} and the total price is #{h.format lowest_rate * days}".html_safe
-  end
   
   def range
     if arrive.is_a? String

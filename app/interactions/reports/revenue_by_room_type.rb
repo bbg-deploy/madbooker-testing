@@ -15,7 +15,7 @@ class Reports::RevenueByRoomType < Less::Interaction
   
   private 
   def get_revenue_data
-    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id", "bookings.bookable_type", "month(date)").paid.sum( :price)
+    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id", "bookings.bookable_type", "month(date)").paid.sum( :total)
   end
   
   def get_booking_data

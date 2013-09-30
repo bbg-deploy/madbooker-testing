@@ -12,6 +12,7 @@ task :test => [] do
     minitest:interactions  
     minitest:models
     minitest:controllers
+    minitest:decorators
   )
     # minitest:integration 
     # minitest:mailers 

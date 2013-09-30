@@ -1,5 +1,6 @@
 Madbooker::Application.routes.draw do
 
+
   resources :bookings, :only => [:show]
   match "/stripe" => "stripes#event", via: [:get, :post]
   
@@ -11,6 +12,10 @@ Madbooker::Application.routes.draw do
       get 'setup_instructions'
       get :ga_instructions
     end
+    resources :packages
+    resources :add_ons
+    resources :memberships
+    resources :sales_taxes
     resources :room_types do
       member do
         delete :delete_image
@@ -31,9 +36,6 @@ Madbooker::Application.routes.draw do
         get :check_ins
       end
     end
-    resources :packages
-    resources :add_ons
-    resources :memberships
     resource :reports do
       collection do
         get :searches

@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: applied_sales_taxes
+#
+#  id             :integer          not null, primary key
+#  booking_id     :integer
+#  sales_tax_id   :integer
+#  quantity       :integer
+#  name           :string(255)
+#  calculated_by  :string(255)
+#  calculated_how :string(255)
+#  amount         :decimal(15, 2)
+#  total          :decimal(15, 2)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

@@ -48,8 +48,7 @@ gem "simple_states"
 gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
 gem 'country_select'
 gem "less_ga", git: "git@github.com:LessEverything/less_ga.git"
-#gem "less_ga", path: "/Users/steve/rails/less_ga"
-
+gem 'google-analytics-turbolinks'
 
 gem "haml-rails"
 gem 'sass-rails'
