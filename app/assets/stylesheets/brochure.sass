@@ -82,6 +82,7 @@ h4
 .container
   margin: 0 auto
   width: $width
+  +rel
 
 
 #header
@@ -122,6 +123,16 @@ $point_width: ($width - ($pad * 3)) / 4
 
 #points
   padding: $pad 0
+  .cta
+    font-size: 18px
+    +clear
+    +tc
+    margin: 0 0 20px 0
+    .one
+      +tc
+    .two
+      +tc
+
   .point
     +fl
     width: $point_width
@@ -140,7 +151,7 @@ $point_width: ($width - ($pad * 3)) / 4
     p
       margin: 0 0 0 0
       padding: 0 0 0 0
-    &:first-child
+    &:nth-child(2)
       margin: 0 0 0 0
 
 
@@ -210,21 +221,30 @@ $point_width: ($width - ($pad * 3)) / 4
         
 
 
+
 $download_this: 400px
 
 
 #download_third
   padding: ($pad * 2) 0
   .download_this
-    +fl
+    +abs
+    top: 0
+    left: 0
     width: $download_this
     border: 1px solid #ccc
-    background: #eee
     padding: 20px
-    height: 200px
+    height: 100%
+    background: url('test.png')
   .content
     width: $width - $download_this - $pad
     +fr
+  .cta
+    +bold
+    border-top: 1px solid #ccc
+    padding: 10px 0
+    border-bottom: 1px solid #ccc
+    margin-bottom: 15px
 
 
 @import choosen
