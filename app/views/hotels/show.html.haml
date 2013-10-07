@@ -13,6 +13,167 @@
     .header
       = link_to revenue_hotel_reports_path(current_hotel) do
         %i.icon-money
+        Booking Stats (Amounts)
+    .week
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.mobile_booking_amount_this_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.tablet_booking_amount_this_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.other_booking_amount_this_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          This Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.total_booking_amount_this_month
+        .where
+          Total
+    .month_row
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.mobile_booking_amount_last_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.tablet_booking_amount_last_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          Last Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.other_booking_amount_last_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          Last Month
+        .number
+          %span= @hotel.currency.html_symbol
+          = format_for_dash @hotel.total_booking_amount_last_month
+        .where
+          Total
+          
+          
+  .total_revenue  
+    .header
+      = link_to revenue_hotel_reports_path(current_hotel) do
+        %i.icon-suitcase
+        Booking Stats (Numbers)
+    .week
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = format_for_dash @hotel.mobile_booking_count_this_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          This Month
+        .number
+          = format_for_dash @hotel.tablet_booking_count_this_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          This Month
+        .number
+          = format_for_dash @hotel.other_booking_count_this_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          This Month
+        .number
+          = format_for_dash @hotel.total_booking_count_this_month
+        .where
+          Total
+    .month_row
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          = format_for_dash @hotel.mobile_booking_count_last_month
+        .where
+          %i.icon-mobile-phone
+          Mobile
+      .data
+        .add +
+        .what
+          Last Month
+        .number
+          = format_for_dash @hotel.tablet_booking_count_last_month
+        .where
+          %i.icon-tablet
+          Tablet
+      .data
+        .equal =
+        .what
+          Last Month
+        .number
+          = format_for_dash @hotel.other_booking_count_last_month
+        .where
+          %i.icon-laptop
+          Computer
+      .data
+        .what
+          Last Month
+        .number
+          = format_for_dash @hotel.total_booking_count_last_month
+        .where
+          Total
+
+  .total_revenue  
+    .header
+      = link_to revenue_hotel_reports_path(current_hotel) do
+        %i.icon-money
         Revenue Stats
     .week
       .data
@@ -92,9 +253,9 @@
           = format_for_dash @hotel.total_revenue_last_month
         .where
           Total
-
-
-
+  
+  
+  
   .denials  
     .header
       = link_to denials_hotel_reports_path(current_hotel) do
@@ -170,9 +331,9 @@
           = @hotel.total_denials_last_month
         .where
           Total
-
-
-
+  
+  
+  
   .revenue_by_room_type
     .header
       = link_to revenue_by_room_type_hotel_reports_path(current_hotel) do
@@ -197,14 +358,14 @@
             %span= @hotel.currency.html_symbol
             %span= format_for_dash room_type.month
           .when Month
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
   .number_of_searches
     .header
       %i.icon-search
@@ -279,7 +440,7 @@
           = @hotel.total_search_this_month
         .where
           All Devices
-
+  
     .daily_average
       .data
         .add +
@@ -315,12 +476,12 @@
           = @hotel.total_search_daily_average
         .where
           All Devices
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
   .number_of_searches
     .header
       %i.icon-flag-checkered
@@ -395,7 +556,7 @@
           = @hotel.total_look_to_book_this_month
         .where
           All Devices
-
+  
     .daily_average
       .data
         .add +

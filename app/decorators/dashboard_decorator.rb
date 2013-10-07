@@ -1,6 +1,70 @@
 class DashboardDecorator < HotelDecorator
   
   
+  def mobile_booking_amount_this_month
+    booking_amount_this_month "mobile"
+  end
+  
+  def tablet_booking_amount_this_month
+    booking_amount_this_month "tablet"
+  end
+  
+  def other_booking_amount_this_month
+    booking_amount_this_month "desktop"
+  end
+  
+  def total_booking_amount_this_month
+    mobile_booking_amount_this_month + tablet_booking_amount_this_month + other_booking_amount_this_month
+  end
+  
+  def mobile_booking_amount_last_month
+    booking_amount_last_month "mobile"
+  end
+  
+  def tablet_booking_amount_last_month
+    booking_amount_last_month "tablet"
+  end
+  
+  def other_booking_amount_last_month
+    booking_amount_last_month "desktop"
+  end
+  
+  def total_booking_amount_last_month
+    mobile_booking_amount_last_month + tablet_booking_amount_last_month + other_booking_amount_last_month
+  end
+  
+  def mobile_booking_count_this_month
+    booking_count_this_month "mobile"
+  end
+  
+  def tablet_booking_count_this_month
+    booking_count_this_month "tablet"
+  end
+  
+  def other_booking_count_this_month
+    booking_count_this_month "desktop"
+  end
+  
+  def total_booking_count_this_month
+    mobile_booking_count_this_month + tablet_booking_count_this_month + other_booking_count_this_month
+  end
+  
+  def mobile_booking_count_last_month
+    booking_count_last_month "mobile"
+  end
+  
+  def tablet_booking_count_last_month
+    booking_count_last_month "tablet"
+  end
+  
+  def other_booking_count_last_month
+    booking_count_last_month "desktop"
+  end
+  
+  def total_booking_count_last_month
+    mobile_booking_count_last_month + tablet_booking_count_last_month + other_booking_count_last_month
+  end
+  
   def mobile_revenue_this_month
     revenue_this_month "mobile"
   end
@@ -161,7 +225,35 @@ class DashboardDecorator < HotelDecorator
     mobile_denials_last_month + tablet_denials_last_month + other_denials_last_month
   end
   
+  
+  
+  
   private  
+    
+  def booking_amount_this_month type
+    booking_amount type, :month
+  end
+  
+  def booking_amount_last_month type
+    booking_amount type, :last_month
+  end
+
+  def booking_amount type, range
+    model.sales.created_range(DateRange.new( range: range).to_r).group(:device_type).sum( :total)[type] || 0.0
+  end
+    
+  def booking_count_this_month type
+    booking_count type, :month
+  end
+  
+  def booking_count_last_month type
+    booking_count type, :last_month
+  end
+
+  def booking_count type, range
+    model.sales.created_range(DateRange.new( range: range).to_r).group(:device_type).count[type] || 0
+  end
+
   def searches_by_range_and_device range, device
     model.stats.searches.range(range).where("device_type = ?", device).count
   end

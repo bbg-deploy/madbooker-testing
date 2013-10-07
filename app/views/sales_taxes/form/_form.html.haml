@@ -2,10 +2,10 @@
 - sales_tax ||= @sales_tax || current_hotel.sales_taxes.build
 
 = simple_form_for [current_hotel, sales_tax] do |f|
-  = f.input :name, :placeholder => 'Hotel usage fee'
-  = f.input :calculated_by, collection: SalesTax::CALCULATED_BY
-  = f.input :calculated_how, collection: SalesTax::CALCULATED_HOW
-  = f.input :amount, as: :money_amount
+  = f.input :name, :placeholder => 'Sales tax, Resort fee, VAT, Local tax', label: "Name your tax, Resort fee, etc."
+  = f.input :calculated_by, collection: SalesTax::CALCULATED_BY, label: "Charged per - do you want to charge this nightly or total stay?"
+  = f.input :calculated_how, collection: SalesTax::CALCULATED_HOW, label: "Calculated as - do you want to charge this as a percentage or a flat fee?"
+  = f.input :amount, as: :money_amount, label: "Amount or percantage"
   .clear
   .form-actions
     = f.submit "Save"

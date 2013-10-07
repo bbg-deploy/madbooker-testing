@@ -28,6 +28,7 @@ class Sale < ActiveRecord::Base
   validates_presence_of :inventory_id, :booking_id, :hotel_id, :rate, :date, :price
   
   scope :range, ->(range){ where date: range }
+  scope :created_range, ->(range){ where created_at: range }
   scope :paid, ->{ joins(:booking).where("paid is not null") }
   
   

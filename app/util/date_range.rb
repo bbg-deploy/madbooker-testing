@@ -55,9 +55,11 @@ class DateRange
   def start_date
     case @range
     when :week
-      Date.week.start
+      Date.week.first
     when :month
-      Date.month.start
+      Date.month.first
+    when :month
+      Date.current.last_month.beginning_of_month
     else
       Date.current.beginning_of_month
     end
@@ -73,6 +75,8 @@ class DateRange
       Date.week.end + 1.day
     when :month
       Date.month.end + 1.day
+    when :last_month
+      Date.current.last_month.end_of_month
     else
       Date.current + 1.day
     end
