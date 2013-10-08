@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   skip_filter :authenticate_user!
-  layout "brouchure"
+  layout "brochure"
   
   def index
     if !account_subdomain.blank?

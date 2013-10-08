@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
   def context
     @context ||= Context.new hotel: current_hotel, user: current_user, params: params, device_type: device_type, user_bug: user_bug
   end
+  
 
 
   private
@@ -87,7 +88,7 @@ class ApplicationController < ActionController::Base
   def ensure_hotel
     return if current_hotel
     return unless account_subdomain.blank?
-    render :file => "public/401.html", :status => :unauthorized
+    render :file => "public/401.html", :status => :unauthorized, :layout => "brochure"
   end
   
 

@@ -14,7 +14,7 @@
       .container    
         = link_to image_tag('madbooker_logo_smaller.png'), root_path, :class=>"logo"
         #nav
-          = render :partial => '/layouts/brouchure_nav'
+          = render :partial => '/layouts/brochure_nav'
     #content
       //%h1= yield(:title)
       - unless notice.blank?
@@ -24,4 +24,4 @@
       = yield
     = render :partial => '/layouts/footer'
   = render "layouts/ga/global"
-  = render "layouts/ga/brouchure"
+  = render "layouts/ga/brochure"
