@@ -1,6 +1,14 @@
+#excite
+  %p
+    %strong
+      Try it, you'll like it! And you have nothing to lose.
+    There is no charge to use MadBooker for the first 30 days. And you can cancel at any time.
+
+
 #form_simple_header
-  %h2 Let's Setup Your New Booking System!
-  %h3 Takes just 5 minutes to get setup!
+  %h2 You can start your free trial now!
+  %h3 In just 15 minutes, you can have your new booking system up and running.
+
 #form_simple
   = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {id: :signup_form} do |f|
     = f.error_notification
@@ -23,5 +31,10 @@
       = f.input :stripe_token, as: :hidden
     .form-actions
       = button_tag "Sign up", type: :button, id: "sign_up_button"
-  = render "devise/shared/links"
+  
+
+  .already
+    = link_to "Already signed up? Log into the app.", new_user_session_url( subdomain: :app)
+
+  //= render "devise/shared/links"
 

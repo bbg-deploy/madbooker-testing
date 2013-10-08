@@ -1,13 +1,15 @@
 #header
-  = render "/hotels/form/nav", on: :tax
 
-  .clear
   %h1
     Existing Sales Taxes
+  = render "/hotels/form/nav", on: :tax
+
+#data
+
   = link_to [:new, current_hotel, :sales_tax], :class=>'create' do
     %i.icon-plus
     Create Sales Tax/Fee
-#data
+
   %table.standard
     %thead
       %tr

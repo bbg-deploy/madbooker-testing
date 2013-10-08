@@ -7,7 +7,8 @@
 @import jquery.ui.theme 
 @import jquery.ui.datepicker
 
-$green: rgba(108, 179, 68, 1)
+//$green: rgba(108, 179, 68, 1)
+$green: rgba(187, 187, 187, .5)
 $blue: rgba(113, 146, 195, 1)
 
 =serif
@@ -344,6 +345,8 @@ p.notice, p.alert
   +border-radius(5px)
 
 
+.already
+  padding: 20px 0 0 0
 
 .ui-widget
   +arial
@@ -369,4 +372,49 @@ p.notice, p.alert
         border-bottom: none
       &.ui-state-active
         background: #eee
+
+
+
+#excite
+  +abs
+  top: $pad
+  width: 220px
+  right: -250px
+  z-index: 999
+  h4
+    font-size: 14px
+    color: #333
+    line-height: 145%
+    +bold
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+  p
+    font-size: 14px
+    margin-top: 0px
+
+
+.container_simple
+  margin: 0 auto
+  width: $simple_width
+  +rel
+  
+.container
+  margin: 0 auto
+  width: $width
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
