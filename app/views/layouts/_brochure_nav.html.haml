@@ -3,8 +3,8 @@
   %li= link_to 'Easy Setup', setup_path
   //%li= link_to 'Happy Customers', '#'
   - if user_signed_in? #returned here for non auth
-    %li= link_to "Log in", new_user_session_url( subdomain: :app)
-    %li.logout= link_to "", destroy_user_session_url( subdomain: :app), method: :delete, :class => 'icon-off'
+    %li= link_to "Log in", new_user_session_url
+    %li.logout= link_to "", destroy_user_session_url, method: :delete, :class => 'icon-off'
   - else
-    %li= link_to "Sign up", new_user_registration_url( subdomain: :app)
-    %li= link_to "Log in", new_user_session_url( subdomain: :app)
+    %li= link_to "Sign up", new_user_registration_url
+    %li= link_to "Log in", new_user_session_url
