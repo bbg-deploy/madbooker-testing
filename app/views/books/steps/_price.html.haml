@@ -14,7 +14,8 @@
       .old_price
         %strike= format room.rate
       - if @booking.nights > 1
-        %strike= format room.rate * @booking.nights
+        .old_price
+          %strike= format room.rate * @booking.nights
     .row
       .label
         Discounted Room Rate:
