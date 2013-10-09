@@ -22,6 +22,26 @@ class Hotel::CreateTest < ActiveSupport::TestCase
     end
 
   
+    context "with a non-valid hotel & valid room_type parameters" do
+      setup do
+        @params[:hotel][:email] = "sldfkj+2@sdlfj"
+        @context = Context.new(user: Gen.user(id: 7), params: @params, hotel: nil)
+      end
+
+      should "not create anything" do
+        assert_no_difference "Inventory.count" do
+        assert_no_difference "Membership.count" do
+        assert_no_difference "RoomType.count" do
+        assert_no_difference "Hotel.count" do
+          hotel = create.run
+          assert_equal 1, hotel.errors.size
+        end
+        end
+        end
+        end
+      end
+    end
+  
     context "with valid hotel & room_type parameters" do
       setup do
         @context = Context.new(user: Gen.user(id: 7), params: @params, hotel: nil)

@@ -1,7 +1,7 @@
 defaults:
 
 development:
-  domain: madbooker.dev
+  domain: app.madbooker.dev
   protocol: http
   twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
   twilio_number: 7164626651 #716-4MBOOK1
@@ -34,7 +34,7 @@ staging:
   ga_root_domain: lesseverything.com
   
 production:
-  domain: madbooker.com
+  domain: app.madbooker.com
   protocol: http
   twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
   twilio_number: 7164626651

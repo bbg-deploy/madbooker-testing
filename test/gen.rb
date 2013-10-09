@@ -165,8 +165,8 @@ class << self
   end
   
   
-  def hotel_and_stuff! hotel_args = {}
-    u = user!
+  def hotel_and_stuff! hotel_args = {}, user = nil
+    u = user || user!
     h = hotel!( {owner_id: u.id}.merge(hotel_args))
     membership! user_id: u.id, hotel_id: h.id
     room_type! hotel_id: h.id

@@ -27,6 +27,6 @@
   #right_column
     %h3 Cancel my account
     %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis massa justo, eget fringilla mauris molestie vitae. Pellentesque ante mi, imperdiet at faucibus sed, semper at mi. Ut nisl orci, vestibulum a vehicula non, laoreet in lacus. Maecenas ut lectus velit.
-      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?\nThis can not be undone." }, :method => :delete}
+      This action can not be undone. Your account and all data will be deleted and removed from our system. Your credit card will no longer be charged.
     
