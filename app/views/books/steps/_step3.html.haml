@@ -40,7 +40,7 @@
             = f.input :cc_zipcode, label: "Zip code", :wrapper_class => 'zip_code'
             = f.input :cc_cvv, required: true, :wrapper_class => 'security', :label => 'CVC'
           #confirmation_info
-            = f.input :sms_confirmation, :label => 'Cell Phone Number', :placeholder => '555-555-5555', :wrapper_class => 'sms', :hint => 'If you want to receive SMS confirmations'
+            = f.input :sms_confirmation, :label => 'Receive SMS Notifications', :placeholder => '555-555-5555', :wrapper_class => 'sms', :hint => 'Add your cell phone number.'
         
           - unless current_hotel.fine_print.blank?
             .fine_print

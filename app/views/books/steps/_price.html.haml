@@ -11,7 +11,7 @@
     .row
       .label
         Original Room Rate:
-      .old_pice
+      .old_price
         %strike= format room.rate
       - if @booking.nights > 1
         %strike= format room.rate * @booking.nights
