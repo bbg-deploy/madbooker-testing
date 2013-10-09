@@ -14,13 +14,20 @@ class AddOnsController < ApplicationController
 
   def create
     @add_on = current_hotel.add_ons.create add_on_params
-    respond_with current_hotel, @add_on
+    if @add_on.persistant?
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @add_on
+    end
   end
   
   def update
     @add_on = current_hotel.add_ons.find params[:id]
-    @add_on.update_attributes add_on_params
-    respond_with current_hotel, @add_on
+    if @add_on.update_attributes add_on_params
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @add_on
+    end
   end
   
   def destroy

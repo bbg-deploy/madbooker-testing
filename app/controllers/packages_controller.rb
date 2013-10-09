@@ -14,12 +14,20 @@ class PackagesController < ApplicationController
   
   def create
     @package = Packages::Create.new(context: context).run
-    respond_with current_hotel, @package
+    if @package.persistant?
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @package
+    end
   end
   
   def update
     @package = Packages::Update.new(context: context).run
-    respond_with current_hotel, @package
+    if @package.errors.size == 0
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @package
+    end
   end
   
   def destroy

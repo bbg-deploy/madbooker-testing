@@ -14,13 +14,20 @@ class SalesTaxesController < ApplicationController
 
   def create
     @sales_tax = current_hotel.sales_taxes.create sales_tax_params
-    respond_with current_hotel, @sales_tax
+    if @sales_tax.persistant?
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @sales_tax
+    end
   end
   
   def update
     @sales_tax = current_hotel.sales_taxes.find params[:id]
-    @sales_tax.update_attributes sales_tax_params
-    respond_with current_hotel, @sales_tax
+    if @sales_tax.update_attributes sales_tax_params
+      redirect_to action: "index"
+    else
+      respond_with current_hotel, @sales_tax
+    end
   end
   
   # def destroy
