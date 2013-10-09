@@ -862,7 +862,7 @@ a.add_link
   padding: $pad
   border: 1px solid #ccc
   margin: 15px 0
-  height: 280px
+  height: 330px
   .header
     +header(700)
     font-weight: 600
@@ -1012,6 +1012,28 @@ a.add_link
 
 
 
+.invoice
+  margin-bottom: 20px
+  div.description
+    margin: 0 0 10px 0
+    padding: 0 30px
+    +tc
+  .quantity, .price, .line_total, .tax_line
+    padding: 5px 10px
+    margin: 0 100px
+    border-top: 1px solid #ccc
+    label
+      +fl
+    span
+      +fr
+  .tax_line
+    label.description
+    span.quantity
+    span.price
+    span.line_total
+
+  
+      
 
 
 

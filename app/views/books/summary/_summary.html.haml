@@ -2,20 +2,44 @@
 
 
 .invoice
-  .line
-    .description= "#{@booking.room_name} arriving on #{format @booking.arrive} and departing on #{format @booking.depart}. "
-    .quantity= "#{@booking.nights} #{"day".pluralize @booking.nights}"
-    .price= format @booking.lowest_rate
-    .line_total= format @booking.lowest_rate * @booking.nights
+  .description
+    %strong
+      Booking Summary:
+    You're booking
+    = "#{@booking.room_name} arriving on #{format @booking.arrive} and departing on #{format @booking.depart}. "
+  .quantity
+    %label
+      Total Nights:
+    %span
+      = "#{@booking.nights} #{"day".pluralize @booking.nights}"
+  .price
+    %label
+      Nightly Rate:
+    %span
+      = format @booking.lowest_rate
+  .line_total
+    %label
+      Nightly Total:
+    %span
+      = format @booking.lowest_rate * @booking.nights
   - @booking.applied_sales_taxes.each do |tax|
-    .line
-      .description= tax.name
-      .quantity= tax.quantity
-      .price= format tax.amount
-      .line_total= format tax.total
-  .ling
-    .description Total for stay
-    .line_total= format @booking.total
+    .tax_line
+      %label
+        = tax.name
+      //%span
+      //  = tax.quantity
+      //  \%
+      //%span
+      //  = format tax.amount
+      %span
+        = format tax.total
+  .line_total
+    %label.description 
+      %strong
+        Total For Stay:
+    %span
+      %strong
+        = format @booking.total
   
       
 
