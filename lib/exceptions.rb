@@ -9,6 +9,10 @@ class Exceptions
     
     Honeybadger.context({data: data})
     Honeybadger.notify exception
+    if Rails.env.development?
+      exception.log
+      data.log
+    end
     exception
   end
   

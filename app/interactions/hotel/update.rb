@@ -32,7 +32,7 @@ class Hotel::Update < Less::Interaction
       end
     rescue ActiveRecord::RecordInvalid=>e
       Exceptions.record e
-      false
+      return false
     end
     true
   end

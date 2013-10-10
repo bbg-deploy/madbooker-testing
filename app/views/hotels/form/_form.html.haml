@@ -22,7 +22,7 @@
       = f.input :country, priority: [ "United States", "Canada" ], :wrapper_class => 'country'
       = f.input :postal_code, :wrapper_class => 'postal_code'
       .clear
-      = f.input :minimal_inventory_notification_threshold, :hint => "I don't know what this does.", :wrapper_class => 'inventory_threshold'
+      = f.input :minimal_inventory_notification_threshold, :wrapper_class => 'inventory_threshold'
       = f.association :currency, collection: Currency.options_for_select, :wrapper_class => 'currency'
       = f.input :time_zone, :wrapper_class => 'time_zone'
       = f.input :email, :wrapper_class => 'email'
