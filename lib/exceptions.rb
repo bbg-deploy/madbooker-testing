@@ -1,9 +1,15 @@
 class Exceptions
   
-  def self.record ex, data = nil
+  def self.record exception, data = nil
+    
+    exception ||= $!
+    if exception.is_a?(String)
+      exception = RuntimeError.new(exception)
+    end
+    
     Honeybadger.context({data: data})
-    Honeybadger.notify ex
-    ex
+    Honeybadger.notify exception
+    exception
   end
   
   
