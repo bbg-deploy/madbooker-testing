@@ -3,9 +3,9 @@ defaults:
 development:
   domain: app.madbooker.dev
   protocol: http
-  twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
-  twilio_number: 7164626651 #716-4MBOOK1
-  twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
+  twilio_sid: ACe5fa1b1db660a70482f8ccf06ac89c3d
+  twilio_number: 2245885198
+  twilio_auth: 7ed6fd3230a632ef09fd3bc7c8d4fcec
   from_address: support@madbooker.com
   ga_client_id: 57393180821-0hef5h1pcoe7dv636f7c9l97lsm8g8ca.apps.googleusercontent.com
   ga_client_secret: zOeeme99_dQ6vKAtNZ2l9dK-
@@ -24,9 +24,9 @@ test:
 staging:
   domain: mb.lesseverything.com
   protocol: http
-  twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
-  twilio_number: 7164626651
-  twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
+  twilio_sid: AC480fa62243f06748e1672b0389d0b8c7
+  twilio_number: 2245885198
+  twilio_auth: aab642678ef8e86c44ada06dfbf3d854
   ga_client_id: 924558594137.apps.googleusercontent.com
   ga_client_secret: cjOcr6peVLD_uEpqGVIUqk1f
   from_address: support@madbooker.com
@@ -36,9 +36,9 @@ staging:
 production:
   domain: app.madbooker.com
   protocol: http
-  twilio_sid: AC319e6200a8b404475c4c0b43f2350a05
-  twilio_number: 7164626651
-  twilio_auth: 8030ea28ab3b23b6e6c69bb8798fad4d
+  twilio_sid: ACe5fa1b1db660a70482f8ccf06ac89c3d
+  twilio_number: 2245885198
+  twilio_auth: 7ed6fd3230a632ef09fd3bc7c8d4fcec
   ga_client_id: 711350426594.apps.googleusercontent.com
   ga_client_secret: rKIWH2dLNfJS8ah-kH9DQLtn
   from_address: support@madbooker.com
