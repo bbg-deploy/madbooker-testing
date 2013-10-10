@@ -164,6 +164,8 @@ GEM
       railties (>= 3.1, < 4.1)
     hashr (0.0.22)
     hike (1.2.3)
+    honeybadger (1.8.1)
+      json
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -354,6 +356,7 @@ DEPENDENCIES
   faker
   google-analytics-turbolinks
   haml-rails
+  honeybadger
   intercom
   jbuilder (~> 1.0.1)
   jquery-rails
