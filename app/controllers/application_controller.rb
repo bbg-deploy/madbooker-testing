@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
   
 
   def title t = nil
-    return @title if t.nil?
-    @title = t
+    return @title = t unless t.nil?
+    return @title unless @title.nil?
+    @title = "MadBooker"
   end
   helper_method :title
 
@@ -78,10 +79,12 @@ class ApplicationController < ActionController::Base
   
     
   def account_subdomain
-    sub = request.subdomains.first || ''
-    return sub if sub.blank?
-    return sub unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == sub}
-    ''
+    return @sub if @sub
+    return @sub = "" if request.host == App.domain
+    @sub = request.subdomains.first || ''
+    return @sub if @sub.blank?
+    return @sub unless SUBDOMAIN_EXCLUSIONS.any?{|e| e == @sub}
+    @sub = ""
   end
   
   def ensure_hotel

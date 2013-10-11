@@ -9,6 +9,8 @@
     = render "layouts/setup"
 
 
+    = render "layouts/ga/global"
+    = render "layouts/ga/brochure"
   %body#brochure
     #header
       .container    
@@ -23,5 +25,3 @@
         %p.alert= alert
       = yield
     = render :partial => '/layouts/footer'
-  = render "layouts/ga/global"
-  = render "layouts/ga/brochure"

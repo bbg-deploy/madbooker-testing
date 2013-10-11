@@ -8,6 +8,8 @@
     = render "layouts/setup"
 
     = yield( :head)
+    = render "layouts/ga/global"
+    = render "layouts/ga/public"
   %body#public
     .container
       - unless notice.blank?
@@ -17,5 +19,3 @@
       = yield
       #footer
         #dialog-message.hidden
-    = render "layouts/ga/global"
-    = render "layouts/ga/public"
