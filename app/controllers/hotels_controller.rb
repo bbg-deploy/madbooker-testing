@@ -57,6 +57,25 @@ class HotelsController < ApplicationController
     #render layout: false
   end
   
-  private
+  def ga_code
+    code = ""
+    clasic = nil
+    begin
+      res = HTTParty.get(params[:url])
+      if res.code.to_s =~ /\A2/
+        if res.body =~ /_gaq\.push\(\['_setAccount', ?'([-\da-zA-Z]*)'\]\)/
+          #clasic
+          classic = true
+          code = $1
+        elsif res.body =~ /ga\('create', ?'([-\da-zA-Z]*)'\)/
+          #universal
+          classic = false
+          code = $1
+        end
+      end
+    rescue
+    end
+    render json: {code: code, classic: classic}
+  end
   
 end

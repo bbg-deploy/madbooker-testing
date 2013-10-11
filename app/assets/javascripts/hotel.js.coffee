@@ -32,12 +32,21 @@
         <br>
         We need to figure out how someone can tell which one they use.
         "
+        
+    bind_get_ga_code = ->
+      $(document).off_and_on "blur", "#hotel_url", (e)->
+        return unless $("#hotel_google_analytics_code").val().isBlank()
+        $.ajax ga_code_hotels_path("", {url: encodeURI($("#hotel_url").val())}), success: (data)->
+          return if data.code.isBlank()
+          $("#hotel_google_analytics_code").val data.code
+          $("#hotel_google_analytics_code_type").val( if data.classic then "Classic Asynchronous" else "Universal Analytics").trigger("chosen:updated")
 
     init: ->
       bind_url_field()
       bind_name_field()
       set_subdomain_hint()
       bind_ga_help()
+      bind_get_ga_code()
   )()
 
 

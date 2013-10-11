@@ -5,7 +5,8 @@ Less::Js::Routes::Config.configure do |config|
       :inventories,
       :book,
       :check_ins,
-      :bookings
+      :bookings,
+      :hotels
       ]                         #default is []
   config.output_path = "#{Rails.root}/app/assets/javascripts/less_routes.js"
 end

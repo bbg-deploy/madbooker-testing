@@ -11,6 +11,7 @@ Madbooker::Application.routes.draw do
     collection do
       get 'setup_instructions'
       get :ga_instructions
+      get :ga_code
     end
     resources :packages
     resources :add_ons

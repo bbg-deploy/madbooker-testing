@@ -51,6 +51,7 @@ gem "less_ga", git: "git@github.com:LessEverything/less_ga.git"
 gem 'google-analytics-turbolinks'
 gem 'honeybadger'
 gem 'intercom-rails', '~> 0.2.21'
+gem "httparty"
 
 gem "haml-rails"
 gem 'sass-rails'
