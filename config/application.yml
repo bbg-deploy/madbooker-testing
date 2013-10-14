@@ -6,7 +6,7 @@ development:
   twilio_sid: ACe5fa1b1db660a70482f8ccf06ac89c3d
   twilio_number: 2245885198
   twilio_auth: 7ed6fd3230a632ef09fd3bc7c8d4fcec
-  from_address: support@madbooker.com
+  from_address: help@madbooker.com
   ga_client_id: 57393180821-0hef5h1pcoe7dv636f7c9l97lsm8g8ca.apps.googleusercontent.com
   ga_client_secret: zOeeme99_dQ6vKAtNZ2l9dK-
   redirect_uri:	urn:ietf:wg:oauth:2.0:oob
@@ -17,7 +17,7 @@ development:
 test:
   domain: example.test
   protocol: http
-  from_address: support@madbooker.com
+  from_address: help@madbooker.com
   ga_account_id: UA-43393407-2
   ga_root_domain: lesseverything.com
 
@@ -29,7 +29,7 @@ staging:
   twilio_auth: aab642678ef8e86c44ada06dfbf3d854
   ga_client_id: 924558594137.apps.googleusercontent.com
   ga_client_secret: cjOcr6peVLD_uEpqGVIUqk1f
-  from_address: support@madbooker.com
+  from_address: help@madbooker.com
   ga_account_id: UA-43393407-2
   ga_root_domain: lesseverything.com
   
@@ -41,7 +41,7 @@ production:
   twilio_auth: 7ed6fd3230a632ef09fd3bc7c8d4fcec
   ga_client_id: 711350426594.apps.googleusercontent.com
   ga_client_secret: rKIWH2dLNfJS8ah-kH9DQLtn
-  from_address: support@madbooker.com
+  from_address: help@madbooker.com
   ga_account_id: UA-43393407-1
   ga_root_domain: madbooker.com
   
