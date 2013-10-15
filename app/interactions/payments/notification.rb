@@ -1,11 +1,16 @@
 class Payments::Notification < Less::Interaction
 
   #these are the stripe events we don't care about
-  IGNORED_EVENTS = %w(account.updated charge.dispute.closed charge.dispute.created charge.dispute.updated charge.failed charge.refunded charge.succeeded coupon.created coupon.deleted customer.discount.created customer.discount.deleted customer.discount.updated invoice.created invoice.payment_failed invoice.payment_succeeded invoice.updated invoiceitem.created invoiceitem.deleted invoiceitem.updated plan.created plan.deleted plan.updated transfer.created transfer.failed transfer.paid transfer.updated)
+  IGNORED_EVENTS = %w(account.updated charge.dispute.closed charge.dispute.created charge.dispute.updated charge.failed charge.refunded charge.succeeded coupon.created coupon.deleted customer.discount.created customer.discount.deleted customer.discount.updated invoice.created invoice.payment_succeeded invoice.updated invoiceitem.created invoiceitem.deleted invoiceitem.updated plan.created plan.deleted plan.updated transfer.created transfer.failed transfer.paid transfer.updated)
 
   #these are the only methods that deal with changes to the subscription status
   HANDLED_EVENTS = %w(customer.created customer.updated customer.deleted customer.subscription.trial_will_end customer.subscription.updated customer.subscription.deleted customer.subscription.created )
+  
+  #these have custom implamantations
+  CUSTOM_EVENTS = %w( invoice.payment_failed )
 
+ 
+ 
   def run
     handle_notification
   end
@@ -69,6 +74,10 @@ class Payments::Notification < Less::Interaction
     end
   end
   
+  
+  def invoice_payment_failed
+    PaymentMailer.charged_failed(user).deliver
+  end
   
   
 

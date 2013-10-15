@@ -7,6 +7,21 @@ class Payments::NotificationTest < ActiveSupport::TestCase
     @notification ||= Payments::Notification.new context: @context
   end
   
+  context "sending payment failed emails" do
+    setup do
+      @context = Context.new params: stripe_params("invoice.payment_failed")
+      @user = Gen.user(payment_status: "active")
+      notification.stubs(:user).returns @user
+    end
+
+    should "send the email" do
+      assert ActionMailer::Base.deliveries.empty?
+      notification.run
+      assert !ActionMailer::Base.deliveries.empty?
+    end
+  end
+  
+  
   context "responding to an event we don't handle" do
     setup do
       template = stripe_params("customer.subscription.created")
