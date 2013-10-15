@@ -42,49 +42,49 @@ module StatsStuff
     
     def device_type
       ua = request.user_agent
-      case !nil
-      when ua =~ /GoogleTV|SmartTV|Internet.TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/i
+      o = if ua =~ /GoogleTV|SmartTV|Internet.TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/i
         'tv'
       # tv-based gaming console
-      when ua =~/Xbox|PLAYSTATION.3|Wii/i
+      elsif ua =~/Xbox|PLAYSTATION.3|Wii/i
         'tv'
       # tablet
-      when ua =~ /iPad/i || ua =~ /tablet/i && !(ua =~ /RX-34/i) || ua =~ /FOLIO/i    
+      elsif ua =~ /iPad/i || ua =~ /tablet/i && !(ua =~ /RX-34/i) || ua =~ /FOLIO/i    
         'tablet'
       #android tablet
-      when ua =~ /Linux/i && ua =~ /Android/i && !(ua =~ /Fennec|mobi|HTC.Magic|HTCX06HT|Nexus.One|SC-02B|fone.945/i)
+      elsif ua =~ /Linux/i && ua =~ /Android/i && !(ua =~ /Fennec|mobi|HTC.Magic|HTCX06HT|Nexus.One|SC-02B|fone.945/i)
         'tablet'
       #Kindle or Kindle Fire
-      when ua =~ /Kindle/i || ua =~ /Mac.OS/i && ua =~ /Silk/i
+      elsif ua =~ /Kindle/i || ua =~ /Mac.OS/i && ua =~ /Silk/i
         'tablet'
       #pre Android 3.0 Tablet
-      when ua =~ /GT-P10|SC-01C|SHW-M180S|SGH-T849|SCH-I800|SHW-M180L|SPH-P100|SGH-I987|zt180|HTC(.Flyer|\_Flyer)|Sprint.ATP51|ViewPad7|pandigital(sprnova|nova)|Ideos.S7|Dell.Streak.7|Advent.Vega|A101IT|A70BHT|MID7015|Next2|nook/i || ua =~ /MB511/i && ua =~ /RUTEM/i
+      elsif ua =~ /GT-P10|SC-01C|SHW-M180S|SGH-T849|SCH-I800|SHW-M180L|SPH-P100|SGH-I987|zt180|HTC(.Flyer|\_Flyer)|Sprint.ATP51|ViewPad7|pandigital(sprnova|nova)|Ideos.S7|Dell.Streak.7|Advent.Vega|A101IT|A70BHT|MID7015|Next2|nook/i || ua =~ /MB511/i && ua =~ /RUTEM/i
         'tablet'
       #unique Mobile User Agent
-      when ua =~ /BOLT|Fennec|Iris|Maemo|Minimo|Mobi|mowser|NetFront|Novarra|Prism|RX-34|Skyfire|Tear|XV6875|XV6975|Google.Wireless.Transcoder/i
+      elsif ua =~ /BOLT|Fennec|Iris|Maemo|Minimo|Mobi|mowser|NetFront|Novarra|Prism|RX-34|Skyfire|Tear|XV6875|XV6975|Google.Wireless.Transcoder/i
         'mobile'
       #odd Opera User Agent - http://goo.gl/nK90K
-      when ua =~ /Opera/i && ua =~ /Windows.NT.5/i && ua =~ /HTC|Xda|Mini|Vario|SAMSUNG\-GT\-i8000|SAMSUNG\-SGH\-i9/i
+      elsif ua =~ /Opera/i && ua =~ /Windows.NT.5/i && ua =~ /HTC|Xda|Mini|Vario|SAMSUNG\-GT\-i8000|SAMSUNG\-SGH\-i9/i
         'mobile'
       #Windows Desktop
-      when ua =~ /Windows.(NT|XP|ME|9)/ && !(ua =~ /Phone/i) || ua =~ /Win(9|.9|NT)/i
+      elsif ua =~ /Windows.(NT|XP|ME|9)/ && !(ua =~ /Phone/i) || ua =~ /Win(9|.9|NT)/i
         'desktop'
       #Mac Desktop
-      when ua =~ /Macintosh|PowerPC/i && !(ua =~ /Silk/i)
+      elsif ua =~ /Macintosh|PowerPC/i && !(ua =~ /Silk/i)
         'desktop'
       #Linux Desktop
-      when ua =~ /Linux/i && ua =~ /X11/i
+      elsif ua =~ /Linux/i && ua =~ /X11/i
         'desktop'
       #Solaris, SunOS, BSD Desktop
-      when ua =~ /Solaris|SunOS|BSD/i
+      elsif ua =~ /Solaris|SunOS|BSD/i
         'desktop'
       #Desktop BOT/Crawler/Spider
-      when ua =~ /Bot|Crawler|Spider|Yahoo|ia_archiver|Covario-IDS|findlinks|DataparkSearch|larbin|Mediapartners-Google|NG-Search|Snappy|Teoma|Jeeves|TinEye/i && !(ua =~ /Mobile/i)
+      elsif ua =~ /Bot|Crawler|Spider|Yahoo|ia_archiver|Covario-IDS|findlinks|DataparkSearch|larbin|Mediapartners-Google|NG-Search|Snappy|Teoma|Jeeves|TinEye/i && !(ua =~ /Mobile/i)
         'desktop'
       #assume it is a Mobile Device (mobile-first)
       else
-         'mobile'
+         "mobile"
       end
+      o
     end
   
   end
