@@ -1,24 +1,13 @@
 
 .pricing_holder
-  - if room.discounted_rate.nil?
-    .row
-      .label
-        Room Rate:
-      .price= format room.rate
-      - if @booking.nights > 1
-        .price= format room.rate * @booking.nights
-  - else
-    .row
-      .label
-        Original Room Rate:
-      .old_price
-        %strike= format room.rate
-      - if @booking.nights > 1
-        .old_price
-          %strike= format room.rate * @booking.nights
-    .row
-      .label
-        Discounted Room Rate:
-      .price= format room.discounted_rate
-      - if @booking.nights > 1
-        .price= format room.discounted_rate * @booking.nights
+  - if room.discounted_rate.nil? && @booking.nights == 1
+    = render "books/steps/price_for_no_discount_and_single_night", room: room
+    
+  - elsif room.discounted_rate.nil? && @booking.nights > 1
+    = render "books/steps/price_for_no_discount_and_multiple_nights", room: room
+    
+  - elsif !room.discounted_rate.nil? && @booking.nights == 1
+    = render "books/steps/price_for_discount_and_single_night", room: room
+    
+  - elsif !room.discounted_rate.nil? && @booking.nights > 1
+    = render "books/steps/price_for_discount_and_multiple_nights", room: room

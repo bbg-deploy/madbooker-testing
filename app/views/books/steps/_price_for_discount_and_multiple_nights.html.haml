@@ -1,0 +1,11 @@
+
+.row
+  .label
+    Avg Nightly Rate:
+  .old_price
+    %strike= format room.rate
+  .price= format room.discounted_rate
+.row
+  .label
+    Total:
+  .price= format room.discounted_rate * @booking.nights
