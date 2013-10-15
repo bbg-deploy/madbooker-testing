@@ -39,6 +39,7 @@ class PackageDecorator < ApplicationDecorator
     room_name
   end
   
+  
   private
   
 
