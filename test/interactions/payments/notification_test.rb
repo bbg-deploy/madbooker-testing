@@ -2,6 +2,7 @@ require 'test_helper'
 require 'stripe_helper'
 
 class Payments::NotificationTest < ActiveSupport::TestCase
+  include ActionMailer::TestHelper
 
   def notification
     @notification ||= Payments::Notification.new context: @context
@@ -15,9 +16,9 @@ class Payments::NotificationTest < ActiveSupport::TestCase
     end
 
     should "send the email" do
-      assert ActionMailer::Base.deliveries.empty?
-      notification.run
-      assert !ActionMailer::Base.deliveries.empty?
+      assert_emails 1 do
+        notification.run
+      end
     end
   end
   

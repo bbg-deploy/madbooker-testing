@@ -37,45 +37,10 @@
           alert("Your credit card expiration date doesn't look right, can you double check it?")
           return false
           
-    setup_tabs = ->
-      $( "#checkout_tabs" ).tabs(
-          beforeActivate: ( event, ui )->
-            copy_and_remove ui.oldPanel.selector, ui.newPanel.selector
-        )
-        
-    copy_and_remove = (from, to)->
-      guest = "#for_other .guest"
-      first = $("#booking_first_name").val()
-      last  = $("#booking_last_name").val()
-      email = $("#booking_email").val()
-      if to == "#for_other"
-        $(guest).html($(from).html())
-        $(from).html("")
-        guestify_labels()
-      else
-        $(to).html($(guest).html())
-        $(guest).html("")
-        unguestify_labels()
-      $("#booking_first_name").val(first)
-      $("#booking_last_name").val(last)
-      $("#booking_email").val(email)
-
-    unguestify_labels = ->
-      guestifying_labels("abbr> Guest's", "abbr>")
-
-    guestifying_labels = (from, to)->
-      ["first_name", "last_name", "email"].each (o, i)->
-        html = $("label[for='booking_#{o}']").html()
-        $("label[for='booking_#{o}']").html(html.replace(from, to))
-
-    guestify_labels = ->
-      guestifying_labels("abbr>", "abbr> Guest's")
-      
     init: ->
       setup_date_pickers()
       setup_credit_card_number_validator()
       setup_credit_card_validator()
-      setup_tabs()
   )()
 
 

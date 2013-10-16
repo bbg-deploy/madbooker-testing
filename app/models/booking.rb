@@ -14,10 +14,7 @@
 #  updated_at          :datetime
 #  first_name          :string(255)
 #  last_name           :string(255)
-#  made_by_first_name  :string(255)
-#  made_by_last_name   :string(255)
 #  email               :string(255)
-#  email_confirmation  :string(255)
 #  sms_confirmation    :string(255)
 #  encrypted_cc_number :string(255)
 #  cc_month            :integer
@@ -62,7 +59,6 @@ class Booking < ActiveRecord::Base
     :first_name, :last_name, :email
     
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
-  validates_format_of :email_confirmation, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, allow_blank: true
   
   before_create :create_guid
   after_save :persist_state_to_sales
