@@ -15,6 +15,7 @@
 #  image_content_type :string(255)
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  max_occupancy      :integer
 #
 
 class RoomType < ActiveRecord::Base
@@ -27,4 +28,5 @@ class RoomType < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "missing_:style.png"
   
   validates_presence_of :name, :number_of_rooms, :default_rate
+  validates_presence_of :max_occupancy
 end

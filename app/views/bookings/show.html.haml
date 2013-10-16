@@ -17,3 +17,7 @@
     %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
     %div= link_to @hotel.url, @hotel.url
 
+  #fine_print
+    %div
+      = @hotel.fine_print
+      Maximun occupancy for this room is #{@booking.bookable.max_occupancy}.

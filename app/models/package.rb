@@ -18,6 +18,8 @@ class Package < ActiveRecord::Base
   has_many :bundles
   has_many :add_ons, :through => :bundles
   has_many :bookings, as: :bookable
+  
+  delegate :max_occupancy, to: :room_type
 
   validates_presence_of :hotel_id, :room_type_id, :additional_price
   

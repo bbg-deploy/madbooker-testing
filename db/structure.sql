@@ -256,6 +256,7 @@ CREATE TABLE `room_types` (
   `image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image_file_size` int(11) DEFAULT NULL,
   `image_updated_at` datetime DEFAULT NULL,
+  `max_occupancy` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -396,7 +397,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-16 11:25:52
+-- Dump completed on 2013-10-16 14:41:03
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -492,3 +493,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130917173122');
 INSERT INTO schema_migrations (version) VALUES ('20130918152946');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016152421');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016183435');
