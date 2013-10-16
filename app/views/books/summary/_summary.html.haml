@@ -17,11 +17,12 @@
       Nightly Rate:
     %span
       = format @booking.lowest_rate
-  .line_total
-    %label
-      Nightly Total:
-    %span
-      = format @booking.lowest_rate * @booking.nights
+  - unless @booking.applied_sales_taxes.blank?
+    .line_total
+      %label
+        Sub Total:
+      %span
+        = format @booking.lowest_rate * @booking.nights
   - @booking.applied_sales_taxes.each do |tax|
     .tax_line
       %label
