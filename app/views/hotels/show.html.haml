@@ -13,7 +13,9 @@
     .header
       = link_to revenue_hotel_reports_path(current_hotel) do
         %i.icon-money
-        Booking Stats (Amounts)
+        Total Revenue Booked
+    .sub_heading
+      The total value of bookings made during the current and previous calendar months.
     .week
       .data
         .add +
@@ -98,7 +100,9 @@
     .header
       = link_to revenue_hotel_reports_path(current_hotel) do
         %i.icon-suitcase
-        Booking Stats (Numbers)
+        Total Room Nights Booked
+    .sub_heading
+      The total number of room nights booked during the current and previous calendar months.
     .week
       .data
         .add +
@@ -174,7 +178,9 @@
     .header
       = link_to revenue_hotel_reports_path(current_hotel) do
         %i.icon-money
-        Revenue Stats
+        Actualized Revenue
+    .sub_heading
+      Total revenue collected during the current and previous calendar months (guests must have been marked as paid in the booking engine).
     .week
       .data
         .add +
@@ -261,6 +267,8 @@
       = link_to denials_hotel_reports_path(current_hotel) do
         %i.icon-exclamation-sign
         Denial Stats
+    .sub_heading
+      Total number of searches conducted during the current and previous calendar months that resulted in no room types being available.
     .week
       .data
         .add +
@@ -338,7 +346,9 @@
     .header
       = link_to revenue_by_room_type_hotel_reports_path(current_hotel) do
         %i.icon-money
-        Revenue by Room Type
+        Actualized Revenue by Room Type
+    .sub_heading
+      Total revenue by room type collected during the current and previous calendar months (guests must have been marked as paid in the booking engine).
     - @hotel.revenue_by_room_type.each do |room_type|
       .room_type
         .name
@@ -370,6 +380,8 @@
     .header
       %i.icon-search
       Search Activity
+    .sub_heading
+      Total number of searches conducted during the current and previous calendar months. (One visitor may conduct multiple searches.)
     .week
       .data
         .add +
@@ -485,7 +497,9 @@
   .number_of_searches
     .header
       %i.icon-flag-checkered
-      Look to Book
+      Look to Book Percentage
+    .sub_heading
+      Percentage of total searches that resulted in a booking during the current and previous calendar months.
     .week
       .data
         .add +
