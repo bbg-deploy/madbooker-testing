@@ -14,7 +14,7 @@ class AddOnsController < ApplicationController
 
   def create
     @add_on = current_hotel.add_ons.create add_on_params
-    if @add_on.persistant?
+    if @add_on.persisted?
       redirect_to action: "index"
     else
       respond_with current_hotel, @add_on

@@ -14,7 +14,7 @@ class SalesTaxesController < ApplicationController
 
   def create
     @sales_tax = current_hotel.sales_taxes.create sales_tax_params
-    if @sales_tax.persistant?
+    if @sales_tax.persisted?
       redirect_to action: "index"
     else
       respond_with current_hotel, @sales_tax

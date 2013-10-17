@@ -14,7 +14,7 @@ class PackagesController < ApplicationController
   
   def create
     @package = Packages::Create.new(context: context).run
-    if @package.persistant?
+    if @package.persisted?
       redirect_to action: "index"
     else
       respond_with current_hotel, @package
