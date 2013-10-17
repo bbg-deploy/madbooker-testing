@@ -17,7 +17,7 @@ module Hotel::Params
           :url, :room_rates_display, :subdomain, :google_analytics_code, :time_zone,
           :fine_print, :logo, :room_rates_display, :minimal_inventory_notification_threshold, 
           :currency_id, :street1, :street2, :street3, :city, :state, :country, :postal_code, :email,
-          :google_analytics_code_type,
+          :google_analytics_code_type, :max_occupancy,
           :room_types_attributes => [:name, :description, :number_of_rooms, 
           :default_rate, :discounted_rate, :_destroy, :id, :image]
       else
