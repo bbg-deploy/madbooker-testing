@@ -150,37 +150,38 @@ class DashboardDecorator < HotelDecorator
   end
   
   def mobile_look_to_book_this_week
-     @mobile_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "mobile").look_to_book.count)
+     @mobile_look_to_book_this_week ||= look_to_book_percentage( model.stats.range(Time.week).group(:kind).where(device_type: "mobile").look_to_book.count)
   end
 
   def tablet_look_to_book_this_week
-     @tablet_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "tablet").look_to_book.count)
+     @tablet_look_to_book_this_week ||= look_to_book_percentage( model.stats.range(Time.week).group(:kind).where(device_type: "tablet").look_to_book.count)
   end
   
   def other_look_to_book_this_week
-     @other_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.week).group(:kind).where(device_type: "desktop").look_to_book.count)
+     @other_look_to_book_this_week ||= look_to_book_percentage( model.stats.range(Time.week).group(:kind).where(device_type: "desktop").look_to_book.count)
   end
   
   def total_look_to_book_this_week
-    @total_look_to_book_this_week ||= mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week
+    @total_look_to_book_this_week ||= (mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week) / 3
   end
   
   def mobile_look_to_book_this_month
-     @mobile_look_to_book_this_week ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "mobile").look_to_book.count)
+     @mobile_look_to_book_this_week ||= look_to_book_percentage( model.stats.range(Time.month).group(:kind).where(device_type: "mobile").look_to_book.count)
   end
   
   def tablet_look_to_book_this_month
-     @tablet_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "tablet").look_to_book.count)
+     @tablet_look_to_book_this_month ||= look_to_book_percentage( model.stats.range(Time.month).group(:kind).where(device_type: "tablet").look_to_book.count)
   end
   
   def other_look_to_book_this_month
-     @other_look_to_book_this_month ||= look_to_book_ratio( model.stats.range(Time.month).group(:kind).where(device_type: "desktop").look_to_book.count)
+     @other_look_to_book_this_month ||= look_to_book_percentage( model.stats.range(Time.month).group(:kind).where(device_type: "desktop").look_to_book.count)
   end
   
   def total_look_to_book_this_month
-    @total_look_to_book_this_month ||= mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month
+    @total_look_to_book_this_month ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month) / 3
   
   end
+  
   def mobile_look_to_book_daily_average
     @mobile_look_to_book_daily_average ||= (mobile_look_to_book_this_month / Date.current.day).round(1)
   end
@@ -194,7 +195,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def total_look_to_book_daily_average
-    @total_look_to_book_daily_average ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month / Date.current.day).round(1)
+    @total_look_to_book_daily_average ||= ((mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month)/ 3 / Date.current.day).round(1)
   end
   
   
@@ -277,6 +278,12 @@ class DashboardDecorator < HotelDecorator
   
   def grouped_revenue_based_on_range range
     model.sales.range(range).group(:device_type).paid.sum( :total)
+  end
+  
+  def look_to_book_percentage group
+    look = group[Stat::LOOK].to_d
+    book = group[Stat::BOOK].to_d
+    (book / look * 100).round( 0)
   end
     
   def look_to_book_ratio group

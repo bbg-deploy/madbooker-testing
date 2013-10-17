@@ -506,7 +506,8 @@
         .what
           This Week
         .number
-          = @hotel.mobile_look_to_book_this_week
+          = @hotel.mobile_look_to_book_this_week.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-mobile-phone
           Mobile
@@ -515,7 +516,8 @@
         .what
           This Week
         .number
-          = @hotel.tablet_look_to_book_this_week
+          = @hotel.tablet_look_to_book_this_week.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-tablet
           Tablet
@@ -524,7 +526,8 @@
         .what
           This Week
         .number
-          = @hotel.other_look_to_book_this_week
+          = @hotel.other_look_to_book_this_week.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-laptop
           Computer
@@ -532,7 +535,8 @@
         .what
           This Week
         .number
-          = @hotel.total_look_to_book_this_week
+          = @hotel.total_look_to_book_this_week.to_s.gsub(".0", '')
+          %span.percent %
         .where
           All Devices
     .month_row
@@ -541,7 +545,8 @@
         .what
           This Month
         .number
-          = @hotel.mobile_look_to_book_this_month
+          = @hotel.mobile_look_to_book_this_month.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-mobile-phone
           Mobile
@@ -550,7 +555,8 @@
         .what
           This Month
         .number
-          = @hotel.tablet_look_to_book_this_month
+          = @hotel.tablet_look_to_book_this_month.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-tablet
           Tablet
@@ -559,7 +565,8 @@
         .what
           This Month
         .number
-          = @hotel.other_look_to_book_this_month
+          = @hotel.other_look_to_book_this_month.to_s.gsub(".0", '')
+          %span.percent %
         .where
           %i.icon-laptop
           Computer
@@ -567,7 +574,8 @@
         .what
           This Month
         .number
-          = @hotel.total_look_to_book_this_month
+          = @hotel.total_look_to_book_this_month.to_s.gsub(".0", '')
+          %span.percent %
         .where
           All Devices
   
@@ -578,6 +586,7 @@
           Daily Average
         .number
           = @hotel.mobile_look_to_book_daily_average
+          %span.percent %
         .where
           %i.icon-mobile-phone
           Mobile
@@ -587,6 +596,7 @@
           Daily Average
         .number
           = @hotel.tablet_look_to_book_daily_average
+          %span.percent %
         .where
           %i.icon-tablet
           Tablet
@@ -596,6 +606,7 @@
           Daily Average
         .number
           = @hotel.other_look_to_book_daily_average
+          %span.percent %
         .where
           %i.icon-laptop
           Computer
@@ -604,6 +615,7 @@
           Daily Average
         .number
           = @hotel.total_look_to_book_daily_average
+          %span.percent %
         .where
           All Devices
 
