@@ -57,7 +57,6 @@ gem "haml-rails"
 gem 'sass-rails'
 gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
 gem  "compass-normalize"
-gem "susy"
 gem 'jquery-ui-sass-rails'
 #   gem 'jquery-rails'
 #  gem 'compass-colors'

@@ -22,14 +22,6 @@ class BookingDecorator < ApplicationDecorator
     bookable.name
   end
   
-  def made_by
-    if made_by_first_name.blank? && made_by_last_name.blank?
-      name
-    else
-      "#{made_by_last_name}, #{made_by_first_name}"
-    end
-  end
-  
   def nights
     range.to_a.size - 1
   end

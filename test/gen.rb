@@ -38,7 +38,8 @@ class << self
       name:            Faker::Internet.domain_word,
       default_rate:    (50..120).to_a.sample,
       discounted_rate: nil,
-      description:     Faker::Lorem.sentences.join
+      description:     Faker::Lorem.sentences.join,
+      max_occupancy:   4
     }
     make RoomType, defaults, args
   end

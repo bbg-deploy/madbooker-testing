@@ -10,8 +10,8 @@ module Booking::Params
       return @booking_params if @booking_params
       para = params_regardless_of_source
       para = munge_bookable para
-      par = para[:booking].permit :arrive, :depart, :bookable_id, :bookable_type, :package_id, :first_name, :last_name, :made_by_first_name,
-        :made_by_last_name, :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 
+      par = para[:booking].permit :arrive, :depart, :bookable_id, :bookable_type, :package_id, :first_name, :last_name,
+        :email_confirmation, :email, :sms_confirmation, :cc_zipcode, :cc_cvv, :cc_year, 
         :cc_month, :cc_number
       par[:arrive] = Chronic.parse( para[:booking][:arrive]).to_date unless para[:booking][:arrive].blank?
       par[:depart] = Chronic.parse( para[:booking][:depart]).to_date unless para[:booking][:depart].blank?
