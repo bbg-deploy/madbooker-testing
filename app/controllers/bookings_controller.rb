@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     if hotel_from_subdomain
       @booking = hotel_from_subdomain.bookings.find_by_guid( params[:id]).decorate
       render layout: 'hotel'
-    elsif @booking = current_hotel.bookings.find_by_id( params[:id]).decorate
+    elsif @booking = current_hotel.bookings.find( params[:id]).decorate
       render :private, layout: 'application'
     else
       raise ActiveRecord::RecordNotFound
