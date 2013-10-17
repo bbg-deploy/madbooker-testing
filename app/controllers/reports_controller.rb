@@ -46,9 +46,8 @@ class ReportsController < ApplicationController
     elsif ga.need_to_pick_profile?
       @profiles = ga.profiles
     else
-      #prob chose a goog account that doesn't match the hotel.google_analytics_code
       current_hotel.remove_google
-      @error = "We didn't find any Google Analytics accounts or profile that match the Google Analytics Code that is stored in the Hotel's Settings. Please double check everything."
+      @error = ga.error_message
     end
     render
   end

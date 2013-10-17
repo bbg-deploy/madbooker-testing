@@ -3,6 +3,8 @@ class Hotel::Ga < Less::Interaction
   expects :context
   expects :less_ga
   
+  attr_accessor :error_message
+  
   def run    
     fill_in_as_much_data_as_possible
     self
@@ -32,8 +34,8 @@ class Hotel::Ga < Less::Interaction
   
   def accounts
     return @accounts if @accounts
-    @accounts = less_ga.data.accounts
-    return @accounts = [] unless @accounts.is_a?( Hash) && @accounts.has_key?(:items) && @accounts[:items].size > 0
+    @accounts = less_ga.data.accounts.log :blue
+    return @accounts = [] if has_errors? @accounts
     if @accounts[:items].size == 1
       set_account_id @accounts[:items][0][:id]
       get_profiles @accounts[:items][0][:id]
@@ -64,11 +66,33 @@ class Hotel::Ga < Less::Interaction
   end
   
   def get_profiles account_id = context.params[:account_id]
-    @profiles = less_ga.data.profiles account_id
+    @profiles = less_ga.data.profiles( account_id).log :green
+    return @profiles = [] if has_errors? @profiles
     if @profiles[:items].size == 1
       set_profile_id @profiles[:items][0][:id]
     end
     @profiles
+  end
+  
+  def has_errors? data
+    if data.has_key? "error"
+      #prob chose a goog account that doesn't match the hotel.google_analytics_code
+      if data["error"]["errors"].first["message"] =~ /accountId \d* does not match the accountId specified in the \d*/
+        @error_message = "The Google Analytics code for your hotel (in the Hotel settings) doesn't match any accounts or profiles for the Google account you're using when you authenticate. Please double check everything."
+      else
+        record_error data
+      end
+      return true
+    elsif !data.is_a?( Hash) || !data.has_key?(:items) || !(data[:items].size > 0)
+      record_error data
+      return true
+    end
+    false
+  end
+  
+  def record_error data
+    @error_message = "Google Analytics isn't giving us your data. We're looking into it now."
+    Exceptions.record "Google Analytics Error", {data: data, context: context}
   end
   
 end
