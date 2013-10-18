@@ -63,6 +63,13 @@ gem 'jquery-ui-sass-rails'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
 
+# Deploy with Capistrano
+gem "capistrano", "~> 2.15.5"
+gem "capistrano-ext", "~> 1.2.1"
+gem "capistrano-unicorn", "~> 0.2.0"
+
+# Use Unicorn as app server
+gem "unicorn", "~> 4.6.3"
 
 group :development, :staging do
   gem 'meta_request'
