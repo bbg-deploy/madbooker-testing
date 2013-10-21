@@ -63,11 +63,11 @@ class HotelsController < ApplicationController
     begin
       res = HTTParty.get(params[:url])
       if res.code.to_s =~ /\A2/
-        if res.body =~ /_gaq\.push\(\['_setAccount', ?'([-\da-zA-Z]*)'\]\)/
+        if res.body =~ /_gaq\.push\(\['_setAccount', ?'([-\da-zA-Z]*)'\]/
           #clasic
           classic = true
           code = $1
-        elsif res.body =~ /ga\('create', ?'([-\da-zA-Z]*)'\)/
+        elsif res.body =~ /ga\('create', ?'([-\da-zA-Z]*)'/
           #universal
           classic = false
           code = $1
