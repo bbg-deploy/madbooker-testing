@@ -1,30 +1,41 @@
 
 
+- revenue_class = action_name == "revenue" ? "on" : ''
+- revenue_by_room_type_class = action_name == "revenue_by_room_type" ? "on" : ''
+- daily_class = action_name == "daily" ? "on" : ''
+- funnel_class = action_name == "funnel" ? "on" : ''
+- denials_class = action_name == "denials" ? "on" : ''
+- visits_class = action_name == "visits" ? "on" : ''
+- cities_class = action_name == "cities" ? "on" : ''
+- sources_class = action_name == "sources" ? "on" : ''
+
+
+
 #header
   %h1 Reports
 
   #filters
-    = link_to revenue_hotel_reports_path do
+    = link_to revenue_hotel_reports_path, class: revenue_class do
       %i.icon-money
       Revenue
-    = link_to revenue_by_room_type_hotel_reports_path do
+    = link_to revenue_by_room_type_hotel_reports_path, class: revenue_by_room_type_class do
       %i.icon-money
       Revenue by Room Type
-    = link_to daily_hotel_reports_path do
+    = link_to daily_hotel_reports_path, class: daily_class do
       %i.icon-money
       Average Daily Rate
-    = link_to funnel_hotel_reports_path do
+    = link_to funnel_hotel_reports_path, class: funnel_class do
       %i.icon-filter
       Sales Funnel
-    = link_to denials_hotel_reports_path do
+    = link_to denials_hotel_reports_path, class: denials_class do
       %i.icon-filter
       Denials
-    = link_to visits_hotel_reports_path do
+    = link_to visits_hotel_reports_path, class: visits_class do
       %i.icon-filter
       Visits
-    = link_to cities_hotel_reports_path do
+    = link_to cities_hotel_reports_path, class: cities_class do
       %i.icon-filter
       Cities
-    = link_to sources_hotel_reports_path do
+    = link_to sources_hotel_reports_path, class: sources_class do
       %i.icon-filter
       Sources

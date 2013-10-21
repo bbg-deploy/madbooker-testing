@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   
   
   def show
-    render    
+    redirect_to action: :revenue 
   end
   
   def searches
