@@ -9,7 +9,7 @@
       %span
         Step 1
       Create a Button or Link
-    You must pick a button or link to put on your website. This link will send your website visitors into your madbooker booking engine.
+    Pick a button or link to put on your website. This link will send your website visitors into your MadBooker booking engine.
     
     #link_builder
       .option
@@ -65,7 +65,7 @@
       %span
         Step 2
       Copy & Paste The Booking Code Into Your Website
-    This gives your visitors the ability to click and see your new booking engine.
+    This gives your visitors the ability to make reservations using your new booking engine.
 
     //Ensure that cross­domain tracking is configured in Google Analytics.
     //Note, this step may be ommited if you're not using Google Analytics integration.
@@ -98,7 +98,7 @@
       .header
         If you're using #{Hotel::GA_CLASSIC_ASYNCHRONOUS}:
       .candp
-        Copy and Paste
+        Copy and Paste where you want your button/link to appear
       //%textarea
       //:plain
       //_gaq.push(['_link', "#{current_hotel.host}"])
@@ -109,7 +109,7 @@
         %strong
           %i.icon-question-sign
           Help Tip:
-        Google Analytics, Universal Analytics or Classic Asynchronous.
+        Google Analytics: Universal Analytics or Classic Asynchronous.
         <a href='#{ga_instructions_hotels_path}' target='_blank'>Which one do you use?</a>
 
     .clear
@@ -124,7 +124,7 @@
     %h2
       %span
         Step 3
-      Publish Your Updated Website
+      Verify that the link is working.
     This will make your your embedded link or button to your Madbooker booking engine live.
 
 
@@ -132,18 +132,20 @@
     #faq
 
       %h2
-        Frenquently Asked Questions
+        Frequently Asked Questions
       .faq
         .question
-          Can I have as many links to your booking engine as you like?
+          How many links or buttons can I put on my website?
         .answer
-          As many links as you want.
+          As many as you want.
       .faq
-        %a{:name=>'instructions'}
         .question
-          How can I tell if I use Google Analytics #{Hotel::GA_UNIVERSAL_ANALYTICS} or #{Hotel::GA_CLASSIC_ASYNCHRONOUS}?
+          Why do I need to integrate MadBooker with my Google Analytics account?
         .answer
-          <a href='#{ga_instructions_hotels_path}' target='_blank'>Learn the difference.</a>
+          You don't have to. As long as you add the MadBooker buttons or link to your site, the booking engine will work.
+          %br
+          %br
+          Linking MadBooker with your Google Analytics account enables you to see some additional reports, in the Reports section, about who is visiting your website (Visits, Citites, and Sources). Statistics regarding your booking engine will be provided in the Reports section whether or now you link up with Google Analytics.
 
           
         

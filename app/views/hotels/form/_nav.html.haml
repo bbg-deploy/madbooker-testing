@@ -25,4 +25,7 @@
   = link_to setup_instructions_hotels_path, :class => setup_class do
     %i.icon-info-sign
     Setup Instructions
+  = link_to book_url(host: current_hotel.host.gsub("app.", ""), protocol: App.protocol), target: :_blank do
+    %i.icon-info-sign
+    Customer's View
 

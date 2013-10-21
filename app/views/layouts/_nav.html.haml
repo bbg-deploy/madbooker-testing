@@ -10,7 +10,6 @@
         %li= link_to "Check In", [:check_ins, current_hotel, :bookings]
         %li= link_to "Bookings", [current_hotel, :bookings]
         %li= link_to "No Shows", [:no_shows, current_hotel, :bookings]
-        %li= link_to "Customer's View", book_url(host: current_hotel.host.gsub("app.", ""), protocol: App.protocol), target: :_blank
     %li.dropdown
       = link_to "#" do
         %i.icon-caret-down
