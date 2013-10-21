@@ -26,6 +26,13 @@ class BookingDecorator < ApplicationDecorator
     range.to_a.size - 1
   end
   
+  def paid_status
+    if paid?
+      "Paid"
+    else
+      "Unpaid"
+    end
+  end
   
   def range
     if arrive.is_a? String
