@@ -1,5 +1,6 @@
 class SalesTaxDecorator < ApplicationDecorator
   delegate_all
+  
 
   def quantity nights
     if per_stay?
@@ -14,6 +15,14 @@ class SalesTaxDecorator < ApplicationDecorator
       price_for_stay rate
     else
       price_for_nights rate, nights
+    end
+  end
+  
+  def amount_string
+    if calculated_how == SalesTax::FIXED_AMOUNT
+      h.format amount
+    else
+      format_percentage amount
     end
   end
   

@@ -39,6 +39,10 @@ module ApplicationHelper
     number_to_currency val, unit: (current_hotel || @hotel).currency.html_symbol
   end
   
+  def format_percentage val
+    "#{val}%"
+  end
+  
   def format_float val
     format_big_decimal val.to_d
   end
