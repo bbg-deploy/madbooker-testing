@@ -7,7 +7,11 @@
 #data
   - if @bookings 
     - if @bookings.blank?
-      No inventory for that day.
+      No bookings in the system for 
+      - if params[:date].blank?
+        today.
+      - else
+        =params[:date]
     -else
       %h2
         Search Results

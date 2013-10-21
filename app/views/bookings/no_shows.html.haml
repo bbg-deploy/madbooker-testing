@@ -5,9 +5,9 @@
 #data
     
   - if @bookings.blank?
-    No No-shows
-    
-  #today
-    = render "/bookings/index/booking"
+    There are no "No Show" guests in the system.
+  - else
+    #today
+      = render "/bookings/index/booking"
       
       

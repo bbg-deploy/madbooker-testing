@@ -3,11 +3,12 @@
     Guest Check-In
 
   #box
-    %input#daypicker{placeholder: "Pick Date"}
+    %input#daypicker{placeholder: "Arrival Date"}
     
     = form_tag search_hotel_bookings_path(current_hotel), method: :get do
-      = text_field_tag 'q', params[:q], placeholder: 'Search'
+      = text_field_tag 'q', params[:q], placeholder: 'Last Name'
       = submit_tag "Search"
+    Enter guests arrival date or last name to search for a booking.
       
 
 
@@ -16,7 +17,9 @@
   //#calendar
   //  #date_picker
           
-  - if @bookings.blank?
+  - if params[:date].blank? && @bookings.blank?
+    No check-ins are scheduled for today.
+  - elsif @bookings.blank?
     No Reservations for 
     = params[:date]
   - else
