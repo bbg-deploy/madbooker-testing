@@ -1,20 +1,19 @@
 
-
-This is your Low Invenotry Report from Madbooker.com
-
-The following dates have fewer rooms available than your threshold of 
-= @hotel.minimal_inventory_notification_threshold
+%p
+  Hi there,
+%p
+  This is your Low Inventory Report from Madbooker.com. On the following dates, your rooms inventory has reached or fallen below your threshold of #{@hotel.minimal_inventory_notification_threshold}.
+  
 
 - @inventories.each do |inventory|
   %div
-    On
-    = inventory.date
-    for room type
-    = inventory.room_type.name
-    of
-    = inventory.available_rooms
-    available rooms 
-    = inventory.sales_count
-    have been booked, which leaves only
-    = inventory.available_rooms - inventory.sales_count
-    that are still available to be booked.
+    #{inventory.date} #{inventory.room_type.name} #{inventory.available_rooms - inventory.sales_count} room
+
+%p
+  We'll keep sending these reminders daily, to let you know how things are looking for the upcoming 30 days. Please log in to change your inventory threshold or add inventory.
+
+%p
+  Have an awesome day!
+
+%p
+  Your friends at MadBooker

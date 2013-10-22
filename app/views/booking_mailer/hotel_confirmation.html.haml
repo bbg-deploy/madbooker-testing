@@ -1,7 +1,9 @@
 
+%p
+  Congrats! You just got a new booking on MadBooker.com.
+  = link_to "View it here.", hotel_booking_url(@booking.hotel, @booking, host: App.domain, protocol: App.protocol)
 
-A new booking was just placed via MadBooker.com
-
-
-= link_to "View it", hotel_booking_url(@booking.hotel, @booking, host: App.domain, protocol: App.protocol)
-
+%p
+  Have an awesome day!
+%p
+  Your friends at MadBooker

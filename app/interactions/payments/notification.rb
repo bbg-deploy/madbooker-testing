@@ -76,7 +76,7 @@ class Payments::Notification < Less::Interaction
   
   
   def invoice_payment_failed
-    PaymentMailer.charged_failed(user).deliver
+    PaymentMailer.send("charged_failed_#{context.params["data"]["attempt_count"]}", user).deliver
   end
   
   
