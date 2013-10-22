@@ -7,7 +7,7 @@ require 'bundler/capistrano'
 # Application Settings
 set :application, "madbooker"
 set :repository,  "git@github.com:madbooker/madbooker.git"
-set :branch, "bbg-deploy"
+set :branch, "master"
 set :scm, :git
 set :deploy_to, "/srv/apps/#{application}"
 set :user, "deploy"
@@ -22,6 +22,10 @@ set :deploy_via, :remote_cache
 set :ssh_options, { :forward_agent => true }
 set :use_sudo, false
 set :keep_releases, 5
+
+set :default_environment, {
+  'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+}
 
 default_run_options[:pty] = true
 default_environment["LANG"] = "en_us.UTF-8"
