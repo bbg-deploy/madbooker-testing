@@ -3,7 +3,7 @@ worker_processes 4
 working_directory "/srv/apps/madbooker/current"
 
 pid "/srv/apps/madbooker/current/tmp/pids/unicorn.pid"
-listen 8080, :tcp_nopush 
+listen 8080, :tcp_nopush => true
 timeout 60
 
 stderr_path "/srv/apps/madbooker/current/log/unicorn.stderr.log"
