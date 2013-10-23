@@ -12,8 +12,6 @@ stdout_path "/srv/apps/madbooker/current/log/unicorn.stdout.log"
 GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
 
-preload_app true
-
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
