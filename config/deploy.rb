@@ -30,8 +30,8 @@ set :default_environment, {
 default_run_options[:pty] = true
 default_environment["LANG"] = "en_us.UTF-8"
 
-after "deploy:update_code", "deploy:database_symlink"
-after "deploy:restart", "unicorn:duplicate", "deploy:cleanup"
+before "deploy:assets:precompile", "deploy:database_symlink"
+after "deploy:restart", "unicorn:restart", "deploy:cleanup"
 
 namespace :deploy do
   task :database_symlink, :except => { :no_release => true } do
