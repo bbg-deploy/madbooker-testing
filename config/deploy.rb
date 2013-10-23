@@ -7,7 +7,7 @@ require 'bundler/capistrano'
 # Application Settings
 set :application, "madbooker"
 set :repository,  "git@github.com:madbooker/madbooker.git"
-set :branch, "bbg-cap"
+set :branch, "master"
 set :scm, :git
 set :deploy_to, "/srv/apps/#{application}"
 set :user, "deploy"
