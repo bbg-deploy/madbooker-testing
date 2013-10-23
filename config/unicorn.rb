@@ -1,13 +1,17 @@
+# Unicorn config
+app_path = "/srv/apps/madbooker/current"
+rails_env = ENV['RAILS_ENV'] || 'production'
+
 worker_processes 4
+working_directory app_path
 
-working_directory "/srv/apps/madbooker/current"
-
-pid "/srv/apps/madbooker/current/tmp/pids/unicorn.pid"
-listen 8080, :tcp_nopush => true
+listen 127.0.0.1:8080, :tcp_nopush => true
 timeout 60
 
-stderr_path "/srv/apps/madbooker/current/log/unicorn.stderr.log"
-stdout_path "/srv/apps/madbooker/current/log/unicorn.stdout.log"
+stderr_path "log/unicorn.stderr.log"
+stdout_path "log/unicorn.stdout.log"
+
+pid "#{app_path}/tmp/pids/unicorn.pid"
 
 GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
