@@ -5,7 +5,7 @@ rails_env = ENV['RAILS_ENV'] || 'production'
 worker_processes 4
 working_directory app_path
 
-listen 127.0.0.1:8080, :tcp_nopush => true
+listen "127.0.0.1:8080", :tcp_nopush => true
 timeout 60
 
 stderr_path "log/unicorn.stderr.log"
