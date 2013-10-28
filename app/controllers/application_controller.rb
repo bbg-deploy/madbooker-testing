@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def title t = nil
     return @title = t unless t.nil?
     return @title unless @title.nil?
-    @title = "MadBooker"
+    @title = "Madbooker"
   end
   helper_method :title
 

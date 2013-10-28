@@ -10,6 +10,6 @@ class LowInventoryMailer < ActionMailer::Base
   def low_inventory hotel, inventories
     @hotel = hotel.decorate
     @inventories = inventories
-    mail to: @hotel.users.map(&:email), subject: "Low Inventory Report from MadBooker"
+    mail to: @hotel.users.map(&:email), subject: "Low Inventory Report from Madbooker"
   end
 end
