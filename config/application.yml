@@ -35,7 +35,7 @@ staging:
   
 production:
   domain: app.madbooker.com
-  protocol: http
+  protocol: https
   twilio_sid: ACe5fa1b1db660a70482f8ccf06ac89c3d
   twilio_number: 2245885198
   twilio_auth: 7ed6fd3230a632ef09fd3bc7c8d4fcec
