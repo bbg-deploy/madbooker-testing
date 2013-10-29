@@ -22,13 +22,13 @@
       = f.input :country, priority: [ "United States", "Canada" ], :wrapper_class => 'country'
       = f.input :postal_code, :wrapper_class => 'postal_code'
       .clear
-      = f.input :minimal_inventory_notification_threshold, :wrapper_class => 'inventory_threshold', required: true, hint: "You will receive a daily email telling you when your inventory for any room type has fallen bellow this threshold for the upcoming 30-day period."
+      = f.input :minimal_inventory_notification_threshold, :wrapper_class => 'inventory_threshold', required: true, hint: "<a href='http://madbooker.groovehq.com/knowledge_base/topics/minimum-inventory-threshold' target='_blank'>What does this mean?</a>".html_safe
       = f.association :currency, collection: Currency.options_for_select, :wrapper_class => 'currency'
       = f.input :time_zone, :wrapper_class => 'time_zone'
       = f.input :email, :wrapper_class => 'email'
 
       .clear
-      = f.input :logo, :hint => "Logo must be 190px by 150px in jpg or png format. <a href='#'>How do I resize my logo</a>".html_safe, :label => 'Hotel Logo'
+      = f.input :logo, :hint => "Logo must be 190px by 150px in jpg or png format. <a href='http://madbooker.groovehq.com/knowledge_base/topics/resizing-your-logo' target='_blank'>How do I resize my logo?</a>".html_safe, :label => 'Hotel Logo'
       - if f.object.logo?
         #logo
           = image_tag f.object.logo.url(:thumb)
@@ -42,7 +42,7 @@
       = f.input :url, :label => "Hotel Website URL", :hint => "http://yourwebsite.com", :wrapper_class => 'website_url'
       = f.input :subdomain, :hint => "http://yoursubdomain.madbooker.com", :label => "Madbooker Subdomain", :wrapper_class => 'subdomain'
       .clear
-      = f.input :google_analytics_code, :hint => "UA-XXXXXX-1", :wrapper_class => "google_analytics_code"
+      = f.input :google_analytics_code, :hint => "UA-XXXXXX-1", :wrapper_class => "google_analytics_code", hint: "<a href='http://madbooker.groovehq.com/knowledge_base/topics/finding-your-ga-code' target='_blank'>I need help with this.</a>".html_safe
       = f.input :google_analytics_code_type, :hint => "<a href='#{ga_instructions_hotels_path}' target='_blank'>What's the difference?</a>".html_safe, :wrapper_class => "google_analytics_code_type", collection: Hotel::GOOGLE_ANALYTICS_TYPES
       .clear
       = f.input :fine_print, :label => 'Booking Fine Print', :hint => "This content will be displayed at the end of the reservation process, right above Submit button. You may want to include your cancelation policy and other important info."
