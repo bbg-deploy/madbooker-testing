@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     if !account_subdomain.blank?
       redirect_to hotel_from_subdomain.url
     else    
-      render
+      redirect_to new_user_session_path
     end
   end
   
