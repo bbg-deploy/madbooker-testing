@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include AuthorizedStuff
   
   protect_from_forgery with: :exception
+  before_filter :ensure_https
   before_filter :authenticate_user!
   around_filter :set_time_zone
   before_filter :set_reservation_cookie
@@ -93,6 +94,11 @@ class ApplicationController < ActionController::Base
     render :file => "public/401.html", :status => :unauthorized, :layout => "brochure"
   end
   
+  def ensure_https
+    return unless Rails.env.production?
+    return if request.ssl?
+    redirect_to :protocol => 'https', status: 301
+  end
 
   def select_layout
     if devise_controller? && resource_name == :user && action_name.in?( ['new', "create"])
