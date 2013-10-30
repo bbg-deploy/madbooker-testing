@@ -162,7 +162,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def total_look_to_book_this_week
-    @total_look_to_book_this_week ||= (mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week) / 3
+    @total_look_to_book_this_week ||= ((mobile_look_to_book_this_week + tablet_look_to_book_this_week + other_look_to_book_this_week) / 3).round(1)
   end
   
   def mobile_look_to_book_this_month
@@ -178,7 +178,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def total_look_to_book_this_month
-    @total_look_to_book_this_month ||= (mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month) / 3
+    @total_look_to_book_this_month ||= ((mobile_look_to_book_this_month + tablet_look_to_book_this_month + other_look_to_book_this_month) / 3).round(1)
   
   end
   
@@ -281,6 +281,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def look_to_book_percentage group
+    return 0 unless group.has_key?(Stat::LOOK) && group.has_key?(Stat::BOOK)
     look = group[Stat::LOOK].to_d
     book = group[Stat::BOOK].to_d
     (book / look * 100).round( 0)
