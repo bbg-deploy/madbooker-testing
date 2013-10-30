@@ -34,7 +34,7 @@
         kv = frag.split("=")
         k = kv[0]
         v = kv[1]
-        return unless k == "errror"
+        return unless k == "error"
         @["handle_error_#{v}"].apply()
   )()
 

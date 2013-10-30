@@ -14,7 +14,7 @@ class Booking::Build < Less::Interaction
   end
   
   def build
-    
+    return nil if booking.rate.nil?
     context.hotel.sales_taxes.decorate.each do |tax|
       booking.applied_sales_taxes.build({
          name: tax.name, 

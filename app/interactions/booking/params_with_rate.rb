@@ -27,6 +27,7 @@ class Booking::ParamsWithRate < Less::Interaction
     available_rooms.each do |inventory|
        return inventory if inventory.room_type_id == room_type_id
     end    
+    return nil #none are found
   end
   
   def rate_from_package_from_available_rooms package_id

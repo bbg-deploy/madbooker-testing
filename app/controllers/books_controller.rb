@@ -31,10 +31,10 @@ class BooksController < ApplicationController
   
   def checkout
     @result = Booking::Reserve.new(context: context).run
-    @booking = @result.object.booking.decorate
-    @booking.step = 3
     Stat.funnel step: Stat::FUNNEL_STEPS[:attempt], context: context
     if @result.success?
+      @booking = @result.object.booking.decorate
+      @booking.step = 3
       Stat.funnel step: Stat::FUNNEL_STEPS[:booked], context: context
       look_to_booked! 
     end

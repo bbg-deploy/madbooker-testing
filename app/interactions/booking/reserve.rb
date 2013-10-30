@@ -11,6 +11,7 @@ class Booking::Reserve < Less::Interaction
     @error = ""
     # inventory
     # inventories
+    return response unless booking
     return response unless check_availablity
     return response unless setup_booking_and_save
     send_confirmations
@@ -20,6 +21,12 @@ class Booking::Reserve < Less::Interaction
   
   def booking
     @booking ||= Booking::Build.new(Context.new(hotel: context.hotel, params: Booking::ParamsWithRate.new(context).run)).run
+    unless @booking
+      response.status = 499
+      @error = "Date's not available"
+      return false
+    end
+    @booking
   end
   
   private
@@ -28,6 +35,7 @@ class Booking::Reserve < Less::Interaction
     if booking.rate #not nil
       return true
     end
+    response.status = 499
     @error = "Date's not available"
     false
   end
