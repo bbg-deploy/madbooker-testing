@@ -22,7 +22,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.mobile_booking_amount_this_month
         .where
           %i.icon-mobile-phone
@@ -32,7 +32,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.tablet_booking_amount_this_month
         .where
           %i.icon-tablet
@@ -42,7 +42,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.other_booking_amount_this_month
         .where
           %i.icon-laptop
@@ -51,7 +51,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.total_booking_amount_this_month
         .where
           Total
@@ -61,7 +61,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.mobile_booking_amount_last_month
         .where
           %i.icon-mobile-phone
@@ -71,7 +71,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.tablet_booking_amount_last_month
         .where
           %i.icon-tablet
@@ -81,7 +81,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.other_booking_amount_last_month
         .where
           %i.icon-laptop
@@ -90,7 +90,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.total_booking_amount_last_month
         .where
           Total
@@ -187,7 +187,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.mobile_revenue_this_month
         .where
           %i.icon-mobile-phone
@@ -197,7 +197,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.tablet_revenue_this_month
         .where
           %i.icon-tablet
@@ -207,7 +207,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.other_revenue_this_month
         .where
           %i.icon-laptop
@@ -216,7 +216,7 @@
         .what
           This Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.total_revenue_this_month
         .where
           Total
@@ -226,7 +226,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.mobile_revenue_last_month
         .where
           %i.icon-mobile-phone
@@ -236,7 +236,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.tablet_revenue_last_month
         .where
           %i.icon-tablet
@@ -246,7 +246,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.other_revenue_last_month
         .where
           %i.icon-laptop
@@ -255,7 +255,7 @@
         .what
           Last Month
         .number
-          %span= @hotel.currency.html_symbol
+          %span= @hotel.currency.try :html_symbol
           = format_for_dash @hotel.total_revenue_last_month
         .where
           Total
@@ -355,17 +355,17 @@
           = room_type.name
         .daily_average
           .number
-            %span= @hotel.currency.html_symbol
+            %span= @hotel.currency.try :html_symbol
             %span= format_for_dash room_type.average
           .when Daily Average
         .week
           .number
-            %span= @hotel.currency.html_symbol
+            %span= @hotel.currency.try :html_symbol
             %span= format_for_dash room_type.week
           .when Week
         .month_row
           .number
-            %span= @hotel.currency.html_symbol
+            %span= @hotel.currency.try :html_symbol
             %span= format_for_dash room_type.month
           .when Month
   
