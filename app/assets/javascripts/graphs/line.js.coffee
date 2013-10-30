@@ -16,7 +16,8 @@
           }
           
 
-      render: (selector, title, data, full_month)->
+      render: (selector, title, data, full_month, side_title)->
+        side_title ?= "Amount"
         $(selector).highcharts {
           title: { text: title, x: -20 }
           #subtitle: { text: 'subtitle', x: -20}
@@ -36,7 +37,7 @@
             }
           }
           yAxis: {
-            title: { text: 'Amount' }
+            title: { text: side_title }
             plotLines: [{ value: 0, width: 1, color: '#808080' }]
           }
           legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0 }
