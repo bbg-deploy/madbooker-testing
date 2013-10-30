@@ -32,7 +32,7 @@ CREATE TABLE `add_ons` (
   `updated_at` datetime DEFAULT NULL,
   `active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,7 +355,7 @@ CREATE TABLE `stats` (
   KEY `index_stats_on_created_at` (`created_at`),
   KEY `index_stats_on_kind` (`kind`),
   KEY `deveice_type` (`device_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=754 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=828 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +397,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-16 14:41:03
+-- Dump completed on 2013-10-30  9:41:44
 INSERT INTO schema_migrations (version) VALUES ('20130608220721');
 
 INSERT INTO schema_migrations (version) VALUES ('20130609135803');
@@ -495,3 +495,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130918152946');
 INSERT INTO schema_migrations (version) VALUES ('20131016152421');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016183435');
+
+INSERT INTO schema_migrations (version) VALUES ('20131030133856');
