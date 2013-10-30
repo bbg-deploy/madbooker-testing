@@ -37,6 +37,7 @@
             }
           }
           yAxis: {
+            min: 0
             title: { text: side_title }
             plotLines: [{ value: 0, width: 1, color: '#808080' }]
           }

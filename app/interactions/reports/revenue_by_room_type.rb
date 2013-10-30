@@ -28,7 +28,7 @@ class Reports::RevenueByRoomType < Less::Interaction
       bookable_id = datum[0][0]
       bookable_type = datum[0][1]
       month = date_for_month datum[0][2]
-      amount = datum[1]
+      amount = datum[1].round(0)
       row = out.select{|x| x.date == month}.first
       fill_room_data row.rooms, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
     end
