@@ -15,10 +15,10 @@
         %i.icon-caret-down
         Back Office
       %ul.hidden
-        %li= link_to "Inventory", [current_hotel, :inventories]
-        %li= link_to "Availability", month_hotel_inventories_path(current_hotel, Date.current.year, Date.current.month)
-        %li= link_to "Add Ons", [current_hotel, :add_ons]
-        %li= link_to "Packages", [current_hotel, :packages]
+        %li= link_to "Manage Inventory", [current_hotel, :inventories]
+        %li= link_to "View Inventory", month_hotel_inventories_path(current_hotel, Date.current.year, Date.current.month)
+        %li= link_to "Package Amenities", [current_hotel, :add_ons]
+        %li= link_to "Create Packages", [current_hotel, :packages]
     %li
       = link_to [current_hotel, :reports] do
         %i.icon-bar-chart
