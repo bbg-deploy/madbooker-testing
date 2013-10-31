@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   include Booking::Params
 
   before_filter :ensure_hotel
+  before_filter :ensure_valid_hotel
   skip_filter :authenticate_user!
   layout "hotel"
   
@@ -45,6 +46,11 @@ class BooksController < ApplicationController
   
   def current_hotel
     hotel_from_subdomain
+  end
+  
+  def ensure_valid_hotel
+    return if current_hotel
+    render :file => "public/404.html", :layout => "brochure"
   end
   
 end
