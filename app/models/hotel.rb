@@ -76,11 +76,11 @@ class Hotel < ActiveRecord::Base
   end
   
   def booking_url
-    "#{App.protocol}://#{subdomain}.#{App.domain}/book"
+    "#{App.protocol}://#{subdomain}.#{App.domain.gsub("app.", "")}/book"
   end
 
   def host
-    "#{subdomain}.#{App.domain}"
+    "#{subdomain}.#{App.domain.gsub("app.", "")}"
   end
   
   def remove_google
