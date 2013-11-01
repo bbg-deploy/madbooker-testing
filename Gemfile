@@ -88,6 +88,7 @@ group :development do
   gem 'pry-remote'
   gem 'letter_opener', :git => 'git://github.com/ryanb/letter_opener.git'
   gem "rails-erd"
+  gem 'conductor', github: 'rails/conductor'
 end
 
 group :development, :test do

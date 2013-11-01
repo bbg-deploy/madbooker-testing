@@ -16,7 +16,7 @@ class Booking::ReserveTest < ActiveSupport::TestCase
     should "return error" do
       res = reserve.run
       assert res.error?
-      assert res.object.booking.new_record?
+      assert res.object.booking.nil?
     end
   end
     
@@ -38,7 +38,7 @@ class Booking::ReserveTest < ActiveSupport::TestCase
     should "return error" do
       res = reserve.run
       assert res.error?
-      assert res.object.booking.new_record?
+      assert res.object.booking.nil?
     end
   end
   

@@ -13,6 +13,14 @@ GIT
     less_interactions (0.0.8)
 
 GIT
+  remote: git://github.com/rails/conductor.git
+  revision: c11d36dc2a43f1f98d1d04f575be2fa19be0202c
+  specs:
+    conductor (1.0.0)
+      jquery-rails
+      rails (~> 4.0.0)
+
+GIT
   remote: git://github.com/ryanb/letter_opener.git
   revision: 414eea2c68112508851c488ef01b5c61e1ee0017
   specs:
@@ -378,6 +386,7 @@ DEPENDENCIES
   colored
   compass-normalize
   compass-rails!
+  conductor!
   country_select
   devise (= 3.0.0.rc)
   draper

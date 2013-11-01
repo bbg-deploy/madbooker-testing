@@ -24,7 +24,7 @@ class Booking::Reserve < Less::Interaction
     unless @booking
       response.status = 499
       @error = "Date's not available"
-      return false
+      return nil
     end
     @booking
   end
