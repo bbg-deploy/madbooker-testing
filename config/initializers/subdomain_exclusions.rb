@@ -1,3 +1,3 @@
 
-SUBDOMAIN_EXCLUSIONS = %w{www mail test ftp admin alpha beta pop pop3 server1 webmail smtp mx blog app calendar docs sites www}
+SUBDOMAIN_EXCLUSIONS = %w{www mail test ftp admin alpha beta pop pop3 server1 webmail smtp mx blog app calendar docs sites www assets}
 
