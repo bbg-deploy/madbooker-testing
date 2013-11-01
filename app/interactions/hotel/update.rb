@@ -31,7 +31,7 @@ class Hotel::Update < Less::Interaction
         inventory_sync.run
       end
     rescue ActiveRecord::RecordInvalid=>e
-      Exceptions.record e
+      Exceptions.record e, context
       return false
     end
     true

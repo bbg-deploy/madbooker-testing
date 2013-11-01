@@ -15,7 +15,7 @@ class Payments::Cancel < Less::Interaction
       c.delete
     rescue => e
       pe = Payments::Cancel::Exception.new "Exception while canceling for user_id: #{context.user.id}, stripe_customer_id: #{context.user.stripe_customer_id}. Original Exception: #{e.inspect}"
-      Exceptions.record pe
+      Exceptions.record pe, context
     end
 
   end

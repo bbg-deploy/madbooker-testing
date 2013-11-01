@@ -29,7 +29,7 @@ class Hotel::Create < Less::Interaction
         inventory_create.run
       end
     rescue ActiveRecord::RecordInvalid=>e
-      Exceptions.record e
+      Exceptions.record e, context
       false
     end
     true

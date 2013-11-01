@@ -29,7 +29,7 @@ class Payments::Notification < Less::Interaction
       #stripe will try again and again to send the event.
       #if we can't handle it today, we prob can't tomorrow, better to record it and tell stripe we got it.
       #(by returning 200)
-      Exceptions.record "Unhanded Stripe event '#{event}'"
+      Exceptions.record "Unhanded Stripe event '#{event}'", context
       nil
     end
   end  
@@ -46,7 +46,7 @@ class Payments::Notification < Less::Interaction
     return @user if @user
     u = User.find_by_stripe_customer_id data["customer"]
     return @user = u if u
-    Exceptions.record "User not found while handling Stripe event", context.params
+    Exceptions.record "User not found while handling Stripe event", context
     nil
   end
   

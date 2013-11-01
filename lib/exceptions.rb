@@ -1,6 +1,6 @@
 class Exceptions
   
-  def self.record exception, data = nil
+  def self.record exception, data = {}
     
     exception ||= $!
     if exception.is_a?(String)

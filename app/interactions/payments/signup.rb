@@ -48,7 +48,7 @@ class Payments::Signup < Less::Interaction
       [false, e.json_body[:error][:message]]
     rescue Stripe::InvalidRequestError, Stripe::AuthenticationError, Stripe::APIConnectionError, Stripe::StripeError => e
       #there's nothing we can do about these
-      Exceptions.record e
+      Exceptions.record e, context
       [false, "Uh oh, an error happened. We've been notified, but feel free to contact support for assistance."]
     end
   end

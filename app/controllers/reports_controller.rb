@@ -75,9 +75,9 @@ class ReportsController < ApplicationController
       current_hotel.update_attributes correct_keys(auth_hash)
     rescue Less::Ga::Auth::AccessDeniedError => e
       #display error message to user?
-      Exceptions.record e
+      Exceptions.record e, params: params
     rescue Signet::AuthorizationError =>e
-      Exceptions.record e
+      Exceptions.record e, params: params
     end
     redirect_to [:ga, current_hotel, :reports]
   end
@@ -108,7 +108,7 @@ class ReportsController < ApplicationController
   end
   
   def handle_ga_auth_error ex
-    Exceptions.record ex
+    Exceptions.record ex, params: params
     current_hotel.remove_google
     redirect_to [:ga, current_hotel, :reports]
   end
