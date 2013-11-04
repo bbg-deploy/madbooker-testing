@@ -3,7 +3,10 @@
     
     bind_form = ->
       $("#sign_up_button").on "click", ->
-        Stripe.setPublishableKey('pk_test_ltJDWo0zaOhl7t6Kcq6zffhJ')
+        if (new URI().domain() == "madbooker.com")
+          Stripe.setPublishableKey('pk_live_aLgf5DdedLp3s9FwpULfdz6W')
+        else
+          Stripe.setPublishableKey('pk_test_ltJDWo0zaOhl7t6Kcq6zffhJ')
         Stripe.card.createToken {
           number:     $('#user_cc_number').val(),
           cvc:        $('#user_cc_cvv').val(),
