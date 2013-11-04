@@ -13,4 +13,5 @@ staging:
   <<: *defaults
 
 production:
-  <<: *defaults
+  secret_key: sk_live_1nxB5DbW3gtzjRWiOLVnVVzT
+  basic: 1
