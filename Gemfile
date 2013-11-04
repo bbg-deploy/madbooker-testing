@@ -62,6 +62,7 @@ gem 'jquery-ui-sass-rails'
 #  gem 'compass-colors'
 #   gem 'sassy-buttons'
 #   gem 'turbo-sprockets-rails3'
+gem 'newrelic_rpm'
 
 # Deploy with Capistrano
 gem "capistrano", "~> 2.15.5"
