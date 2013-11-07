@@ -42,9 +42,9 @@ GIT
 
 GIT
   remote: git@github.com:LessEverything/less_ga.git
-  revision: fe7c5ae2cf4142fa0fb755c8eab07dd8ecd0e67f
+  revision: d1ffd15d7a05530aba31b0aeb40b318d37772fee
   specs:
-    less_ga (0.0.2)
+    less_ga (0.0.3)
       faraday (= 0.8.8)
       google-api-client (= 0.6.3)
       httparty (= 0.11.0)
@@ -232,7 +232,7 @@ GEM
       rails (<= 4.0)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.7.7)
+    multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     mysql2 (0.3.13)
