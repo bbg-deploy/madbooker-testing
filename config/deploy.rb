@@ -4,12 +4,15 @@ require 'capistrano-unicorn'
 # Include Bundler Extensions
 require 'bundler/capistrano'
 
+# Capistrano Multistage support
+require 'capistrano/ext/multistage'
+set :default_stage, 'production'
+set :stages, %w{production staging}
+
 # Application Settings
-set :application, "madbooker"
 set :repository,  "git@github.com:madbooker/madbooker.git"
 set :branch, "master"
 set :scm, :git
-set :deploy_to, "/srv/apps/#{application}"
 set :user, "deploy"
 
 # Server Settings
