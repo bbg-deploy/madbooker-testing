@@ -1,6 +1,6 @@
 # Unicorn config
 app_path = "/srv/apps/madbooker/current"
-rails_env = ENV['RAILS_ENV'] || 'production'
+rails_env = 'production'
 
 worker_processes 4
 working_directory app_path
