@@ -4,9 +4,7 @@ class Reports::Bar < Less::Interaction
   expects :dimension
 
   def run
-    #init_rows( @data[:rows]).to_json
-    #@data
-    self
+    setup_return_object_or_error
   end
     
   def headers
@@ -21,6 +19,17 @@ class Reports::Bar < Less::Interaction
   end
   
   private
+  
+  def setup_return_object_or_error
+    if @data[:rows]
+      o = OpenStruct.new
+      o.series = series
+      o.headers = headers
+      Less::Response.new 200, o
+    elsif @data[:error]
+      Less::Response.new 500, nil
+    end
+  end
   
   def sorted_data
     return @sorted_data if @sorted_data

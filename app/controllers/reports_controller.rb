@@ -53,16 +53,21 @@ class ReportsController < ApplicationController
   end
   
   def visits
-    @data = Reports::Visits.new(data: less_ga.data.inbound).run
-    g_error? @data
+    res = Reports::Visits.new(data: less_ga.data.inbound).run
+    @data = res.object
+    g_error? res
   end
   
   def sources
-    @data = Reports::Bar.new(data: less_ga.data.sources, dimension: "ga:source").run
+    res = Reports::Bar.new(data: less_ga.data.sources, dimension: "ga:source").run
+    @data = res.object
+    g_error? res
   end
   
   def cities
-    @data = Reports::Bar.new(data: less_ga.data.cities, dimension: "ga:city").run
+    res = Reports::Bar.new(data: less_ga.data.cities, dimension: "ga:city").run
+    @data = res.object
+    g_error? res
   end
   
   def google_auth
@@ -90,8 +95,8 @@ class ReportsController < ApplicationController
   
   private
   
-  def g_error? data
-    return if data
+  def g_error? res
+    return if res.success?
     
     current_hotel.remove_google
     redirect_to [:ga, current_hotel, :reports], notice: "There was a problem getting your data. Please reauthenticate."
@@ -116,8 +121,8 @@ class ReportsController < ApplicationController
     !current_hotel.ga_profile_id.blank?
   end
   
-  def handle_ga_auth_error ex
-    Exceptions.record ex, params: params
+  def handle_ga_auth_error ex = nil
+    Exceptions.record ex, params: params if ex
     current_hotel.remove_google
     redirect_to [:ga, current_hotel, :reports]
   end

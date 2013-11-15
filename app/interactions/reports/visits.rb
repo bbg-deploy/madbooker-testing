@@ -3,11 +3,13 @@ class Reports::Visits < Less::Interaction
   expects :data
 
   def run
-    if @data.log[:rows]
-      init_rows( @data[:rows]).to_json
+    r = Less::Response.new 200, nil
+    if @data[:rows]
+      r.object = init_rows( @data[:rows]).to_json
     elsif @data[:error]
-      false
+      r.status = 500
     end
+    r
   end
   
   private

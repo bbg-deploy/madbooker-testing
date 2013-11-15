@@ -20,3 +20,4 @@ coverage
 erd.pdf
 .rvmrc
 .sass-cache
+test/interactions/**/log/
