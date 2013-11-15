@@ -42,9 +42,9 @@ GIT
 
 GIT
   remote: http://github.com/LessEverything/less_ga.git
-  revision: f4783b3dff74a347d673bb2861de2e4589ddbcf9
+  revision: a8fb20bae6bea4ade9059c5c94619659d6da584d
   specs:
-    less_ga (0.0.4)
+    less_ga (0.0.5)
       faraday (= 0.8.8)
       google-api-client (= 0.6.3)
       httparty (= 0.11.0)

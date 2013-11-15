@@ -54,6 +54,7 @@ class ReportsController < ApplicationController
   
   def visits
     @data = Reports::Visits.new(data: less_ga.data.inbound).run
+    g_error? @data
   end
   
   def sources
@@ -88,6 +89,14 @@ class ReportsController < ApplicationController
   end
   
   private
+  
+  def g_error? data
+    return if data
+    
+    current_hotel.remove_google
+    redirect_to [:ga, current_hotel, :reports], notice: "There was a problem getting your data. Please reauthenticate."
+  end
+  
   def ensure_g_auth
     redirect_to ga_hotel_reports_path(current_hotel) unless g_authed? && g_setup?
   end

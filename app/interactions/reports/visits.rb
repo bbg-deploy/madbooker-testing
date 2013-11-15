@@ -3,8 +3,11 @@ class Reports::Visits < Less::Interaction
   expects :data
 
   def run
-    init_rows( @data[:rows]).to_json
-    #@data
+    if @data.log[:rows]
+      init_rows( @data[:rows]).to_json
+    elsif @data[:error]
+      false
+    end
   end
   
   private
