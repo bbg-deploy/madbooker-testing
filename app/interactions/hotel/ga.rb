@@ -62,11 +62,11 @@ class Hotel::Ga < Less::Interaction
   
   def set_account_id account_id = context.params[:account_id]
     context.hotel.update_attribute :ga_account_id, account_id
-    get_profiles
+    get_profiles account_id
   end
   
   def get_profiles account_id = context.params[:account_id]
-    @profiles = less_ga.data.profiles( account_id).log :green
+    @profiles = less_ga.data.profiles( account_id)
     return @profiles = [] if has_errors? @profiles
     if @profiles[:items].size == 1
       set_profile_id @profiles[:items][0][:id]
