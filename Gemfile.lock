@@ -41,10 +41,10 @@ GIT
       open4
 
 GIT
-  remote: git@github.com:LessEverything/less_ga.git
-  revision: d1ffd15d7a05530aba31b0aeb40b318d37772fee
+  remote: http://github.com/LessEverything/less_ga.git
+  revision: f4783b3dff74a347d673bb2861de2e4589ddbcf9
   specs:
-    less_ga (0.0.3)
+    less_ga (0.0.4)
       faraday (= 0.8.8)
       google-api-client (= 0.6.3)
       httparty (= 0.11.0)
@@ -210,7 +210,7 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.1)
-    launchy (2.3.0)
+    launchy (2.4.0)
       addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)

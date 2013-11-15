@@ -47,7 +47,7 @@ gem "attr_encrypted"
 gem "simple_states"
 gem 'stripe', :git => 'http://github.com/stripe/stripe-ruby'
 gem 'country_select'
-gem "less_ga", git: "git@github.com:LessEverything/less_ga.git"
+gem "less_ga", git: "http://github.com/LessEverything/less_ga.git"
 #gem 'google-analytics-turbolinks'
 gem 'honeybadger'
 gem 'intercom-rails', '~> 0.2.21'
