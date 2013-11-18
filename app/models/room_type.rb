@@ -22,7 +22,7 @@ class RoomType < ActiveRecord::Base
   belongs_to :hotel
   has_many :inventories, :dependent => :destroy
   has_many :bookings, as: :bookable
-  has_many :packages
+  has_many :packages, :dependent => :destroy
   
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "missing_:style.png"
