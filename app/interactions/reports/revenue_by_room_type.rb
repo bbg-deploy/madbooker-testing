@@ -15,7 +15,7 @@ class Reports::RevenueByRoomType < Less::Interaction
   
   private 
   def get_revenue_data
-    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id", "bookings.bookable_type", "month(date)").paid.sum( :total)
+    context.hotel.sales.range(Date.year).joins(:booking).group("bookings.bookable_id", "bookings.bookable_type", "month(date)").paid.sum( :total).log
   end
   
   def get_booking_data
@@ -24,6 +24,7 @@ class Reports::RevenueByRoomType < Less::Interaction
   
   def fill_data input
     out = init_rows
+    ensure_empty_room_types_are_respresented out
     input.each do |datum|
       bookable_id = datum[0][0]
       bookable_type = datum[0][1]
@@ -34,6 +35,15 @@ class Reports::RevenueByRoomType < Less::Interaction
       fill_room_data row.rooms, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
     end
     normalize_data out
+  end
+  
+  def ensure_empty_room_types_are_respresented arr
+    room_types = context.hotel.room_types
+    arr.each do |month|
+    room_types.each do |room_type|
+        month.rooms << inited_room( room_type.id, 0.0, room_type.name)
+      end
+    end
   end
   
   def normalize_data arr
@@ -64,10 +74,12 @@ class Reports::RevenueByRoomType < Less::Interaction
   
   def fill_room_data arr, bookable_id: bookable_id, bookable_type: bookable_type, amount: amount
     room_type = get_room_type bookable_id, bookable_type
-    room = arr.select{|x| x.room_type_id = room_type.id}.first
+    room = arr.select{|x| x.room_type_id == room_type.id}.first
     if room
       room.amount += amount
     else
+      #this shouldn't be neccasary anymore cuz the initing is done in ensure_empty_room_types_are_respresented
+      #but i left it in because I'm scared
       arr << inited_room( room_type.id, amount, room_type.name)
     end
   end

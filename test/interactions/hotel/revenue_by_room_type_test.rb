@@ -76,5 +76,25 @@ class Hotel::RevenueByRoomTypeTest < ActiveSupport::TestCase
   end
   
   
+  context "a hotel with sales but one room with no sales" do
+    setup do
+      @packages = [Gen.package(id: 1)]
+      @room_types = [Gen.room_type(id: 2)]
+      @packages[0].stubs(:room_type).returns(@room_types[0])
+      @get_data = []
+      @context = Context.new hotel: hotel
+      rev.stubs(:get_data).with(Time.week, :sum).returns( {[2, "RoomType"]=>0, [1, "Package"]=>75.0})
+      rev.stubs(:get_data).with(Time.month, :sum).returns( {[2, "RoomType"]=>0, [1, "Package"]=>76.0})
+      rev.stubs(:get_data).with(Time.month, :average).returns( {[2, "RoomType"]=>0, [1, "Package"]=>77.0})
+    end
+    should "return good data" do
+      res = rev.run
+      assert_equal 2, res.size
+      assert_values res[0], 0, 0, 0
+      assert_values res[1], 75, 76, 77
+    end
+  end
+  
+  
   
 end
