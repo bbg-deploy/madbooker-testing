@@ -1,11 +1,15 @@
 
 #header
   %h1
-    Availability Monthly  
+    Current Inventory
   #filters
     = @calendar.previous_month_link
     = @calendar.next_month_link
-   
+  %div{style: "float: right; font-size: 13px; margin:-20px 0 0 0; width: 580px;"}
+    In the calendar below, Inventory signifies the number of rooms that are loaded per room type. 
+
+    Booked signifies the number of rooms that have been booked for that room type.
+    When Inventory and Booked figures match, your room type either needs more inventory or is sold out.
 #data.month_calendar   
   = calendar(:year => @calendar.date.year, :month => @calendar.date.month, :first_day_of_week => 0, :day_class => "day") do |d|
     - render "inventories/calendar/day", date: d, show_details: true
