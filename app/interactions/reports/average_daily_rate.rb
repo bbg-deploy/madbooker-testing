@@ -13,30 +13,35 @@ class Reports::AverageDailyRate < Less::Interaction
   
   
   private 
-  def get_adr_data
-    @get_adr_data ||= context.hotel.room_types.sum :number_of_rooms
-  end
-  
-  def get_revpar_data
-    return @get_revpar_data if @get_revpar_data
-    data = context.hotel.inventories.range(Date.year).group("month(date)").sum :available_rooms
-    h = {}
-    data.each do |month, available_rooms|
-      h[month] = available_rooms / Time.days_in_month(month)
-    end
-    @get_revpar_data = h
-  end
+  # def get_adr_data
+  #   @get_adr_data ||= context.hotel.room_types.sum :number_of_rooms
+  # end
+  # 
+  # def get_revpar_data
+  #   return @get_revpar_data if @get_revpar_data
+  #   data = context.hotel.inventories.range(Date.year).group("month(date)").sum :available_rooms
+  #   h = {}
+  #   data.each do |month, available_rooms|
+  #     h[month] = available_rooms / Time.days_in_month(month)
+  #   end
+  #   @get_revpar_data = h
+  # end
   
   def room_revenue
-    @room_revenue ||= context.hotel.sales.range(Date.year).group("month(date)").paid.sum( :total)  
+    @room_revenue ||= context.hotel.sales.created_range(Date.year).group("month(date)").paid.sum( :total)  
+  end
+  
+  def room_nights
+    @room_nights ||= context.hotel.sales.created_range(Date.year).group("month(date)").paid.count
   end
 
   def fill_data
     a = []
     init_months do |m| 
       struct = uninited_row month: m
-      struct.revpar = do_math room_revenue[m.month], get_revpar_data[m.month]
-      struct.adr = do_math room_revenue[m.month], get_adr_data
+      #struct.revpar = do_math room_revenue[m.month], get_revpar_data[m.month]
+      #struct.adr = do_math room_revenue[m.month], get_adr_data
+      struct.adr = do_math room_revenue[m.month], room_nights[m.month]
       a << struct
     end
     a
@@ -53,7 +58,8 @@ class Reports::AverageDailyRate < Less::Interaction
   
   
   def uninited_row( month: nil)
-    OpenStruct.new date: month, revpar: 0.0, adr: 0.0
+    #OpenStruct.new date: month, revpar: 0.0, adr: 0.0
+    OpenStruct.new date: month, adr: 0.0
   end
   
   def init_months
