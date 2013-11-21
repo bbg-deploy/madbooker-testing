@@ -38,7 +38,7 @@ class PackagesController < ApplicationController
   
   private
   def ensure_add_ons
-    redirect_to [:new, current_hotel, :add_on], notice: "You must have Add ons before you can make packages" if current_hotel.add_ons.blank?
+    redirect_to [:new, current_hotel, :add_on], notice: "You must create Package Amenities before you can create Packages." if current_hotel.add_ons.blank?
   end
   
   
