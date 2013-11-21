@@ -5,5 +5,26 @@
 
 %p
   Thank you for choosing us. We’re looking forward to seeing you!
+  
+       
+.summary= render "/books/summary/summary"
+
+.seeya
+  See you soon!  
+
+#hotel_name.hotel_date= @hotel.name
+#hotel_phone= @hotel.phone
+#hotel_address
+  %div= @hotel.street1
+  %div= @hotel.street2
+  %div= @hotel.street3
+  %div #{@hotel.city}, #{@hotel.state} #{@hotel.postal_code}
+  %div= link_to @hotel.url, @hotel.url
+
+#fine_print
+  %div
+    = @hotel.fine_print
+    Maximum occupancy for this room is #{@booking.bookable.max_occupancy}.
+
 
 

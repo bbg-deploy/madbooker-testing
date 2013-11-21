@@ -55,5 +55,12 @@ module ApplicationHelper
     val.strftime "%b %d, %Y %I:%M%p"
   end
   
+  def method_missing name, *args
+    if name == :current_hotel
+      return @hotel
+    end
+    super
+  end
+  
 
 end
