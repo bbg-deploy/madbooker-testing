@@ -4,7 +4,7 @@
 = simple_form_for [current_hotel, add_on] do |f|
   = f.input :name, :placeholder => 'Day spa package'
   = f.input :description
-  = f.input :price, as: :money_amount
+  = f.input :price, as: :money_amount, :hint => "Enter an amenity price for your own reference.When you create your Package, by combining a Room Type and a Package Amenity, you will have the opportunity to manually set the overall package price."
   = f.input :active
   .clear
   .form-actions
