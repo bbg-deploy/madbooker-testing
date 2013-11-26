@@ -440,7 +440,7 @@ table.standard2
             font-size: 32px
             +bold
 
-$data_width: ($width - (($pad * 2)) - 3px) / 4
+$data_width: floor(($width - (($pad * 2)) - 3px) / 4)
 
 .number_of_searches, .total_revenue, .denials, .rev_par, .revenue_by_room_type, .revenue_by_room_type
   margin: 0 0 40px 0
