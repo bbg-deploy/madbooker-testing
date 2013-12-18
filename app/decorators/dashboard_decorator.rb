@@ -10,7 +10,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def other_booking_amount_this_month
-    booking_amount_this_month "desktop"
+    booking_amount_this_month( "desktop")
   end
   
   def total_booking_amount_this_month
@@ -26,7 +26,7 @@ class DashboardDecorator < HotelDecorator
   end
   
   def other_booking_amount_last_month
-    booking_amount_last_month "desktop"
+    booking_amount_last_month( "desktop")
   end
   
   def total_booking_amount_last_month
@@ -241,7 +241,7 @@ class DashboardDecorator < HotelDecorator
   end
 
   def booking_amount type, range
-    model.sales.created_range(DateRange.new( range: range).to_r).group(:device_type).sum( :total)[type] || 0.0
+    model.sales.range(DateRange.new( range: range).to_r).group(:device_type).sum( :total)[type] || 0.0
   end
     
   def booking_count_this_month type

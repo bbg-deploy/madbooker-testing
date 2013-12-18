@@ -58,7 +58,7 @@ class DateRange
       Date.week.first
     when :month
       Date.month.first
-    when :month
+    when :last_month
       Date.current.last_month.beginning_of_month
     else
       Date.current.beginning_of_month

@@ -56,6 +56,16 @@ class << self
     make Inventory, defaults, args 
   end
   
+  def currency args = {}
+    defaults = {
+      
+      :code        => (18..54).to_a.sample.to_s,
+      :html_symbol => ['$', '€', '¥', '£'].sample,
+      :name        => "Gdollars"
+    } 
+    make Currency, defaults, args   
+  end
+  
   
   def booking args = {}
     defaults = {

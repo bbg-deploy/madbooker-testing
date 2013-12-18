@@ -45,7 +45,7 @@ class Booking::ReserveTest < ActiveSupport::TestCase
   
   context "if booking is  valid" do
     setup do
-      @hotel = Gen.hotel!
+      @hotel = Gen.hotel! currency: Gen.currency!
       Gen.sales_tax! hotel_id: @hotel.id
       Gen.room_type! id: 1
       params = ActionController::Parameters.new(remove_non_permitted_booking_attrs({:booking => Gen.booking(:arrive => "2013-03-13", :depart => "2013-03-15", bookable_id: 1).attributes.merge(:cc_number => "2341", :cc_cvv => "234")}))
@@ -71,6 +71,9 @@ class Booking::ReserveTest < ActiveSupport::TestCase
       end
       end
       assert_equal 150, booking.total
+      assert_equal 2, booking.sales.count
+      assert_equal '2013-03-13', booking.sales[0].date.to_s("db")
+      assert_equal '2013-03-14', booking.sales[1].date.to_s("db")
       booking.sales.each do |sale|
         assert_equal "mobile", sale.device_type
         assert_equal 75, sale.total
