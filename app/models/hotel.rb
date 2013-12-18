@@ -46,7 +46,7 @@ class Hotel < ActiveRecord::Base
   has_many :bookings, :dependent => :destroy
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
-  belongs_to :currency, :dependent => :destroy
+  belongs_to :currency
   has_many :add_ons, :dependent => :destroy
   has_many :packages, :dependent => :destroy
   has_many :sales, :dependent => :destroy
