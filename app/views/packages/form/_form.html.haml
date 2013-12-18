@@ -3,8 +3,8 @@
 
 = simple_nested_form_for [current_hotel, package] do |f|
   = f.association :room_type, collection: current_hotel.room_types.map{|a| ["#{a.name} (#{number_to_currency a.default_rate, unit: current_hotel.currency.html_symbol})".html_safe, a.id]}
-  = f.input :additional_price, as: :money_amount
-  = f.association :add_ons, required: true, collection: current_hotel.add_ons.active.map{|a| ["#{a.name} (#{number_to_currency a.price, unit: current_hotel.currency.html_symbol})".html_safe, a.id]}
+  = f.association :add_ons, required: true, collection: current_hotel.add_ons.active.map{|a| ["#{a.name} (#{number_to_currency a.price, unit: current_hotel.currency.html_symbol})".html_safe, a.id]}, label: "Package Amenities", hint: "When you select amenities above, suggested prices for each will be shown but will not automatically be added to the room rate."
+  = f.input :additional_price, as: :money_amount, label: "Additional Price Per Room Night", hint: "Additional Price is the total amount you want added to the base room price to create the nightly package price."
   .clear
   .form-actions
     = f.submit "Save"
