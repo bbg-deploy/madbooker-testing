@@ -28,7 +28,7 @@
               Date.create( o.date).format('{Month} {yyyy}')
           }
           yAxis: {
-            title: { text: 'Amount' }
+            title: { text: 'Actions Performed' }
           }
           legend: { y: -10 }
           series: series data
