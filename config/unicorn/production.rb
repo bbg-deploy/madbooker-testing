@@ -2,11 +2,6 @@
 app_path = "/srv/apps/madbooker/current"
 rails_env = 'production'
 
-current_path = "/srv/apps/madbooker/current"
-before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
-end
-
 worker_processes 4
 working_directory app_path
 
@@ -21,10 +16,11 @@ pid "#{app_path}/tmp/pids/unicorn.pid"
 GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
 
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/Gemfile"
+end
+
 before_fork do |server, worker|
-#  set :bundle_gemfile, {
-#  'BUNDLE_GEMFILE' => "/srv/apps/madbooker/current/Gemfile"
-#  }
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
   defined?(ActiveRecord::Base) and
