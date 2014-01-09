@@ -7,7 +7,10 @@ class Hotel::UpdateTest < ActiveSupport::TestCase
     @update ||= Hotel::Update.new context: @context
   end
     
-  context "a hotel" do
+  context "a hotel" do   
+    teardown do
+      Timecop.return
+    end
     setup do
       Timecop.freeze Date.new(2013,1,1)
       hotel_attr = Gen.hotel.attributes.with_indifferent_access

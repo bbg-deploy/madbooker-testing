@@ -6,7 +6,10 @@ class Inventory::SyncWithRoomTypesTest < ActiveSupport::TestCase
     return @sync ||= Inventory::SyncWithRoomTypes.new( @context, raises: @raises, range: @range)
   end
 
-  context "a hotel create" do
+  context "a hotel create" do   
+    teardown do
+      Timecop.return
+    end
     setup do
       Timecop.freeze Date.new(2013,1,1)
       @hotel = Gen.hotel!
@@ -53,7 +56,10 @@ class Inventory::SyncWithRoomTypesTest < ActiveSupport::TestCase
     end   
   end  
   
-  context "an inventory create" do
+  context "an inventory create" do   
+    teardown do
+      Timecop.return
+    end
     setup do
       Inventory.delete_all
       Timecop.freeze Date.new(2013,1,1)
