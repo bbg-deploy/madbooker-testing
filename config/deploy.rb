@@ -33,6 +33,10 @@ set :default_environment, {
 default_run_options[:pty] = true
 default_environment["LANG"] = "en_us.UTF-8"
 
+before_exec do |server|
+   ENV['BUNDLE_GEMFILE'] = "/srv/apps/madbooker/current/Gemfile"
+end
+
 before "deploy:assets:precompile", "deploy:database_symlink"
 after "deploy:restart", "unicorn:restart", "deploy:cleanup"
 
