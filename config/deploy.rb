@@ -28,14 +28,11 @@ set :keep_releases, 5
 
 set :default_environment, {
   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+  'BUNDLE_GEMFILE' => "/srv/apps/madbooker/current/Gemfile"
 }
 
 default_run_options[:pty] = true
 default_environment["LANG"] = "en_us.UTF-8"
-
-before_exec do |server|
-   ENV['BUNDLE_GEMFILE'] = "/srv/apps/madbooker/current/Gemfile"
-end
 
 before "deploy:assets:precompile", "deploy:database_symlink"
 after "deploy:restart", "unicorn:restart", "deploy:cleanup"
