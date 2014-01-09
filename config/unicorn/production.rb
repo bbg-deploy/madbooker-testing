@@ -17,6 +17,9 @@ GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
 
 before_fork do |server, worker|
+#  set :bundle_gemfile, {
+#  'BUNDLE_GEMFILE' => "/srv/apps/madbooker/current/Gemfile"
+#  }
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
   defined?(ActiveRecord::Base) and
