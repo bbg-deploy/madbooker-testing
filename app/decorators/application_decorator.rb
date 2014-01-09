@@ -9,4 +9,9 @@ class ApplicationDecorator < Draper::Decorator
   delegate_all
   include Draper::LazyHelpers
   
+  
+  def sub_breaks text
+    text.gsub("\n", "<br/>").html_safe
+  end
+  
 end

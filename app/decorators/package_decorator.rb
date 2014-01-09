@@ -15,7 +15,7 @@ class PackageDecorator < ApplicationDecorator
 
   def description
     d = [room_type.description] + add_ons.map(&:description)
-    d.join " "
+    sub_breaks d.join( " " )
   end
   
   def with_inventory inventory
