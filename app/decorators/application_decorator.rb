@@ -14,6 +14,6 @@ class ApplicationDecorator < Draper::Decorator
     text.gsub("\n", "<br/>").html_safe
   end
 
-#blah1
+#blah2
   
 end
