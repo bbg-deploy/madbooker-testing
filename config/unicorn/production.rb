@@ -2,6 +2,11 @@
 app_path = "/srv/apps/madbooker/current"
 rails_env = 'production'
 
+current_path = "/srv/apps/madbooker/current"
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
+end
+
 worker_processes 4
 working_directory app_path
 
