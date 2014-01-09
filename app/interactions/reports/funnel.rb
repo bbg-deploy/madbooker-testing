@@ -42,13 +42,10 @@ class Reports::Funnel < Less::Interaction
   end
   
   def init_months
-    (Date.current.beginning_of_year.month..Date.current.month).to_a.each do |month|
-      yield date_for_month(month)
+    -11.upto(0) do |i|
+      month = Date.current.advance(months: i)
+      yield month
     end
-  end
-  
-  def date_for_month month
-    Date.current.change( month: month, day: 1)
   end
   
   def ensure_each_has_same_steps arr

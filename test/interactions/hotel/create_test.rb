@@ -7,7 +7,10 @@ class Hotel::CreateTest < ActiveSupport::TestCase
     @create ||= Hotel::Create.new context: @context
   end
   
-  context "a hotel" do
+  context "a hotel" do   
+    teardown do
+      Timecop.return
+    end
     setup do
       Timecop.freeze Date.new(2013,1,1)
       hotel_attr = Gen.hotel.attributes
