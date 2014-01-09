@@ -64,7 +64,8 @@ class ApplicationController < ActionController::Base
   
   def hotel_for_user
     return nil unless current_user
-    hotel = current_user.hotels.find_by_id(params[:hotel_id] || params[:id])
+    hotel = current_user.hotels.find_by_id params[:hotel_id]
+    hotel ||= current_user.hotels.find_by_id( params[:id] ) if controller_name == "hotels"
     hotel ||= current_user.hotels.first
   end
   

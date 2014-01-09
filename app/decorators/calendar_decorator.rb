@@ -6,6 +6,7 @@ class CalendarDecorator < ApplicationDecorator
   end
   
   def previous_year_link
+    1/0
     link_to hotel_inventory_path( hotel, date.year-1) do
       "<i class='icon-calendar'></i> #{date.year-1}".html_safe
     end
@@ -27,6 +28,11 @@ class CalendarDecorator < ApplicationDecorator
     link_to month_hotel_inventories_path( hotel, next_month.year, next_month.month) do
       "<i class='icon-calendar'></i> ".html_safe + next_month.strftime('%B %Y')
     end
+  end
+  
+  def xx
+    return if hotel
+    Exceptions.record "Hotel missing", current_user: current_user
   end
   
 end
