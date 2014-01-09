@@ -28,6 +28,7 @@ set :keep_releases, 5
 
 set :default_environment, {
   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+  'BUNDLE_GEMFILE' => "/srv/apps/madbooker/current/Gemfile"
 }
 
 default_run_options[:pty] = true
