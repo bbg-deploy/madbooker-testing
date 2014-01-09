@@ -6,13 +6,14 @@ class CalendarDecorator < ApplicationDecorator
   end
   
   def previous_year_link
-    1/0
+    xx
     link_to hotel_inventory_path( hotel, date.year-1) do
       "<i class='icon-calendar'></i> #{date.year-1}".html_safe
     end
   end
 
   def next_year_link
+    xx
     link_to hotel_inventory_path( hotel, date.year+1) do
       "<i class='icon-calendar'></i> #{date.year+1}".html_safe
     end
@@ -31,6 +32,7 @@ class CalendarDecorator < ApplicationDecorator
   end
   
   def xx
+    logger.warn "HOTEL: #{hotel.inspect}"
     return if hotel
     Exceptions.record "Hotel missing", current_user: current_user
   end
