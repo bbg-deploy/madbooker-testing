@@ -13,5 +13,7 @@ class ApplicationDecorator < Draper::Decorator
   def sub_breaks text
     text.gsub("\n", "<br/>").html_safe
   end
+
+#blah
   
 end
