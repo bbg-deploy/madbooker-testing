@@ -10,15 +10,15 @@ set :default_stage, 'production'
 set :stages, %w{production staging}
 
 # Application Settings
-set :repository,  "git@github.com:madbooker/madbooker.git"
+set :repository,  "git@github.com:bbg-deploy/madbooker-testing.git"
 set :branch, "master"
 set :scm, :git
 set :user, "deploy"
 
 # Server Settings
-role :web, "app01.c46212.blueboxgrid.com"
-role :app, "app01.c46212.blueboxgrid.com"
-role :db,  "app01.c46212.blueboxgrid.com", :primary => true # This is where Rails migrations will run
+role :web, "stage-app01.c46212.blueboxgrid.com"
+role :app, "stage-app01.c46212.blueboxgrid.com"
+role :db,  "stage-app01.c46212.blueboxgrid.com", :primary => true # This is where Rails migrations will run
 
 # Capistrano Settings
 set :deploy_via, :remote_cache
